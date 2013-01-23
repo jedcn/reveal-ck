@@ -1,4 +1,4 @@
-# reveal-ck: A [reveal.js](http://lab.hakim.se/reveal-js/) Construction Kit
+# reveal-ck: a [reveal.js](http://lab.hakim.se/reveal-js/) construction kit
 
 ## Overview
 
