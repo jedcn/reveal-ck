@@ -51,6 +51,31 @@ you focus on what *you* want to say.
 The presentation framework, revealjs, can make things pretty, but only
 you can make a presentation that is worthwhile.
 
+### Examples of slide DSL
+
+I am not sure what this will look like yet, but here's the idea:
+
+```haml
+%section
+  %h1 Reveal.js
+  %h3 HTML Presentations Made Easy
+  %p
+    %small Created by
+    %a{ href: 'http://hakim.se' } Hakim El Hattab /
+    %a{ href: 'http://twitter.com/hakimel' } @hakimel
+
+%section
+  %h2 Heads Up
+  %p
+    reveal.js is a framework for easily creating beautiful
+    presentations using HTML. You'll need a browser with support for
+    CSS 3D transforms to see it in its full glory.
+  %aside.notes
+    Oh hey, these are some notes. They'll be hidden in your
+    presentation, but you can see them if you open the speaker notes
+    window (hit 's' on your keyboard).
+```
+
 ## Some Thoughts
 
 This is not perfect. Presentation aspects still bleed through into
