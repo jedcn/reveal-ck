@@ -14,9 +14,8 @@ The hope is that you will be able to leverage all of the power,
 beauty, and functionality that comes from revealjs while focusing
 entirely on the actual content and ideas you are trying to get across.
 
-[Rake](http://en.wikipedia.org/wiki/Rake_(software)) commands are used
-to shoulder the work of actually building presentations for review and
-distribution.
+Rake commands are used to shoulder the work of actually building
+presentations for review and distribution.
 
 ## Assumptions
 
