@@ -7,19 +7,8 @@ class Redactor
   end
 
   def redact(range)
-    first = @text.index range.first
-    if first
-      last = @text.index(range.last)
-      if last
-        cutBegin = first - 1
-        cutEnd = last + range.last.size
-        @text.slice(0..cutBegin) + @text.slice(cutEnd..@text.size)
-      else
-        @text
-      end
-    else
-      @text
-    end
+    regex = Regexp.new "#{range.first}.*?#{range.last}"
+    @text.gsub regex, ''
   end
 
 end
