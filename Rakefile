@@ -17,4 +17,12 @@ RSpec::Core::RakeTask.new(:spec) do |spec|
   spec.pattern = FileList['spec/**/*_spec.rb']
 end
 
+require_relative 'lib/reveal-ck'
+
+desc 'Build slides.html'
+file 'slides.html' => 'slides.haml' do
+  processor = HamlProcessor.open 'slides.haml'
+  File.open('slides.html', 'w') { |f| f << processor.html }
+end
+
 task :default => :spec
