@@ -15,28 +15,41 @@ end
 
 describe Redactor do
 
-  let :sample do
-    'hi, how are you?'
+  context '#new' do
+    it 'is constructed with a String' do
+      expect do
+        Redactor.new 'hi!'
+      end.to_not raise_error
+    end
   end
 
-  let :html_sample do
-    '<body><section>hi</section><p>bye</p><section>bye</section></body>'
+  context 'with text' do
+
+    let :sample do
+      'hi, how are you?'
+    end
+
+    it 'can remove specified text' do
+      r = Redactor.new sample
+      r.redact('how'..'you').should == 'hi, ?'
+    end
+
+    it 'leaves the original text alone if there are no matches' do
+      r = Redactor.new sample
+      r.redact('blue'..'shoe').should == sample
+    end
   end
 
-  it 'is constructed with text' do
-    expect do
-      Redactor.new sample
-    end.to_not raise_error
-  end
+  context 'with html' do
 
-  it 'can remove specified text' do
-    r = Redactor.new sample
-    r.redact('how'..'you').should == 'hi, ?'
-  end
+    let :html_sample do
+      '<body><section>hi</section><p>bye</p><section>bye</section></body>'
+    end
 
-  it 'leaves the original text alone if there are no matches' do
-    r = Redactor.new sample
-    r.redact('blue'..'shoe').should == sample
-  end
+    it 'can remove multiple occurrences of an element' do
+      r = Redactor.new html_sample
+      r.redact('<section>'..'</section>').should == '<body><p>bye</p></body>'
+    end
 
+  end
 end
