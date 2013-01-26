@@ -17,6 +17,8 @@ RSpec::Core::RakeTask.new(:spec) do |spec|
   spec.pattern = FileList['spec/**/*_spec.rb']
 end
 
+require 'rake/clean'
+
 require_relative 'lib/reveal-ck'
 
 desc 'Build slides.html'
@@ -25,4 +27,15 @@ file 'slides.html' => 'slides.haml' do
   File.open('slides.html', 'w') { |f| f << processor.html }
 end
 
-task :default => :spec
+directory 'slides'
+CLEAN.include 'slides'
+
+REVEAL_FILES = FileList["reveal.js/**/*"]
+
+desc 'Build presentation'
+task :presentation => [ 'slides', 'slides.html'] do
+  cp 'slides.html', 'slides'
+  cp_r REVEAL_FILES, 'slides'
+end
+
+task :default => :presentation
