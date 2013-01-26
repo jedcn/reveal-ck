@@ -17,3 +17,11 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = 'random'
 end
+
+# Utility function: returns the reveal-ck/spec directory
+def spec_dir
+  invoking_spec = caller[0].split(':')[0]
+  parent_dir_of_spec = File.dirname invoking_spec
+  spec_index = parent_dir_of_spec.rindex 'spec'
+  parent_dir_of_spec[0...(spec_index + 'spec'.size)]
+end
