@@ -47,4 +47,4 @@ task :presentation => [ 'slides', 'slides.html'] do
   FileSplicer.insert! 'slides.html', into: 'slides/index.html', after: '<div class="slides">'
 end
 
-task :default => :presentation
+task :default => :spec
