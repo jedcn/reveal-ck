@@ -1,6 +1,6 @@
 class FileSlicer
 
-  def self.slice!(path, range)
+  def self.remove!(path, range)
     slice_file = if File.exists? path
       path
     else

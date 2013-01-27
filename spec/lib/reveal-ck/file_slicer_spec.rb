@@ -4,24 +4,24 @@ require 'tmpdir'
 
 describe FileSlicer do
 
-  describe '.slice!' do
+  describe '.remove!' do
 
-    let :before_slicer do
-      File.join spec_dir, 'data', 'slicer', 'before_slicer'
+    let :before_remove do
+      File.join spec_dir, 'data', 'slicer', 'before_remove'
     end
 
-    let :after_slicer do
-      File.join spec_dir, 'data', 'slicer', 'after_slicer'
+    let :after_remove do
+      File.join spec_dir, 'data', 'slicer', 'after_remove'
     end
 
-    it 'can cut a range of lines out of a file' do
+    it 'removes a range of lines from a file' do
       Dir.mktmpdir do |tmp_dir|
-        FileUtils.cp before_slicer, tmp_dir
-        test_file = File.join tmp_dir, 'before_slicer'
-        FileSlicer.slice! test_file, 3..6
+        FileUtils.cp before_remove, tmp_dir
+        test_file = File.join tmp_dir, 'before_remove'
+        FileSlicer.remove! test_file, 3..6
         test_file_contents = File.open(test_file).read
-        after_slicer_contents = File.open(after_slicer).read
-        test_file_contents.should == after_slicer_contents
+        after_remove_contents = File.open(after_remove).read
+        test_file_contents.should == after_remove_contents
       end
     end
   end

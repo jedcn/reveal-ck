@@ -61,8 +61,8 @@ I am not sure what this will look like yet, but here's the idea:
   %h3 HTML Presentations Made Easy
   %p
     %small Created by
-    %a{ href: 'http://hakim.se' } Hakim El Hattab /
-    %a{ href: 'http://twitter.com/hakimel' } @hakimel
+      %a{ href: 'http://hakim.se' } Hakim El Hattab /
+      %a{ href: 'http://twitter.com/hakimel' } @hakimel
 
 %section
   %h2 Heads Up

@@ -18,7 +18,7 @@ describe FileSplicer do
       File.join spec_dir, 'data', 'splicer', 'after_insert'
     end
 
-    it 'inserts insert one file into another' do
+    it 'inserts one file into another' do
       Dir.mktmpdir do |tmp_dir|
         FileUtils.cp before_insert, tmp_dir
         test_file = File.join tmp_dir, 'before_insert'
