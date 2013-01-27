@@ -21,6 +21,11 @@ require 'rake/clean'
 
 require_relative 'lib/reveal-ck'
 
+file 'reveal.js/index.html' do
+  `git submodule init`
+  `git submodule update`
+end
+
 desc 'Build slides.html'
 file 'slides.html' => 'slides.haml' do
   processor = HamlProcessor.open 'slides.haml'
@@ -33,7 +38,7 @@ CLEAN.include 'slides'
 REVEAL_FILES = FileList["reveal.js/**/*"]
 
 desc 'Build presentation'
-task :presentation => [ 'slides', 'slides.html'] do
+task :presentation => [ 'reveal.js/index.html', 'slides', 'slides.html'] do
   cp 'slides.html', 'slides'
   cp_r REVEAL_FILES, 'slides'
   line_nums = {
