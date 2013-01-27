@@ -6,7 +6,7 @@ class FileSplicer
 
   def insert(new_lines, opts)
     index = @lines.each.with_index do |line, i|
-      break i + 1 if line =~ opts[:after]
+      break i + 1 if line.include? opts[:after]
     end
     @lines.insert(index, new_lines).flatten
   end
