@@ -48,7 +48,7 @@ task :presentation => [ 'reveal.js/index.html', 'slides', 'slides.html'] do
     }
   }
   default_slides = line_nums[:default_slides][:first]..line_nums[:default_slides][:last]
-  FileSlicer.slice! 'slides/index.html', default_slides
+  FileSlicer.remove! 'slides/index.html', default_slides
   FileSplicer.insert! 'slides.html', into: 'slides/index.html', after: '<div class="slides">'
 end
 
