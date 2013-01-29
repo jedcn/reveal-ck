@@ -30,7 +30,8 @@ https://github.com/jedcn/talk-learning-with-tools
 Here's an example of the output you'd get: Coming Soon
 
 For a full sampling of everything
-[reveal.js](http://lab.hakim.se/reveal-js/) can do, take a look at:
+[reveal.js](http://lab.hakim.se/reveal-js/) can do, take a look at the
+[live demo](http://lab.hakim.se/reveal-js/).
 
 ## Getting Started
 
@@ -54,8 +55,7 @@ up and running.
 
 Now that you are assured of basic functionality, start making changes
 and customizing ```slides.haml```. Once you've made a change you'd
-like to see, re-run ```reveal-ck``` and then re-open (or refresh)
-```slides/index.html```
+like to see, re-run ```reveal-ck``` and then re-open (or refresh) ```slides/index.html```
 
 [reveal.js](http://lab.hakim.se/reveal-js/) has a great
 [live demo](http://lab.hakim.se/reveal-js/), and if you take a look at
