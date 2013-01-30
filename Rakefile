@@ -11,6 +11,18 @@ rescue Bundler::BundlerError => e
 end
 require 'rake'
 
+require 'jeweler'
+Jeweler::Tasks.new do |gem|
+  gem.name = 'reveal-ck'
+  gem.homepage = 'http://github.com/jedcn/reveal-ck'
+  gem.license = 'MIT'
+  gem.summary = %Q{A toolkit that takes a minimal description of slides and builds a reveal.js presentation}
+  gem.description = 'A reveal.js construction kit'
+  gem.email = 'northridge@gmail.com'
+  gem.authors = ['Jed Northridge']
+end
+Jeweler::RubygemsDotOrgTasks.new
+
 require 'rspec/core'
 require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new(:spec) do |spec|
