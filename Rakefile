@@ -20,6 +20,7 @@ Jeweler::Tasks.new do |gem|
   gem.description = 'A reveal.js construction kit'
   gem.email = 'northridge@gmail.com'
   gem.authors = ['Jed Northridge']
+  gem.files.include 'reveal.js/**/*'
 end
 Jeweler::RubygemsDotOrgTasks.new
 
