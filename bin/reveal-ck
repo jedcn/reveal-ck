@@ -1,23 +1,16 @@
 #!/usr/bin/env ruby
-# 1.9 adds realpath to resolve symlinks; 1.8 doesn't
-# have this method, so we add it so we get resolved symlinks
-# and compatibility
-unless File.respond_to? :realpath
-  class File #:nodoc:
-    def self.realpath path
-      return realpath(File.readlink(path)) if symlink?(path)
-      path
-    end
-  end
-end
-$: << File.expand_path(File.dirname(File.realpath(__FILE__)) + '/../lib')
-require 'rake'
-load 'Rakefile'
-require 'rubygems'
 require 'gli'
 require 'reveal-ck'
 
-include GLI
+# Setup rake and load rakelib so that rake tasks can be invoked
+# programmatically
+require 'rake'
+rakelib = File.expand_path(File.join(File.dirname(__FILE__), '..', 'rakelib'))
+Dir.entries(rakelib).each do |entry|
+  load File.join(rakelib, entry) if entry.end_with?('.rake')
+end
+
+include GLI::App
 
 program_desc 'A reveal.js construction kit'
 
@@ -52,4 +45,4 @@ on_error do |exception|
   true
 end
 
-exit GLI.run(ARGV)
+exit run(ARGV)
