@@ -1,5 +1,5 @@
 desc 'Build presentation'
-task :presentation => [ 'reveal.js/index.html', 'slides', 'slides.html'] do
+task :presentation => [ 'slides', 'slides.html'] do
   cp 'slides.html', 'slides'
   cp_r REVEAL_FILES, 'slides'
   line_nums = {
