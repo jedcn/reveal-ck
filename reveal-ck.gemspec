@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jed Northridge"]
-  s.date = "2013-01-31"
+  s.date = "2013-02-01"
   s.description = "A reveal.js construction kit"
   s.email = "northridge@gmail.com"
   s.executables = ["reveal-ck"]
@@ -86,8 +86,6 @@ Gem::Specification.new do |s|
     "reveal.js/plugin/print-pdf/print-pdf.js",
     "reveal.js/plugin/remotes/remotes.js",
     "reveal.js/plugin/zoom-js/zoom.js",
-    "slides.haml",
-    "slides.html",
     "spec/data/haml/basic.haml",
     "spec/data/html/converted_basic_haml.html",
     "spec/data/html/reveal-js-index.html",
