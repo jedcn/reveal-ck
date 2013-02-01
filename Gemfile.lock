@@ -1,14 +1,9 @@
-GIT
-  remote: git://github.com/davetron5000/gli.git
-  revision: 9da0e6916a57100569ef523c763f41d262997082
-  specs:
-    gli (1.6.0)
-
 GEM
   remote: http://rubygems.org/
   specs:
     diff-lcs (1.1.3)
     git (1.2.5)
+    gli (2.5.4)
     haml (3.1.7)
     jeweler (1.8.4)
       bundler (~> 1.0)
@@ -33,7 +28,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler
-  gli!
+  gli
   haml
   jeweler
   rake
