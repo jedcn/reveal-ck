@@ -2,6 +2,7 @@ file 'reveal.js/index.html' do
   `git submodule init`
   `git submodule update`
 end
+
 CLOBBER.include 'reveal.js'
 task :clobber do
   # Spirit of clobber is to bring repository back to pristine state
@@ -11,4 +12,5 @@ task :clobber do
   mkdir 'reveal.js'
 end
 
-REVEAL_FILES = FileList["reveal.js/**/*"]
+revealjs = File.expand_path(File.join(File.dirname(__FILE__), '..', 'reveal.js'))
+REVEAL_FILES = FileList["#{revealjs}/**/*"]
