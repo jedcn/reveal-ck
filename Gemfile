@@ -9,5 +9,6 @@ group :development do
   gem 'jeweler'
   gem 'rspec'
   gem 'bundler'
+  gem 'cucumber'
   gem 'rake'
 end
