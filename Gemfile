@@ -9,5 +9,7 @@ group :development do
   gem 'jeweler'
   gem 'rspec'
   gem 'bundler'
+  gem 'cucumber'
+  gem 'aruba'
   gem 'rake'
 end
