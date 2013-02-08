@@ -1,3 +1,5 @@
+require 'rake/clean'
+
 desc 'Build slides.html'
 file 'slides.html' => 'slides.haml' do
   processor = HamlProcessor.open 'slides.haml'
