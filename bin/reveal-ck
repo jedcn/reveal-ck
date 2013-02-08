@@ -5,6 +5,7 @@ require 'reveal-ck'
 # Setup rake and load rakelib so that rake tasks can be invoked
 # programmatically
 require 'rake'
+require 'rake/clean'
 rakelib = File.expand_path(File.join(File.dirname(__FILE__), '..', 'rakelib'))
 Dir.entries(rakelib).each do |entry|
   load File.join(rakelib, entry) if entry.end_with?('.rake')
