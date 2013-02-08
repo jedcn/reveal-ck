@@ -13,4 +13,4 @@ end
 require 'rake'
 require 'rake/clean'
 require_relative 'lib/reveal-ck'
-task :default => :spec
+task :default => [ :spec, :cucumber ]
