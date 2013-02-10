@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jed Northridge"]
-  s.date = "2013-02-01"
+  s.date = "2013-02-10"
   s.description = "A reveal.js construction kit"
   s.email = "northridge@gmail.com"
   s.executables = ["reveal-ck"]
@@ -29,17 +29,22 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "bin/reveal-ck",
+    "features/data/images/ruby100.png",
+    "features/generate.feature",
+    "features/help.feature",
+    "features/step_definitions/file_management_steps.rb",
+    "features/support/env.rb",
+    "features/support/file_management.rb",
     "lib/reveal-ck.rb",
     "lib/reveal-ck/file_slicer.rb",
     "lib/reveal-ck/file_splicer.rb",
     "lib/reveal-ck/haml_processor.rb",
     "lib/reveal-ck/version.rb",
+    "rakelib/cucumber.rake",
     "rakelib/jeweler.rake",
     "rakelib/presentation.rake",
     "rakelib/reveal.rake",
     "rakelib/rspec.rake",
-    "rakelib/slides.html.rake",
-    "rakelib/slides.rake",
     "reveal-ck.gemspec",
     "reveal.js/LICENSE",
     "reveal.js/README.md",
@@ -117,25 +122,31 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<haml>, [">= 0"])
       s.add_runtime_dependency(%q<gli>, [">= 0"])
+      s.add_runtime_dependency(%q<rake>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 0"])
       s.add_development_dependency(%q<bundler>, [">= 0"])
-      s.add_development_dependency(%q<rake>, [">= 0"])
+      s.add_development_dependency(%q<cucumber>, [">= 0"])
+      s.add_development_dependency(%q<aruba>, [">= 0"])
     else
       s.add_dependency(%q<haml>, [">= 0"])
       s.add_dependency(%q<gli>, [">= 0"])
+      s.add_dependency(%q<rake>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 0"])
       s.add_dependency(%q<bundler>, [">= 0"])
-      s.add_dependency(%q<rake>, [">= 0"])
+      s.add_dependency(%q<cucumber>, [">= 0"])
+      s.add_dependency(%q<aruba>, [">= 0"])
     end
   else
     s.add_dependency(%q<haml>, [">= 0"])
     s.add_dependency(%q<gli>, [">= 0"])
+    s.add_dependency(%q<rake>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 0"])
     s.add_dependency(%q<bundler>, [">= 0"])
-    s.add_dependency(%q<rake>, [">= 0"])
+    s.add_dependency(%q<cucumber>, [">= 0"])
+    s.add_dependency(%q<aruba>, [">= 0"])
   end
 end
 
