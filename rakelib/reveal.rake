@@ -13,6 +13,3 @@ task :clobber do
   # and adding this mkdir achieves that
   mkdir 'reveal.js'
 end
-
-revealjs = File.expand_path(File.join(File.dirname(__FILE__), '..', 'reveal.js'))
-REVEAL_FILES = FileList["#{revealjs}/**/*"]
