@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jed Northridge"]
-  s.date = "2013-02-10"
+  s.date = "2013-02-12"
   s.description = "A reveal.js construction kit"
   s.email = "northridge@gmail.com"
   s.executables = ["reveal-ck"]
