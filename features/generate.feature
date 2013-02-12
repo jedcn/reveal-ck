@@ -16,9 +16,11 @@ Feature: Generate slides
     When I run `reveal-ck generate`
     Then the exit status should be 0
     And the following files should exist:
-    | slides.html       |
-    | slides/index.html |
-    And the file "slides.html" should contain exactly:
+    | slides/slides.html |
+    | slides/index.html  |
+    And the following files should not exist:
+    | slides.html |
+    And the file "slides/slides.html" should contain exactly:
     """
     <section>
       <h1>
@@ -52,7 +54,7 @@ Feature: Generate slides
     When I run `reveal-ck generate`
     Then the exit status should be 0
     And the following files should exist:
-    | slides.html               |
+    | slides/slides.html        |
     | slides/index.html         |
     | slides/images/ruby100.png |
     And the file "slides/index.html" should contain:
