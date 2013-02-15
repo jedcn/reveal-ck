@@ -19,8 +19,6 @@ Feature: Generate slides
     And the following files should exist:
     | slides/slides.html |
     | slides/index.html  |
-    And the following files should not exist:
-    | slides.html |
     And the file "slides/slides.html" should contain exactly:
     """
     <section>
