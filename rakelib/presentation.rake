@@ -8,7 +8,9 @@ REVEAL_FILES = FileList["#{revealjs}/**/*"]
 
 #
 # task: slides
-directory 'slides'
+task 'slides' do
+  mkdir_p 'slides', verbose: false
+end
 CLEAN.include 'slides'
 
 #
@@ -24,9 +26,9 @@ CLEAN.include 'slides/slides.html'
 # task: presentation
 desc 'Build presentation'
 task :presentation => [ 'slides/slides.html'] do
-  cp_r REVEAL_FILES, 'slides'
-  mkdir_p 'slides/images'
-  cp_r DIR_IMAGES_FILES, 'slides/images'
+  cp_r REVEAL_FILES, 'slides', verbose: false
+  mkdir_p 'slides/images', verbose: false
+  cp_r DIR_IMAGES_FILES, 'slides/images', verbose: false
   line_nums = {
     default_slides: {
       first: 37,
