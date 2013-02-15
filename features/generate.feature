@@ -15,6 +15,7 @@ Feature: Generate slides
     """
     When I run `reveal-ck generate`
     Then the exit status should be 0
+    And the output should contain exactly ""
     And the following files should exist:
     | slides/slides.html |
     | slides/index.html  |
