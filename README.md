@@ -13,17 +13,18 @@ The hope is that you will be able to leverage all of the power,
 beauty, and functionality that comes from reveal.js while focusing
 entirely on the actual content and ideas you are trying to get across.
 
-### What You Provide to reveal-ck
+### What You Provide
 
-To make a set of slides, you provide:
+You provide:
 
 * A file containing your slide content (`slides.haml`)
 
 * (optional) If you have any images that are not already on the web,
-  you could save these into a directory named `images` and be able to
-  reference them relatively in with `img` tags in your slide markup.
+  you can save these into a directory named `images` and the contents
+  will be bundled up into your generated slides. This will allow you
+  to relatively reference the images.
 
-### What You Get from reveal-ck
+### What You Get
 
 Once you have a `slides.haml`, you'd run a single command: `reveal-ck
 generate` and your slides will be built (or rebuilt) in a directory
@@ -52,7 +53,7 @@ For total completeness, here's the repository that tracks the files
 behind the slides: https://github.com/jedcn/talk-learning-with-tools.
 
 While you might see a dozen or so different files being tracked in
-that repository, there's a bunch of overhead that is used for
+that repository, the good majority of them are overhead used for
 generally tracking a project:
 
 * The `.rvmrc` is only present because it is using RVM
@@ -71,8 +72,12 @@ up and running one way or another.
 If that's the case, try the following:
 
 * `gem instll reveal-ck`
-* `echo -e "%section\n  Hello World" > slides.haml`
-* `reveal-ck generate`
+* Using the editor of your choice, create a file with this content:
+```haml
+%section
+  Hello World
+```
+* Then run: `reveal-ck generate`
 
 If all has gone well, you should now have a `slides/` directory and if
 you open up `slides/index.html` in a browser, you should see a
