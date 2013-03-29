@@ -72,7 +72,9 @@ up and running one way or another.
 If that's the case, try the following:
 
 * `gem instll reveal-ck`
-* Using the editor of your choice, create a file with this content:
+
+* Using the editor of your choice, create a file named `slides.haml`
+  with this content:
 
 ```haml
 %section
