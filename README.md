@@ -2,32 +2,39 @@
 
 ## Overview
 
-The goal of this project is let you quickly author
+The goal of this project is to let you quickly author
 [reveal.js](http://lab.hakim.se/reveal-js/) presentations.
 
-It enables you to author "reveal.js-aware-[haml](http://haml.info/)"
-that can conveniently be transformed into slides.
+This project provides a command line tool, `reveal-ck` that generates
+a set of slides from a single file.
 
-The hope is that you will be able to leverage all of the power,
-beauty, and functionality that comes from reveal.js while focusing
-entirely on the actual content and ideas you are trying to get across.
+Examples follow, but the hope is that you will be able to leverage all
+of the power, beauty, and functionality that comes from reveal.js
+while:
+
+* Focusing entirely on the actual content and ideas you are trying to
+  get across.
+
+* Tracking your slide content in simple format with minimal overhead.
 
 ### What You Provide to reveal-ck
 
-If you want to make some slides, you would provide:
+To make slides, you would provide:
 
 * A file containing your slide content (`slides.haml`)
-* A directory, `images`, containing any images you'd like to reference
-  with `<img/>` within your slides.
+
+* (optional) If you have any images that are not already on the web,
+  you could save these into a directory named `images` and be able to
+  reference them relatively in with `img` tags in your slide markup.
 
 ### What You Get from reveal-ck
 
 In return for this, you will be able to create slides that can be
 placed anywhere on the web (or kept locally).
 
-Having authored a `slides.haml`, you'd run a single command:
-`reveal-ck generate` and your slides will be built (or rebuilt) in a
-directory named `slides`
+Once you have a `slides.haml`, you'd run a single command: `reveal-ck
+generate` and these slides will be built (or rebuilt) in a directory
+named `slides/`
 
 As with all [reveal.js](http://lab.hakim.se/reveal-js/) presentations,
 you can show these to other people on an iPhone, iPad, or present them
@@ -35,31 +42,30 @@ in your browser.
 
 ### An Example
 
-Here's an example of a project that tracks files used to build a set
-of slides: [talk-learning-with-tools-source].
+This link leads to
+[a set of slides that reveal-ck generated][talk-learning-with-tools-result].
 
-But, it is even simpler than that: if you look at
-[talk-learning-with-tools] you'll see approximately 9 top level files.
-Of these, only one is necessary to use reveal-ck: `slides.haml`.
+If you were to look through these 43 or so slides, the important thing
+to remember is that it was generated entirely from three files:
 
-* If you don't have any images, you could leave out the `images/`
-  directory
+* [slides.haml][https://github.com/jedcn/talk-learning-with-tools/blob/master/slides.haml]
+* [images/nodejam.png][https://raw.github.com/jedcn/talk-learning-with-tools/master/images/nodejam.png]
+* [images/third_row.jpeg][https://raw.github.com/jedcn/talk-learning-with-tools/master/images/third_row.jpeg]
 
-* If you don't use RVM, you do not need the `.rvmrc`
+For total completeness, here's the repository that tracks the files
+behind the slides: https://github.com/jedcn/talk-learning-with-tools.
 
-* If you don't use Bundler, you do not need the `Gemfile` or the
-  `Gemfile.lock`
+While you might see a dozen or so different files being tracked in
+that repository, there's a bunch of overhead that it uses for
+generally tracking a project:
+
+* The `.rvmrc` is only present because it is using RVM
+
+* The `Gemfile` and `Gemfile.lock` are only present because it is
+  using Bundler.
 
 * The files `README.md` and `notes.org` are things I use to support a
-  talk. reveal-ck does not use them. Same goes for the `LICENSE` and
-  the `.gitignore`
-
-At any rate, if you focus on the `slides.haml` and the `images/` that
-I chose to include, and imagined that you ran `reveal-ck generate`,
-then you'd get this:
-
-Here's an example of the output you'd get:
-[talk-learning-with-tools-result].
+  talk that I am giving. reveal-ck is not aware of them.
 
 ## Getting Started
 
