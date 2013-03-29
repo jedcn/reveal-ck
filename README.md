@@ -2,24 +2,20 @@
 
 ## Overview
 
-The goal of this project is to let you quickly author
-[reveal.js](http://lab.hakim.se/reveal-js/) presentations.
+This project is the home of a gem named `reveal-ck` that lets you
+quickly author [reveal.js](http://lab.hakim.se/reveal-js/)
+presentations.
 
-This project provides a command line tool, `reveal-ck` that generates
-a set of slides from a single file.
+`reveal-ck` can take a single file as input and generate a set of
+slides from it.
 
-Examples follow, but the hope is that you will be able to leverage all
-of the power, beauty, and functionality that comes from reveal.js
-while:
-
-* Focusing entirely on the actual content and ideas you are trying to
-  get across.
-
-* Tracking your slide content in simple format with minimal overhead.
+The hope is that you will be able to leverage all of the power,
+beauty, and functionality that comes from reveal.js while focusing
+entirely on the actual content and ideas you are trying to get across.
 
 ### What You Provide to reveal-ck
 
-To make slides, you would provide:
+To make a set of slides, you provide:
 
 * A file containing your slide content (`slides.haml`)
 
@@ -29,12 +25,12 @@ To make slides, you would provide:
 
 ### What You Get from reveal-ck
 
-In return for this, you will be able to create slides that can be
-placed anywhere on the web (or kept locally).
-
 Once you have a `slides.haml`, you'd run a single command: `reveal-ck
-generate` and these slides will be built (or rebuilt) in a directory
+generate` and your slides will be built (or rebuilt) in a directory
 named `slides/`
+
+In return, you will be able to create slides that can be placed
+anywhere on the web (or kept locally).
 
 As with all [reveal.js](http://lab.hakim.se/reveal-js/) presentations,
 you can show these to other people on an iPhone, iPad, or present them
@@ -48,15 +44,15 @@ This link leads to
 If you were to look through these 43 or so slides, the important thing
 to remember is that it was generated entirely from three files:
 
-* [slides.haml][https://github.com/jedcn/talk-learning-with-tools/blob/master/slides.haml]
-* [images/nodejam.png][https://raw.github.com/jedcn/talk-learning-with-tools/master/images/nodejam.png]
-* [images/third_row.jpeg][https://raw.github.com/jedcn/talk-learning-with-tools/master/images/third_row.jpeg]
+* [slides.haml](https://github.com/jedcn/talk-learning-with-tools/blob/master/slides.haml)
+* [images/nodejam.png](https://raw.github.com/jedcn/talk-learning-with-tools/master/images/nodejam.png)
+* [images/third_row.jpeg](https://raw.github.com/jedcn/talk-learning-with-tools/master/images/third_row.jpeg)
 
 For total completeness, here's the repository that tracks the files
 behind the slides: https://github.com/jedcn/talk-learning-with-tools.
 
 While you might see a dozen or so different files being tracked in
-that repository, there's a bunch of overhead that it uses for
+that repository, there's a bunch of overhead that is used for
 generally tracking a project:
 
 * The `.rvmrc` is only present because it is using RVM
@@ -114,8 +110,8 @@ the list of slides to a single file (```slides.haml```). It only
 contains the slide content I am presenting and there's minimal markup.
 
 HAML isn't the most readable thing (say, compared to markdown), but it
-is decent and sharing or reviewing something like ```slides.haml``` is
-easier than reviewing the final presentation:
+is decent, and sharing or reviewing something like ```slides.haml```
+is easier than reviewing the final presentation:
 
 * If you look at the presentation in a browser, you can't scan all of
   the slides at once. You need to visit them. If you're looking at
