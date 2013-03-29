@@ -73,11 +73,13 @@ If that's the case, try the following:
 
 * `gem instll reveal-ck`
 * Using the editor of your choice, create a file with this content:
+
 ```haml
 %section
   Hello World
 ```
-* Then run: `reveal-ck generate`
+
+* Finally, run: `reveal-ck generate`
 
 If all has gone well, you should now have a `slides/` directory and if
 you open up `slides/index.html` in a browser, you should see a
