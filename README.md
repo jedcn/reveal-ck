@@ -1,5 +1,7 @@
 # reveal-ck: a [reveal.js](http://lab.hakim.se/reveal-js/) construction kit
 
+[![Build Status](https://travis-ci.org/jedcn/reveal-ck.png)](https://travis-ci.org/jedcn/reveal-ck)
+
 ## Overview
 
 This project is the home of a gem named `reveal-ck` that lets you
