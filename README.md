@@ -5,51 +5,76 @@
 The goal of this project is let you quickly author
 [reveal.js](http://lab.hakim.se/reveal-js/) presentations.
 
-It enables you to author reveal.js-aware-[haml](http://haml.info/) that
-can conveniently be transformed into slides.
+It enables you to author "reveal.js-aware-[haml](http://haml.info/)"
+that can conveniently be transformed into slides.
 
 The hope is that you will be able to leverage all of the power,
 beauty, and functionality that comes from reveal.js while focusing
 entirely on the actual content and ideas you are trying to get across.
 
-This content will usually take the form of:
+### What You Provide to reveal-ck
 
-* A file containing your slides (```slides.haml```)
-* A directory containing any images you'd like to reference relatively
-  (```images```).
+If you want to make some slides, you would provide:
 
-And, in return for this, you will be able to create slides that can be
-placed anywhere on the web (or kept locally). As with all
-[reveal.js](http://lab.hakim.se/reveal-js/) presentations, you can
-show these to other people on an iPhone, iPad, or present them in your
-browser.
+* A file containing your slide content (`slides.haml`)
+* A directory, `images`, containing any images you'd like to reference
+  with `<img/>` within your slides.
 
-Here's an example of the inputs you'd provide:
-https://github.com/jedcn/talk-learning-with-tools
+### What You Get from reveal-ck
 
-Here's an example of the output you'd get: Coming Soon
+In return for this, you will be able to create slides that can be
+placed anywhere on the web (or kept locally).
 
-For a full sampling of everything
-[reveal.js](http://lab.hakim.se/reveal-js/) can do, take a look at the
-[live demo](http://lab.hakim.se/reveal-js/).
+Having authored a `slides.haml`, you'd run a single command:
+`reveal-ck generate` and your slides will be built (or rebuilt) in a
+directory named `slides`
+
+As with all [reveal.js](http://lab.hakim.se/reveal-js/) presentations,
+you can show these to other people on an iPhone, iPad, or present them
+in your browser.
+
+### An Example
+
+Here's an example of a project that tracks files used to build a set
+of slides: [talk-learning-with-tools-source].
+
+But, it is even simpler than that: if you look at
+[talk-learning-with-tools] you'll see approximately 9 top level files.
+Of these, only one is necessary to use reveal-ck: `slides.haml`.
+
+* If you don't have any images, you could leave out the `images/`
+  directory
+
+* If you don't use RVM, you do not need the `.rvmrc`
+
+* If you don't use Bundler, you do not need the `Gemfile` or the
+  `Gemfile.lock`
+
+* The files `README.md` and `notes.org` are things I use to support a
+  talk. reveal-ck does not use them. Same goes for the `LICENSE` and
+  the `.gitignore`
+
+At any rate, if you focus on the `slides.haml` and the `images/` that
+I chose to include, and imagined that you ran `reveal-ck generate`,
+then you'd get this:
+
+Here's an example of the output you'd get:
+[talk-learning-with-tools-result].
 
 ## Getting Started
 
 At present, we assume you've got a functional Ruby 1.9.x environment
-up and running.
+up and running one way or another.
 
 If that's the case, try the following:
 
-* clone this project
-* run a ```bundle```
-* run ```reveal-ck```
+* `gem instll reveal-ck`
+* `echo -e "%section\n  Hello World" > slides.haml`
+* `reveal-ck generate`
 
-At this point, the sample ```slides.haml``` that came with the project
-will be transformed into a set of slides. You can see the result by
-opening up ```slides/index.html``` in your browser.
-
-If you've made it this far, you've got the basic basic functionality
-up and running.
+If all has gone well, you should now have a `slides/` directory and if
+you open up `slides/index.html` in a browser, you should see a
+reveal.js presentation with a single slide that says Hello World.
 
 ## Authoring Slides
 
@@ -101,3 +126,6 @@ slightly easier than if you track the generated presentation.
 In the end, the presentation framework,
 [reveal.js](http://lab.hakim.se/reveal-js/), can make things pretty,
 but only you can make a presentation that is worthwhile.
+
+[talk-learning-with-tools-source]: https://github.com/jedcn/talk-learning-with-tools
+[talk-learning-with-tools-result]: http://www.jednorthridge.com/talks/learning-with-tools
