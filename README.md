@@ -8,8 +8,8 @@ This project is the home of a gem named `reveal-ck` that lets you
 quickly author [reveal.js](http://lab.hakim.se/reveal-js/)
 presentations.
 
-`reveal-ck` can take a single file as input and generate a set of
-slides from it.
+The gem provides an executable of the same name, `reveal-ck`, that can
+take a single file as input and generate a set of slides from it.
 
 The hope is that you will be able to leverage all of the power,
 beauty, and functionality that comes from reveal.js while focusing
@@ -29,8 +29,8 @@ You provide:
 ### What You Get
 
 Once you have a `slides.haml`, you'd run a single command: `reveal-ck
-generate` and your slides will be built (or rebuilt) in a directory
-named `slides/`
+generate` and your slides will be built in a directory named
+`slides/`.
 
 In return, you will be able to create slides that can be placed
 anywhere on the web (or kept locally).
