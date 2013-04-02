@@ -11,94 +11,73 @@ presentations.
 The gem provides an executable of the same name, `reveal-ck`, that can
 take a single file as input and generate a set of slides from it.
 
+Here's a starter repository that contains everything you need to get
+going with reveal-ck: https://github.com/jedcn/reveal-ck-template in
+less than 5 minutes.
+
 The hope is that you will be able to leverage all of the power,
 beauty, and functionality that comes from reveal.js while focusing
 entirely on the actual content and ideas you are trying to get across.
+
+As with all [reveal.js](http://lab.hakim.se/reveal-js/) presentations,
+you can show these to other people on an iPhone, iPad, or present them
+in your browser.
 
 ### What You Provide
 
 You provide:
 
-* A file containing your slide content (`slides.haml`)
+* A file containing your slide content in HAML (`slides.haml`)
 
 * (optional) If you have any images that are not already on the web,
   you can save these into a directory named `images` and the contents
   will be bundled up into your generated slides. This will allow you
   to relatively reference the images.
 
-### What You Get
-
-Once you have a `slides.haml`, you'd run a single command: `reveal-ck
-generate` and your slides will be built in a directory named
-`slides/`.
-
-In return, you will be able to create slides that can be placed
-anywhere on the web (or kept locally).
-
-As with all [reveal.js](http://lab.hakim.se/reveal-js/) presentations,
-you can show these to other people on an iPhone, iPad, or present them
-in your browser.
-
-### An Example
-
-This link leads to
-[a set of slides that reveal-ck generated][talk-learning-with-tools-result].
-
-If you were to look through these 43 or so slides, the important thing
-to remember is that it was generated entirely from three files:
-
-* [slides.haml](https://github.com/jedcn/talk-learning-with-tools/blob/master/slides.haml)
-* [images/nodejam.png](https://raw.github.com/jedcn/talk-learning-with-tools/master/images/nodejam.png)
-* [images/third_row.jpeg](https://raw.github.com/jedcn/talk-learning-with-tools/master/images/third_row.jpeg)
-
-For total completeness, here's the repository that tracks the files
-behind the slides: https://github.com/jedcn/talk-learning-with-tools.
-
-While you might see a dozen or so different files being tracked in
-that repository, the good majority of them are overhead used for
-generally tracking a project:
-
-* The `.rvmrc` is only present because it is using RVM
-
-* The `Gemfile` and `Gemfile.lock` are only present because it is
-  using Bundler.
-
-* The files `README.md` and `notes.org` are things I use to support a
-  talk that I am giving. reveal-ck is not aware of them.
-
 ## Getting Started
 
 At present, we assume you've got a functional Ruby 1.9.x environment
-up and running one way or another.
+up and running one way or another and bundler.
 
 If that's the case, try the following:
 
-* `gem instll reveal-ck`
-
-* Using the editor of your choice, create a file named `slides.haml`
-  with this content:
-
-```haml
-%section
-  Hello World
 ```
-
-* Finally, run: `reveal-ck generate`
+$ git clone git@github.com:jedcn/reveal-ck-template.git
+Cloning into 'reveal-ck-template'...
+remote: Counting objects: 12, done.
+remote: Compressing objects: 100% (7/7), done.
+remote: Total 12 (delta 2), reused 12 (delta 2)
+Receiving objects: 100% (12/12), done.
+Resolving deltas: 100% (2/2), done.
+$ cd reveal-ck-template
+$ bundle
+Fetching gem metadata from https://rubygems.org/......
+Installing rake (10.0.4)
+Installing gli (2.5.6)
+Installing tilt (1.3.6)
+Installing haml (4.0.1)
+Installing reveal-ck (0.1.1)
+Using bundler (1.2.3)
+Your bundle is complete! Use `bundle show [gemname]` to see where a bundled gem is installed.
+$ reveal-ck generate
+$ open slides/index.html
+```
 
 If all has gone well, you should now have a `slides/` directory and if
 you open up `slides/index.html` in a browser, you should see a
-reveal.js presentation with a single slide that says Hello World.
+reveal.js presentation that was generated from the `slides.haml`
 
 ## Authoring Slides
 
 Now that you are assured of basic functionality, start making changes
-and customizing ```slides.haml```. Once you've made a change you'd
-like to see, re-run ```reveal-ck``` and then re-open (or refresh) ```slides/index.html```
+and customizing `slides.haml`. Once you've made a change you'd like to
+see, re-run `reveal-ck` and then re-open (or refresh)
+`slides/index.html`
 
 [reveal.js](http://lab.hakim.se/reveal-js/) has a great
 [live demo](http://lab.hakim.se/reveal-js/), and if you take a look at
-the source in the demo, you can get up and running quickly with things
-that can be placed into your ```slides.haml```.
+the source in the demo, you can quickly see the HTML and CSS that has
+good support by default when placed into your `slides.haml`.
 
 ## Why not just clone reveal.js?
 
