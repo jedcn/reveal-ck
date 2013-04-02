@@ -71,7 +71,7 @@ reveal.js presentation that was generated from the `slides.haml`
 
 Now that you are assured of basic functionality, start making changes
 and customizing `slides.haml`. Once you've made a change you'd like to
-see, re-run `reveal-ck` and then re-open (or refresh)
+see, re-run `reveal-ck generate` and then re-open (or refresh)
 `slides/index.html`
 
 [reveal.js](http://lab.hakim.se/reveal-js/) has a great
