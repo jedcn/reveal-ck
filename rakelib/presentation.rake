@@ -17,7 +17,7 @@ CLEAN.include 'slides'
 # task: slides.html
 desc 'Build slides.html'
 file 'slides/slides.html' => [ 'slides.haml', 'slides' ] do
-  processor = HamlProcessor.open 'slides.haml'
+  processor = RevealCK::HamlProcessor.open 'slides.haml'
   File.open('slides/slides.html', 'w') { |f| f << processor.html }
 end
 CLEAN.include 'slides/slides.html'
@@ -36,6 +36,6 @@ task :presentation => [ 'slides/slides.html'] do
     }
   }
   default_slides = line_nums[:default_slides][:first]..line_nums[:default_slides][:last]
-  FileSlicer.remove! 'slides/index.html', default_slides
-  FileSplicer.insert! 'slides/slides.html', into: 'slides/index.html', after: '<div class="slides">'
+  RevealCK::FileSlicer.remove! 'slides/index.html', default_slides
+  RevealCK::FileSplicer.insert! 'slides/slides.html', into: 'slides/index.html', after: '<div class="slides">'
 end
