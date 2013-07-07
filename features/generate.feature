@@ -43,6 +43,24 @@ Feature: Generate slides
     </section>
     """
 
+  Scenario: Generating slides with a <title>
+    Given a file named "config.toml" with:
+    """
+    title = "The Title of My Slides"
+    """
+    And a file named "slides.haml" with:
+    """
+    %section
+      %h1
+        Made with RevealCK
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the file "slides/index.html" should contain:
+    """
+    <title>The Title of My Slides</title>
+    """
+
   Scenario: Generating slides with images
     Given a file named "images/ruby100.png" that's a copy of "data/images/ruby100.png"
     And a file named "slides.haml" with:
