@@ -6,7 +6,6 @@ require 'reveal-ck'
 # invoked programmatically
 require 'rake'
 rakelib = File.expand_path(File.join(File.dirname(__FILE__), '..', 'rakelib'))
-load File.join(rakelib, 'presentation.rake')
 
 include GLI::App
 
@@ -18,7 +17,24 @@ desc 'Generate reveal.js slides'
 arg_name 'Tranforms your slides.haml into a presentation'
 command :generate do |c|
   c.action do |global_options,options,args|
-    Rake::Task['presentation'].invoke
+
+    revealjs_root = File.expand_path(File.join(File.dirname(__FILE__), '..', 'reveal.js'))
+    revealjs_files = FileList["#{revealjs_root}/**/*"]
+
+    image_files = FileList["images/**/*"]
+
+    output_dir = 'slides'
+
+    slides_haml = 'slides.haml'
+
+    builder = RevealCK::PresentationBuilder.new({
+                                                  revealjs_files: revealjs_files,
+                                                  image_files: image_files,
+                                                  output_dir: output_dir,
+                                                  slides_haml: slides_haml
+                                                })
+    builder.build!
+
   end
 end
 
