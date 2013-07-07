@@ -1,7 +1,7 @@
 require 'fileutils'
 
 module RevealCK
-  class PresentationBuilder
+  class PresentationBuilder < Builder
 
     attr_reader :revealjs_files, :image_files, :slides_haml
     attr_reader :tasks
@@ -10,11 +10,6 @@ module RevealCK
       @revealjs_files, @image_files = args[:revealjs_files], args[:image_files]
       @slides_haml = args[:slides_haml]
       @output_dir = args[:output_dir]
-      register_tasks
-    end
-
-    def build!
-      tasks.each {|task| task.go!}
     end
 
     def output_dir(child=nil)
@@ -26,14 +21,6 @@ module RevealCK
     end
 
     private
-
-    def add_task(description, action)
-      @tasks << BuildTask.new({
-                                builder: self,
-                                description: description,
-                                action: action
-                              })
-    end
 
     def register_tasks
 

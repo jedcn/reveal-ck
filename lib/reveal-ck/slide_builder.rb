@@ -1,5 +1,5 @@
 module RevealCK
-  class SlideBuilder
+  class SlideBuilder < Builder
 
     attr_reader :user_slides, :reveal_slides
 
@@ -8,22 +8,9 @@ module RevealCK
     def initialize(args)
       @user_slides = args[:user_slides]
       @reveal_slides = args[:reveal_slides]
-      register_tasks
-    end
-
-    def build!
-      tasks.each {|task| task.go!}
     end
 
     private
-
-    def add_task(description, action)
-      @tasks << BuildTask.new({
-                                builder: self,
-                                description: description,
-                                action: action
-                              })
-    end
 
     def register_tasks
 
