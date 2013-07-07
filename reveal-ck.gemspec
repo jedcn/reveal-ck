@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "aruba"
 
   files = {
-    core: ["LICENSE"],
+    core: ["LICENSE", "Rakefile", "Gemfile"],
     reveal: Dir.glob('reveal.js/**/*'),
     lib: `git ls-files lib`.split("\n"),
     rakelib: `git ls-files rakelib`.split("\n")
