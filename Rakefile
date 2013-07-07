@@ -1,7 +1,9 @@
 # encoding: utf-8
-
 require 'rubygems'
+
 require 'bundler'
+Bundler::GemHelper.install_tasks
+
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e
@@ -12,5 +14,4 @@ end
 
 require 'rake'
 require 'rake/clean'
-require_relative 'lib/reveal-ck'
 task :default => [ :spec, :cucumber ]

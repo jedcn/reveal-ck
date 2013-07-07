@@ -121,3 +121,33 @@ but only you can make a presentation that is worthwhile.
 
 [talk-learning-with-tools-source]: https://github.com/jedcn/talk-learning-with-tools
 [talk-learning-with-tools-result]: http://www.jednorthridge.com/talks/learning-with-tools
+
+## Development
+
+If you want to make changes to reveal-ck, you should first try the
+following:
+
+```
+git submodule init
+git submodule update
+rake
+```
+
+The gem, reveal-ck, relies on having a copy of reveal.js (the original
+JavaScript based project) via a git submodule.
+
+The commands above get things online and verify basic functionality.
+
+### Testing
+
+The testing strategy blends rspec and cucumber. There's not much going
+on here (at a code level) so RSpec is straight forward. The
+executable, reveal-ck, is verified as a command line tool with Aruba.
+
+As you might expect, `rake spec` runs specs, `rake cucumber` runs
+features, and `rake` runs both `spec` and `cucumber`.
+
+### Travis
+
+This project is setup within Travis. Here is the
+[project page](https://travis-ci.org/jedcn/reveal-ck).
