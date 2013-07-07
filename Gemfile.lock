@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    reveal-ck (0.1.1)
+    reveal-ck (0.1.2)
       gli (~> 2.5.4)
       haml (~> 3.1.7)
       rake
