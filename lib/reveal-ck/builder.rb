@@ -7,7 +7,6 @@ module RevealCK
 
     def add_task(description, action)
       @tasks << BuildTask.new({
-                                builder: self,
                                 description: description,
                                 action: action
                               })
