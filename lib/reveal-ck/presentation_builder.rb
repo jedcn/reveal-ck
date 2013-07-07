@@ -1,6 +1,10 @@
 require 'fileutils'
 
 module RevealCK
+  #
+  # Public: A PresentationBuilder knows how to bundle together all of
+  # the various files that makeup a reveal.js presentation
+  #
   class PresentationBuilder < Builder
 
     attr_reader :revealjs_files, :image_files, :slides_haml

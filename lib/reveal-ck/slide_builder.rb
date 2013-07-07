@@ -1,4 +1,8 @@
 module RevealCK
+  #
+  # Public: A SlideBuilder knows how to build the index.html file (the
+  # core slides) within a reveal.js presentation.
+  #
   class SlideBuilder < Builder
 
     attr_reader :user_slides, :reveal_slides
