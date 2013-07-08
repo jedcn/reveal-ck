@@ -41,9 +41,17 @@ module RevealCK
                }
 
       old_title = 'reveal.js - The HTML Presentation Framework'
+      new_title = config.title
       add_task "Replacing the <title>",
                lambda {
                  FileStringReplacer.replace! reveal_slides, old: old_title, new: config.title
+               }
+
+      old_author = 'name="author" content="Hakim El Hattab"'
+      new_author = 'name="author" content="' + config.author + '"'
+      add_task "Replacing the <meta name='author'>",
+               lambda {
+                 FileStringReplacer.replace! reveal_slides, old: old_author, new: new_author
                }
     end
 

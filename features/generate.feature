@@ -61,6 +61,24 @@ Feature: Generate slides
     <title>The Title of My Slides</title>
     """
 
+  Scenario: Generating slides with an author
+    Given a file named "config.toml" with:
+    """
+    author = "Jed Northridge"
+    """
+    And a file named "slides.haml" with:
+    """
+    %section
+      %h1
+        Made with RevealCK
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the file "slides/index.html" should contain:
+    """
+    <meta name="author" content="Jed Northridge">
+    """
+
   Scenario: Generating slides with images
     Given a file named "images/ruby100.png" that's a copy of "data/images/ruby100.png"
     And a file named "slides.haml" with:
