@@ -9,9 +9,12 @@ module RevealCK
 
     attr_reader :tasks
 
+    attr_reader :config
+
     def initialize(args)
       @user_slides = args[:user_slides]
       @reveal_slides = args[:reveal_slides]
+      @config = args[:config]
     end
 
     private
@@ -35,6 +38,12 @@ module RevealCK
       add_task "Splicing in slides from #{user_slides}",
                lambda {
                  FileSplicer.insert! user_slides, into: reveal_slides, after: '<div class="slides">'
+               }
+
+      old_title = 'reveal.js - The HTML Presentation Framework'
+      add_task "Replacing the <title>",
+               lambda {
+                 FileStringReplacer.replace! reveal_slides, old: old_title, new: config.title
                }
     end
 

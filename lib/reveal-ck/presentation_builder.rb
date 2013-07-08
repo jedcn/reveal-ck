@@ -7,13 +7,14 @@ module RevealCK
   #
   class PresentationBuilder < Builder
 
-    attr_reader :revealjs_files, :image_files, :slides_haml
+    attr_reader :revealjs_files, :image_files, :slides_haml, :config
     attr_reader :tasks
 
     def initialize(args)
       @revealjs_files, @image_files = args[:revealjs_files], args[:image_files]
       @slides_haml = args[:slides_haml]
       @output_dir = args[:output_dir]
+      @config = args[:config]
     end
 
     def output_dir(child=nil)
@@ -56,7 +57,8 @@ module RevealCK
                lambda {
                  slide_builder = SlideBuilder.new({
                                                     user_slides: output_dir('slides.html'),
-                                                    reveal_slides: output_dir('index.html')
+                                                    reveal_slides: output_dir('index.html'),
+                                                    config: config
                                                   })
                  slide_builder.build!
                }
