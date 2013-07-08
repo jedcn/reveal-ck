@@ -1,6 +1,17 @@
 ### Development
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.2...master)
 
+#### Enhancements
+
+* Support for a config.toml which can supply author, title, and theme
+  ala:
+```
+author = "Your Name"
+title = "Your Presentation's Name"
+[presentation]
+theme = "night"
+```
+
 ### 0.1.2 / 2013-07-06
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.1...v0.1.2)
 

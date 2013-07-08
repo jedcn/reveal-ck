@@ -27,11 +27,14 @@ command :generate do |c|
 
     slides_haml = 'slides.haml'
 
+    config = RevealCK::Config.new config_file: 'config.toml'
+
     builder = RevealCK::PresentationBuilder.new({
                                                   revealjs_files: revealjs_files,
                                                   image_files: image_files,
                                                   output_dir: output_dir,
-                                                  slides_haml: slides_haml
+                                                  slides_haml: slides_haml,
+                                                  config: config
                                                 })
     builder.build!
 
