@@ -53,6 +53,13 @@ module RevealCK
                lambda {
                  FileStringReplacer.replace! reveal_slides, old: old_author, new: new_author
                }
+
+      old_theme = 'href="css/theme/default.css" id="theme"'
+      new_theme = 'href="css/theme/' + config.theme + '.css" id="theme"'
+      add_task 'Replacing the core theme',
+               lambda {
+                 FileStringReplacer.replace! reveal_slides, old: old_theme, new: new_theme
+               }
     end
 
   end

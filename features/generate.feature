@@ -79,6 +79,25 @@ Feature: Generate slides
     <meta name="author" content="Jed Northridge">
     """
 
+  Scenario: Generating slides with a theme
+    Given a file named "config.toml" with:
+    """
+    [presentation]
+    theme = "night"
+    """
+    And a file named "slides.haml" with:
+    """
+    %section
+      %h1
+        Made with RevealCK
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the file "slides/index.html" should contain:
+    """
+    <link rel="stylesheet" href="css/theme/night.css" id="theme">
+    """
+
   Scenario: Generating slides with images
     Given a file named "images/ruby100.png" that's a copy of "data/images/ruby100.png"
     And a file named "slides.haml" with:
