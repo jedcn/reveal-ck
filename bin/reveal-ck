@@ -2,11 +2,6 @@
 require 'gli'
 require 'reveal-ck'
 
-# Setup rake and load needed parts of rakelib so that rake tasks can be
-# invoked programmatically
-require 'rake'
-rakelib = File.expand_path(File.join(File.dirname(__FILE__), '..', 'rakelib'))
-
 include GLI::App
 
 program_desc 'A reveal.js construction kit'
@@ -14,9 +9,10 @@ program_desc 'A reveal.js construction kit'
 version RevealCK::VERSION
 
 desc 'Generate reveal.js slides'
-arg_name 'Tranforms your slides.haml into a presentation'
 command :generate do |c|
   c.action do |global_options,options,args|
+
+    require 'rake' # for FileList
 
     revealjs_root = File.expand_path(File.join(File.dirname(__FILE__), '..', 'reveal.js'))
     revealjs_files = FileList["#{revealjs_root}/**/*"]
