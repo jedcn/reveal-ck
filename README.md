@@ -151,3 +151,16 @@ features, and `rake` runs both `spec` and `cucumber`.
 
 This project is setup within Travis. Here is the
 [project page](https://travis-ci.org/jedcn/reveal-ck).
+
+### Updating the embedded reveal.js
+
+If you've got things checked out, and submodules inited, then you can
+updated the embedded reveal.js as follows:
+
+* cd into reveal.js
+* Run a `git fetch` and then merge/rebase/reset as is appropriate
+* Run tests
+* If the tests don't pass, you likely need to update how the
+  FileSplicer is invoked in the SliderBuilder. It's got hard-coded
+  begin/end line numbers for where the default reveal.js slides are
+  found. This commit is a good example of such a change: b29b050.
