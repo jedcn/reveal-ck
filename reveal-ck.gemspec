@@ -21,9 +21,9 @@ Gem::Specification.new do |s|
 
   #
   # Development Dependencies
-  s.add_development_dependency "rspec"
-  s.add_development_dependency "cucumber"
-  s.add_development_dependency "aruba"
+  s.add_development_dependency 'rspec', '~> 2.14.0'
+  s.add_development_dependency 'cucumber', '~> 1.3.3'
+  s.add_development_dependency 'aruba', '~> 0.5.3'
 
   files = {
     core: ["LICENSE", "Rakefile", "Gemfile"],
