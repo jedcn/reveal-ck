@@ -3,8 +3,17 @@
 
 #### Enhancements
 
-* Support for a config.toml which can supply author, title, and theme
-  ala:
+##### Config
+
+Via a config file, you can now:
+
+* Use a theme other than the default
+* Supply a <title> for your slides
+* Supply <meta/> author information
+
+To achieve this, create a config.toml in the same directory as your
+slides.haml. The contents should look like:
+
 ```
 author = "Your Name"
 title = "Your Presentation's Name"
@@ -12,15 +21,33 @@ title = "Your Presentation's Name"
 theme = "night"
 ```
 
+##### Markdown
+
+You can now supply slide content via markdown (in haml..). It looks
+like:
+
+```haml
+%section
+  :markdown
+    # Hey Now
+    ## Alright
+```
+
+##### Update to embedded reveal.js
+
+reveal-ck works by unpacking an embedded version of reveal.js when
+creating slides. In prior versions, this was locked at a commit dating
+to January 2013. It's now been updated to around the end of June 2013.
+
+In short, it was: f3b488. And now it is: 7d19b4.
+
 ### 0.1.2 / 2013-07-06
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.1...v0.1.2)
 
 #### Bug Fixes
 
 * Avoid 'desc is not a method' error when running reveal-ck generate.
-  Prior versions should've called out haml ~> 3.1.x as a dependency
-  and were not. Consequently, since haml 4.x was released, fresh
-  bundles have resulted in `reveal-ck generate` failing.
+  There was an unexpected interaction between Rake and GLI 2.7.
 
 #### Enhancements
 
