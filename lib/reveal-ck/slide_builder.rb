@@ -27,8 +27,8 @@ module RevealCK
                lambda {
                  line_nums = {
                    default_slides: {
-                     first: 37,
-                     last: 338
+                     first: 38, # Line where I see <div class="slides">
+                     last: 346  # Closing <div>
                    }
                  }
                  default_slides = line_nums[:default_slides][:first]..line_nums[:default_slides][:last]
