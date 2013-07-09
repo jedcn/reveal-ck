@@ -8,8 +8,8 @@
 Via a config file, you can now:
 
 * Use a theme other than the default
-* Supply a <title> for your slides
-* Supply <meta/> author information
+* Supply a `<title>` for your slides
+* Supply `<meta/>` author information
 
 To achieve this, create a config.toml in the same directory as your
 slides.haml. The contents should look like:
