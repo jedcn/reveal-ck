@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "reveal-ck/version"
+require File.join([File.dirname(__FILE__),'lib','reveal-ck','version.rb'])
 
 Gem::Specification.new do |s|
   s.name        = "reveal-ck"
