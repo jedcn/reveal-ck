@@ -129,6 +129,6 @@ Feature: Generate slides
     And the file "slides/index.html" should contain:
     """
     <section>
-      <img alt='Ruby Logo' src='images/ruby100.png' />
+      <img alt='Ruby Logo' src='images/ruby100.png'>
     </section>
     """

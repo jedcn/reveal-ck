@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
 
   #
   # Runtime Dependencies
-  s.add_dependency 'haml', '~> 3.1.7'
+  s.add_dependency 'haml', '~> 4.0.3'
   s.add_dependency 'gli', '~> 2.5.4'
   s.add_dependency 'toml', '~> 0.0.3'
   s.add_dependency 'rake'

@@ -3,7 +3,7 @@ PATH
   specs:
     reveal-ck (0.1.2)
       gli (~> 2.5.4)
-      haml (~> 3.1.7)
+      haml (~> 4.0.3)
       rake
       toml (~> 0.0.3)
 
@@ -28,7 +28,8 @@ GEM
     gherkin (2.12.0)
       multi_json (~> 1.3)
     gli (2.5.6)
-    haml (3.1.8)
+    haml (4.0.3)
+      tilt
     multi_json (1.7.7)
     parslet (1.5.0)
       blankslate (~> 2.0)
@@ -41,6 +42,7 @@ GEM
     rspec-expectations (2.14.0)
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.14.0)
+    tilt (1.4.1)
     toml (0.0.4)
       parslet
 
