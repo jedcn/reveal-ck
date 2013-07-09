@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'haml', '~> 4.0.3'
   s.add_dependency 'gli', '~> 2.5.4'
   s.add_dependency 'toml', '~> 0.0.3'
-  s.add_dependency 'rake'
+  s.add_dependency 'rake', '~> 10.1.0'
 
   #
   # Development Dependencies
