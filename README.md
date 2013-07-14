@@ -17,7 +17,7 @@ beauty, and functionality that comes from reveal.js while focusing
 entirely on the actual content and ideas you are trying to get across.
 
 To get started, take a look at
-[this project that's got everything you need][[github-jedcn-reveal-ck-template].
+[this project that's got everything you need][github-jedcn-reveal-ck-template].
 
 ## Why not just clone reveal.js?
 
@@ -55,9 +55,8 @@ is easier than reviewing the final presentation:
   meaningful diffs between versions of ```slides.haml```. This is
   slightly easier than if you track the generated presentation.
 
-In the end, the presentation framework, [reveal.js][reveal-js], can
-make things pretty, but only you can make a presentation that is
-worthwhile.
+In the end, [reveal.js][reveal-js], can make things pretty, but only
+you can make a presentation that is worthwhile.
 
 [jedcn-reveal-ck]: http://jedcn.com/posts/reveal-ck
 [github-jedcn-reveal-ck-template]: http://github.com/jedcn/reveal-ck-template
