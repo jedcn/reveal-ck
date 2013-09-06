@@ -14,17 +14,17 @@ Gem::Specification.new do |s|
 
   #
   # Runtime Dependencies
-  s.add_dependency 'haml', '~> 4.0.3'
+  s.add_dependency 'haml',      '~> 4.0.3'
   s.add_dependency 'redcarpet', '~> 2.3.0'
-  s.add_dependency 'gli', '~> 2.7.0'
-  s.add_dependency 'toml', '~> 0.0.3'
-  s.add_dependency 'rake', '~> 10.1.0'
+  s.add_dependency 'gli',       '~> 2.7.0'
+  s.add_dependency 'toml',      '~> 0.0.3'
+  s.add_dependency 'rake',      '~> 10.1.0'
 
   #
   # Development Dependencies
-  s.add_development_dependency 'rspec', '~> 2.14.0'
+  s.add_development_dependency 'rspec',    '~> 2.14.0'
   s.add_development_dependency 'cucumber', '~> 1.3.3'
-  s.add_development_dependency 'aruba', '~> 0.5.3'
+  s.add_development_dependency 'aruba',    '~> 0.5.3'
 
   files = {
     core: ["LICENSE", "Rakefile", "Gemfile"],
@@ -43,20 +43,6 @@ Gem::Specification.new do |s|
     "LICENSE",
     "README.md"
   ]
-
-  # s.files = [
-  #   ".gitmodules",
-  #   ".rspec",
-  #   ".rvmrc",
-  #   ".travis.yml",
-  #   "Gemfile",
-  #   "Gemfile.lock",
-  #   "LICENSE",
-  #   "README.md",
-  #   "Rakefile",
-  #   "VERSION",
-  #   "reveal-ck.gemspec",
-  # ]
 
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
