@@ -7,6 +7,7 @@ PATH
       rake (~> 10.1.0)
       redcarpet (~> 2.3.0)
       slim (~> 2.0)
+      tilt (~> 1.4)
       toml (~> 0.0.3)
 
 GEM

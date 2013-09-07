@@ -1,5 +1,4 @@
-require 'haml'
-require 'ostruct'
+require 'tilt/haml'
 
 module RevealCK
   class HamlProcessor
@@ -7,9 +6,10 @@ module RevealCK
     attr_reader :html
 
     def initialize(haml)
-      render_context = ::OpenStruct.new({})
-      engine = ::Haml::Engine.new haml
-      @html = engine.render render_context
+      template = Tilt::HamlTemplate.new {
+        haml
+      }
+      @html = template.render
     end
 
     def self.open(path)
