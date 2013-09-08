@@ -38,8 +38,8 @@ module RevealCK
 
       add_task "Transforming #{slides_haml} into #{output_dir('slides_html')}'}",
                lambda {
-                 processor = HamlProcessor.open slides_haml
-                 File.open(output_dir('slides.html'), 'w') { |f| f << processor.html }
+                 processor = TemplateProcessor.open slides_haml
+                 File.open(output_dir('slides.html'), 'w') { |f| f << processor.output }
                }
 
       add_task "Bundling up the revealjs stuff into #{output_dir}/",

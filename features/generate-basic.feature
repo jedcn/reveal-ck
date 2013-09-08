@@ -59,10 +59,8 @@ Feature: Generate slides
     Given a file named "slides.slim" with:
     """
     section
-      h1
-        Made with RevealCK
-      p.small
-        oh yeah!
+      h1 Made with RevealCK
+      p.small oh yeah!
     """
     When I run `reveal-ck generate`
     Then the exit status should be 0
@@ -76,11 +74,10 @@ Feature: Generate slides
       <h1>
         Made with RevealCK
       </h1>
-      <p class='small'>
+      <p class="small">
         oh yeah!
       </p>
     </section>
-
     """
     And the file "slides/index.html" should contain:
     """
@@ -88,7 +85,7 @@ Feature: Generate slides
       <h1>
         Made with RevealCK
       </h1>
-      <p class='small'>
+      <p class="small">
         oh yeah!
       </p>
     </section>
