@@ -21,7 +21,8 @@ command :generate do |c|
 
     output_dir = 'slides'
 
-    slides_haml = 'slides.haml'
+    slides_file = 'slides.haml' if File.exists? 'slides.haml'
+    slides_file = 'slides.slim' if File.exists? 'slides.slim'
 
     config = RevealCK::Config.new config_file: 'config.toml'
 
@@ -29,7 +30,7 @@ command :generate do |c|
                                                   revealjs_files: revealjs_files,
                                                   image_files: image_files,
                                                   output_dir: output_dir,
-                                                  slides_haml: slides_haml,
+                                                  slides_file: slides_file,
                                                   config: config
                                                 })
     builder.build!
