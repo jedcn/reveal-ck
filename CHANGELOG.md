@@ -3,6 +3,11 @@
 
 #### Enhancements
 
+##### Slim Support
+
+You can now author slides in either Slim or Haml. Choose which by
+supplying a `slides.haml` or a `slides.slim`.
+
 ##### Config
 
 Via a config file, you can now:
