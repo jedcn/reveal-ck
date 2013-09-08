@@ -7,12 +7,12 @@ module RevealCK
   #
   class PresentationBuilder < Builder
 
-    attr_reader :revealjs_files, :image_files, :slides_haml, :config
+    attr_reader :revealjs_files, :image_files, :slides_file, :config
     attr_reader :tasks
 
     def initialize(args)
       @revealjs_files, @image_files = args[:revealjs_files], args[:image_files]
-      @slides_haml = args[:slides_haml]
+      @slides_file = args[:slides_file]
       @output_dir = args[:output_dir]
       @config = args[:config]
     end
@@ -36,9 +36,9 @@ module RevealCK
                  FileUtils.mkdir_p output_dir, verbose: false
                }
 
-      add_task "Transforming #{slides_haml} into #{output_dir('slides_html')}'}",
+      add_task "Transforming #{slides_file} into #{output_dir('slides_html')}'}",
                lambda {
-                 processor = TemplateProcessor.open slides_haml
+                 processor = TemplateProcessor.open slides_file
                  File.open(output_dir('slides.html'), 'w') { |f| f << processor.output }
                }
 

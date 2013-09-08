@@ -30,7 +30,7 @@ command :generate do |c|
                                                   revealjs_files: revealjs_files,
                                                   image_files: image_files,
                                                   output_dir: output_dir,
-                                                  slides_haml: slides_file,
+                                                  slides_file: slides_file,
                                                   config: config
                                                 })
     builder.build!
