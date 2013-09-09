@@ -1,14 +1,20 @@
 ### Development
-[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.2...master)
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.4...master)
 
-#### Enhancements
+Nothing Yet..
 
-##### Slim Support
+### 0.1.4 / 2013-09-09
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.3...v0.1.4)
+
+#### Slim Support
 
 You can now author slides in either Slim or Haml. Choose which by
 supplying a `slides.haml` or a `slides.slim`.
 
-##### Config
+### 0.1.3 / 2013-07-09
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.2...v0.1.3)
+
+#### Config
 
 Via a config file, you can now:
 
@@ -26,7 +32,7 @@ title = "Your Presentation's Name"
 theme = "night"
 ```
 
-##### Markdown
+#### Markdown
 
 You can now supply slide content via markdown (in haml..). It looks
 like:
@@ -38,7 +44,7 @@ like:
     ## Alright
 ```
 
-##### Update to embedded reveal.js
+#### Update to embedded reveal.js
 
 reveal-ck works by unpacking an embedded version of reveal.js when
 creating slides. In prior versions, this was locked at a commit dating
