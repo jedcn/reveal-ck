@@ -12,9 +12,11 @@ module RevealCK
                 twitter: 'hakimel'
     end
 
-    it 'can use templates embedded within this gem' do
-      output = title_slide.output
-      expect(output).to include 'Reveal.js'
+    describe '#html' do
+      it 'produces html output' do
+        output = title_slide.html
+        expect(output).to include 'Reveal.js'
+      end
     end
 
   end
