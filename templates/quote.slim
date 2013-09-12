@@ -1,0 +1,7 @@
+- headline = headline || nil
+- citation = citation || ''
+section
+  - if headline
+    h2= headline
+  p
+    blockquote cite="#{citation}" &ldquo;#{quote}&rdquo;

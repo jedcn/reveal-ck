@@ -1,6 +1,8 @@
+- subtitle = subtitle || nil
 section
   h1= title
-  h3= subtitle
+  - if subtitle
+    h3= subtitle
   p
     small
       | Created by
