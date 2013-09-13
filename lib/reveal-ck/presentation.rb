@@ -1,6 +1,8 @@
 module RevealCK
   class Presentation
 
+    attr_accessor :theme, :title, :author
+
     def initialize
       @slides = []
     end
