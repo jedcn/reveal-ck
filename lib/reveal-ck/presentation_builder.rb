@@ -7,11 +7,11 @@ module RevealCK
   #
   class PresentationBuilder < Builder
 
-    attr_reader :revealjs_files, :image_files, :slides_file, :config
+    attr_reader :image_files, :slides_file, :config
     attr_reader :tasks
 
     def initialize(args)
-      @revealjs_files, @image_files = args[:revealjs_files], args[:image_files]
+      @image_files = args[:image_files]
       @slides_file = args[:slides_file]
       @output_dir = args[:output_dir]
       @config = args[:config]
@@ -44,7 +44,7 @@ module RevealCK
 
       add_task "Bundling up the revealjs stuff into #{output_dir}/",
                lambda {
-                 FileUtils.cp_r revealjs_files, output_dir, verbose: false
+                 FileUtils.cp_r RevealCK::REVEALJS_FILES, output_dir, verbose: false
                }
 
       add_task "Copying in images into #{output_dir('images')}",
