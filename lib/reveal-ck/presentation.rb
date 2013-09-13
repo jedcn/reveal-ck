@@ -5,6 +5,7 @@ module RevealCK
 
     def initialize
       @slides = []
+      @theme = 'default'
     end
 
     def add_slide(slide)

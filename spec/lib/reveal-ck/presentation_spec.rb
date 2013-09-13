@@ -33,10 +33,16 @@ module RevealCK
 
     end
 
-    it 'responds to #theme= and #theme' do
-      presentation = Presentation.new
-      presentation.theme = 'night'
-      expect(presentation.theme).to eq 'night'
+    describe '#theme' do
+      it 'can be set and read' do
+        presentation = Presentation.new
+        presentation.theme = 'night'
+        expect(presentation.theme).to eq 'night'
+      end
+
+      it 'has a default value of "default"' do
+        expect(Presentation.new.theme).to eq 'default'
+      end
     end
 
     it 'responds to #title= and #title' do
