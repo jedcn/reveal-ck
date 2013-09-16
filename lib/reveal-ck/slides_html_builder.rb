@@ -9,8 +9,13 @@ module RevealCK
 
     def render
       if @input_file
-        template = TemplateProcessor.open @input_file
-        template.output({}, {})
+        if @input_file.end_with? '.rb'
+          presentation = RevealCK::Presentation.load @input_file
+          presentation.content
+        else
+          template = TemplateProcessor.open @input_file
+          template.output({}, {})
+        end
       else
         @presentation.content
       end
