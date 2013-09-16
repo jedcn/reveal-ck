@@ -12,7 +12,7 @@ module RevealCK
       @template = Tilt.new file
     end
 
-    def output(scope={}, locals = {})
+    def output(scope=nil, locals = {})
       @template.render scope, locals
     end
 

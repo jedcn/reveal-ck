@@ -14,9 +14,6 @@ command :generate do |c|
 
     require 'rake' # for FileList
 
-    revealjs_root = File.expand_path(File.join(File.dirname(__FILE__), '..', 'reveal.js'))
-    revealjs_files = FileList["#{revealjs_root}/**/*"]
-
     image_files = FileList["images/**/*"]
 
     output_dir = 'slides'
@@ -27,7 +24,6 @@ command :generate do |c|
     config = RevealCK::Config.new config_file: 'config.toml'
 
     builder = RevealCK::PresentationBuilder.new({
-                                                  revealjs_files: revealjs_files,
                                                   image_files: image_files,
                                                   output_dir: output_dir,
                                                   slides_file: slides_file,

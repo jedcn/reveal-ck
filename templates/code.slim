@@ -1,0 +1,6 @@
+- headline = headline || nil
+section
+  - if headline
+    h2= headline
+  pre
+    code (data-trim contenteditable)== code
