@@ -1,3 +1,6 @@
+- headline = headline || nil
 section
+  - if headline
+    h2= headline
   a.image href="#{link}" target="_blank"
     img width="#{width}" height="#{height}" src="#{src}" alt="#{alt}"/
