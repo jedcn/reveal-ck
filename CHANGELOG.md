@@ -1,7 +1,27 @@
 ### Development
-[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.4...master)
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.5...master)
 
-Nothing Yet..
+### 0.1.5 / 2013-09-17
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.4...v0.1.5)
+
+#### DSL(ish)
+
+The beginnings of a slide "DSL" is in the works, and you can now
+create a `slides.rb` instead of a `slides.haml` or a `slides.slim`
+
+#### Templates of Popular Slides
+
+The class 'Slide' doesn't know about specific HTML content, and
+instead provided a reference to a template (slim, haml) when it is
+creatd. You can supply your own templates, but reveal-ck (the gem)
+provies several common ones for a title screen, an image slide, a
+quote slide, a code slide, and a text slide.
+
+#### Programmatic Slides
+
+Classes like 'Slide' and 'Presentation' have been introduced and you
+can use these to create a slide deck. See
+`examples/programmatic-slides.rb` for an example.
 
 ### 0.1.4 / 2013-09-09
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.3...v0.1.4)

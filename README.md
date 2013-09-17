@@ -55,6 +55,41 @@ there's minimal markup.
 In the end, [reveal.js][reveal-js], can make things pretty, but only
 you can make a presentation that is worthwhile.
 
+## One Last Thought: Slides in Ruby
+
+Slim and Haml are decent, but the approach outlined so far means that
+a user of reveal-ck needs to understand markup and conventions within
+reveal.js. A templating language makes things less verbose, but it's
+still a templating language.
+
+If you'd like to go one step further, reveal-ck gives you the
+opportunity to author slides in ruby. It comes with a small number of
+pre-built templates that encapsulate reveal.js tag names, attributes,
+and classes aside and provides classes that enable you to create
+slides programmatically. See `examples/programmatic-slides.rb` for an
+example.
+
+What's more, once we've got programmatic support, it's not too much
+harder to build a DSL. So, now you can create a file named `slides.rb`
+(which replaces `slides.slim` or `slides.haml`) and write something
+like this:
+
+```ruby
+slide 'title',
+      title: 'Here we go!',
+      author: 'Jed Northridge'
+
+slide 'quote',
+      content: "when you don't create things, you become defined by your tastes rather than ability. your tastes only narrow & exclude people. so create."
+
+['3', '2', '1', 'Contact!'].each do |s|
+  slide 'text', content: s
+end
+```
+
+You can now run `reveal-ck generate` with `slides.rb` and build slides
+in ruby.
+
 [jedcn-reveal-ck]: http://jedcn.com/posts/reveal-ck
 [github-jedcn-reveal-ck-template]: http://github.com/jedcn/reveal-ck-template
 [reveal-js]: http://lab.hakim.se/reveal-js
