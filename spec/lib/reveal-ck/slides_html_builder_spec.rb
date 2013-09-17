@@ -42,6 +42,23 @@ module RevealCK
 
     end
 
+    context 'when working with ruby' do
+
+      let :input_file do
+        File.join data, 'slides.rb'
+      end
+
+      describe '#render' do
+        it 'knows how to create slide content from ruby' do
+          builder = SlidesHtmlBuilder.new input_file: input_file
+          expect(builder.render).to include "<section>"
+          expect(builder.render).to include "<h2>"
+          expect(builder.render).to include "Hello Ruby!"
+        end
+      end
+
+    end
+
     context 'when working with a Presentation' do
 
       let :presentation do

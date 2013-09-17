@@ -20,6 +20,7 @@ command :generate do |c|
 
     slides_file = 'slides.haml' if File.exists? 'slides.haml'
     slides_file = 'slides.slim' if File.exists? 'slides.slim'
+    slides_file = 'slides.rb' if File.exists? 'slides.rb'
 
     config = RevealCK::Config.new config_file: 'config.toml'
 

@@ -32,10 +32,11 @@ Gem::Specification.new do |s|
     core: ["LICENSE", "Rakefile", "Gemfile"],
     reveal: Dir.glob('reveal.js/**/*'),
     lib: `git ls-files lib`.split("\n"),
-    rakelib: `git ls-files rakelib`.split("\n")
+    rakelib: `git ls-files rakelib`.split("\n"),
+    templates: `git ls-files templates`.split("\n")
   }
 
-  s.files         = files[:core] + files[:reveal] + files[:lib] + files[:rakelib]
+  s.files         = files[:core] + files[:reveal] + files[:lib] + files[:rakelib] + files[:templates]
   s.test_files    = `git ls-files -- {spec,features}/**/*`.split("\n")
   s.executables   = ["reveal-ck"]
   s.require_paths = ["lib"]

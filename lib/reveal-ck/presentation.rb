@@ -23,3 +23,25 @@ module RevealCK
 
   end
 end
+
+module RevealCK
+  class Presentation
+
+    def self.load(file)
+      presentation = Presentation.new
+      content = File.open(file).read
+      presentation.eval content
+      presentation
+    end
+
+    def eval(s)
+      instance_eval s
+    end
+
+    def slide(template, variables)
+      variables[:template] = template
+      add_slide(Slide.new(variables))
+    end
+
+  end
+end
