@@ -64,7 +64,7 @@ module RevealCK
       let :presentation do
         quote = Slide.new({
                             template: 'quote',
-                            quote:    'Hello Ruby!',
+                            content:  'Hello Ruby!',
                             citation: 'https://www.ruby-lang.org/en/about/'
                           })
         presentation = Presentation.new

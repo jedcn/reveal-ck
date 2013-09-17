@@ -6,7 +6,7 @@ title_slide =
                         title:    'Reveal.js',
                         subtitle: 'HTML Presentations Made Easy',
                         author:   'Hakim El Hattab',
-                        site:     'http://hakim.se',
+                        link:     'http://hakim.se',
                         twitter:  'hakimel'
                       })
 
@@ -14,7 +14,7 @@ quote_slide =
   RevealCK::Slide.new({
                         template: 'quote',
                         headline: 'Clever Quotes',
-                        quote:    'For years there has been a theory that millions of monkeys typing at random on millions of typewriters would reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.'
+                        content:  'For years there has been a theory that millions of monkeys typing at random on millions of typewriters would reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.'
                       })
 
 image_slide =
@@ -46,7 +46,7 @@ code_slide =
   RevealCK::Slide.new({
                         template: 'code',
                         headline: 'Pretty Code',
-                        code: sample_code
+                        content:  sample_code
                       })
 
 p = RevealCK::Presentation.new

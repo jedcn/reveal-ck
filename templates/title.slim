@@ -1,11 +1,23 @@
+- author   = author   || nil
+- link     = link     || nil
+- twitter  = twitter  || nil
+- notes    = notes    || nil
+- title    = title    || ''
 - subtitle = subtitle || nil
 section
   h1= title
   - if subtitle
     h3= subtitle
-  p
-    small
-      | Created by
-      a<> href="#{site}"= author
-      | /
-      a<> href="http://twitter.com/#{twitter}"= "@#{twitter}"
+  - if author
+    p
+      small
+        | Created by
+        - if link
+          a<> href="#{link}"= author
+        - else
+            =<> author
+        - if twitter
+          | /
+          a<> href="http://twitter.com/#{twitter}"= "@#{twitter}"
+  - if notes
+    aside.notes= notes

@@ -1,6 +1,9 @@
 - headline = headline || nil
-- content = content || ''
+- notes    = notes    || nil
+- content  = content  || ''
 section
   - if headline
     h2= headline
   p= content
+  - if notes
+    aside.notes= notes
