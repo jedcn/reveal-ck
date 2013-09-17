@@ -1,6 +1,14 @@
 - headline = headline || nil
+- notes    = notes    || nil
+- link     = link     || nil
+- alt      = alt      || ''
 section
   - if headline
     h2= headline
-  a.image href="#{link}" target="_blank"
+  - if link
+    a.image href="#{link}" target="_blank"
+      img width="#{width}" height="#{height}" src="#{src}" alt="#{alt}"/
+  - else
     img width="#{width}" height="#{height}" src="#{src}" alt="#{alt}"/
+  - if notes
+    aside.notes= notes

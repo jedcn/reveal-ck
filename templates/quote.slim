@@ -1,7 +1,11 @@
 - headline = headline || nil
+- notes    = notes    || nil
 - citation = citation || ''
+- content  = content  || ''
 section
   - if headline
     h2= headline
   p
-    blockquote cite="#{citation}" &ldquo;#{quote}&rdquo;
+    blockquote cite="#{citation}" &ldquo;#{content}&rdquo;
+  - if notes
+    aside.notes= notes

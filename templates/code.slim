@@ -1,6 +1,10 @@
 - headline = headline || nil
+- notes    = notes    || nil
+- content  = content  || ''
 section
   - if headline
     h2= headline
   pre
-    code (data-trim contenteditable)== code
+    code (data-trim contenteditable)== content
+  - if notes
+    aside.notes= notes
