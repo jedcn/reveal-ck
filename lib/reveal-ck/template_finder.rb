@@ -15,10 +15,8 @@ module RevealCK
 
     def default_paths
       pwd = Dir.pwd
-      pwd_templates = File.join Dir.pwd, 'templates'
-      reveal_ck_templates =
-        File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'templates'))
-
+      pwd_templates = pwd, 'templates'
+      reveal_ck_templates = File.join RevealCK::LOCATION, 'templates'
       [pwd, pwd_templates, reveal_ck_templates]
     end
 
