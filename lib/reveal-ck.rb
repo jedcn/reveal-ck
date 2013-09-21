@@ -14,6 +14,7 @@ require_relative 'reveal-ck/slide_builder'
 require_relative 'reveal-ck/presentation_builder'
 
 module RevealCK
-  revealjs_root = File.expand_path(File.join(File.dirname(__FILE__), '..', 'reveal.js'))
-  REVEALJS_FILES = Dir.glob "#{revealjs_root}/**/*"
+  reveal_ck_lib = File.dirname __FILE__
+  revealjs_within_reveal_ck = File.join reveal_ck_lib, '..', 'reveal.js'
+  REVEALJS_FILES = Dir.glob "#{revealjs_within_reveal_ck}/**/*"
 end
