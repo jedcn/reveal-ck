@@ -12,7 +12,8 @@ module RevealCK
     def initialize(args)
       @input_file = args[:input_file]
       @presentation = args[:presentation]
-      raise 'either :input_file or :presentation are required' unless @input_file || @presentation
+      missing_info = 'either :input_file or :presentation are required'
+      raise missing_info unless @input_file || @presentation
     end
 
     def render
