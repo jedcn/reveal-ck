@@ -1,16 +1,14 @@
 module RevealCK
+  #
+  # Public: A FileSlicer knows how to remove a section of a file.
+  #
   class FileSlicer
 
-    def self.remove!(path, range)
-      slice_file = if File.exists? path
-                     path
-                   else
-                     File.expand_path(File.join(Dir.pwd, path))
-                   end
+    def self.remove!(slice_file, range)
       lines = File.open(slice_file).readlines
       slicer = FileSlicer.new lines
       sliced_lines = slicer.remove range
-      File.open(slice_file, 'w') { |f| f << sliced_lines.join }
+      File.open(slice_file, 'w') { |file| file << sliced_lines.join }
     end
 
     def initialize(lines)

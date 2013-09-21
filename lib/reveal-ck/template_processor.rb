@@ -4,6 +4,10 @@ require 'slim'
 ::Slim::Engine.set_default_options pretty: true
 
 module RevealCK
+  #
+  # Public: A TemplateProcessor is given a template and expected to
+  # render it.
+  #
   class TemplateProcessor
 
     require 'tilt'
@@ -16,12 +20,7 @@ module RevealCK
       @template.render scope, locals
     end
 
-    def self.open(path)
-      file = if File.exists? path
-               path
-             else
-               File.expand_path(File.join(Dir.pwd, path))
-             end
+    def self.open(file)
       TemplateProcessor.new file
     end
 

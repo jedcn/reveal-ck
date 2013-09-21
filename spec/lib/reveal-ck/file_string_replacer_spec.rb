@@ -20,7 +20,9 @@ module RevealCK
         Dir.mktmpdir do |tmp_dir|
           FileUtils.cp before_replace, tmp_dir
           test_file = File.join tmp_dir, 'before_replace'
-          FileStringReplacer.replace! test_file, old: ' hideaway at sea', new: 'hh coconuts!'
+          FileStringReplacer.replace!(test_file,
+                                      old: ' hideaway at sea',
+                                      new: 'hh coconuts!')
           test_file_contents = File.open(test_file).read
           after_replace_contents = File.open(after_replace).read
           test_file_contents.should == after_replace_contents
