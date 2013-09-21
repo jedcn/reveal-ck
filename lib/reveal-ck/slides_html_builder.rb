@@ -1,4 +1,12 @@
 module RevealCK
+  #
+  # Public: A SlidesHtmlBuilder knows how to create the intermediate
+  # file slides.html. This file is a users generate slide content, and
+  # is ultimately inserted within reveal.js.
+  #
+  # A slides.html can be created from a template or from an instance
+  # of a Presentation.
+  #
   class SlidesHtmlBuilder
 
     def initialize(args)

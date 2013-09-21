@@ -1,6 +1,11 @@
 require 'toml'
 
 module RevealCK
+  #
+  # Public: A Config knows about the core configuration values of a
+  # RevealCK Presentation: title, author, theme, etc. It knows about
+  # sensible defaults, and it can read these from a toml file.
+  #
   class Config
 
     def initialize(args={})

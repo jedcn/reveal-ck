@@ -1,4 +1,8 @@
 module RevealCK
+  #
+  # Public: A FileStringReplacer knows how to replace one string
+  # in a file with another.
+  #
   class FileStringReplacer
 
     def self.replace!(path, args)

@@ -1,4 +1,8 @@
 module RevealCK
+  #
+  # Public: A FileSplicer knows how to insert a list of lines into a
+  # file.
+  #
   class FileSplicer
 
     def initialize(lines)

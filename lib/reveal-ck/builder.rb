@@ -1,4 +1,11 @@
 module RevealCK
+  #
+  # Public: A Builder knows how to execute BuildTasks. These are added
+  # via add_task, and executed via build!
+  #
+  # It is expected to be subclassed, and the subclass must override
+  # register_tasks.
+  #
   class Builder
 
     def register_tasks

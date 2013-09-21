@@ -4,6 +4,10 @@ require 'slim'
 ::Slim::Engine.set_default_options pretty: true
 
 module RevealCK
+  #
+  # Public: A TemplateProcessor is given a template and expected to
+  # render it.
+  #
   class TemplateProcessor
 
     require 'tilt'

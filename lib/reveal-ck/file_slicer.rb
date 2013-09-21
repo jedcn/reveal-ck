@@ -1,4 +1,7 @@
 module RevealCK
+  #
+  # Public: A FileSlicer knows how to remove a section of a file.
+  #
   class FileSlicer
 
     def self.remove!(path, range)
