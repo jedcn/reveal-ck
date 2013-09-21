@@ -1,0 +1,2 @@
+--abc-glob **/*.rb
+--gte coverage/.last_run.json,99
