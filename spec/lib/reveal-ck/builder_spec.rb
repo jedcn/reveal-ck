@@ -13,19 +13,23 @@ module RevealCK
     it 'invokes each registered task when it receives #build' do
 
       class TestBuilder < Builder
-        attr_reader :action_mock
+
+        attr_reader :value
+
+        def initialize
+          @value = 0
+        end
+
         def register_tasks
           @tasks = []
-          add_task('Some Task Description',
-                   lambda {
-                     @action_mock.do_something
-                   })
+          @value = 0
+          add_task 'Set Value to 1', lambda { @value = 1 }
         end
       end
 
       test_builder = TestBuilder.new
-      expect(test_builder.action_mock).to receive :do_something
       test_builder.build!
+      expect(test_builder.value).to eq 1
     end
   end
 end
