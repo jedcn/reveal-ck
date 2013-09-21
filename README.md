@@ -1,6 +1,7 @@
 # reveal-ck: a [reveal.js][reveal-js] construction kit
 
 [![Build Status][travis-reveal-ck-badge]](https://travis-ci.org/jedcn/reveal-ck)
+[![Code Climate][code-climate-reveal-ck-badge]](https://codeclimate.com/github/jedcn/reveal-ck)
 
 ## Overview
 
@@ -94,3 +95,4 @@ in ruby.
 [github-jedcn-reveal-ck-template]: http://github.com/jedcn/reveal-ck-template
 [reveal-js]: http://lab.hakim.se/reveal-js
 [travis-reveal-ck-badge]: https://travis-ci.org/jedcn/reveal-ck.png
+[code-climate-reveal-ck-badge]: https://codeclimate.com/github/jedcn/reveal-ck.png
