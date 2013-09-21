@@ -31,57 +31,69 @@ module RevealCK
     private
 
     def register_tasks
-
       @tasks = []
-
-      add_task "Ensuring #{output_dir}/ exists",
-               lambda {
-                 FileUtils.mkdir_p output_dir, verbose: false
-               }
-
       slides_html = output_dir 'slides.html'
-      if @slides_file
-        action = "Transforming #{slides_file} into '#{slides_html}'}"
-        builder = SlidesHtmlBuilder.new input_file: @slides_file
-      else
-        action = "Transforming Presentation into '#{slides_html}'}"
-        builder = SlidesHtmlBuilder.new presentation: @presentation
-      end
+      create_dir output_dir
+      transform_slides @slides_file, @presentation, slides_html
+      bundle_revealjs output_dir
+      bundle_image_files image_files, output_dir('images')
+      config = @presentation || @config
+      create_index_html slides_html, output_dir('index.html'), config
+    end
 
-      add_task(action,
+    def create_dir(dir)
+      add_task "Ensuring #{dir}/ exists",
+      lambda {
+        FileUtils.mkdir_p dir, verbose: false
+      }
+    end
+
+    def transform_slides(slides_file, presentation, slides_html)
+      if slides_file
+        action = "Transforming #{slides_file} into '#{slides_html}'}"
+        builder = SlidesHtmlBuilder.new input_file: slides_file
+      else
+        description = "Transforming Presentation into '#{slides_html}'}"
+        builder = SlidesHtmlBuilder.new presentation: presentation
+      end
+      add_task(description,
                lambda {
                  builder.write_to file: slides_html
                })
-
-      add_task "Bundling up the revealjs stuff into #{output_dir}/",
-               lambda {
-                   FileUtils.cp_r RevealCK::REVEALJS_FILES,
-                                output_dir,
-                                  verbose: false
-               }
-
-      if image_files
-        add_task "Copying in images into #{output_dir('images')}",
-                 lambda {
-                   FileUtils.mkdir_p output_dir('images'), verbose: false
-                   FileUtils.cp_r image_files,
-                                  output_dir('images'),
-                                  verbose: false
-                 }
-      end
-
-      add_task "Creating slides/index.html",
-               lambda {
-                 slide_builder =
-                   SlideBuilder.new({
-                                      user_slides: slides_html,
-                                      reveal_slides: output_dir('index.html'),
-                                      config: @presentation || config
-                                    })
-                 slide_builder.build!
-               }
-
     end
 
+    def bundle_revealjs(output_dir)
+      add_task("Bundling up the revealjs stuff into #{output_dir}/",
+               lambda {
+                 FileUtils.cp_r(RevealCK::REVEALJS_FILES,
+                                output_dir,
+                                verbose: false)
+               })
+    end
+
+    def bundle_image_files(image_files, image_output_dir)
+      if image_files
+        add_task("Copying in images into '#{image_output_dir}'",
+                 lambda {
+                   FileUtils.mkdir_p(image_output_dir, verbose: false)
+                   FileUtils.cp_r(image_files,
+                                  image_output_dir,
+                                  verbose: false)
+                 })
+      end
+    end
+
+    def create_index_html(slides_html, index_html, config)
+      add_task("Creating slides/index.html",
+               lambda {
+                 slide_builder =
+                 SlideBuilder.new({
+                                    user_slides: slides_html,
+                                    reveal_slides: index_html,
+                                    config: config
+                                  })
+                 slide_builder.build!
+               })
+    end
   end
 end
