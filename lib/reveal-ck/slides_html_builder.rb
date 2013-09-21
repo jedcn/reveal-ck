@@ -32,7 +32,7 @@ module RevealCK
 
     def write_to(args)
       file = args[:file] || raise(':file is required')
-      File.open(file, 'w') { |f| f << render }
+      File.open(file, 'w') { |file| file << render }
     end
 
   end
