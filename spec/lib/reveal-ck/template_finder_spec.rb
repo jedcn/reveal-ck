@@ -57,11 +57,11 @@ module RevealCK
 
       it 'searches all paths to find templates' do
         result = finder.find 'automated'
-        automated_slim = File.join('template_finder', 'automated', 'automated.slim')
+        automated_slim = File.join('automated', 'automated.slim')
         expect(result).to include automated_slim
 
         result = finder.find 'custom'
-        custom_slim = File.join('template_finder', 'custom', 'custom.slim')
+        custom_slim = File.join('custom', 'custom.slim')
         expect(result).to include custom_slim
 
         result = finder.find 'title'

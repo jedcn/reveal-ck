@@ -23,10 +23,11 @@ module RevealCK
 
       tmp_dir = Dir.mktmpdir
 
-      presentation_builder = PresentationBuilder.new({
-                                                       presentation: presentation,
-                                                       output_dir: tmp_dir,
-                                                     })
+      presentation_builder =
+        PresentationBuilder.new({
+                                  presentation: presentation,
+                                  output_dir: tmp_dir,
+                                })
       presentation_builder.build!
 
       expect(File.exists? File.join(tmp_dir, "index.html")).to be_true
