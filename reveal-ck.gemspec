@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
 
   #
   # Development Dependencies
+  s.add_development_dependency 'simplecov'
   s.add_development_dependency 'rspec',    '~> 2.14.0'
   s.add_development_dependency 'cucumber', '~> 1.3.3'
   s.add_development_dependency 'aruba',    '~> 0.5.3'
