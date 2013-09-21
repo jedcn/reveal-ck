@@ -79,6 +79,9 @@ module RevealCK
         expect(result).to include File.join('custom', 'common.haml')
       end
 
+      it 'raises if it cannot find what you asked for' do
+        expect { finder.find 'unknown' }.to raise_error
+      end
     end
   end
 end
