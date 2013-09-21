@@ -13,8 +13,18 @@ require_relative 'reveal-ck/slides_html_builder'
 require_relative 'reveal-ck/slide_builder'
 require_relative 'reveal-ck/presentation_builder'
 
+
+# RevealCK::LOCATION is the path where reveal-ck is residing on your
+# system as a gem.
 module RevealCK
-  reveal_ck_lib = File.dirname __FILE__
-  revealjs_within_reveal_ck = File.join reveal_ck_lib, '..', 'reveal.js'
-  REVEALJS_FILES = Dir.glob "#{revealjs_within_reveal_ck}/**/*"
+  lib = File.dirname __FILE__
+  root = File.join lib, '..'
+  LOCATION = File.expand_path root
+end
+
+# RevealCK::REVEALJS_FILES is a list of files that compromise
+# reveal.js bundled into this gem.
+module RevealCK
+  revealjs = File.join LOCATION, 'reveal.js'
+  REVEALJS_FILES = Dir.glob "#{revealjs}/**/*"
 end
