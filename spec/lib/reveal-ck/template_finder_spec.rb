@@ -22,7 +22,8 @@ module RevealCK
 
       it 'can be assigned via initializer' do
         Dir.mktmpdir do |dir|
-          finder = TemplateFinder.new paths: [ dir, File.join(dir, 'templates') ]
+          paths = [ dir, File.join(dir, 'templates') ]
+          finder = TemplateFinder.new paths: paths
           expect(finder.paths).to include dir
           expect(finder.paths).to include File.join(dir, 'templates')
           expect(finder.paths.size).to eq 2
@@ -56,11 +57,16 @@ module RevealCK
 
       it 'searches all paths to find templates' do
         result = finder.find 'automated'
-        expect(result).to include File.join('template_finder', 'automated', 'automated.slim')
+        automated_slim = File.join('template_finder', 'automated', 'automated.slim')
+        expect(result).to include automated_slim
+
         result = finder.find 'custom'
-        expect(result).to include File.join('template_finder', 'custom', 'custom.slim')
+        custom_slim = File.join('template_finder', 'custom', 'custom.slim')
+        expect(result).to include custom_slim
+
         result = finder.find 'title'
-        expect(result).to include File.join('reveal-ck', 'templates', 'title.slim')
+        title_slim = File.join('reveal-ck', 'templates', 'title.slim')
+        expect(result).to include title_slim
       end
 
       it 'searchs paths in order and returns the first match' do
