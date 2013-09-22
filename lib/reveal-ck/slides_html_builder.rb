@@ -19,7 +19,7 @@ module RevealCK
     def render
       if @input_file
         if @input_file.end_with? '.rb'
-          presentation = RevealCK::Presentation.load @input_file
+          presentation = RevealCK::PresentationDSL.load @input_file
           presentation.content
         else
           template = TemplateProcessor.open @input_file

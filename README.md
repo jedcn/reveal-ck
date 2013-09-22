@@ -76,15 +76,17 @@ harder to build a DSL. So, now you can create a file named `slides.rb`
 like this:
 
 ```ruby
-slide 'title',
-      title: 'Here we go!',
-      author: 'Jed Northridge'
+presentation do
+  slide 'title',
+        title: 'Here we go!',
+        author: 'Jed Northridge'
 
-slide 'quote',
-      content: "when you don't create things, you become defined by your tastes rather than ability. your tastes only narrow & exclude people. so create."
+  slide 'quote',
+        content: "when you don't create things, you become defined by your tastes rather than ability. your tastes only narrow & exclude people. so create."
 
-['3', '2', '1', 'Contact!'].each do |s|
-  slide 'text', content: s
+  ['3', '2', '1', 'Contact!'].each do |s|
+    slide 'text', content: s
+  end
 end
 ```
 
