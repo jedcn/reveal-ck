@@ -56,45 +56,23 @@ there's minimal markup.
 In the end, [reveal.js][reveal-js], can make things pretty, but only
 you can make a presentation that is worthwhile.
 
-## One Last Thought: Slides in Ruby
+## Getting Started
 
-Slim and Haml are decent, but the approach outlined so far means that
-a user of reveal-ck needs to understand markup and conventions within
-reveal.js. A templating language makes things less verbose, but it's
-still a templating language.
+You can author a set of slides by writing in a templating language,
+such as [Slim][slim] or [Haml][haml], or you can build them
+programmatically ruby. Check out the
+[reveal-ck-getting-started][getting started] instructions, and let me
+know if you have any trouble.
 
-If you'd like to go one step further, reveal-ck gives you the
-opportunity to author slides in ruby. It comes with a small number of
-pre-built templates that encapsulate reveal.js tag names, attributes,
-and classes aside and provides classes that enable you to create
-slides programmatically. See `examples/programmatic-slides.rb` for an
-example.
+## Development
 
-What's more, once we've got programmatic support, it's not too much
-harder to build a DSL. So, now you can create a file named `slides.rb`
-(which replaces `slides.slim` or `slides.haml`) and write something
-like this:
-
-```ruby
-presentation do
-  slide 'title',
-        title: 'Here we go!',
-        author: 'Jed Northridge'
-
-  slide 'quote',
-        content: "when you don't create things, you become defined by your tastes rather than ability. your tastes only narrow & exclude people. so create."
-
-  ['3', '2', '1', 'Contact!'].each do |s|
-    slide 'text', content: s
-  end
-end
-```
-
-You can now run `reveal-ck generate` with `slides.rb` and build slides
-in ruby.
+If you are interested in hacking on reveal-ck, check out the
+[development page][reveal-ck-development].
 
 [jedcn-reveal-ck]: http://jedcn.com/posts/reveal-ck
 [github-jedcn-reveal-ck-template]: http://github.com/jedcn/reveal-ck-template
 [reveal-js]: http://lab.hakim.se/reveal-js
 [travis-reveal-ck-badge]: https://travis-ci.org/jedcn/reveal-ck.png
 [code-climate-reveal-ck-badge]: https://codeclimate.com/github/jedcn/reveal-ck.png
+[reveal-ck-getting-started]: https://github.com/jedcn/reveal-ck/blob/master/doc/getting_started.md
+[reveal-ck-development]: https://github.com/jedcn/reveal-ck/blob/master/doc/development.md
