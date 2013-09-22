@@ -1,6 +1,16 @@
 ### Development
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.5...master)
 
+#### Tweaks for Clarity, Readability
+
+I've started using SimpleCov, Cane, Reek, Rubocop, and CodeClimate to
+motivate towards simplicity. Examples include:
+
+* Adding Basic Documentation for each Class (Cane)
+* Eliminating areas of code that were unused (SimpleCov)
+* Simplifying larger methods (CodeClimate, Reek)
+* Adhering to basic Style Guide standards (rubocop)
+
 ### 0.1.5 / 2013-09-17
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.4...v0.1.5)
 
