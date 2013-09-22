@@ -19,13 +19,13 @@ customize in [reveal-ck-template][github-jedcn-reveal-ck-template] or
 ### Ruby
 
 Authoring slides in ruby is slightly different. You can build a list
-of slides up programmatically or you can use a DSL. Whichever path you
-choose, there is a slight separation between the Ruby objects and the
-templates that are used to produce slide markup.
+of slides up programmatically or you can use a DSL. When working in
+Ruby there is a slight separation between bare Ruby objects and the
+templates that produce the slide markup.
 
-This separation means that reveal-ck can provide "default templates"
-that produce markup that looks good while abstracting away the details
-of how the markup works. Learn More about Slides with Ruby.
+This separation means that reveal-ck can provide "built-in templates"
+which produce markup and look good while abstracting away the details
+of how the markup works.
 
 [Here's a page dedicated to creating slides in Ruby][reveal-ck-slides-with-ruby].
 
