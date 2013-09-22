@@ -12,16 +12,13 @@ module RevealCK
       raise "Subclasses must implement register_tasks"
     end
 
-    def add_task(description, action)
-      @tasks << BuildTask.new({
-                                description: description,
-                                action: action
-                              })
+    def add_task(description, &action)
+      @tasks << BuildTask.new(description, action)
     end
 
     def build!
       register_tasks unless @tasks
-      @tasks.each {|task| task.go!}
+      @tasks.each { |task| task.go }
     end
 
   end

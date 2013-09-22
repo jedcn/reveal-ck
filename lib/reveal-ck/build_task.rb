@@ -6,12 +6,13 @@ module RevealCK
   #
   class BuildTask
 
-    def initialize(args)
-      @description = args[:description]
-      @action = args[:action]
+    def initialize(description, action)
+      @description = description
+      raise "action required" unless action
+      @action = action
     end
 
-    def go!
+    def go
       @action.call
     end
   end
