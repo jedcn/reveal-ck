@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'gli',       '~> 2.7.0'
   s.add_dependency 'toml',      '~> 0.0.3'
   s.add_dependency 'rake',      '~> 10.1.0'
+  s.add_dependency 'docile',    '~> 1.1.0'
 
   #
   # Development Dependencies
