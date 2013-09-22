@@ -13,7 +13,6 @@ require_relative 'reveal-ck/slides_html_builder'
 require_relative 'reveal-ck/slide_builder'
 require_relative 'reveal-ck/presentation_builder'
 
-
 # RevealCK::LOCATION is the path where reveal-ck is residing on your
 # system as a gem.
 module RevealCK

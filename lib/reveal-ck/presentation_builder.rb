@@ -20,7 +20,7 @@ module RevealCK
       @config = args[:config]
     end
 
-    def output_dir(child=nil)
+    def output_dir(child = nil)
       if child
         File.join(@output_dir, child)
       else
@@ -42,58 +42,53 @@ module RevealCK
     end
 
     def create_dir(dir)
-      add_task "Ensuring #{dir}/ exists",
-      lambda {
+      add_task "Ensuring #{dir}/ exists" do
         FileUtils.mkdir_p dir, verbose: false
-      }
+      end
     end
 
     def transform_slides(slides_file, presentation, slides_html)
       if slides_file
-        action = "Transforming #{slides_file} into '#{slides_html}'}"
+        description = "Transforming #{slides_file} into '#{slides_html}'}"
         builder = SlidesHtmlBuilder.new input_file: slides_file
       else
         description = "Transforming Presentation into '#{slides_html}'}"
         builder = SlidesHtmlBuilder.new presentation: presentation
       end
-      add_task(description,
-               lambda {
-                 builder.write_to file: slides_html
-               })
+      add_task description do
+        builder.write_to file: slides_html
+      end
     end
 
     def bundle_revealjs(output_dir)
-      add_task("Bundling up the revealjs stuff into #{output_dir}/",
-               lambda {
-                 FileUtils.cp_r(RevealCK::REVEALJS_FILES,
-                                output_dir,
-                                verbose: false)
-               })
+      add_task "Bundling up the revealjs stuff into #{output_dir}/" do
+        FileUtils.cp_r(RevealCK::REVEALJS_FILES,
+                       output_dir,
+                       verbose: false)
+      end
     end
 
     def bundle_image_files(image_files, image_output_dir)
       if image_files
-        add_task("Copying in images into '#{image_output_dir}'",
-                 lambda {
-                   FileUtils.mkdir_p(image_output_dir, verbose: false)
-                   FileUtils.cp_r(image_files,
-                                  image_output_dir,
-                                  verbose: false)
-                 })
+        add_task "Copying in images into '#{image_output_dir}'" do
+          FileUtils.mkdir_p(image_output_dir, verbose: false)
+          FileUtils.cp_r(image_files,
+                         image_output_dir,
+                         verbose: false)
+        end
       end
     end
 
     def create_index_html(slides_html, index_html, config)
-      add_task("Creating slides/index.html",
-               lambda {
-                 slide_builder =
-                 SlideBuilder.new({
-                                    user_slides: slides_html,
-                                    reveal_slides: index_html,
-                                    config: config
-                                  })
-                 slide_builder.build!
-               })
+      add_task 'Creating slides/index.html' do
+        slide_builder =
+          SlideBuilder.new({
+                             user_slides: slides_html,
+                             reveal_slides: index_html,
+                             config: config
+                           })
+        slide_builder.build!
+      end
     end
   end
 end

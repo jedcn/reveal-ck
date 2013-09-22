@@ -19,7 +19,7 @@ module RevealCK
     end
 
     def content
-      content = ""
+      content = ''
       @slides.each do |slide|
         content << slide.html
         content << "\n\n"

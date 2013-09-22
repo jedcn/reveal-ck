@@ -23,7 +23,9 @@ module RevealCK
         def register_tasks
           @tasks = []
           @value = 0
-          add_task 'Set Value to 1', lambda { @value = 1 }
+          add_task 'Set Value to 1' do
+            @value = 1
+          end
         end
       end
 
