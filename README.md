@@ -61,7 +61,7 @@ you can make a presentation that is worthwhile.
 You can author a set of slides by writing in a templating language,
 such as [Slim][slim] or [Haml][haml], or you can build them
 programmatically ruby. Check out the
-[reveal-ck-getting-started][getting started] instructions, and let me
+[getting started][reveal-ck-getting-started] instructions, and let me
 know if you have any trouble.
 
 ## Development
@@ -69,10 +69,12 @@ know if you have any trouble.
 If you are interested in hacking on reveal-ck, check out the
 [development page][reveal-ck-development].
 
-[jedcn-reveal-ck]: http://jedcn.com/posts/reveal-ck
-[github-jedcn-reveal-ck-template]: http://github.com/jedcn/reveal-ck-template
-[reveal-js]: http://lab.hakim.se/reveal-js
-[travis-reveal-ck-badge]: https://travis-ci.org/jedcn/reveal-ck.png
 [code-climate-reveal-ck-badge]: https://codeclimate.com/github/jedcn/reveal-ck.png
-[reveal-ck-getting-started]: https://github.com/jedcn/reveal-ck/blob/master/doc/getting_started.md
+[github-jedcn-reveal-ck-template]: http://github.com/jedcn/reveal-ck-template
+[haml]: http://haml.info/
+[jedcn-reveal-ck]: http://jedcn.com/posts/reveal-ck
 [reveal-ck-development]: https://github.com/jedcn/reveal-ck/blob/master/doc/development.md
+[reveal-ck-getting-started]: https://github.com/jedcn/reveal-ck/blob/master/doc/getting_started.md
+[reveal-js]: http://lab.hakim.se/reveal-js
+[slim]: http://slim-lang.com/
+[travis-reveal-ck-badge]: https://travis-ci.org/jedcn/reveal-ck.png
