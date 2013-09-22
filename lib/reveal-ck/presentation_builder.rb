@@ -20,7 +20,7 @@ module RevealCK
       @config = args[:config]
     end
 
-    def output_dir(child=nil)
+    def output_dir(child = nil)
       if child
         File.join(@output_dir, child)
       else
@@ -49,7 +49,7 @@ module RevealCK
 
     def transform_slides(slides_file, presentation, slides_html)
       if slides_file
-        action = "Transforming #{slides_file} into '#{slides_html}'}"
+        description = "Transforming #{slides_file} into '#{slides_html}'}"
         builder = SlidesHtmlBuilder.new input_file: slides_file
       else
         description = "Transforming Presentation into '#{slides_html}'}"
@@ -80,7 +80,7 @@ module RevealCK
     end
 
     def create_index_html(slides_html, index_html, config)
-      add_task "Creating slides/index.html" do
+      add_task 'Creating slides/index.html' do
         slide_builder =
           SlideBuilder.new({
                              user_slides: slides_html,

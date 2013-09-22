@@ -8,7 +8,6 @@ module RevealCK
 
     def initialize(description, action)
       @description = description
-      raise "action required" unless action
       @action = action
     end
 

@@ -9,7 +9,7 @@ module RevealCK
 
     attr_reader :paths
 
-    def initialize(args={})
+    def initialize(args = {})
       @paths = args[:paths] || default_paths
     end
 

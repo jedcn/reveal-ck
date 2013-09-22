@@ -8,30 +8,30 @@ module RevealCK
   #
   class Config
 
-    def initialize(args={})
+    def initialize(args = {})
       config_file = args[:config_file]
       @config = load_config config_file
     end
 
     def title
-      @config["title"]
+      @config['title']
     end
 
     def author
-      @config["author"]
+      @config['author']
     end
 
     def theme
-      @config["presentation"]["theme"]
+      @config['presentation']['theme']
     end
 
     private
 
     DEFAULTS = {
-      "title" => "Slides",
-      "author" => "Hakim El Hattab",
-      "presentation" => {
-        "theme" => "default"
+      'title' => 'Slides',
+      'author' => 'Hakim El Hattab',
+      'presentation' => {
+        'theme' => 'default'
       }
     }
 
