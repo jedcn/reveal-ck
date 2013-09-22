@@ -106,9 +106,11 @@ Feature: Generate slides
   Scenario: Generating basic slides with Ruby
     Given a file named "slides.rb" with:
     """
-    slide 'text',
-          headline: 'Made with RevealCK',
-          content:  'oh yeah!'
+    presentation do
+      slide 'text',
+            headline: 'Made with RevealCK',
+            content:  'oh yeah!'
+    end
     """
     When I run `reveal-ck generate`
     Then the exit status should be 0

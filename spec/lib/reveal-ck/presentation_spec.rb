@@ -57,22 +57,5 @@ module RevealCK
       expect(presentation.author).to eq 'Hakim El Hattab'
     end
 
-    describe '#slide' do
-      it 'is a shortcut for creating a new Slide and calling #add_slide' do
-        presentation = Presentation.new
-
-        expect(Slide)
-          .to(receive(:new)
-                .with({ template: 'text', content: 'spec' })
-                .and_call_original)
-
-        expect(presentation)
-          .to(receive(:add_slide)
-                .with(kind_of(Slide)))
-
-        presentation.eval "slide('text', { content: 'spec' })"
-      end
-    end
-
   end
 end
