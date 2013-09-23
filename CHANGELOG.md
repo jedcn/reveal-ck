@@ -1,5 +1,20 @@
 ### Development
-[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.5...master)
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.6...master)
+
+### 0.1.6 / 2013-09-23
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.5...v0.1.6)
+
+#### Tweak to Presentation DSL
+
+The "DSL" around presentations and slides has changed
+slightly. There's now a top level "presentation do" at the top of it
+all, ala:
+
+```
+presentation do
+
+end
+```
 
 #### Tweaks for Clarity, Readability
 
