@@ -15,9 +15,10 @@ building your own templates.
 ### Getting Started
 
 To author your own templates, create your own `templates/` directory
-underneath your main slide file. Next, add a new template in that
-directory. For example, if you want to create a template for a youtube
-slide in Slim, the template might look like this:
+underneath your `slides.rb`. Next, create a new file in that
+`template/` directory. For example, if you want to create a template
+for a youtube slide in Slim, you might create a file named
+`youtube.slim` with the following content:
 
 ```slim
 section
@@ -26,16 +27,17 @@ section
 
 This template requires that a variable named `video` be supplied.
 
-As such, you can create a Slide programmatically like so:
-
-```ruby
-RevealCK::Slide.new('youtube', { video: 'kWBhP0EQ1lA' }
-```
-
-Or within the DSL:
+Once this file has been created, you can create a Slide in your
+`slides.rb` like so:
 
 ```ruby
 slide 'youtube', video: 'kWBhP0EQ1lA'
+```
+
+Or programmatically:
+
+```ruby
+RevealCK::Slide.new('youtube', { video: 'kWBhP0EQ1lA' }
 ```
 
 ### Template Lookup
@@ -47,12 +49,15 @@ template file. This means that `Slide.new('youtube')` could match
 globbing is involved, and it is like looking for `youtube*`.
 
 There are three locations that are checked when resolving the
-glob. They are, in order, the current directory, a directory named
-`templates/` underneath the current directory, and the `templates/`
-directory up in the gem.
+glob. They are, in order:
 
-This means that if reveal-ck bundles a `code.slim`, but you prefer
-your own, then you can create a `code.slim` or a `code.haml` in your
-`templates/` directory and your slide will take precedence.
+1. The current directory
+2. A directory named `templates/` underneath the current directory
+3. The `templates/` directory up in the gem.
+
+This means that if reveal-ck has a built-in template named
+`code.slim`, but you prefer your own, then you can create a
+`code.slim` or a `code.haml` in your `templates/` directory and your
+slide will take precedence.
 
 [reveal-ck-templates]: https://github.com/jedcn/reveal-ck/tree/master/templates
