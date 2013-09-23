@@ -13,6 +13,21 @@ section
     ..in Haml
 ```
 
+Save this out to a single file that is named `slides.haml` and then
+run `reveal-ck generate`. The command line tool will create a new
+directory named `slides/` and build up a presentation at
+`slides/index.html`.
+
+The content of your `slides.haml` has been transformed from haml into
+html and now lives at `slides/slides.html`. Next, this content is
+spliced into a reveal.js presentation at `slides/index.html`.
+
+If you are on MacOS, you can type: `open slides/index.html` to see you
+presentation.
+
+You can also type: `reveal-ck generate && open slides/index.html` to
+generate your slides and preview them.
+
 ### Resources
 
 I use the following whenever I get involved with HAML:

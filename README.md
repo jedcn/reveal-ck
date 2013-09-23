@@ -37,9 +37,9 @@ The thought behind this project to help you focus on what *you* want
 to say.
 
 For me, focusing becomes easier and my thoughts clearer when I reduce
-the list of slides to a single file (`slides.slim` or
-`slides.haml`). It only contains the slide content I am presenting and
-there's minimal markup.
+the list of slides to a single file (`slides.slim`, `slides.haml`, or
+`slides.rb`). This file only contains the slide content that I am
+presenting and there is minimal markup.
 
 * If you look at the presentation in a browser, you can't scan all of
   the slides at once. You need to visit them. If you're looking at a
@@ -60,7 +60,7 @@ you can make a presentation that is worthwhile.
 
 You can author a set of slides by writing in a templating language,
 such as [Slim][slim] or [Haml][haml], or you can build them
-programmatically ruby. Check out the
+programmatically in ruby. Check out the
 [getting started][reveal-ck-getting-started] instructions, and let me
 know if you have any trouble.
 
