@@ -45,3 +45,7 @@ Feature: Generate slides
     """
     <link rel="stylesheet" href="css/theme/default.css" id="theme">
     """
+    And the file "slides/index.html" should contain:
+    """
+    transition: Reveal.getQueryHash().transition || 'default'
+    """
