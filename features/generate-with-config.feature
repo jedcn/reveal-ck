@@ -4,7 +4,7 @@ Feature: Generate slides
   As a user of reveal-ck
   I want to use the "reveal-ck generate" command
 
-  Scenario: Generating slides with a config
+  Scenario: Generating slides with a template and config.toml
     Given a file named "config.toml" with:
     """
     title      = "Awesome Title"
@@ -15,8 +15,8 @@ Feature: Generate slides
     Given a file named "slides.haml" with:
     """
     %section
-      %h1
-        config
+      %p
+        Config
     """
     When I run `reveal-ck generate`
     Then the exit status should be 0
