@@ -7,11 +7,7 @@ require_relative 'reveal-ck/template_finder'
 require_relative 'reveal-ck/template_processor'
 require_relative 'reveal-ck/slide'
 require_relative 'reveal-ck/presentation'
-require_relative 'reveal-ck/build_task'
-require_relative 'reveal-ck/builder'
-require_relative 'reveal-ck/slides_html_builder'
-require_relative 'reveal-ck/slide_builder'
-require_relative 'reveal-ck/presentation_builder'
+require_relative 'reveal-ck/builders'
 require_relative 'reveal-ck/presentation_dsl'
 
 # RevealCK::LOCATION is the path where reveal-ck is residing on your
