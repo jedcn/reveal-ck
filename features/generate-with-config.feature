@@ -11,6 +11,7 @@ Feature: Generate slides
     author     = "Awesome Author"
     [presentation]
     theme      = "night"
+    transition = "page"
     """
     Given a file named "slides.haml" with:
     """
@@ -35,6 +36,10 @@ Feature: Generate slides
     """
     <link rel="stylesheet" href="css/theme/night.css" id="theme">
     """
+    And the file "slides/index.html" should contain:
+    """
+    transition: Reveal.getQueryHash().transition || 'page'
+    """
 
   Scenario: Generating slides with slides.rb and config.toml
     Given a file named "config.toml" with:
@@ -43,13 +48,11 @@ Feature: Generate slides
     author     = "Awesome Author"
     [presentation]
     theme      = "night"
+    transition = "page"
     """
     Given a file named "slides.rb" with:
     """
     presentation do
-      title      = 'Ignored Awesome Title'
-      author     = 'Ignored Awesome Author'
-      theme      = 'ignored-beige'
       slide 'text', content: 'Config'
     end
     """
@@ -69,4 +72,8 @@ Feature: Generate slides
     And the file "slides/index.html" should contain:
     """
     <link rel="stylesheet" href="css/theme/night.css" id="theme">
+    """
+    And the file "slides/index.html" should contain:
+    """
+    transition: Reveal.getQueryHash().transition || 'page'
     """

@@ -25,13 +25,18 @@ module RevealCK
       @config['presentation']['theme']
     end
 
+    def transition
+      @config['presentation']['transition']
+    end
+
     private
 
     DEFAULTS = {
       'title' => 'Slides',
       'author' => 'Hakim El Hattab',
       'presentation' => {
-        'theme' => 'default'
+        'theme' => 'default',
+        'transition' => 'default'
       }
     }
 
