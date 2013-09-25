@@ -45,6 +45,18 @@ module RevealCK
       end
     end
 
+    describe '#transition' do
+      it 'can be set and read' do
+        presentation = Presentation.new
+        presentation.transition = 'page'
+        expect(presentation.transition).to eq 'page'
+      end
+
+      it 'has a default value of "default"' do
+        expect(Presentation.new.transition).to eq 'default'
+      end
+    end
+
     it 'responds to #title= and #title' do
       presentation = Presentation.new
       presentation.title = 'My Favorite Slides'

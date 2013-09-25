@@ -21,6 +21,10 @@ module RevealCK
         config.theme.should == "default"
       end
 
+      it '#transition defaults to "default"' do
+        config.transition.should == "default"
+      end
+
     end
 
     context 'when a config is supplied' do
@@ -43,6 +47,10 @@ module RevealCK
 
       it '#theme comes from the config file' do
         config.theme.should == "night"
+      end
+
+      it '#transition comes from the config file' do
+        config.transition.should == "page"
       end
 
     end

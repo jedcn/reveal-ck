@@ -7,11 +7,12 @@ module RevealCK
   #
   class Presentation
 
-    attr_accessor :theme, :title, :author
+    attr_accessor :theme, :title, :author, :transition
 
     def initialize
       @slides = []
       @theme = 'default'
+      @transition = 'default'
     end
 
     def add_slide(slide)

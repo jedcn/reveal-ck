@@ -1,6 +1,7 @@
-title  = "The Never Sea Slides"
-author = "Captain Hook"
+title      = "The Never Sea Slides"
+author     = "Captain Hook"
 
 [presentation]
 
-theme  = "night"
+theme      = "night"
+transition = "page"

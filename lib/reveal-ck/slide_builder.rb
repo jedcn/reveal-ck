@@ -28,6 +28,7 @@ module RevealCK
       replace_title reveal_slides, config.title
       replace_author reveal_slides, config.author
       replace_theme reveal_slides, config.theme
+      replace_transition reveal_slides, config.transition
     end
 
     def remove_default_content(file)
@@ -77,5 +78,12 @@ module RevealCK
       end
     end
 
+    def replace_transition(file, transition)
+      old = "Reveal.getQueryHash().transition || 'default'"
+      new = "Reveal.getQueryHash().transition || '#{transition}'"
+      add_task 'Replacing the core transition' do
+        FileStringReplacer.replace!(file, old: old, new: new)
+      end
+    end
   end
 end
