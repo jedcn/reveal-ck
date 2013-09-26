@@ -5,14 +5,10 @@ module RevealCK
   module Builders
     describe SlidesHtml do
 
-      let :data do
-        File.join 'spec', 'data', 'slides_html_builder'
-      end
-
       context 'when working with slim' do
 
         let :input_file do
-          File.join data, 'slides.slim'
+          spec_data 'slides_html_builder', 'slides.slim'
         end
 
         describe '#render' do
@@ -29,7 +25,7 @@ module RevealCK
       context 'when working with haml' do
 
         let :input_file do
-          File.join data, 'slides.haml'
+          spec_data 'slides_html_builder', 'slides.haml'
         end
 
         describe '#render' do
@@ -46,7 +42,7 @@ module RevealCK
       context 'when working with ruby' do
 
         let :input_file do
-          File.join data, 'slides.rb'
+          spec_data 'slides_html_builder', 'slides.rb'
         end
 
         describe '#render' do
@@ -86,8 +82,11 @@ module RevealCK
 
       describe '#write_to' do
 
+        let :input_file do
+          spec_data 'slides_html_builder', 'slides.haml'
+        end
+
         it 'can write #rendered output to a file' do
-          input_file = File.join data, 'slides.haml'
           builder = SlidesHtml.new input_file: input_file
           tmp_file = Tempfile.new 'slides.html'
           builder.write_to file: tmp_file.path

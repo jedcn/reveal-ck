@@ -4,11 +4,11 @@ module RevealCK
   describe TemplateProcessor do
 
     let :slim_file do
-      File.join Dir.pwd, 'spec', 'data', 'slim', 'basic.slim'
+      spec_data 'slim', 'basic.slim'
     end
 
     let :haml_file do
-      File.join Dir.pwd, 'spec', 'data', 'haml', 'basic.haml'
+      spec_data 'haml', 'basic.haml'
     end
 
     let :pretty_printed_basic do
