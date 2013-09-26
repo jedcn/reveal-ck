@@ -23,7 +23,7 @@ module RevealCK
             presentation = RevealCK::PresentationDSL.load @input_file
             presentation.content
           else
-            template = TemplateProcessor.open @input_file
+            template = Templates::Processor.open @input_file
             template.output({}, {})
           end
         else

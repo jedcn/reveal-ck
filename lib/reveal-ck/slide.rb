@@ -7,8 +7,8 @@ module RevealCK
 
     def initialize(args)
       template = args[:template] || raise(':template is required')
-      file = TemplateFinder.new.find template
-      @template = TemplateProcessor.open file
+      file = Templates::Finder.new.find template
+      @template = Templates::Processor.open file
       @variables = args
     end
 

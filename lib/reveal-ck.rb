@@ -1,10 +1,9 @@
 require_relative 'reveal-ck/version'
 require_relative 'reveal-ck/config'
-require_relative 'reveal-ck/template_finder'
-require_relative 'reveal-ck/template_processor'
 require_relative 'reveal-ck/slide'
 require_relative 'reveal-ck/presentation'
 require_relative 'reveal-ck/presentation_dsl'
+require_relative 'reveal-ck/templates'
 require_relative 'reveal-ck/changers'
 require_relative 'reveal-ck/builders'
 
