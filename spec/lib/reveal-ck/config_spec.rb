@@ -30,7 +30,7 @@ module RevealCK
     context 'when a config is supplied' do
 
       let :config_file do
-        File.join 'spec', 'data', 'config', 'config.toml'
+        spec_data 'config', 'config.toml'
       end
 
       let :config do

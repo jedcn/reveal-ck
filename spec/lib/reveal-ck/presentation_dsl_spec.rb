@@ -4,7 +4,7 @@ module RevealCK
   describe PresentationDSL do
 
     let :dsl_file do
-      File.join 'spec', 'data', 'dsl', 'slides.rb'
+      spec_data 'dsl', 'slides.rb'
     end
 
     let :presentation do

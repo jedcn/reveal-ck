@@ -24,12 +24,12 @@ command :generate do |c|
 
     config = RevealCK::Config.new config_file: 'config.toml'
 
-    builder = RevealCK::PresentationBuilder.new({
-                                                  image_files: image_files,
-                                                  output_dir: output_dir,
-                                                  slides_file: slides_file,
-                                                  config: config
-                                                })
+    builder = RevealCK::Builders::PackagedSlides.new({
+                                                       image_files: image_files,
+                                                       output_dir: output_dir,
+                                                       slides_file: slides_file,
+                                                       config: config
+                                                     })
     builder.build!
 
   end
