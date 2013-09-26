@@ -35,11 +35,11 @@ module RevealCK
       describe '#find' do
 
         let :automated_dir do
-          spec_data 'finder', 'automated'
+          spec_data 'templates', 'finder', 'automated'
         end
 
         let :custom_dir do
-          spec_data 'finder', 'custom'
+          spec_data 'templates', 'finder', 'custom'
         end
 
         let :reveal_ck_templates_dir do

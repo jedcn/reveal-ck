@@ -9,11 +9,11 @@ module RevealCK
       describe '.replace!' do
 
         let :before_replace do
-          spec_data 'string_replacer', 'before_replace'
+          spec_data 'changers', 'string_replacer', 'before_replace'
         end
 
         let :after_replace do
-          spec_data 'string_replacer', 'after_replace'
+          spec_data 'changers', 'string_replacer', 'after_replace'
         end
 
         it 'replaces content within a file' do

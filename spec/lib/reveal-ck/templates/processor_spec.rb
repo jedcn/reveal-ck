@@ -5,11 +5,11 @@ module RevealCK
     describe Processor do
 
       let :slim_file do
-        spec_data 'processor', 'basic.slim'
+        spec_data 'templates', 'processor', 'basic.slim'
       end
 
       let :haml_file do
-        spec_data 'processor', 'basic.haml'
+        spec_data 'templates', 'processor', 'basic.haml'
       end
 
       let :pretty_printed_basic do

@@ -9,15 +9,15 @@ module RevealCK
       describe '.insert!' do
 
         let :before_insert do
-          spec_data 'splicer', 'before_insert'
+          spec_data 'changers', 'splicer', 'before_insert'
         end
 
         let :abcd do
-          spec_data 'splicer', 'abcd'
+          spec_data 'changers', 'splicer', 'abcd'
         end
 
         let :after_insert do
-          spec_data 'splicer', 'after_insert'
+          spec_data 'changers', 'splicer', 'after_insert'
         end
 
         it 'inserts one file into another' do

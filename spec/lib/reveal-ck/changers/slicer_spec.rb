@@ -9,11 +9,11 @@ module RevealCK
       describe '.remove!' do
 
         let :before_remove do
-          spec_data 'slicer', 'before_remove'
+          spec_data 'changers', 'slicer', 'before_remove'
         end
 
         let :after_remove do
-          spec_data 'slicer', 'after_remove'
+          spec_data 'changers', 'slicer', 'after_remove'
         end
 
         it 'removes a range of lines from a file' do
