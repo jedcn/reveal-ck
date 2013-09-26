@@ -8,7 +8,7 @@ module RevealCK
       context 'when working with slim' do
 
         let :input_file do
-          spec_data 'slides_html_builder', 'slides.slim'
+          spec_data 'slides_html', 'slides.slim'
         end
 
         describe '#render' do
@@ -25,7 +25,7 @@ module RevealCK
       context 'when working with haml' do
 
         let :input_file do
-          spec_data 'slides_html_builder', 'slides.haml'
+          spec_data 'slides_html', 'slides.haml'
         end
 
         describe '#render' do
@@ -42,7 +42,7 @@ module RevealCK
       context 'when working with ruby' do
 
         let :input_file do
-          spec_data 'slides_html_builder', 'slides.rb'
+          spec_data 'slides_html', 'slides.rb'
         end
 
         describe '#render' do
@@ -83,7 +83,7 @@ module RevealCK
       describe '#write_to' do
 
         let :input_file do
-          spec_data 'slides_html_builder', 'slides.haml'
+          spec_data 'slides_html', 'slides.haml'
         end
 
         it 'can write #rendered output to a file' do

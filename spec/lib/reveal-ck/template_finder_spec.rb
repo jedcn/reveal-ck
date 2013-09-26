@@ -34,16 +34,12 @@ module RevealCK
 
     describe '#find' do
 
-      let :template_finder_dir do
-        File.join reveal_ck_dir, 'spec', 'data', 'template_finder'
-      end
-
       let :automated_dir do
-        File.join template_finder_dir, 'automated'
+        spec_data 'template_finder', 'automated'
       end
 
       let :custom_dir do
-        File.join template_finder_dir, 'custom'
+        spec_data 'template_finder', 'custom'
       end
 
       let :reveal_ck_templates_dir do

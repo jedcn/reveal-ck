@@ -4,11 +4,11 @@ module RevealCK
   describe TemplateProcessor do
 
     let :slim_file do
-      spec_data 'slim', 'basic.slim'
+      spec_data 'template_processor', 'basic.slim'
     end
 
     let :haml_file do
-      spec_data 'haml', 'basic.haml'
+      spec_data 'template_processor', 'basic.haml'
     end
 
     let :pretty_printed_basic do
