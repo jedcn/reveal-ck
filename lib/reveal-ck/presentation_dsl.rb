@@ -30,6 +30,10 @@ module RevealCK
       @slides << RevealCK::Slide.new(variables)
     end
 
+    def contents_of(path)
+      File.open(path).read
+    end
+
     def build
       presentation = RevealCK::Presentation.new
       presentation.theme = @theme

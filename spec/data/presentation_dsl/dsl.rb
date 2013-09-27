@@ -8,6 +8,9 @@ presentation do
   slide 'text',
     content: 'Hello World'
 
+  slide 'code',
+    content: contents_of('lib/reveal-ck.rb')
+
   slide 'text',
     content: 'Thanks!'
 

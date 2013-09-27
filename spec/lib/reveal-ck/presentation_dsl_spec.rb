@@ -43,6 +43,7 @@ module RevealCK
       it 'retains the slides defined in the dsl file' do
         expect(content).to include 'Hello World'
         expect(content).to include 'Thanks!'
+        expect(content).to include 'module RevealCK'
       end
     end
   end
