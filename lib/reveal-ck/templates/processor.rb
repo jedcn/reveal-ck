@@ -28,10 +28,5 @@
 
      end
 
-     class RenderScope
-       def contents_of(path)
-         File.open(path).read
-       end
-     end
    end
  end
