@@ -3,8 +3,8 @@ require 'spec_helper'
 module RevealCK
   describe Slide do
 
-    let :title_slide do
-      Slide.new template: 'title',
+    let :intro_slide do
+      Slide.new template: 'intro',
                 title: 'Reveal.js',
                 subtitle: 'HTML Presentations Made Easy',
                 author: 'Hakim El Hattab',
@@ -14,7 +14,7 @@ module RevealCK
 
     describe '#html' do
       it 'produces html output' do
-        output = title_slide.html
+        output = intro_slide.html
         expect(output).to include 'Reveal.js'
       end
     end

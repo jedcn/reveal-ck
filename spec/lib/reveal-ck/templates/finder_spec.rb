@@ -60,9 +60,9 @@ module RevealCK
           custom_slim = File.join('custom', 'custom.slim')
           expect(result).to include custom_slim
 
-          result = finder.find 'title'
-          title_slim = File.join('reveal-ck', 'templates', 'title.slim')
-          expect(result).to include title_slim
+          result = finder.find 'intro'
+          intro_slim = File.join('reveal-ck', 'templates', 'intro.slim')
+          expect(result).to include intro_slim
         end
 
         it 'searchs paths in order and returns the first match' do

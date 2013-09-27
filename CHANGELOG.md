@@ -1,6 +1,10 @@
 ### Development
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.6...master)
 
+#### Template Rename: title -> intro
+
+The template named "title" has been renamed to "intro".
+
 ### 0.1.6 / 2013-09-23
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.5...v0.1.6)
 

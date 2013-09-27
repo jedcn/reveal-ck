@@ -1,6 +1,6 @@
 require_relative '../lib/reveal-ck'
 
-slide = RevealCK::Slide.new template: 'title',
+slide = RevealCK::Slide.new template: 'intro',
                             title: 'Here we go!',
                             author: 'Jed Northridge',
                             link: 'http://jedcn.com',

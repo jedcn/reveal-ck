@@ -11,7 +11,7 @@ module RevealCK
         presentation.author = "Presentation Author"
 
         presentation.add_slide(Slide.new({
-                                           template: 'title',
+                                           template: 'intro',
                                            title:    presentation.title,
                                            author:   presentation.author,
                                            site:     'http://site.com',

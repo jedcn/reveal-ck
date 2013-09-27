@@ -44,7 +44,7 @@ you are working in ruby, you can create content dynamically:
 
 ```ruby
 presentation do
-  slide 'title',
+  slide 'intro',
         title: 'Here we go!',
         author: 'Jed Northridge'
 

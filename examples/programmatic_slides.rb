@@ -1,8 +1,8 @@
 require_relative '../lib/reveal-ck'
 
-title_slide =
+intro_slide =
   RevealCK::Slide.new({
-                        template: 'title',
+                        template: 'intro',
                         title:    'Reveal.js',
                         subtitle: 'HTML Presentations Made Easy',
                         author:   'Hakim El Hattab',
@@ -50,7 +50,7 @@ code_slide =
                       })
 
 p = RevealCK::Presentation.new
-p.add_slide title_slide
+p.add_slide intro_slide
 p.add_slide quote_slide
 p.add_slide image_slide
 p.add_slide code_slide
