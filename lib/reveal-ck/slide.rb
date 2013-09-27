@@ -13,7 +13,7 @@ module RevealCK
     end
 
     def html
-      @template.output({}, @variables)
+      @template.output(@variables)
     end
 
   end
