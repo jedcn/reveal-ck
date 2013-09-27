@@ -18,6 +18,7 @@
        end
 
        def output(scope = nil, locals = {})
+         scope = RenderScope.new
          @template.render scope, locals
        end
 
@@ -25,6 +26,12 @@
          Processor.new file
        end
 
+     end
+
+     class RenderScope
+       def contents_of(path)
+         File.open(path).read
+       end
      end
    end
  end
