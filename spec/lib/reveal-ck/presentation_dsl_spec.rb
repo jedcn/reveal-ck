@@ -20,6 +20,10 @@ module RevealCK
 
     describe 'A Presentation loaded from a dsl' do
 
+      let :content do
+        presentation.content
+      end
+
       it 'retains the author in the dsl file' do
         expect(presentation.author).to eq 'Presentation Author'
       end
@@ -36,6 +40,10 @@ module RevealCK
         expect(presentation.transition).to eq 'page'
       end
 
+      it 'retains the slides defined in the dsl file' do
+        expect(content).to include 'Hello World'
+        expect(content).to include 'Thanks!'
+      end
     end
   end
 end
