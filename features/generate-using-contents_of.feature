@@ -58,3 +58,30 @@ Feature: Generate slides
     """
     <pre><code>def two
     """
+
+  Scenario: Inserting text content into ruby slides from another file
+    Given a file named "code/function.rb" with:
+    """
+    def two
+      2
+    end
+    """
+    Given a file named "slides.rb" with:
+    """
+    presentation do
+      slide('code', content: contents_of('code/function.rb'))
+    end
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the following files should exist:
+    | slides/slides.html |
+    | slides/index.html  |
+    And the file "slides/slides.html" should contain:
+    """
+    <pre><code contenteditable="" data-trim="">def two
+    """
+    And the file "slides/index.html" should contain:
+    """
+    <pre><code contenteditable="" data-trim="">def two
+    """
