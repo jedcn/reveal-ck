@@ -1,6 +1,13 @@
 ### Development
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.6...master)
 
+#### --file
+
+You can now explicitly call out the name of your slides file. It used
+to have to be one of: `slides.haml`, `slides.slim`, or
+`slides.rb`. Pass in `--file` ala: `reveal-ck generate --file
+/tmp/my_slides.haml`
+
 #### contents_of
 
 A helper function, `contents_of` is now available to be invoked in
