@@ -13,6 +13,10 @@ module RevealCK
       @theme = theme
     end
 
+    def transition(transition = 'default')
+      @transition = transition
+    end
+
     def title(title = 'Slides')
       @title = title
     end
@@ -26,9 +30,14 @@ module RevealCK
       @slides << RevealCK::Slide.new(variables)
     end
 
+    def contents_of(path)
+      File.open(path).read
+    end
+
     def build
       presentation = RevealCK::Presentation.new
       presentation.theme = @theme
+      presentation.transition = @transition
       presentation.author = @author
       presentation.title = @title
       @slides.each do |slide|

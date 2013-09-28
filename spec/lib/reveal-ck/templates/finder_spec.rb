@@ -12,12 +12,15 @@ module RevealCK
 
       describe '#paths' do
 
-        it 'defaults to Dir.pwd, Dir.pwd/templates, and reveal-ck/templates' do
-          finder = Finder.new
-          expect(finder.paths).to include Dir.pwd
-          expect(finder.paths).to include File.join(Dir.pwd, 'templates')
-          expect(finder.paths).to include File.join(reveal_ck_dir, 'templates')
-          expect(finder.paths.size).to eq 3
+        it 'defaults to Dir.pwd/templates and reveal-ck/templates' do
+          Dir.mktmpdir do |dir|
+            Dir.chdir(dir) do
+              finder = Finder.new
+              expect(finder.paths).to include File.join(Dir.pwd, 'templates')
+              expect(finder.paths).to include File.join(reveal_ck_dir, 'templates')
+              expect(finder.paths.size).to eq 2
+            end
+          end
         end
 
         it 'can be assigned via initializer' do
@@ -34,12 +37,8 @@ module RevealCK
 
       describe '#find' do
 
-        let :automated_dir do
-          spec_data 'templates', 'finder', 'automated'
-        end
-
-        let :custom_dir do
-          spec_data 'templates', 'finder', 'custom'
+        let :project_templates do
+          spec_data 'templates', 'finder', 'templates'
         end
 
         let :reveal_ck_templates_dir do
@@ -47,32 +46,36 @@ module RevealCK
         end
 
         let :finder do
-          paths = [custom_dir, automated_dir, reveal_ck_templates_dir]
+          paths = [project_templates, reveal_ck_templates_dir]
           Finder.new paths: paths
         end
 
-        it 'searches all paths to find templates' do
-          result = finder.find 'automated'
-          automated_slim = File.join('automated', 'automated.slim')
-          expect(result).to include automated_slim
-
-          result = finder.find 'custom'
-          custom_slim = File.join('custom', 'custom.slim')
-          expect(result).to include custom_slim
+        it 'searches project templates/ and reveal-ck/templates' do
+          result = finder.find 'template_one'
+          template_one = File.join('templates', 'template_one.slim')
+          expect(result).to include template_one
 
           result = finder.find 'intro'
           intro_slim = File.join('reveal-ck', 'templates', 'intro.slim')
           expect(result).to include intro_slim
         end
 
-        it 'searchs paths in order and returns the first match' do
-          result = finder.find 'common.haml'
-          expect(result).to include File.join('custom', 'common.haml')
+        it 'searches in order and returns the first match' do
+          result = finder.find 'text'
+          expect(result).to include File.join('templates', 'text.slim')
+
+          result = finder.find 'quote'
+          expect(result).to include reveal_ck_templates_dir
         end
 
-        it 'can search by partial file name' do
-          result = finder.find 'common'
-          expect(result).to include File.join('custom', 'common.haml')
+        it 'searches for files based on the beginnings of names' do
+          result = finder.find 'tex'
+          expect(result).to include File.join('templates', 'text.slim')
+        end
+
+        it 'only finds regular files' do
+          result = finder.find 'code'
+          expect(result).to include reveal_ck_templates_dir
         end
 
         it 'raises if it cannot find what you asked for' do

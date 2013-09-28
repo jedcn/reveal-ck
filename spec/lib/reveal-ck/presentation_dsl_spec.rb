@@ -4,37 +4,47 @@ module RevealCK
   describe PresentationDSL do
 
     let :dsl_file do
-      spec_data 'dsl', 'slides.rb'
+      spec_data 'presentation_dsl', 'dsl.rb'
     end
 
     let :presentation do
       PresentationDSL.load dsl_file
     end
 
-    describe '#load' do
+    describe '.load' do
       it 'can build a RevealCK::Presentation from a file' do
         result = PresentationDSL.load dsl_file
         expect(result).to be_a Presentation
       end
     end
 
-    describe '.author' do
-      it 'defines the author in the Presentation' do
+    describe 'A Presentation loaded from a dsl' do
+
+      let :content do
+        presentation.content
+      end
+
+      it 'retains the author in the dsl file' do
         expect(presentation.author).to eq 'Presentation Author'
       end
-    end
 
-    describe '.theme' do
-      it 'defines the theme in the Presentation' do
+      it 'retains the theme in the dsl file' do
         expect(presentation.theme).to eq 'night'
       end
-    end
 
-    describe '.title' do
-      it 'defines the title in the Presentation' do
+      it 'retains the title in the dsl file' do
         expect(presentation.title).to eq 'Presentation Title'
       end
-    end
 
+      it 'retains the transition in the dsl file' do
+        expect(presentation.transition).to eq 'page'
+      end
+
+      it 'retains the slides defined in the dsl file' do
+        expect(content).to include 'Hello World'
+        expect(content).to include 'Thanks!'
+        expect(content).to include 'module RevealCK'
+      end
+    end
   end
 end

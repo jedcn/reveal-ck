@@ -24,7 +24,7 @@ module RevealCK
             presentation.content
           else
             template = Templates::Processor.open @input_file
-            template.output({}, {})
+            template.output({})
           end
         else
           @presentation.content

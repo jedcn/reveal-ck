@@ -1,6 +1,16 @@
 ### Development
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.6...master)
 
+#### contents_of
+
+A helper function, `contents_of` is now available to be invoked in
+slim and haml templates, and in the ruby dsl.
+
+This function takes a single argument, normally a relative path, and
+inlines the text returned by reading that file.
+
+This lets you keep things like code-snippets in a "code/" directory.
+
 #### Template Rename: title -> intro
 
 The template named "title" has been renamed to "intro".

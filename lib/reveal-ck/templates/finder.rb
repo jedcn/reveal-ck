@@ -15,17 +15,17 @@ module RevealCK
       end
 
       def default_paths
-        pwd = Dir.pwd
-        pwd_templates = pwd, 'templates'
+        pwd_templates = File.join Dir.pwd, 'templates'
         reveal_ck_templates = File.join RevealCK::LOCATION, 'templates'
-        [pwd, pwd_templates, reveal_ck_templates]
+        [pwd_templates, reveal_ck_templates]
       end
 
       def find(template_name)
         paths.each do |path|
           glob_pattern = "#{File.join(path, template_name)}*"
-          matching_templates = Dir.glob glob_pattern
-          return matching_templates[0] unless matching_templates.empty?
+          Dir.glob(glob_pattern).each do |match|
+            return match unless File.directory? match
+          end
         end
         raise "Unable to find #{template_name} in #{paths}"
       end
