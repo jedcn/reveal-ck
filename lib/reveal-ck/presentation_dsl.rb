@@ -25,7 +25,7 @@ module RevealCK
       @author = author
     end
 
-    def slide(template, variables)
+    def slide(template, variables = {})
       variables[:template] = template
       @slides << RevealCK::Slide.new(variables)
     end
