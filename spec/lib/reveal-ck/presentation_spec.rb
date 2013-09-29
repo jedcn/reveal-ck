@@ -3,70 +3,60 @@ require 'spec_helper'
 module RevealCK
   describe Presentation do
 
-    describe '#add_slide' do
-
-      it 'maintains a list of slides' do
-        presentation = Presentation.new
-        presentation.add_slide double('slide', html: "first")
-        presentation.add_slide double('slide', html: "second")
-      end
-
+    let :presentation do
+      presentation = Presentation.new
+      presentation.add double('content', html: 'first')
+      presentation.add double('content', html: 'second')
+      presentation
     end
 
-    describe '#content' do
-
-      let :presentation do
-        presentation = Presentation.new
-        presentation.add_slide double('slide', html: "first")
-        presentation.add_slide double('slide', html: "second")
-        presentation
-      end
-
-      let :content do
-        presentation.content.strip
-      end
-
-      it 'returns the content from each slide' do
-        expect(content).to start_with 'first'
-        expect(content).to end_with 'second'
-      end
-
+    let :html do
+      presentation.html
     end
 
-    describe '#theme' do
-      it 'can be set and read' do
-        presentation = Presentation.new
-        presentation.theme = 'night'
+    describe '#add' do
+      it 'adds to a growing list of html' do
+        expect(html).to include 'first'
+        expect(html).to include 'second'
+        expect(html.strip).to start_with 'first'
+        expect(html.strip).to end_with 'second'
+      end
+    end
+
+    describe '#html' do
+      it 'returns the html, in order, added so far' do
+        expect(html).to start_with 'first'
+        expect(html).to end_with 'second'
+      end
+    end
+
+    let :slides_haml do
+      spec_data 'presentation', 'slides.haml'
+    end
+
+    describe '.from_template' do
+      it 'loads presentation html from a template' do
+        presentation = Presentation.from_template slides_haml
+        html = presentation.html
+        expect(html).to start_with '<section>'
+        expect(html).to include 'slides.haml'
+        expect(html).to include '</section>'
+      end
+    end
+
+    let :slides_rb do
+      spec_data 'presentation', 'slides.rb'
+    end
+
+    describe '.from_dsl' do
+      it 'loads presentation html and metadata from a dsl' do
+        presentation = Presentation.from_dsl slides_rb
+        html = presentation.html
+        expect(html).to start_with '<section>'
+        expect(html).to include 'slides.rb'
+        expect(html).to include '</section>'
         expect(presentation.theme).to eq 'night'
       end
-
-      it 'has a default value of "default"' do
-        expect(Presentation.new.theme).to eq 'default'
-      end
-    end
-
-    describe '#transition' do
-      it 'can be set and read' do
-        presentation = Presentation.new
-        presentation.transition = 'page'
-        expect(presentation.transition).to eq 'page'
-      end
-
-      it 'has a default value of "default"' do
-        expect(Presentation.new.transition).to eq 'default'
-      end
-    end
-
-    it 'responds to #title= and #title' do
-      presentation = Presentation.new
-      presentation.title = 'My Favorite Slides'
-      expect(presentation.title).to eq 'My Favorite Slides'
-    end
-
-    it 'responds to #author= and #author' do
-      presentation = Presentation.new
-      presentation.author = 'Hakim El Hattab'
-      expect(presentation.author).to eq 'Hakim El Hattab'
     end
 
   end

@@ -5,23 +5,25 @@ module RevealCK
   #
   class PresentationDSL
 
+    attr_reader :author, :title, :theme, :transition
+
     def initialize
       @slides = []
     end
 
-    def theme(theme = 'default')
+    def theme(theme)
       @theme = theme
     end
 
-    def transition(transition = 'default')
+    def transition(transition)
       @transition = transition
     end
 
-    def title(title = 'Slides')
+    def title(title)
       @title = title
     end
 
-    def author(author = '')
+    def author(author)
       @author = author
     end
 
@@ -36,13 +38,11 @@ module RevealCK
 
     def build
       presentation = RevealCK::Presentation.new
-      presentation.theme = @theme
-      presentation.transition = @transition
-      presentation.author = @author
-      presentation.title = @title
-      @slides.each do |slide|
-        presentation.add_slide slide
-      end
+      presentation.theme = @theme if @theme
+      presentation.transition = @transition if @transition
+      presentation.author = @author if @author
+      presentation.title = @title if @title
+      @slides.each { |slide| presentation.add slide }
       presentation
     end
 
@@ -55,8 +55,7 @@ module RevealCK
     def self.load(file)
       builder = PresentationDSL.new
       contents = File.open(file).read
-      result = builder.instance_eval contents
-      result
+      builder.instance_eval(contents)
     end
 
   end

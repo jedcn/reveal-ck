@@ -50,9 +50,9 @@ code_slide =
                       })
 
 p = RevealCK::Presentation.new
-p.add_slide intro_slide
-p.add_slide quote_slide
-p.add_slide image_slide
-p.add_slide code_slide
+p.add intro_slide
+p.add quote_slide
+p.add image_slide
+p.add code_slide
 
-puts p.content
+puts p.html

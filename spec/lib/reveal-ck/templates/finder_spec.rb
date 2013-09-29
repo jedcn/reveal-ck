@@ -17,7 +17,8 @@ module RevealCK
             Dir.chdir(dir) do
               finder = Finder.new
               expect(finder.paths).to include File.join(Dir.pwd, 'templates')
-              expect(finder.paths).to include File.join(reveal_ck_dir, 'templates')
+              expect(finder.paths)
+                .to(include File.join(reveal_ck_dir, 'templates'))
               expect(finder.paths.size).to eq 2
             end
           end

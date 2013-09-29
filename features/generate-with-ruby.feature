@@ -49,3 +49,36 @@ Feature: Generate slides
     """
     transition: Reveal.getQueryHash().transition || 'default'
     """
+
+  Scenario: Generating slides with slides.rb and a config.toml
+    Given a file named "slides.rb" with:
+    """
+    presentation do
+      author 'Jed Northridge'
+      theme 'night'
+      slide 'text', content: 'Slides with Ruby'
+    end
+    """
+    Given a file named "config.toml" with:
+    """
+    [presentation]
+    theme      = "beige"
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the output should contain exactly ""
+    And the following files should exist:
+    | slides/slides.html  |
+    | slides/index.html  |
+    And the file "slides/index.html" should contain:
+    """
+    <title>Slides</title>
+    """
+    And the file "slides/index.html" should contain:
+    """
+    <meta name="author" content="Jed Northridge">
+    """
+    And the file "slides/index.html" should contain:
+    """
+    <link rel="stylesheet" href="css/theme/night.css" id="theme">
+    """

@@ -4,21 +4,17 @@ module RevealCK
   module Builders
     #
     # Public: A PackagedSlides knows how to bundle together all of the
-    # various files that makeup a reveal.js presentation
+    # various files that makeup a reveal.js presentation.
     #
     class PackagedSlides < Builder
 
-      attr_reader :image_files, :slides_file, :config
-      attr_reader :tasks
+      attr_reader :image_files, :tasks
 
       def initialize(args)
+        @presentation =
+          args[:presentation] || raise(':presentation is required')
         @image_files = args[:image_files]
-        @slides_file = args[:slides_file]
-        @presentation = args[:presentation]
-        missing_info = 'either :slides_file or :presentation is required'
-        raise missing_info unless @slides_file || @presentation
         @output_dir = args[:output_dir]
-        @config = args[:config]
       end
 
       def output_dir(child = nil)
@@ -35,11 +31,10 @@ module RevealCK
         @tasks = []
         slides_html = output_dir 'slides.html'
         create_dir output_dir
-        transform_slides @slides_file, @presentation, slides_html
+        write_slides_html @presentation, slides_html
         bundle_revealjs output_dir
         bundle_image_files image_files, output_dir('images')
-        config = @presentation || @config
-        create_index_html slides_html, output_dir('index.html'), config
+        create_index_html slides_html, output_dir('index.html'), @presentation
       end
 
       def create_dir(dir)
@@ -48,16 +43,9 @@ module RevealCK
         end
       end
 
-      def transform_slides(slides_file, presentation, slides_html)
-        if slides_file
-          description = "Transforming #{slides_file} into '#{slides_html}'}"
-          builder = SlidesHtml.new input_file: slides_file
-        else
-          description = "Transforming Presentation into '#{slides_html}'}"
-          builder = SlidesHtml.new presentation: presentation
-        end
-        add_task description do
-          builder.write_to file: slides_html
+      def write_slides_html(presentation, slides_html)
+        add_task "Writing Presentation to '#{slides_html}'" do
+          File.open(slides_html, 'w') { |file| file << presentation.html }
         end
       end
 

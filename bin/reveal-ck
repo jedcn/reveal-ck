@@ -26,16 +26,18 @@ command :generate do |c|
 
     output_dir = 'slides'
 
-    config = RevealCK::Config.new config_file: 'config.toml'
+    presentation = RevealCK::Presentation.load slides_file
+
+    if File.exists? 'config.toml'
+      presentation.merge_config file: 'config.toml'
+    end
 
     builder = RevealCK::Builders::PackagedSlides.new({
                                                        image_files: image_files,
                                                        output_dir: output_dir,
-                                                       slides_file: slides_file,
-                                                       config: config
+                                                       presentation: presentation
                                                      })
     builder.build!
-
   end
 end
 
