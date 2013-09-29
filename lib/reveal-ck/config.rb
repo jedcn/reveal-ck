@@ -41,7 +41,7 @@ module RevealCK
 
     DEFAULTS = {
       'title'      => 'Slides',
-      'author'     => 'Hakim El Hattab',
+      'author'     => '',
       'theme'      => 'default',
       'transition' => 'default'
     }

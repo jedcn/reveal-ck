@@ -39,7 +39,7 @@ Feature: Generate slides
     """
     And the file "slides/index.html" should contain:
     """
-    <meta name="author" content="Hakim El Hattab">
+    <meta name="author" content="">
     """
     And the file "slides/index.html" should contain:
     """

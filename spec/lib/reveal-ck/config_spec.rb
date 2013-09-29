@@ -29,7 +29,7 @@ module RevealCK
 
       it 'supplies a default author' do
         example = Example.new
-        expect(example.author).to eq 'Hakim El Hattab'
+        expect(example.author).to eq ''
       end
 
       it 'supplies an #title, and #title=' do
