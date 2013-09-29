@@ -65,7 +65,7 @@ module RevealCK
                               citation: 'https://www.ruby-lang.org/en/about/'
                             })
           presentation = Presentation.new
-          presentation.add_slide quote
+          presentation.add quote
           presentation
         end
 

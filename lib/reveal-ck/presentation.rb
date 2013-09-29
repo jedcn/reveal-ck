@@ -1,31 +1,40 @@
 module RevealCK
   #
-  # Public: A Presentation is an ordered list of slides. It provides
-  # access to the content of the slides on demand. It it also the
-  # mechanism by which the slide "dsl" is defined and loaded into
-  # being.
+  # Public: A Presentation is slide html and metadata. Access html via
+  # #html. Access metadata via theme, title, author, transition.
   #
   class Presentation
 
     attr_accessor :theme, :title, :author, :transition
+    attr_accessor :html
 
     def initialize
-      @slides = []
-      @theme = 'default'
-      @transition = 'default'
+      @theme, @transition = 'default', 'default'
+      @author, @title    = '', ''
+      @html = ''
     end
 
-    def add_slide(slide)
-      @slides << slide
+    def add(content)
+      @html << content.html
     end
 
-    def content
-      content = ''
-      @slides.each do |slide|
-        content << slide.html
-        content << "\n\n"
+    def self.from_template(path)
+      presentation = Presentation.new
+      template = Templates::Processor.open path
+      presentation.html = template.output({})
+      presentation
+    end
+
+    def self.from_dsl(path)
+      RevealCK::PresentationDSL.load path
+    end
+
+    def self.load(path)
+      if path.end_with? '.rb'
+        Presentation.from_dsl path
+      else
+        Presentation.from_template path
       end
-      content
     end
 
   end

@@ -3,34 +3,31 @@ require 'spec_helper'
 module RevealCK
   describe Presentation do
 
-    describe '#add_slide' do
-
-      it 'maintains a list of slides' do
-        presentation = Presentation.new
-        presentation.add_slide double('slide', html: "first")
-        presentation.add_slide double('slide', html: "second")
-      end
-
+    let :presentation do
+      presentation = Presentation.new
+      presentation.add double('content', html: 'first')
+      presentation.add double('content', html: 'second')
+      presentation
     end
 
-    describe '#content' do
+    let :html do
+      presentation.html
+    end
 
-      let :presentation do
-        presentation = Presentation.new
-        presentation.add_slide double('slide', html: "first")
-        presentation.add_slide double('slide', html: "second")
-        presentation
+    describe '#add' do
+      it 'adds to a growing list of html' do
+        expect(html).to include 'first'
+        expect(html).to include 'second'
+        expect(html.strip).to start_with 'first'
+        expect(html.strip).to end_with 'second'
       end
+    end
 
-      let :content do
-        presentation.content.strip
+    describe '#html' do
+      it 'returns the html, in order, added so far' do
+        expect(html).to start_with 'first'
+        expect(html).to end_with 'second'
       end
-
-      it 'returns the content from each slide' do
-        expect(content).to start_with 'first'
-        expect(content).to end_with 'second'
-      end
-
     end
 
     describe '#theme' do
@@ -57,16 +54,57 @@ module RevealCK
       end
     end
 
-    it 'responds to #title= and #title' do
-      presentation = Presentation.new
-      presentation.title = 'My Favorite Slides'
-      expect(presentation.title).to eq 'My Favorite Slides'
+    describe '#title' do
+      it 'can be set and read' do
+        presentation = Presentation.new
+        presentation.title = 'My Title'
+        expect(presentation.title).to eq 'My Title'
+      end
+
+      it 'has a default value of ""' do
+        expect(Presentation.new.title).to eq ''
+      end
     end
 
-    it 'responds to #author= and #author' do
-      presentation = Presentation.new
-      presentation.author = 'Hakim El Hattab'
-      expect(presentation.author).to eq 'Hakim El Hattab'
+    describe '#author' do
+      it 'can be set and read' do
+        presentation = Presentation.new
+        presentation.author = 'Me'
+        expect(presentation.author).to eq 'Me'
+      end
+
+      it 'has a default value of ""' do
+        expect(Presentation.new.author).to eq ''
+      end
+    end
+
+    let :slides_haml do
+      spec_data 'presentation', 'slides.haml'
+    end
+
+    describe '.from_template' do
+      it 'loads presentation html from a template' do
+        presentation = Presentation.from_template slides_haml
+        html = presentation.html
+        expect(html).to start_with '<section>'
+        expect(html).to include 'slides.haml'
+        expect(html).to include '</section>'
+      end
+    end
+
+    let :slides_rb do
+      spec_data 'presentation', 'slides.rb'
+    end
+
+    describe '.from_dsl' do
+      it 'loads presentation html and metadata from a dsl' do
+        presentation = Presentation.from_dsl slides_rb
+        html = presentation.html
+        expect(html).to start_with '<section>'
+        expect(html).to include 'slides.rb'
+        expect(html).to include '</section>'
+        expect(presentation.theme).to eq 'night'
+      end
     end
 
   end

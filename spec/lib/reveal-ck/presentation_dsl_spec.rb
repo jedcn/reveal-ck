@@ -20,8 +20,8 @@ module RevealCK
 
     describe 'A Presentation loaded from a dsl' do
 
-      let :content do
-        presentation.content
+      let :html do
+        presentation.html
       end
 
       it 'retains the author in the dsl file' do
@@ -41,9 +41,9 @@ module RevealCK
       end
 
       it 'retains the slides defined in the dsl file' do
-        expect(content).to include 'Hello World'
-        expect(content).to include 'Thanks!'
-        expect(content).to include 'module RevealCK'
+        expect(html).to include 'Hello World'
+        expect(html).to include 'Thanks!'
+        expect(html).to include 'module RevealCK'
       end
     end
   end

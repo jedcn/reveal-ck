@@ -2,8 +2,8 @@ module RevealCK
   module Builders
     #
     # Public: A SlidesHtml knows how to create the intermediate file
-    # slides.html. This file is a users generate slide content, and is
-    # ultimately inserted within reveal.js.
+    # slides.html. This file is a user's generated slide content, and
+    # is ultimately inserted within reveal.js.
     #
     # A slides.html can be created from a template or from an instance
     # of a Presentation.
@@ -21,13 +21,13 @@ module RevealCK
         if @input_file
           if @input_file.end_with? '.rb'
             presentation = RevealCK::PresentationDSL.load @input_file
-            presentation.content
+            presentation.html
           else
             template = Templates::Processor.open @input_file
             template.output({})
           end
         else
-          @presentation.content
+          @presentation.html
         end
       end
 
