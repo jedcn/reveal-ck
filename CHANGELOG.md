@@ -1,6 +1,40 @@
 ### Development
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.6...master)
 
+#### Metadata in DSL + config.toml
+
+There was an issue where optins like "author" or "title" weren't being
+respected when set in the DSL.
+
+Further, config.toml settings used to always take precedence over the
+DSL. No longer.
+
+#### transition support
+
+Whether in config.toml or the DSL, you can now supply "transition" to
+impact how the slides change.
+
+#### --file
+
+You can now explicitly call out the name of your slides file. It used
+to have to be one of: `slides.haml`, `slides.slim`, or
+`slides.rb`. Pass in `--file` ala: `reveal-ck generate --file
+/tmp/my_slides.haml`
+
+#### contents_of
+
+A helper function, `contents_of` is now available to be invoked in
+slim and haml templates, and in the ruby dsl.
+
+This function takes a single argument, normally a relative path, and
+inlines the text returned by reading that file.
+
+This lets you keep things like code-snippets in a "code/" directory.
+
+#### Template Rename: title -> intro
+
+The template named "title" has been renamed to "intro".
+
 ### 0.1.6 / 2013-09-23
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.5...v0.1.6)
 

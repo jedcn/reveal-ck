@@ -10,28 +10,34 @@ version RevealCK::VERSION
 
 desc 'Generate reveal.js slides'
 command :generate do |c|
+
+  # Where is the slides file?
+  default_file = 'slides.haml' if File.exists? 'slides.haml'
+  default_file = 'slides.slim' if File.exists? 'slides.slim'
+  default_file = 'slides.rb'   if File.exists? 'slides.rb'
+  c.desc 'The file containing your slides'
+  c.flag [:f, :file], default_value: default_file
+
   c.action do |global_options,options,args|
+    slides_file = options[:file]
 
     require 'rake' # for FileList
-
     image_files = FileList["images/**/*"]
 
     output_dir = 'slides'
 
-    slides_file = 'slides.haml' if File.exists? 'slides.haml'
-    slides_file = 'slides.slim' if File.exists? 'slides.slim'
-    slides_file = 'slides.rb' if File.exists? 'slides.rb'
+    presentation = RevealCK::Presentation.load slides_file
 
-    config = RevealCK::Config.new config_file: 'config.toml'
+    if File.exists? 'config.toml'
+      presentation.merge_config file: 'config.toml'
+    end
 
-    builder = RevealCK::PresentationBuilder.new({
-                                                  image_files: image_files,
-                                                  output_dir: output_dir,
-                                                  slides_file: slides_file,
-                                                  config: config
-                                                })
+    builder = RevealCK::Builders::PackagedSlides.new({
+                                                       image_files: image_files,
+                                                       output_dir: output_dir,
+                                                       presentation: presentation
+                                                     })
     builder.build!
-
   end
 end
 
