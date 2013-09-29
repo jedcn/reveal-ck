@@ -9,10 +9,6 @@ module RevealCK
 
     def initialize
       @slides = []
-      @theme = 'default'
-      @transition = 'default'
-      @title = 'Slides'
-      @author = ''
     end
 
     def theme(theme)
@@ -42,10 +38,10 @@ module RevealCK
 
     def build
       presentation = RevealCK::Presentation.new
-      presentation.theme = @theme
-      presentation.transition = @transition
-      presentation.author = @author
-      presentation.title = @title
+      presentation.theme = @theme if @theme
+      presentation.transition = @transition if @transition
+      presentation.author = @author if @author
+      presentation.title = @title if @title
       @slides.each { |slide| presentation.add slide }
       presentation
     end

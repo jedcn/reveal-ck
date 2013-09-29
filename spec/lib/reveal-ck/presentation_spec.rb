@@ -30,54 +30,6 @@ module RevealCK
       end
     end
 
-    describe '#theme' do
-      it 'can be set and read' do
-        presentation = Presentation.new
-        presentation.theme = 'night'
-        expect(presentation.theme).to eq 'night'
-      end
-
-      it 'has a default value of "default"' do
-        expect(Presentation.new.theme).to eq 'default'
-      end
-    end
-
-    describe '#transition' do
-      it 'can be set and read' do
-        presentation = Presentation.new
-        presentation.transition = 'page'
-        expect(presentation.transition).to eq 'page'
-      end
-
-      it 'has a default value of "default"' do
-        expect(Presentation.new.transition).to eq 'default'
-      end
-    end
-
-    describe '#title' do
-      it 'can be set and read' do
-        presentation = Presentation.new
-        presentation.title = 'My Title'
-        expect(presentation.title).to eq 'My Title'
-      end
-
-      it 'has a default value of ""' do
-        expect(Presentation.new.title).to eq ''
-      end
-    end
-
-    describe '#author' do
-      it 'can be set and read' do
-        presentation = Presentation.new
-        presentation.author = 'Me'
-        expect(presentation.author).to eq 'Me'
-      end
-
-      it 'has a default value of ""' do
-        expect(Presentation.new.author).to eq ''
-      end
-    end
-
     let :slides_haml do
       spec_data 'presentation', 'slides.haml'
     end

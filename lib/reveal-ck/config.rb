@@ -2,52 +2,75 @@ require 'toml'
 
 module RevealCK
   #
-  # Public: A Config knows about the core configuration values of a
-  # RevealCK Presentation: title, author, theme, etc. It knows about
-  # sensible defaults, and it can read these from a toml file.
+  # Public: The Config module supports the core metadata surrounding a
+  # RevealCK Presentation: title, author, theme, and transition.
   #
-  class Config
+  module Config
 
-    def initialize(args = {})
-      config_file = args[:config_file]
-      @config = load_config config_file
+    def author
+      @author || DEFAULTS['author']
+    end
+
+    def author=(author)
+      @author = author
     end
 
     def title
-      @config['title']
+      @title || DEFAULTS['title']
     end
 
-    def author
-      @config['author']
+    def title=(title)
+      @title = title
     end
 
     def theme
-      @config['presentation']['theme']
+      @theme || DEFAULTS['theme']
+    end
+
+    def theme=(theme)
+      @theme = theme
     end
 
     def transition
-      @config['presentation']['transition']
+      @transition || DEFAULTS['transition']
     end
 
-    private
+    def transition=(transition)
+      @transition = transition
+    end
 
     DEFAULTS = {
-      'title' => 'Slides',
-      'author' => 'Hakim El Hattab',
-      'presentation' => {
-        'theme' => 'default',
-        'transition' => 'default'
-      }
+      'title'      => 'Slides',
+      'author'     => 'Hakim El Hattab',
+      'theme'      => 'default',
+      'transition' => 'default'
     }
 
-    def load_config(config_file)
-      config = DEFAULTS.dup
-      if config_file && File.exists?(config_file)
-        file_config = TOML.load_file config_file
-        config.merge! file_config
+    def merge_config(args)
+      file = args[:file] || raise(':file is required')
+      config = TOML.load_file file
+
+      if config['author']
+        @author = config['author'] unless @author
       end
-      config
+
+      if config['title']
+        @title = config['title'] unless @title
+      end
+
+      if config['presentation']
+        presentation = config['presentation']
+        if presentation['theme']
+          @theme = presentation['theme'] unless @theme
+        end
+
+        if presentation['transition']
+          @transition = presentation['transition'] unless @transition
+        end
+      end
+
     end
 
   end
+
 end

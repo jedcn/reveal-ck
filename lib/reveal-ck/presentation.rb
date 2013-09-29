@@ -5,12 +5,11 @@ module RevealCK
   #
   class Presentation
 
-    attr_accessor :theme, :title, :author, :transition
+    include Config
+
     attr_accessor :html
 
     def initialize
-      @theme, @transition = 'default', 'default'
-      @author, @title    = '', ''
       @html = ''
     end
 

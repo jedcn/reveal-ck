@@ -28,11 +28,9 @@ command :generate do |c|
 
     presentation = RevealCK::Presentation.load slides_file
 
-    config = RevealCK::Config.new config_file: 'config.toml'
-    presentation.title = config.title
-    presentation.author = config.author
-    presentation.transition = config.transition
-    presentation.theme = config.theme
+    if File.exists? 'config.toml'
+      presentation.merge_config file: 'config.toml'
+    end
 
     builder = RevealCK::Builders::PackagedSlides.new({
                                                        image_files: image_files,
@@ -40,7 +38,6 @@ command :generate do |c|
                                                        presentation: presentation
                                                      })
     builder.build!
-
   end
 end
 
