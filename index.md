@@ -57,9 +57,52 @@ And, if you want to inline a file, use `contents_of`:
 
 And here's [some slides with inlined code][inline-slides].
 
+## Slides.. with Ruby?
+
+[Haml][haml] and [Slim][slim] are awesome, but they are still
+templating languages.
+
+What about writing slides in Ruby?
+
+When you create slides with Haml or Slim, you define your entire set
+of slides in a __single__ file. When you write slides in Ruby, you
+build up a simple collection of objects that contribute HTML back to
+the overall presentation.
+
+Support for this is based on tying an object together with a template.
+
+Consider the following:
+
+{% gist 6860278 %}
+
+Two templates used here are: `intro` and `image`.
+
+[reveal-ck][reveal-ck] comes with some sample templates, including the
+[intro template][reveal-ck-intro-template].
+
+Howver, you can also provide your own templates by placing them in the
+`templates/` directory.
+
+`image` is defined above as follows:
+
+{% gist 6860333 %}
+
+Writing slides in Ruby means you can build up slides
+programmatically.
+
+The web? A local database? A remote API? If Ruby can do it, you can
+create slides from it.
+
+If we run `reveal-ck` again, we query google, and
+[here are the results][google-slides].
+
 [basic-configured-slides]: http://jedcn.github.io/reveal-ck-example/basic-configured-slides
 [basic-slides]: http://jedcn.github.io/reveal-ck-example/basic-slides
+[google-slides]: http://jedcn.github.io/reveal-ck-example/google-slides
 [haml]: http://haml.info/
 [inline-slides]: http://jedcn.github.io/reveal-ck-example/inline-slides
+[reveal-ck-getting-started]: https://github.com/jedcn/reveal-ck/blob/master/doc/getting_started.md
+[reveal-ck-intro-template]: https://github.com/jedcn/reveal-ck/blob/master/templates/intro.slim
 [reveal-ck]: https://github.com/jedcn/reveal-ck
 [reveal-js]: http://lab.hakim.se/reveal-js/#/
+[slim]: http://slim-lang.com/
