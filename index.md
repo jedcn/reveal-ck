@@ -31,8 +31,11 @@ Then run `reveal-ck` on the command line, and you end up with
 
 ## Simple Config
 
-[reveal.js][reveal-js] has built-in themes and transitions. Need to
-switch away from the defaults? Create a `config.toml`:
+[reveal.js][reveal-js] has built-in themes and transitions.
+
+Need to switch away from the defaults?
+
+Create a `config.toml`:
 
 {% gist 6857103 %}
 
@@ -42,7 +45,9 @@ Then run `reveal-ck` again and end up with
 ## Project Layout
 
 Sometimes slides include content that would be better kept in a
-separate file. Feel free to lay things out as you like:
+separate file.
+
+Feel free to lay things out as you like:
 
 {% gist 6857518 %}
 
