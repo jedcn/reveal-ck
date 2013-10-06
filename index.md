@@ -96,6 +96,13 @@ create slides from it.
 If we run `reveal-ck` again, we query google, and
 [here are the results][google-slides].
 
+## What Else?
+
+There are additional [Getting Started][reveal-ck-getting-started]
+instructions in the project.
+
+There's a wordier [post about reveal-ck here][jedcn-reveal-ck].
+
 [basic-configured-slides]: http://jedcn.github.io/reveal-ck-example/basic-configured-slides
 [basic-slides]: http://jedcn.github.io/reveal-ck-example/basic-slides
 [google-slides]: http://jedcn.github.io/reveal-ck-example/google-slides
@@ -106,3 +113,4 @@ If we run `reveal-ck` again, we query google, and
 [reveal-ck]: https://github.com/jedcn/reveal-ck
 [reveal-js]: http://lab.hakim.se/reveal-js/#/
 [slim]: http://slim-lang.com/
+[jedcn-reveal-ck]: http://jedcn.com/posts/reveal-ck/
