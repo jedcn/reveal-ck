@@ -26,8 +26,13 @@ You can write in [Haml][haml]:
 
 {% gist 6839168 %}
 
-Then run `reveal-ck` on the command line, and you end up with
-[statically generated slides][basic-slides].
+Then run `reveal-ck` on the command line, like so:
+
+```
+reveal-ck generate --file basic-slides.haml
+```
+
+You end up with these [statically generated slides][basic-slides].
 
 ## Simple Config
 
@@ -39,8 +44,13 @@ Create a `config.toml`:
 
 {% gist 6857103 %}
 
-Then run `reveal-ck` again and end up with
-[this][basic-configured-slides].
+Then run `reveal-ck` on the command line, like so:
+
+```
+reveal-ck generate --file basic-slides.haml
+```
+
+And end up with these [slides][basic-configured-slides].
 
 ## Project Layout
 
@@ -55,6 +65,12 @@ And, if you want to inline a file, use `contents_of`:
 
 {% gist 6857599 %}
 
+Then run `reveal-ck` on the command line, like so:
+
+```
+reveal-ck generate --file inline.haml
+```
+
 And here's [some slides with inlined code][inline-slides].
 
 ## Slides.. with Ruby?
@@ -66,8 +82,8 @@ What about writing slides in Ruby?
 
 When you create slides with Haml or Slim, you define your entire set
 of slides in a __single__ file. When you write slides in Ruby, you
-build up a simple collection of objects that contribute HTML back to
-the overall presentation.
+build up a collection of objects that contribute HTML back to the
+overall presentation.
 
 Support for this is based on tying an object together with a template.
 
