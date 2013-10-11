@@ -114,16 +114,28 @@ reveal-ck generate --file google-slides.rb
 
 Here are the [results][google-slides].
 
+<img src="images/ck-logo-saw.svg" alt="RevealCK" style="float: right;" />
+
 Scraping web? A remote API? A database?
 
 If Ruby can do it, you can create slides from it.
 
-## What Else?
+## Ready to make some slides?
 
-There are additional [Getting Started][reveal-ck-getting-started]
-instructions in the project.
+It begins with `gem install reveal-ck`, and then you're off and
+running.
 
-There's a wordier [post about reveal-ck here][jedcn-reveal-ck].
+This is the project home page.
+
+You can find source code and instructions at
+[github/jedcn/reveal-ck][reveal-ck].
+
+There are [Getting Started][reveal-ck-getting-started] pages.
+
+And, finally, there is a wordier
+[post about reveal-ck][jedcn-reveal-ck].
+
+## Happy Sliding!
 
 [basic-configured-slides]: http://jedcn.github.io/reveal-ck-example/basic-configured-slides
 [basic-slides]: http://jedcn.github.io/reveal-ck-example/basic-slides
