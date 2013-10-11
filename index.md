@@ -8,10 +8,10 @@ title: reveal-ck
 
 * * *
 
-* Need to make slides?
-* Don't want to leave your editor?
-* Like Ruby?
-* Check out reveal-ck!
+#### Need to make slides?
+#### Don't want to leave your editor?
+#### Like Ruby?
+#### Check out [reveal-ck][reveal-ck]!
 
 * * *
 
@@ -20,23 +20,24 @@ title: reveal-ck
 In [reveal.js][reveal-js] each `<section>` represents a slide.
 
 With [reveal-ck][reveal-ck], you put all your slide content into one
-file.
-
-You can write in [Haml][haml]:
+file:
 
 {% gist 6839168 %}
 
-Then run `reveal-ck` on the command line, like so:
+You can write in [Haml][haml], [Slim][slim], or Ruby.
+
+When you're ready, you run `reveal-ck` like so:
 
 ```
 reveal-ck generate --file basic-slides.haml
 ```
 
-You end up with these [statically generated slides][basic-slides].
+Here are the [results][basic-slides].
 
 ## Simple Config
 
-[reveal.js][reveal-js] has built-in themes and transitions.
+[reveal.js][reveal-js] has built-in [themes][reveal-js-themes] and
+[transitions][reveal-js-transitions].
 
 Need to switch away from the defaults?
 
@@ -44,13 +45,13 @@ Create a `config.toml`:
 
 {% gist 6857103 %}
 
-Then run `reveal-ck` on the command line, like so:
+Then run `reveal-ck` on the command line:
 
 ```
 reveal-ck generate --file basic-slides.haml
 ```
 
-And end up with these [slides][basic-configured-slides].
+Here are the [results][basic-configured-slides].
 
 ## Project Layout
 
@@ -65,29 +66,29 @@ And, if you want to inline a file, use `contents_of`:
 
 {% gist 6857599 %}
 
-Then run `reveal-ck` on the command line, like so:
+Then run `reveal-ck` on the command line:
 
 ```
 reveal-ck generate --file inline.haml
 ```
 
-And here's [some slides with inlined code][inline-slides].
+Here are the [results][inline-slides].
 
 ## Slides.. with Ruby?
 
 [Haml][haml] and [Slim][slim] are awesome, but they are still
 templating languages.
 
-What about writing slides in Ruby?
+What about writing slides in Ruby? You can work in pure Ruby or you
+can use reveal-ck's DSL.
 
-When you create slides with Haml or Slim, you define your entire set
-of slides in a __single__ file. When you write slides in Ruby, you
-build up a collection of objects that contribute HTML back to the
-overall presentation.
+Whichever path you choose, when you write slides in Ruby, you build up
+a collection of objects that contribute HTML back to an overall
+presentation.
 
-Support for this is based on tying an object together with a template.
+Ruby maps to HTML by tying an object together with a template.
 
-Consider the following:
+Consider the following example in the DSL:
 
 {% gist 6860278 %}
 
@@ -96,21 +97,26 @@ Two templates used here are: `intro` and `image`.
 [reveal-ck][reveal-ck] comes with some sample templates, including the
 [intro template][reveal-ck-intro-template].
 
-Howver, you can also provide your own templates by placing them in the
-`templates/` directory.
+However, you can also provide your own templates by placing them in
+the `templates/` directory.
 
-`image` is defined above as follows:
+{% gist 6932884 %}
+
+`image` from the DSL maps to `image.slim`, which contains:
 
 {% gist 6860333 %}
 
-Writing slides in Ruby means you can build up slides
-programmatically.
+When you're ready, you run `reveal-ck` like so:
 
-The web? A local database? A remote API? If Ruby can do it, you can
-create slides from it.
+```
+reveal-ck generate --file google-slides.rb
+```
 
-If we run `reveal-ck` again, we query google, and
-[here are the results][google-slides].
+Here are the [results][google-slides].
+
+Scraping web? A remote API? A database?
+
+If Ruby can do it, you can create slides from it.
 
 ## What Else?
 
@@ -124,9 +130,11 @@ There's a wordier [post about reveal-ck here][jedcn-reveal-ck].
 [google-slides]: http://jedcn.github.io/reveal-ck-example/google-slides
 [haml]: http://haml.info/
 [inline-slides]: http://jedcn.github.io/reveal-ck-example/inline-slides
+[jedcn-reveal-ck]: http://jedcn.com/posts/reveal-ck/
 [reveal-ck-getting-started]: https://github.com/jedcn/reveal-ck/blob/master/doc/getting_started.md
 [reveal-ck-intro-template]: https://github.com/jedcn/reveal-ck/blob/master/templates/intro.slim
 [reveal-ck]: https://github.com/jedcn/reveal-ck
+[reveal-js-themes]: http://lab.hakim.se/reveal-js/#/themes
+[reveal-js-transitions]: http://lab.hakim.se/reveal-js/#/transitions
 [reveal-js]: http://lab.hakim.se/reveal-js/#/
 [slim]: http://slim-lang.com/
-[jedcn-reveal-ck]: http://jedcn.com/posts/reveal-ck/
