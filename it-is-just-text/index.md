@@ -1,5 +1,5 @@
 ---
-layout: bare
+layout: child
 title: It is just text
 ---
 
