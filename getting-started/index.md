@@ -85,6 +85,6 @@ If you'd like to learn about creating slides with ruby,
 
 [reveal.js]:     http://lab.hakim.se/reveal-js/#/
 [reveal-ck-gem]: http://rubygems.org/gems/reveal-ck
-[haml]:          /haml
-[ruby]:          /ruby
-[slim]:          /slim
+[haml]:          ../haml
+[ruby]:          ../ruby
+[slim]:          ../slim
