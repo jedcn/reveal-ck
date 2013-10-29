@@ -36,11 +36,11 @@ helps you focus on your content.
 
 If that sounds good, then [let's get started][getting-started].
 
-[getting-started]: /getting-started
-[haml]:            /haml
-[it-is-just-text]: /it-is-just-text
-[ruby]:            /ruby
-[slim]:            /slim
+[getting-started]: ./getting-started
+[haml]:            ./haml
+[it-is-just-text]: ./it-is-just-text
+[ruby]:            ./ruby
+[slim]:            ./slim
 
 [keynote]:       http://www.apple.com/ios/keynote/
 [powerpoint]:    http://office.microsoft.com/en-us/powerpoint/
