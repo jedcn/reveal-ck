@@ -33,6 +33,9 @@ put the following into it:
     Slides
   %h3
     with Ruby?
+  %aside.notes
+    These are notes. Press 's' to see them.
+
 %section
   %h1
     Awesome!
