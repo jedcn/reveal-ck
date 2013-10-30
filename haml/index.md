@@ -16,7 +16,18 @@ As far as reveal.js conventions go, the best thing to do is look
 through Hakim's official [reveal.js slides][reveal.js] and do 'View
 Source' in your browser whenever you see something that you like.
 
-Here are some core ideas to get you going.
+Here are some core ideas to get you building individual slides:
+
+* Sections represent slides
+* Titles and subtitles
+* Speaker Notes
+* Vertical Slides
+* Revealing Content
+* Displaying Code
+* Referencing Images
+
+If you'd like to change the theme or transition styles (for all of
+your slides), see the [config information][config].
 
 ## Sections represent slides
 
@@ -153,7 +164,7 @@ you could reference it as follows in your slides:
   %img{ src: 'images/cat.png' }
 {% endhighlight %}
 
-
+[config]:         ../config
 [haml]:           http://haml.info/
 [haml-reference]: http://haml.info/docs/yardoc/file.REFERENCE.html
 [reveal.js]:      http://lab.hakim.se/reveal-js/#/
