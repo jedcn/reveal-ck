@@ -12,6 +12,11 @@ If you're looking to become more comfortable with haml, here's
 [the main haml][haml] site and the official
 [haml reference][haml-reference].
 
+When working with haml, it's most straight forward to create a file
+named `slides.haml` into which you put your Haml content. This file
+will automatically be taken into account when you run `reveal-ck
+generate` to generate slides.
+
 As far as reveal.js conventions go, the best thing to do is look
 through Hakim's official [reveal.js slides][reveal.js] and do 'View
 Source' in your browser whenever you see something that you like.
