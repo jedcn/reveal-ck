@@ -24,7 +24,7 @@ Source' in your browser whenever you see something that you like.
 Here are some core ideas to get you building individual slides:
 
 * Sections represent slides
-* Titles and subtitles
+* Titles and Subtitles
 * Speaker Notes
 * Vertical Slides
 * Revealing Content
@@ -47,7 +47,7 @@ Here are three slides:
   3
 {% endhighlight %}
 
-## Titles and subtitles
+## Titles and Subtitles
 
 `<h1>`/`<h3>` serve as good title/subtitle combinations.
 
