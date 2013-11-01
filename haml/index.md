@@ -8,11 +8,11 @@ title: Slides with Haml
 Making slides in Haml works best when you have a decent understanding
 of both Haml and some of the conventions that reveal.js follows.
 
-If you're looking to become more comfortable with haml, here's
+If you're looking to become more comfortable with Haml, here's
 [the main haml][haml] site and the official
 [haml reference][haml-reference].
 
-When working with haml, it's most straight forward to create a file
+When working with Haml, it's most straight forward to create a file
 named `slides.haml` into which you put your Haml content. This file
 will automatically be taken into account when you run `reveal-ck
 generate` to generate slides.
