@@ -9,11 +9,15 @@ Creating a presentation, traditionally, means using a tool like
 Powerpoint or Keynote. You'd probably manually create backups. It
 would probably be hard to tell exactly what changed from day-to-day.
 
+## There's no context switch
+
 If you're using something like reveal-ck, there's no new tool, no
-context switch. Continue using whatever editor you feel most
-comfortable with. Track your progress with git, and you'll get
-meaningful differences over time for free. Keep images in an `images/`
-directory and code samples in a `code/` directory.
+context switch.
+
+Continue using whatever editor you feel most comfortable with. Track
+your progress with git, and you'll get meaningful differences over
+time for free. Keep images in an `images/` directory and code samples
+in a `code/` directory.
 
 Further, when you generate the end result, it is just static
 html. It's easily [hosted] and will be accessible in any modern
