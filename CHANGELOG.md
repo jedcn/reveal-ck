@@ -1,6 +1,14 @@
 ### Development
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.7...next-release)
 
+#### Less Restrictive Depdencies
+
+Previously, most dependency requirements were written in such a way
+that we wouldn't work with new minor releases.
+
+Now they are written so that we accept anything that's backwards
+compatible.
+
 #### No more TOML. There is only YAML.
 
 The central configuration file is now `config.yml` instead of
