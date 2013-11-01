@@ -1,5 +1,12 @@
 ### Development
-[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.6...master)
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.7...next-release)
+
+#### Update to embedded reveal.js
+
+It is now: 9da292.
+
+### 0.1.7 / 2013-09-29
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.6...v0.1.7)
 
 #### Metadata in DSL + config.toml
 
