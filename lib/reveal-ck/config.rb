@@ -1,4 +1,4 @@
-require 'toml'
+require 'yaml'
 
 module RevealCK
   #
@@ -48,7 +48,7 @@ module RevealCK
 
     def merge_config(args)
       file = args[:file] || raise(':file is required')
-      config = TOML.load_file file
+      config = YAML.load_file file
 
       if config['author']
         @author = config['author'] unless @author
@@ -58,15 +58,12 @@ module RevealCK
         @title = config['title'] unless @title
       end
 
-      if config['presentation']
-        presentation = config['presentation']
-        if presentation['theme']
-          @theme = presentation['theme'] unless @theme
-        end
+      if config['theme']
+        @theme = config['theme'] unless @theme
+      end
 
-        if presentation['transition']
-          @transition = presentation['transition'] unless @transition
-        end
+      if config['transition']
+        @transition = config['transition'] unless @transition
       end
 
     end

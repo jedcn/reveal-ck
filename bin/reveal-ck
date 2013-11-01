@@ -28,8 +28,8 @@ command :generate do |c|
 
     presentation = RevealCK::Presentation.load slides_file
 
-    if File.exists? 'config.toml'
-      presentation.merge_config file: 'config.toml'
+    if File.exists? 'config.yml'
+      presentation.merge_config file: 'config.yml'
     end
 
     builder = RevealCK::Builders::PackagedSlides.new({

@@ -4,14 +4,13 @@ Feature: Generate slides
   As a user of reveal-ck
   I want to use the "reveal-ck generate" command
 
-  Scenario: Generating slides with a template and config.toml
-    Given a file named "config.toml" with:
+  Scenario: Generating slides with a template and config.yml
+    Given a file named "config.yml" with:
     """
-    title      = "Awesome Title"
-    author     = "Awesome Author"
-    [presentation]
-    theme      = "night"
-    transition = "page"
+    title:      "Awesome Title"
+    author:     "Awesome Author"
+    theme:      "night"
+    transition: "page"
     """
     Given a file named "slides.haml" with:
     """
@@ -41,14 +40,13 @@ Feature: Generate slides
     transition: Reveal.getQueryHash().transition || 'page'
     """
 
-  Scenario: Generating slides with slides.rb and config.toml
-    Given a file named "config.toml" with:
+  Scenario: Generating slides with slides.rb and config.yml
+    Given a file named "config.yml" with:
     """
-    title      = "Awesome Title"
-    author     = "Awesome Author"
-    [presentation]
-    theme      = "night"
-    transition = "page"
+    title:      "Awesome Title"
+    author:     "Awesome Author"
+    theme:      "night"
+    transition: "page"
     """
     Given a file named "slides.rb" with:
     """

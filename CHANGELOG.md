@@ -1,6 +1,11 @@
 ### Development
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.7...next-release)
 
+#### No more TOML. There is only YAML.
+
+The central configuration file is now `config.yml` instead of
+`config.toml`.
+
 #### Update to embedded reveal.js
 
 It is now: 9da292.

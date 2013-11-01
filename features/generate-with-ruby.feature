@@ -50,7 +50,7 @@ Feature: Generate slides
     transition: Reveal.getQueryHash().transition || 'default'
     """
 
-  Scenario: Generating slides with slides.rb and a config.toml
+  Scenario: Generating slides with slides.rb and a config.yml
     Given a file named "slides.rb" with:
     """
     presentation do
@@ -59,10 +59,9 @@ Feature: Generate slides
       slide 'text', content: 'Slides with Ruby'
     end
     """
-    Given a file named "config.toml" with:
+    Given a file named "config.yml" with:
     """
-    [presentation]
-    theme      = "beige"
+    theme: "beige"
     """
     When I run `reveal-ck generate`
     Then the exit status should be 0
