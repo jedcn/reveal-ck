@@ -18,30 +18,30 @@ command :generate do |c|
   c.desc 'The file containing your slides'
   c.flag [:f, :file], default_value: default_file
 
-  c.action do |global_options,options,args|
+  c.action do |global_options, options, args|
     slides_file = options[:file]
 
     require 'rake' # for FileList
-    image_files = FileList["images/**/*"]
+    image_files = FileList['images/**/*']
 
     output_dir = 'slides'
 
     presentation = RevealCK::Presentation.load slides_file
 
-    if File.exists? 'config.yml'
-      presentation.merge_config file: 'config.yml'
-    end
+    presentation
+      .merge_config({ file: 'config.yml' }) if File.exists?('config.yml')
 
-    builder = RevealCK::Builders::PackagedSlides.new({
-                                                       image_files: image_files,
-                                                       output_dir: output_dir,
-                                                       presentation: presentation
-                                                     })
+    builder =
+      RevealCK::Builders::PackagedSlides.new({
+                                               image_files: image_files,
+                                               output_dir: output_dir,
+                                               presentation: presentation
+                                             })
     builder.build!
   end
 end
 
-pre do |global,command,options,args|
+pre do |global, command, options, args|
   # Pre logic here
   # Return true to proceed; false to abort and not call the
   # chosen command
@@ -50,7 +50,7 @@ pre do |global,command,options,args|
   true
 end
 
-post do |global,command,options,args|
+post do |global, command, options, args|
   # Post logic here
   # Use skips_post before a command to skip this
   # block on that command only
