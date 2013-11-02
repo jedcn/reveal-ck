@@ -49,36 +49,43 @@ module RevealCK
         end
       end
 
-      def replace_title(file, title)
-        old = 'reveal.js - The HTML Presentation Framework'
-        new = title
-        add_task 'Replacing the <title>' do
+
+      def replace_task(args)
+        action = args[:action] || raise(':action is required')
+        old = args[:old] || raise(':old is required')
+        new = args[:new] || raise(':new is required')
+        file = args[:file] || raise(':file is required')
+        add_task action do
           Changers::StringReplacer.replace! file, old: old, new: new
         end
       end
 
+      def replace_title(file, title)
+        replace_task action: 'Replacing the <title>',
+                     file: file,
+                     old: 'reveal.js - The HTML Presentation Framework',
+                     new: title
+       end
+
       def replace_author(file, author)
-        old = 'name="author" content="Hakim El Hattab"'
-        new = 'name="author" content="' + author + '"'
-        add_task "Replacing the <meta name='author'>" do
-          Changers::StringReplacer.replace! file, old: old, new: new
-        end
+        replace_task action: "Replacing the <meta name='author'>",
+                     file: file,
+                     old: 'name="author" content="Hakim El Hattab"',
+                     new: 'name="author" content="' + author + '"'
       end
 
       def replace_theme(file, theme)
-        old = 'href="css/theme/default.css" id="theme"'
-        new = 'href="css/theme/' + theme + '.css" id="theme"'
-        add_task 'Replacing the core theme' do
-          Changers::StringReplacer.replace! file, old: old, new: new
-        end
+        replace_task action: 'Replacing the core theme',
+                     file: file,
+                     old: 'href="css/theme/default.css" id="theme"',
+                     new: 'href="css/theme/' + theme + '.css" id="theme"'
       end
 
       def replace_transition(file, transition)
-        old = "Reveal.getQueryHash().transition || 'default'"
-        new = "Reveal.getQueryHash().transition || '#{transition}'"
-        add_task 'Replacing the core transition' do
-          Changers::StringReplacer.replace! file, old: old, new: new
-        end
+        replace_task action: 'Replacing the core transition',
+                     file: file,
+                     old: "Reveal.getQueryHash().transition || 'default'",
+                     new: "Reveal.getQueryHash().transition || '#{transition}'"
       end
     end
   end
