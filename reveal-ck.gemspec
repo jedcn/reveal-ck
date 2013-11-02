@@ -14,22 +14,21 @@ Gem::Specification.new do |s|
 
   #
   # Runtime Dependencies
-  s.add_dependency 'haml',      '~> 4.0.3'
+  s.add_dependency 'haml',      '~> 4.0'
   s.add_dependency 'slim',      '~> 2.0'
   s.add_dependency 'tilt',      '~> 1.4'
-  s.add_dependency 'redcarpet', '~> 2.3.0'
-  s.add_dependency 'gli',       '~> 2.7.0'
-  s.add_dependency 'toml',      '~> 0.0.3'
-  s.add_dependency 'rake',      '~> 10.1.0'
-  s.add_dependency 'docile',    '~> 1.1.0'
+  s.add_dependency 'redcarpet', '~> 2.3'
+  s.add_dependency 'gli',       '~> 2.7'
+  s.add_dependency 'rake',      '~> 10.1'
+  s.add_dependency 'docile',    '~> 1.1'
 
   #
   # Development Dependencies
   s.add_development_dependency 'cane'
   s.add_development_dependency 'simplecov'
-  s.add_development_dependency 'rspec',    '~> 2.14.0'
-  s.add_development_dependency 'cucumber', '~> 1.3.3'
-  s.add_development_dependency 'aruba',    '~> 0.5.3'
+  s.add_development_dependency 'rspec',    '~> 2.14'
+  s.add_development_dependency 'cucumber', '~> 1.3'
+  s.add_development_dependency 'aruba',    '~> 0.5'
 
   files = {
     core: ["LICENSE", "Rakefile", "Gemfile"],
@@ -44,7 +43,7 @@ Gem::Specification.new do |s|
   s.executables   = ["reveal-ck"]
   s.require_paths = ["lib"]
 
-  s.date = "2013-09-29"
+  s.date = "2013-11-02"
   s.extra_rdoc_files = [
     "LICENSE",
     "README.md"

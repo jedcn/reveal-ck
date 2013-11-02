@@ -59,11 +59,11 @@ module RevealCK
     describe '#merge_config' do
 
       let :full_config_file do
-        spec_data 'config', 'full_config.toml'
+        spec_data 'config', 'full_config.yml'
       end
 
       let :partial_config_file do
-        spec_data 'config', 'partial_config.toml'
+        spec_data 'config', 'partial_config.yml'
       end
 
       it 'writes unset config options stored in a file' do

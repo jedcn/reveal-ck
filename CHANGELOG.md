@@ -1,5 +1,34 @@
-### Development
-[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.6...master)
+### 0.1.8 / 2013-11-02
+
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.7...v0.1.8)
+
+#### image.slim: optional height and width
+
+Previously, I thought height and width were required. If you know
+them, you should add them, but reveal.js just "front-end magic" to
+make things ok. If you don't include them, and your first slide is an
+image, I think you'll experience a jump of content as the image
+resizes to appropriate dimensions.
+
+#### Less Restrictive Dependencies
+
+Previously, most dependency requirements were written in such a way
+that we wouldn't work with new minor releases.
+
+Now they are written so that we accept anything that's backwards
+compatible.
+
+#### No more TOML. There is only YAML.
+
+The central configuration file is now `config.yml` instead of
+`config.toml`.
+
+#### Update to embedded reveal.js
+
+It is now: 9da292.
+
+### 0.1.7 / 2013-09-29
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.6...v0.1.7)
 
 #### Metadata in DSL + config.toml
 

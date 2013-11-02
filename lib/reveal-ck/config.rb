@@ -1,4 +1,4 @@
-require 'toml'
+require 'yaml'
 
 module RevealCK
   #
@@ -7,36 +7,22 @@ module RevealCK
   #
   module Config
 
+    attr_writer :author, :title, :theme, :transition
+
     def author
       @author || DEFAULTS['author']
-    end
-
-    def author=(author)
-      @author = author
     end
 
     def title
       @title || DEFAULTS['title']
     end
 
-    def title=(title)
-      @title = title
-    end
-
     def theme
       @theme || DEFAULTS['theme']
     end
 
-    def theme=(theme)
-      @theme = theme
-    end
-
     def transition
       @transition || DEFAULTS['transition']
-    end
-
-    def transition=(transition)
-      @transition = transition
     end
 
     DEFAULTS = {
@@ -48,27 +34,12 @@ module RevealCK
 
     def merge_config(args)
       file = args[:file] || raise(':file is required')
-      config = TOML.load_file file
+      config = YAML.load_file file
 
-      if config['author']
-        @author = config['author'] unless @author
-      end
-
-      if config['title']
-        @title = config['title'] unless @title
-      end
-
-      if config['presentation']
-        presentation = config['presentation']
-        if presentation['theme']
-          @theme = presentation['theme'] unless @theme
-        end
-
-        if presentation['transition']
-          @transition = presentation['transition'] unless @transition
-        end
-      end
-
+      @author     = @author     || config['author']
+      @title      = @title      || config['title']
+      @theme      = @theme      || config['theme']
+      @transition = @transition || config['transition']
     end
 
   end

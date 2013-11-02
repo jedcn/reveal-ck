@@ -59,5 +59,21 @@ module RevealCK
       end
     end
 
+    describe '.load' do
+      it 'can work with a .rb file' do
+        presentation = Presentation.load slides_rb
+        html = presentation.html
+        expect(html).to start_with '<section>'
+      end
+    end
+
+    describe '.load' do
+      it 'can work with a template file' do
+        presentation = Presentation.load slides_haml
+        html = presentation.html
+        expect(html).to start_with '<section>'
+      end
+    end
+
   end
 end
