@@ -1,5 +1,6 @@
-### Development
-[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.7...next-release)
+### 0.1.8 / 2013-11-02
+
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.7...v0.1.8)
 
 #### image.slim: optional height and width
 
@@ -9,7 +10,7 @@ make things ok. If you don't include them, and your first slide is an
 image, I think you'll experience a jump of content as the image
 resizes to appropriate dimensions.
 
-#### Less Restrictive Depdencies
+#### Less Restrictive Dependencies
 
 Previously, most dependency requirements were written in such a way
 that we wouldn't work with new minor releases.
