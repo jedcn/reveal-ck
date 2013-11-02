@@ -1,6 +1,14 @@
 ### Development
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.7...next-release)
 
+#### image.slim: optional height and width
+
+Previously, I thought height and width were required. If you know
+them, you should add them, but reveal.js just "front-end magic" to
+make things ok. If you don't include them, and your first slide is an
+image, I think you'll experience a jump of content as the image
+resizes to appropriate dimensions.
+
 #### Less Restrictive Depdencies
 
 Previously, most dependency requirements were written in such a way

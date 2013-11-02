@@ -1,14 +1,25 @@
 - headline = headline || nil
 - notes    = notes    || nil
 - link     = link     || nil
-- alt      = alt      || ''
+- width    = width    || nil
+- height   = height   || nil
+- alt      = alt      || nil
+ruby:
+  def image_helper(src, alt, width, height)
+    tag = { :tag => 'img' }
+    tag[:width]  = width  if width
+    tag[:height] = height if height
+    tag[:alt]    = alt    if alt
+    tag[:src]    = src
+    tag
+  end
 section
   - if headline
     h2= headline
   - if link
     a.image href="#{link}" target="_blank"
-      img width="#{width}" height="#{height}" src="#{src}" alt="#{alt}"/
+      *image_helper(src, alt, width, height)
   - else
-    img width="#{width}" height="#{height}" src="#{src}" alt="#{alt}"/
+    *image_helper(src, alt, width, height)
   - if notes
     aside.notes= notes
