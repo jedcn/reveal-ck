@@ -26,7 +26,7 @@ module RevealCK
 
         it 'can be assigned via initializer' do
           Dir.mktmpdir do |dir|
-            paths = [ dir, File.join(dir, 'templates') ]
+            paths = [dir, File.join(dir, 'templates')]
             finder = Finder.new paths: paths
             expect(finder.paths).to include dir
             expect(finder.paths).to include File.join(dir, 'templates')

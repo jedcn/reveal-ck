@@ -1,5 +1,5 @@
 presentation do
   theme 'night'
   slide 'text',
-    content: 'slides.rb'
+        content: 'slides.rb'
 end

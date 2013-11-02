@@ -7,8 +7,8 @@ module RevealCK
 
       let :presentation do
         presentation = Presentation.new
-        presentation.title = "Presentation Title"
-        presentation.author = "Presentation Author"
+        presentation.title = 'Presentation Title'
+        presentation.author = 'Presentation Author'
 
         presentation.add(Slide.new({
                                      template: 'intro',
@@ -31,7 +31,7 @@ module RevealCK
                              })
         packaged_slides.build!
 
-        expect(File.exists? File.join(tmp_dir, "index.html")).to be_true
+        expect(File.exists? File.join(tmp_dir, 'index.html')).to be_true
       end
 
     end
