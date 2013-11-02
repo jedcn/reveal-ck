@@ -7,36 +7,22 @@ module RevealCK
   #
   module Config
 
+    attr_writer :author, :title, :theme, :transition
+
     def author
       @author || DEFAULTS['author']
-    end
-
-    def author=(author)
-      @author = author
     end
 
     def title
       @title || DEFAULTS['title']
     end
 
-    def title=(title)
-      @title = title
-    end
-
     def theme
       @theme || DEFAULTS['theme']
     end
 
-    def theme=(theme)
-      @theme = theme
-    end
-
     def transition
       @transition || DEFAULTS['transition']
-    end
-
-    def transition=(transition)
-      @transition = transition
     end
 
     DEFAULTS = {
@@ -50,22 +36,10 @@ module RevealCK
       file = args[:file] || raise(':file is required')
       config = YAML.load_file file
 
-      if config['author']
-        @author = config['author'] unless @author
-      end
-
-      if config['title']
-        @title = config['title'] unless @title
-      end
-
-      if config['theme']
-        @theme = config['theme'] unless @theme
-      end
-
-      if config['transition']
-        @transition = config['transition'] unless @transition
-      end
-
+      @author     = @author     || config['author']
+      @title      = @title      || config['title']
+      @theme      = @theme      || config['theme']
+      @transition = @transition || config['transition']
     end
 
   end
