@@ -1,3 +1,7 @@
+
+[![Build Status][travis]](https://travis-ci.org/jedcn/reveal-ck)
+[![Code Climate][code-climate]](https://codeclimate.com/github/jedcn/reveal-ck)
+
 # Development
 
 If you want to make changes to reveal-ck, you should first try the
@@ -41,3 +45,6 @@ updated the embedded reveal.js as follows:
   `FileSplicer` is invoked in the `SliderBuilder`. It has hard-coded
   begin/end line numbers for where the default reveal.js slides are
   found. This commit is a good example of such a change: `b29b050`.
+
+[code-climate]: https://codeclimate.com/github/jedcn/reveal-ck.png
+[travis]:       https://travis-ci.org/jedcn/reveal-ck.png
