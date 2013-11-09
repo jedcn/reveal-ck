@@ -6,16 +6,15 @@ title: Configuration
 # Configuration
 
 reveal-ck pays attention to a single, optional configuration file
-named `config.toml`.
+named `config.yml`.
 
 As an example, consider:
 
 ```
-author     = "Jed Northridge"
-title      = "My Presentation!"
-[presentation]
-theme      = "night"
-transition = "page"
+author:     "Jed Northridge"
+title:      "My Presentation!"
+theme:      "night"
+transition: "page"
 ```
 
 ## author
