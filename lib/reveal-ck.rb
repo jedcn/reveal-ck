@@ -6,6 +6,7 @@ require_relative 'reveal-ck/presentation_dsl'
 require_relative 'reveal-ck/templates'
 require_relative 'reveal-ck/changers'
 require_relative 'reveal-ck/builders'
+require_relative 'reveal-ck/slide_markdown'
 
 # RevealCK::LOCATION is the path where reveal-ck is residing on your
 # system as a gem.
