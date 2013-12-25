@@ -32,6 +32,8 @@ command :generate do |c|
     presentation
       .merge_config({ file: 'config.yml' }) if File.exists?('config.yml')
 
+    puts "Generating slides for '#{slides_file}'.."
+
     builder =
       RevealCK::Builders::PackagedSlides.new({
                                                image_files: image_files,

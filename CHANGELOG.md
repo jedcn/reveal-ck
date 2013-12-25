@@ -2,6 +2,13 @@
 
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.8...next-release)
 
+#### reveal-ck generate now prints basic message
+
+reveal-ck generate now prints out a simple message when generate
+slides. This message indicates which "slides file" is being
+processed. Was getting confused with the growing number of file types
+and ability to select a file explicitly.
+
 #### Create Slides with Markdown
 
 You can now create slides with markdown. Previously, you created
