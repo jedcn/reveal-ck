@@ -2,6 +2,14 @@
 
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.8...next-release)
 
+#### reveal-ck serve now starts webserver
+
+Some aspects of reveal.js only function when the reveal.js files are
+retrieved from a webserver. The most important example of this are the
+"Speaker Notes." You can now run `reveal-ck serve` (or `reveal-ck
+server`) to start up a webserver, and then press "s" to see Speaker
+Notes.
+
 #### reveal-ck generate now prints basic message
 
 reveal-ck generate now prints out a simple message when generate

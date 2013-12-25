@@ -44,6 +44,37 @@ command :generate do |c|
   end
 end
 
+desc 'Start webserver so slides are available via http'
+command :serve, :server do |c|
+
+  c.desc 'The directory to serve up'
+  c.flag [:d, :dir], default_value: 'slides'
+
+  c.desc 'The port to serve on'
+  c.flag [:p, :port], default_value: 10000
+
+  c.action do |global_options, options, args|
+    dir = options[:dir]
+    port = options[:port]
+
+    require 'webrick'
+    server = WEBrick::HTTPServer.new :Port => port, :DocumentRoot => dir
+    trap('INT') { server.shutdown }
+
+    puts ""
+    puts ""
+    puts "\tServing up slide content in '#{dir}/'."
+    puts ""
+    puts "\tOpen your browser to 'http://localhost:#{port}'."
+    puts ""
+    puts "\tPress CTRL-C to stop serving slides."
+    puts ""
+    puts ""
+    server.start
+  end
+
+end
+
 pre do |global, command, options, args|
   # Pre logic here
   # Return true to proceed; false to abort and not call the
