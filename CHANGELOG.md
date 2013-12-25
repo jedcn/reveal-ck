@@ -1,3 +1,17 @@
+### 0.2.0 / ???
+
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.8...next-release)
+
+#### Create Slides with Markdown
+
+You can now create slides with markdown. Previously, you created
+slides with haml, slim, or ruby. You'd create a `slides.haml`,
+`slides.slim`, or a `slides.rb` and then run `reveal-ck generate`. You
+can now create a `slides.md` and do the same.
+
+It's the markdown you'd expect with one exception: you separate slides
+with `---`.
+
 ### 0.1.8 / 2013-11-02
 
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.7...v0.1.8)
