@@ -12,10 +12,11 @@ desc 'Generate reveal.js slides'
 command :generate do |c|
 
   # Where is the slides file?
-  default_file = 'slides.md'   if File.exists? 'slides.md'
-  default_file = 'slides.haml' if File.exists? 'slides.haml'
-  default_file = 'slides.slim' if File.exists? 'slides.slim'
-  default_file = 'slides.rb'   if File.exists? 'slides.rb'
+  default_file = 'slides.md'      if File.exists? 'slides.md'
+  default_file = 'slides.textile' if File.exists? 'slides.textile'
+  default_file = 'slides.haml'    if File.exists? 'slides.haml'
+  default_file = 'slides.slim'    if File.exists? 'slides.slim'
+  default_file = 'slides.rb'      if File.exists? 'slides.rb'
   c.desc 'The file containing your slides'
   c.flag [:f, :file], default_value: default_file
 

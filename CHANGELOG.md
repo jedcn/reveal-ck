@@ -2,6 +2,11 @@
 
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.8...next-release)
 
+#### Create Slides with Textile
+
+You can now create slides with textile. Supply a `slides.textile` and
+run `reveal-ck generate`.
+
 #### reveal-ck serve now starts webserver
 
 Some aspects of reveal.js only function when the reveal.js files are
