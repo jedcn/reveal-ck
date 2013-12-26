@@ -2,6 +2,10 @@
 
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.8...next-release)
 
+#### Update to embedded reveal.js
+
+It is now: 8b8cc607.
+
 #### Create Slides with Textile
 
 You can now create slides with textile. Supply a `slides.textile` and
