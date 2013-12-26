@@ -1,6 +1,6 @@
-### 0.2.0 / ???
+### 0.2.0 / 2013-12-26
 
-[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.8...next-release)
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.8...v0.2.0)
 
 #### Update to embedded reveal.js
 
