@@ -1,3 +1,41 @@
+### 0.2.0 / ???
+
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.8...next-release)
+
+#### Update to embedded reveal.js
+
+It is now: 8b8cc607.
+
+#### Create Slides with Textile
+
+You can now create slides with textile. Supply a `slides.textile` and
+run `reveal-ck generate`.
+
+#### reveal-ck serve now starts webserver
+
+Some aspects of reveal.js only function when the reveal.js files are
+retrieved from a webserver. The most important example of this are the
+"Speaker Notes." You can now run `reveal-ck serve` (or `reveal-ck
+server`) to start up a webserver, and then press "s" to see Speaker
+Notes.
+
+#### reveal-ck generate now prints basic message
+
+reveal-ck generate now prints out a simple message when generate
+slides. This message indicates which "slides file" is being
+processed. Was getting confused with the growing number of file types
+and ability to select a file explicitly.
+
+#### Create Slides with Markdown
+
+You can now create slides with markdown. Previously, you created
+slides with haml, slim, or ruby. You'd create a `slides.haml`,
+`slides.slim`, or a `slides.rb` and then run `reveal-ck generate`. You
+can now create a `slides.md` and do the same.
+
+It's the markdown you'd expect with one exception: you separate slides
+with `---`.
+
 ### 0.1.8 / 2013-11-02
 
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.7...v0.1.8)

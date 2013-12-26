@@ -13,7 +13,7 @@ Feature: Generate slides
     """
     When I run `reveal-ck generate`
     Then the exit status should be 0
-    And the output should contain exactly ""
+    And the output should contain exactly "Generating slides for 'slides.rb'..\n"
     And the following files should exist:
     | slides/slides.html  |
     | slides/index.html  |
@@ -65,7 +65,7 @@ Feature: Generate slides
     """
     When I run `reveal-ck generate`
     Then the exit status should be 0
-    And the output should contain exactly ""
+    And the output should contain exactly "Generating slides for 'slides.rb'..\n"
     And the following files should exist:
     | slides/slides.html  |
     | slides/index.html  |

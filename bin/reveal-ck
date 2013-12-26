@@ -12,9 +12,11 @@ desc 'Generate reveal.js slides'
 command :generate do |c|
 
   # Where is the slides file?
-  default_file = 'slides.haml' if File.exists? 'slides.haml'
-  default_file = 'slides.slim' if File.exists? 'slides.slim'
-  default_file = 'slides.rb'   if File.exists? 'slides.rb'
+  default_file = 'slides.md'      if File.exists? 'slides.md'
+  default_file = 'slides.textile' if File.exists? 'slides.textile'
+  default_file = 'slides.haml'    if File.exists? 'slides.haml'
+  default_file = 'slides.slim'    if File.exists? 'slides.slim'
+  default_file = 'slides.rb'      if File.exists? 'slides.rb'
   c.desc 'The file containing your slides'
   c.flag [:f, :file], default_value: default_file
 
@@ -31,6 +33,8 @@ command :generate do |c|
     presentation
       .merge_config({ file: 'config.yml' }) if File.exists?('config.yml')
 
+    puts "Generating slides for '#{slides_file}'.."
+
     builder =
       RevealCK::Builders::PackagedSlides.new({
                                                image_files: image_files,
@@ -39,6 +43,37 @@ command :generate do |c|
                                              })
     builder.build!
   end
+end
+
+desc 'Start webserver so slides are available via http'
+command :serve, :server do |c|
+
+  c.desc 'The directory to serve up'
+  c.flag [:d, :dir], default_value: 'slides'
+
+  c.desc 'The port to serve on'
+  c.flag [:p, :port], default_value: 10000
+
+  c.action do |global_options, options, args|
+    dir = options[:dir]
+    port = options[:port]
+
+    require 'webrick'
+    server = WEBrick::HTTPServer.new :Port => port, :DocumentRoot => dir
+    trap('INT') { server.shutdown }
+
+    puts ""
+    puts ""
+    puts "\tServing up slide content in '#{dir}/'."
+    puts ""
+    puts "\tOpen your browser to 'http://localhost:#{port}'."
+    puts ""
+    puts "\tPress CTRL-C to stop serving slides."
+    puts ""
+    puts ""
+    server.start
+  end
+
 end
 
 pre do |global, command, options, args|

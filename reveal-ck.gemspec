@@ -16,8 +16,9 @@ Gem::Specification.new do |s|
   # Runtime Dependencies
   s.add_dependency 'haml',      '~> 4.0'
   s.add_dependency 'slim',      '~> 2.0'
-  s.add_dependency 'tilt',      '~> 1.4'
+  s.add_dependency 'tilt',      '~> 2.0'
   s.add_dependency 'redcarpet', '~> 2.3'
+  s.add_dependency 'RedCloth',  '~> 4.2'
   s.add_dependency 'gli',       '~> 2.7'
   s.add_dependency 'rake',      '~> 10.1'
   s.add_dependency 'docile',    '~> 1.1'
