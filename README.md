@@ -23,4 +23,10 @@ You write in Markdown, Textile, Haml, Slim or Ruby itself.
   <img alt="Video Thumbnail" width="306" height="178" src='https://raw2.github.com/jedcn/reveal-ck/gh-pages/images/reveal-ck-getting-started-thumbnail.png' />
 </a>
 
+*Stop! Haml Time!* (14 mins):
+
+<a href='https://vimeo.com/jedcn/reveal-ck-stop-haml-time'>
+  <img alt="Video Thumbnail" width="306" height="178" src='https://raw2.github.com/jedcn/reveal-ck/gh-pages/images/reveal-ck-stop-haml-time-thumbnail.png' />
+</a>
+
 [reveal.js]:    http://lab.hakim.se/reveal-js
