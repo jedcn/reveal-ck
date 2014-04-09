@@ -1,7 +1,14 @@
 require 'aruba/cucumber'
 
-ENV['PATH'] = "#{File.expand_path(File.dirname(__FILE__) + '/../../bin')}#{File::PATH_SEPARATOR}#{ENV['PATH']}"
-LIB_DIR = File.join(File.expand_path(File.dirname(__FILE__)),'..','..','lib')
+#
+# Add bin/ to our PATH
+BIN_DIR = File.expand_path(File.dirname(__FILE__) + '/../../bin')
+ENV['PATH'] = "#{BIN_DIR}#{File::PATH_SEPARATOR}#{ENV['PATH']}"
+
+#
+#  ???
+THIS_DIR = File.dirname(__FILE__)
+LIB_DIR = File.join(File.expand_path(THIS_DIR), '..', '..', 'lib')
 
 Before do
   # Using "announce" causes massive warnings on 1.9.2
