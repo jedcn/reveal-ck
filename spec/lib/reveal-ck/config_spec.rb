@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 module RevealCK
-
   describe Config do
 
     class Example

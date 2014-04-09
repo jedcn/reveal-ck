@@ -1,8 +1,8 @@
 presentation do
 
-  title      'Presentation Title'
-  author     'Presentation Author'
-  theme      'night'
+  title 'Presentation Title'
+  author 'Presentation Author'
+  theme 'night'
   transition 'page'
 
   slide 'text',

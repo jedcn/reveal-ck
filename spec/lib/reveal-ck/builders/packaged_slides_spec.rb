@@ -10,13 +10,13 @@ module RevealCK
         presentation.title = 'Presentation Title'
         presentation.author = 'Presentation Author'
 
-        presentation.add(Slide.new({
-                                     template: 'intro',
-                                     title:    presentation.title,
-                                     author:   presentation.author,
-                                     site:     'http://site.com',
-                                     twitter:  'twitter'
-                                   }))
+        presentation.add(Slide.new(
+                                   template: 'intro',
+                                   title:    presentation.title,
+                                   author:   presentation.author,
+                                   site:     'http://site.com',
+                                   twitter:  'twitter'
+                                  ))
         presentation
       end
 
@@ -25,13 +25,13 @@ module RevealCK
         tmp_dir = Dir.mktmpdir
 
         packaged_slides =
-          PackagedSlides.new({
-                               presentation: presentation,
-                               output_dir: tmp_dir,
-                             })
+          PackagedSlides.new(
+                             presentation: presentation,
+                             output_dir: tmp_dir
+                            )
         packaged_slides.build!
 
-        expect(File.exists? File.join(tmp_dir, 'index.html')).to be_true
+        expect(File.exist? File.join(tmp_dir, 'index.html')).to be_true
       end
 
     end
