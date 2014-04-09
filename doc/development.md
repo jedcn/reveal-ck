@@ -1,3 +1,22 @@
+# Upcoming Changes
+
+The following changes are slated for the next release:
+
+* Stop "slicing" and "splicing" and instead use a "filter" approach to
+  modifying the index.html from reveal.js. Will try
+  gch/html-pipeline. This should be more extensible / configurable.
+* Will stop hard-coding rules for "building a presentation" and
+  instead try to make this configurable via rake tasks.
+* Upgrade the embedded reveal.js
+* Upgraded Tooling. No More Cane. Start using
+  Rubocop. RelishApp. Documentation, likely Yard.
+
+This should make it so that you can:
+
+* put emoji in your slides, and
+* put font-awesome in your slides,
+* without relying on reveal-ck to support these.
+
 # Development
 
 If you want to make changes to reveal-ck, you should first try the
