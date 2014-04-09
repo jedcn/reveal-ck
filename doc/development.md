@@ -1,7 +1,3 @@
-
-[![Build Status][travis]](https://travis-ci.org/jedcn/reveal-ck)
-[![Code Climate][code-climate]](https://codeclimate.com/github/jedcn/reveal-ck)
-
 # Development
 
 If you want to make changes to reveal-ck, you should first try the
