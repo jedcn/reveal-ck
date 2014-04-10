@@ -1,2 +1,6 @@
 CyclomaticComplexity:
   Max: 4
+
+FileName:
+  Exclude:
+    - bin/reveal-ck
