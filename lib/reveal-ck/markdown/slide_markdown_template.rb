@@ -7,16 +7,17 @@ module RevealCK
     # https://github.com/rtomayko/tilt.
     #
     class SlideMarkdownTemplate < ::Tilt::Template
-
       # Must be implemented by all subclasses of Tilt::Template
       def prepare
       end
 
       def evaluate(scope, locals, &block)
-        markdown = Redcarpet::Markdown.new(SlideMarkdown, :fenced_code_blocks => true)
+        markdown = Redcarpet::Markdown.new(
+                                           SlideMarkdown,
+                                           fenced_code_blocks: true
+                                          )
         @output = markdown.render(data)
       end
-
     end
   end
 end
