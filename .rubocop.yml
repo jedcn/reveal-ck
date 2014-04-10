@@ -4,3 +4,4 @@ CyclomaticComplexity:
 FileName:
   Exclude:
     - bin/reveal-ck
+    - lib/reveal-ck.rb
