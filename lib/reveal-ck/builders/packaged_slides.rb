@@ -7,12 +7,11 @@ module RevealCK
     # various files that makeup a reveal.js presentation.
     #
     class PackagedSlides < Builder
-
       attr_reader :image_files, :tasks
 
       def initialize(args)
         @presentation =
-          args[:presentation] || raise(':presentation is required')
+          args[:presentation] || fail(':presentation is required')
         @image_files = args[:image_files]
         @output_dir = args[:output_dir]
       end
@@ -71,11 +70,11 @@ module RevealCK
       def create_index_html(slides_html, index_html, config)
         add_task 'Creating slides/index.html' do
           slide_builder =
-            IndexHtml.new({
-                            user_slides: slides_html,
-                            reveal_slides: index_html,
-                            config: config
-                          })
+            IndexHtml.new(
+                          user_slides: slides_html,
+                          reveal_slides: index_html,
+                          config: config
+                         )
           slide_builder.build!
         end
       end

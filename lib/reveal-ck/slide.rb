@@ -4,9 +4,8 @@ module RevealCK
   # presentation. Presently, this output is based upon a template.
   #
   class Slide
-
     def initialize(args)
-      template = args[:template] || raise(':template is required')
+      template = args[:template] || fail(':template is required')
       file = Templates::Finder.new.find template
       @template = Templates::Processor.open file
       @variables = args
@@ -15,6 +14,5 @@ module RevealCK
     def html
       @template.output(@variables)
     end
-
   end
 end

@@ -6,7 +6,6 @@ module RevealCK
     # proc on demand via go!
     #
     class BuildTask
-
       def initialize(description, action)
         @description = description
         @action = action
@@ -16,6 +15,5 @@ module RevealCK
         @action.call
       end
     end
-
   end
 end

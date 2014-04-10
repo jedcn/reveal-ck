@@ -8,9 +8,8 @@ module RevealCK
     # register_tasks.
     #
     class Builder
-
       def register_tasks
-        raise 'Subclasses must implement register_tasks'
+        fail 'Subclasses must implement register_tasks'
       end
 
       def add_task(description, &action)
@@ -21,7 +20,6 @@ module RevealCK
         register_tasks unless @tasks
         @tasks.each { |task| task.go }
       end
-
     end
   end
 end

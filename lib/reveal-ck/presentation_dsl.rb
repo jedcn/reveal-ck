@@ -4,7 +4,6 @@ module RevealCK
   # presentation. It also knows how to load file containing the DSL.
   #
   class PresentationDSL
-
     attr_reader :author, :title, :theme, :transition
 
     def initialize
@@ -57,6 +56,5 @@ module RevealCK
       contents = File.open(file).read
       builder.instance_eval(contents)
     end
-
   end
 end
