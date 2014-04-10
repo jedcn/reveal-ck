@@ -10,7 +10,6 @@ module RevealCK
     # it.
     #
     class Processor
-
       require 'tilt'
 
       def initialize(file)
@@ -25,8 +24,6 @@ module RevealCK
       def self.open(file)
         Processor.new file
       end
-
     end
-
   end
 end
