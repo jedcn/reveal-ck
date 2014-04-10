@@ -6,7 +6,6 @@ module RevealCK
   # RevealCK Presentation: title, author, theme, and transition.
   #
   module Config
-
     attr_writer :author, :title, :theme, :transition
 
     def author
@@ -33,15 +32,13 @@ module RevealCK
     }
 
     def merge_config(args)
-      file = args[:file] || raise(':file is required')
+      file = args[:file] || fail(':file is required')
       config = YAML.load_file file
 
-      @author     = @author     || config['author']
-      @title      = @title      || config['title']
-      @theme      = @theme      || config['theme']
-      @transition = @transition || config['transition']
+      @author     ||= config['author']
+      @title      ||= config['title']
+      @theme      ||= config['theme']
+      @transition ||= config['transition']
     end
-
   end
-
 end
