@@ -4,7 +4,6 @@ module RevealCK
     # Public: A Splicer knows how to insert a list of lines into a file.
     #
     class Splicer
-
       def initialize(lines)
         @lines = lines
       end
@@ -26,12 +25,9 @@ module RevealCK
         File.open(insert_into_file, 'w') { |file| file << spliced_lines.join }
       end
 
-      private
-
       def self.readlines(file)
         File.open(file).readlines
       end
-
     end
   end
 end

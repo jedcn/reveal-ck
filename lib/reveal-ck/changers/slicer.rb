@@ -4,7 +4,6 @@ module RevealCK
     # Public: A Slicer knows how to remove a section of a file.
     #
     class Slicer
-
       def self.remove!(slice_file, range)
         lines = File.open(slice_file).readlines
         slicer = Slicer.new lines
@@ -17,9 +16,8 @@ module RevealCK
       end
 
       def remove(range)
-        @lines.select.with_index { |line, index| ! range.cover? index }
+        @lines.select.with_index { |line, index| !range.cover?(index) }
       end
-
     end
   end
 end
