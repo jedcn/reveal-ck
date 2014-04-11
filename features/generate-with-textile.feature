@@ -1,6 +1,16 @@
-Feature: Generate slides
+Feature: Generating slides with textile
 
-  "reveal-ck generate" can create slides from textile
+  reveal-ck can create a presentation using [textile][redcloth].
+
+  You should create a file named `slides.textile` where each slide is
+  contained with a `<section>`. Then run `reveal-ck generate`.
+
+  Your slides will be available at `slides/index.html`.
+
+  If you'd like to see the intermediate file where your `.textile` is
+  transformed into `.html` you can visit `slides/slides.html`
+
+  [redcloth]: http://redcloth.org/
 
   Scenario: Generating basic slides using textile
     Given a file named "slides.textile" with:

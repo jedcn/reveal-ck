@@ -1,9 +1,22 @@
-Feature: Generate slides
+Feature: Inserting files into slides with contents_of
 
-  In order to easily generate reveal.js presentations
-  As a user of reveal-ck
-  I want to use the "reveal-ck generate" command and I want to be able
-  to insert text content into my slides
+  reveal-ck allows you to insert the contents of a file into your
+  slides.
+
+  This can be helpful when you'd like to insert a code snippet into
+  your slides and you'd like to keep the code snippet in a distinct
+  file.
+
+  reveal-ck makes a helper function named `contents_of` available for
+  this purpose. This function expects a single argument that names the
+  location of the file to be included.
+
+  The file that's included should be named relative to the slides
+  file. The examples below always place the file to be included in the
+  `code/` directory, but there's nothing special about that directory.
+
+  This content will be inlined into your presentation at
+  `slides/index.html`.
 
   Scenario: Inserting text content into haml slides from another file
     Given a file named "code/function.rb" with:
