@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
   #
   # Development Dependencies
   s.add_development_dependency 'rubocop', '~> 0.2'
+  s.add_development_dependency 'relish', '~> 0.7'
   s.add_development_dependency 'simplecov'
   s.add_development_dependency 'rspec',    '~> 2.14'
   s.add_development_dependency 'cucumber', '~> 1.3'
