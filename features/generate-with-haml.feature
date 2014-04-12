@@ -1,8 +1,16 @@
-Feature: Generate slides
+Feature: Slides with haml
 
-  In order to easily generate reveal.js presentations
-  As a user of reveal-ck
-  I want to use the "reveal-ck generate" command
+  reveal-ck can create a presentation using [haml][haml-info].
+
+  You should create a file named `slides.haml` where each slide is
+  contained with a `%section`. Then run `reveal-ck generate`.
+
+  Your slides will be available at `slides/index.html`.
+
+  If you'd like to see the intermediate file where your `slides.haml`
+  is transformed into `.html` you can visit `slides/slides.html`
+
+  [haml-info]: http://haml.info/
 
   Scenario: Generating basic slides with slides.haml
     Given a file named "slides.haml" with:

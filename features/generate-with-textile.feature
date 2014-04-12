@@ -1,4 +1,4 @@
-Feature: Generating slides with textile
+Feature: Slides with textile
 
   reveal-ck can create a presentation using [textile][redcloth].
 
@@ -7,8 +7,9 @@ Feature: Generating slides with textile
 
   Your slides will be available at `slides/index.html`.
 
-  If you'd like to see the intermediate file where your `.textile` is
-  transformed into `.html` you can visit `slides/slides.html`
+  If you'd like to see the intermediate file where your
+  `slides.textile` is transformed into `.html` you can visit
+  `slides/slides.html`
 
   [redcloth]: http://redcloth.org/
 

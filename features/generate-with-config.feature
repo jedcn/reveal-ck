@@ -1,8 +1,17 @@
-Feature: Generate slides
+Feature: The capabilities of config.yml
 
-  In order to easily generate reveal.js presentations
-  As a user of reveal-ck
-  I want to use the "reveal-ck generate" command
+  When you're creating a presentation you mainly focus your efforts on
+  your 'slides file'. This contains your content.
+
+  However, `config.yml` is another file that plays an important role:
+  it lets you supply general configuration. You can call out:
+
+  * The theme of your presentation
+  * The transitions used in your presentation
+  * The title of your presentation
+  * The author of your presentation
+
+  It is taken into account when you run a `reveal-ck generate`.
 
   Scenario: Generating slides with a template and config.yml
     Given a file named "config.yml" with:

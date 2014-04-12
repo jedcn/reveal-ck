@@ -1,4 +1,4 @@
-Feature: Inserting files into slides with contents_of
+Feature: contents_of: insert files into slides
 
   reveal-ck allows you to insert the contents of a file into your
   slides.

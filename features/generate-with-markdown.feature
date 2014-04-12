@@ -1,9 +1,17 @@
-Feature: Generate slides
+Feature: Slides with markdown
 
-  "reveal-ck generate" can create slides from "Slide Markdown." Slide
-  Markdown is just like markdown with one important exception: any
-  markdown that creates a Horizontal Rule instead marks the boundary
-  between two slides.
+  reveal-ck can create a presentation using [markdown][redcarpet].
+
+  You should create a file named `slides.md` where each slide is
+  separated by '---'. Then run `reveal-ck generate`.
+
+  The '---' is used to separate slides rather than represent a
+  `<hr/>`, and so it's not exactly markdown, but it's close.
+
+  If you'd like to see the intermediate file where your `slides.md` is
+  transformed into `.html` you can visit `slides/slides.html`
+
+  [redcarpet]: https://github.com/vmg/redcarpet
 
   Scenario: Generating basic slides with slides.md
     Given a file named "slides.md" with:
