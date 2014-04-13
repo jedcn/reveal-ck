@@ -1,8 +1,23 @@
-Feature: Generate slides
+Feature: Slides with ruby
 
-  In order to easily generate reveal.js presentations
-  As a user of reveal-ck
-  I want to use the "reveal-ck generate" command against the ruby dsl
+  reveal-ck can create a presentation using ruby.
+
+  You should create a file named `slides.rb`. The contents of this
+  file must match up with a custom presentation DSL used by reveal-ck.
+
+  This DSL follows a builder pattern, where the outmost element is
+  `presentation` and the inner elements are:
+
+  * author
+  * theme
+  * transition
+  * title
+  * slide
+
+  Your slides will be available at `slides/index.html`.
+
+  If you'd like to see the intermediate file where your `slides.rb` is
+  transformed into `.html` you can visit `slides/slides.html`
 
   Scenario: Generating slides with slides.rb
     Given a file named "slides.rb" with:

@@ -4,7 +4,6 @@ module RevealCK
   # #html. Access metadata via theme, title, author, transition.
   #
   class Presentation
-
     include Config
 
     attr_accessor :html
@@ -35,6 +34,5 @@ module RevealCK
         Presentation.from_template path
       end
     end
-
   end
 end

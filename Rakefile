@@ -14,4 +14,4 @@ end
 
 require 'rake'
 require 'rake/clean'
-task :default => [ :spec, :cucumber, :quality ]
+task :default => [:spec, :cucumber]

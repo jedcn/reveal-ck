@@ -5,7 +5,6 @@ module RevealCK
     # core slides) within a reveal.js presentation.
     #
     class IndexHtml < Builder
-
       attr_reader :user_slides, :reveal_slides
 
       attr_reader :tasks
@@ -21,7 +20,6 @@ module RevealCK
       private
 
       def register_tasks
-
         @tasks = []
 
         remove_default_content reveal_slides
@@ -49,12 +47,11 @@ module RevealCK
         end
       end
 
-
       def replace_task(args)
-        action = args[:action] || raise(':action is required')
-        old = args[:old] || raise(':old is required')
-        new = args[:new] || raise(':new is required')
-        file = args[:file] || raise(':file is required')
+        action = args[:action] || fail(':action is required')
+        old    = args[:old]    || fail(':old is required')
+        new    = args[:new]    || fail(':new is required')
+        file   = args[:file]   || fail(':file is required')
         add_task action do
           Changers::StringReplacer.replace! file, old: old, new: new
         end
@@ -65,7 +62,7 @@ module RevealCK
                      file: file,
                      old: 'reveal.js - The HTML Presentation Framework',
                      new: title
-       end
+      end
 
       def replace_author(file, author)
         replace_task action: "Replacing the <meta name='author'>",

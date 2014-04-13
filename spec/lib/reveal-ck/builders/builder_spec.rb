@@ -2,7 +2,6 @@ require 'spec_helper'
 
 module RevealCK
   module Builders
-
     describe Builder, 'when subclassed' do
 
       it 'requires that subclasses implement #register_tasks' do
@@ -14,7 +13,6 @@ module RevealCK
       it 'invokes each registered task when it receives #build' do
 
         class TestBuilder < Builder
-
           attr_reader :value
 
           def initialize

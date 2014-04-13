@@ -31,9 +31,9 @@ module RevealCK
       describe '#remove' do
 
         it 'returns lines with the range removed' do
-          lines = %w{a b c d}
+          lines = %w(a b c d)
           slicer = Slicer.new lines
-          slicer.remove(1..2).should == %w{a d}
+          slicer.remove(1..2).should == %w(a d)
         end
       end
     end

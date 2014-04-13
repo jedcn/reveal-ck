@@ -34,10 +34,10 @@ module RevealCK
 
       describe '#insert' do
         it 'inserts lines after a match' do
-          original = %w{0 1 2 3}
+          original = %w(0 1 2 3)
           splicer = Splicer.new original
-          result = splicer.insert %w{a b c}, after: '2'
-          result.should == %w{0 1 2 a b c 3}
+          result = splicer.insert %w(a b c), after: '2'
+          result.should == %w(0 1 2 a b c 3)
         end
       end
     end

@@ -7,7 +7,6 @@ module RevealCK
     # find the file you've asked for.
     #
     class Finder
-
       attr_reader :paths
 
       def initialize(args = {})
@@ -27,9 +26,8 @@ module RevealCK
             return match unless File.directory? match
           end
         end
-        raise "Unable to find #{template_name} in #{paths}"
+        fail "Unable to find #{template_name} in #{paths}"
       end
-
     end
   end
 end

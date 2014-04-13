@@ -5,14 +5,12 @@ module RevealCK
     # with another.
     #
     class StringReplacer
-
       def self.replace!(file, args)
         old, new = args[:old], args[:new]
         lines = File.open(file).read
         lines = lines.sub old, new
-        File.open(file, 'w') { |file| file << lines }
+        File.open(file, 'w') { |the_file| the_file << lines }
       end
-
     end
   end
 end

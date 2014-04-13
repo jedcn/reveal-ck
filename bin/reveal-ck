@@ -12,11 +12,11 @@ desc 'Generate reveal.js slides'
 command :generate do |c|
 
   # Where is the slides file?
-  default_file = 'slides.md'      if File.exists? 'slides.md'
-  default_file = 'slides.textile' if File.exists? 'slides.textile'
-  default_file = 'slides.haml'    if File.exists? 'slides.haml'
-  default_file = 'slides.slim'    if File.exists? 'slides.slim'
-  default_file = 'slides.rb'      if File.exists? 'slides.rb'
+  default_file = 'slides.md'      if File.exist? 'slides.md'
+  default_file = 'slides.textile' if File.exist? 'slides.textile'
+  default_file = 'slides.haml'    if File.exist? 'slides.haml'
+  default_file = 'slides.slim'    if File.exist? 'slides.slim'
+  default_file = 'slides.rb'      if File.exist? 'slides.rb'
   c.desc 'The file containing your slides'
   c.flag [:f, :file], default_value: default_file
 
@@ -31,16 +31,16 @@ command :generate do |c|
     presentation = RevealCK::Presentation.load slides_file
 
     presentation
-      .merge_config({ file: 'config.yml' }) if File.exists?('config.yml')
+      .merge_config(file: 'config.yml') if File.exist?('config.yml')
 
     puts "Generating slides for '#{slides_file}'.."
 
     builder =
-      RevealCK::Builders::PackagedSlides.new({
-                                               image_files: image_files,
-                                               output_dir: output_dir,
-                                               presentation: presentation
-                                             })
+      RevealCK::Builders::PackagedSlides.new(
+                                             image_files: image_files,
+                                             output_dir: output_dir,
+                                             presentation: presentation
+                                            )
     builder.build!
   end
 end
@@ -52,25 +52,25 @@ command :serve, :server do |c|
   c.flag [:d, :dir], default_value: 'slides'
 
   c.desc 'The port to serve on'
-  c.flag [:p, :port], default_value: 10000
+  c.flag [:p, :port], default_value: 10_000
 
   c.action do |global_options, options, args|
     dir = options[:dir]
     port = options[:port]
 
     require 'webrick'
-    server = WEBrick::HTTPServer.new :Port => port, :DocumentRoot => dir
+    server = WEBrick::HTTPServer.new Port: port, DocumentRoot: dir
     trap('INT') { server.shutdown }
 
-    puts ""
-    puts ""
+    puts
+    puts
     puts "\tServing up slide content in '#{dir}/'."
-    puts ""
+    puts
     puts "\tOpen your browser to 'http://localhost:#{port}'."
-    puts ""
+    puts
     puts "\tPress CTRL-C to stop serving slides."
-    puts ""
-    puts ""
+    puts
+    puts
     server.start
   end
 
