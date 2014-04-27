@@ -9,88 +9,88 @@ program_desc 'A reveal.js construction kit'
 version RevealCK::VERSION
 
 class RevealCKExecutable
-desc 'Generate reveal.js slides'
-command :generate do |c|
+  desc 'Generate reveal.js slides'
+  command :generate do |c|
 
-  # Where is the slides file?
-  default_file = 'slides.md'      if File.exist? 'slides.md'
-  default_file = 'slides.textile' if File.exist? 'slides.textile'
-  default_file = 'slides.haml'    if File.exist? 'slides.haml'
-  default_file = 'slides.slim'    if File.exist? 'slides.slim'
-  default_file = 'slides.rb'      if File.exist? 'slides.rb'
-  c.desc 'The file containing your slide content'
-  c.flag [:f, :file], default_value: default_file
+    # Where is the slides file?
+    default_file = 'slides.md'      if File.exist? 'slides.md'
+    default_file = 'slides.textile' if File.exist? 'slides.textile'
+    default_file = 'slides.haml'    if File.exist? 'slides.haml'
+    default_file = 'slides.slim'    if File.exist? 'slides.slim'
+    default_file = 'slides.rb'      if File.exist? 'slides.rb'
+    c.desc 'The file containing your slide content'
+    c.flag [:f, :file], default_value: default_file
 
-  c.desc 'The directory to place your generated slides in'
-  c.flag [:d, :dir], default_value: 'slides'
+    c.desc 'The directory to place your generated slides in'
+    c.flag [:d, :dir], default_value: 'slides'
 
-  c.action do |global_options, options, args|
-    slides_file = options[:file]
-    puts "Generating slides for #{slides_file}.."
-    builder_args = {
-      revealjs_dir: File.join(RevealCK::LOCATION, 'reveal.js'),
-      revealck_dir: Dir.pwd,
-      output_dir: options[:dir],
-      slides_file: options[:file]
-    }
-    slides_builder =
-      RevealCK::Builders::SlidesBuilder.new(builder_args)
-    slides_builder.build
-  end
-end
-
-desc 'Start webserver so slides are available via http'
-command :serve, :server do |c|
-
-  c.desc 'The directory to serve up'
-  c.flag [:d, :dir], default_value: 'slides'
-
-  c.desc 'The port to serve on'
-  c.flag [:p, :port], default_value: 10_000
-
-  c.action do |global_options, options, args|
-    dir = options[:dir]
-    port = options[:port]
-
-    require 'webrick'
-    server = WEBrick::HTTPServer.new Port: port, DocumentRoot: dir
-    trap('INT') { server.shutdown }
-
-    puts
-    puts
-    puts "\tServing up slide content in '#{dir}/'."
-    puts
-    puts "\tOpen your browser to 'http://localhost:#{port}'."
-    puts
-    puts "\tPress CTRL-C to stop serving slides."
-    puts
-    puts
-    server.start
+    c.action do |global_options, options, args|
+      slides_file = options[:file]
+      puts "Generating slides for #{slides_file}.."
+      builder_args = {
+        revealjs_dir: File.join(RevealCK::LOCATION, 'reveal.js'),
+        revealck_dir: Dir.pwd,
+        output_dir: options[:dir],
+        slides_file: options[:file]
+      }
+      slides_builder =
+        RevealCK::Builders::SlidesBuilder.new(builder_args)
+      slides_builder.build
+    end
   end
 
-end
+  desc 'Start webserver so slides are available via http'
+  command :serve, :server do |c|
 
-pre do |global, command, options, args|
-  # Pre logic here
-  # Return true to proceed; false to abort and not call the
-  # chosen command
-  # Use skips_pre before a command to skip this block
-  # on that command only
-  true
-end
+    c.desc 'The directory to serve up'
+    c.flag [:d, :dir], default_value: 'slides'
 
-post do |global, command, options, args|
-  # Post logic here
-  # Use skips_post before a command to skip this
-  # block on that command only
-end
+    c.desc 'The port to serve on'
+    c.flag [:p, :port], default_value: 10_000
 
-on_error do |exception|
-  # Error logic here
-  # return false to skip default error handling
-  true
-end
+    c.action do |global_options, options, args|
+      dir = options[:dir]
+      port = options[:port]
 
-exit run(ARGV)
+      require 'webrick'
+      server = WEBrick::HTTPServer.new Port: port, DocumentRoot: dir
+      trap('INT') { server.shutdown }
+
+      puts
+      puts
+      puts "\tServing up slide content in '#{dir}/'."
+      puts
+      puts "\tOpen your browser to 'http://localhost:#{port}'."
+      puts
+      puts "\tPress CTRL-C to stop serving slides."
+      puts
+      puts
+      server.start
+    end
+
+  end
+
+  pre do |global, command, options, args|
+    # Pre logic here
+    # Return true to proceed; false to abort and not call the
+    # chosen command
+    # Use skips_pre before a command to skip this block
+    # on that command only
+    true
+  end
+
+  post do |global, command, options, args|
+    # Post logic here
+    # Use skips_post before a command to skip this
+    # block on that command only
+  end
+
+  on_error do |exception|
+    # Error logic here
+    # return false to skip default error handling
+    true
+  end
+
+  exit run(ARGV)
 
 end
