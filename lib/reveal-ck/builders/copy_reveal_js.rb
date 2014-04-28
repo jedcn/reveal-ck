@@ -18,10 +18,6 @@ module RevealCK
         analyze
       end
 
-      def build
-        application['copy_reveal_js'].invoke
-      end
-
       private
 
       def analyze

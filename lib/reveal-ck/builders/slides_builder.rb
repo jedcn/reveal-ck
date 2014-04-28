@@ -15,10 +15,33 @@ module RevealCK
       end
 
       def build
-        copy_reveal_js = CopyRevealJs.new(revealjs_dir: revealjs_dir,
-                                          output_dir: output_dir,
-                                          application: application)
-        copy_reveal_js.build
+        CopyUserFiles.new(user_files_dir: revealck_dir,
+                          output_dir: output_dir,
+                          application: application)
+
+        CopyRevealJs.new(revealjs_dir: revealjs_dir,
+                         output_dir: output_dir,
+                         application: application)
+
+        application.define_task(Rake::Task,
+                                'create' => ['copy_user_files', 'copy_reveal_js'])
+
+        application['create'].invoke
+        # create_slides_html = CreateSlidesHtml.new(slides_file: slides_file,
+        #                                           output_dir: output_dir
+        #                                           application: application)
+        # create_slides_html.build
+
+        # Given that you've got the slides_file translated into
+        # slides_html, send the slides_html off to CreateIndexHtml so
+        # that it can be built up
+        templates_dir = 'templates' # The location of the templates
+        # for building out the index.html-- head, body, init.js
+        # create_index_html = CreateIndexHtml.new(slides_html: slides_html,
+        #                                         templates_dir: templates_dir
+        #                                         output_dir: output_dir
+        #                                         application: application)
+        # create_index_html.build
       end
     end
   end
