@@ -23,14 +23,16 @@ module RevealCK
                          output_dir: output_dir,
                          application: application)
 
-        application.define_task(Rake::Task,
-                                'create' => ['copy_user_files', 'copy_reveal_js'])
+        CreateSlidesHtml.new(slides_file: slides_file,
+                             output_dir: output_dir,
+                             application: application)
 
+        dependencies = ['copy_user_files',
+                        'copy_reveal_js',
+                        'create_slides_html']
+
+        application.define_task(Rake::Task, 'create' => dependencies)
         application['create'].invoke
-        # create_slides_html = CreateSlidesHtml.new(slides_file: slides_file,
-        #                                           output_dir: output_dir
-        #                                           application: application)
-        # create_slides_html.build
 
         # Given that you've got the slides_file translated into
         # slides_html, send the slides_html off to CreateIndexHtml so
