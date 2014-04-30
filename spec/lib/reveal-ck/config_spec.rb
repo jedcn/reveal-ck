@@ -55,19 +55,26 @@ module RevealCK
 
     end
 
-    describe '#merge_config' do
+    describe '#merge' do
 
-      let :full_config_file do
-        spec_data 'config', 'full_config.yml'
-      end
-
-      let :partial_config_file do
-        spec_data 'config', 'partial_config.yml'
-      end
-
-      it 'writes unset config options stored in a file' do
+      let :full_config do
         example = Example.new
-        example.merge_config file: full_config_file
+        example.title = 'The Never Sea Slides'
+        example.author = 'Captain Hook'
+        example.theme = 'night'
+        example.transition = 'page'
+        example
+      end
+
+      let :partial_config do
+        example = Example.new
+        example.title = 'The Never Sea Slides'
+        example
+      end
+
+      it 'merges unset config options' do
+        example = Example.new
+        example.merge(full_config)
         expect(example.title).to eq 'The Never Sea Slides'
         expect(example.author).to eq 'Captain Hook'
         expect(example.theme).to eq 'night'
@@ -76,7 +83,7 @@ module RevealCK
 
       it 'can grab just a single option' do
         example = Example.new
-        example.merge_config file: partial_config_file
+        example.merge(partial_config)
         expect(example.title).to eq 'The Never Sea Slides'
       end
 
@@ -84,7 +91,7 @@ module RevealCK
         example = Example.new
         example.author = 'Jed Northridge'
         example.transition = 'fade'
-        example.merge_config file: full_config_file
+        example.merge(full_config)
         expect(example.author).to eq 'Jed Northridge'
         expect(example.transition).to eq 'fade'
         expect(example.title).to eq 'The Never Sea Slides'
