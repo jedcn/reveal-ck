@@ -31,6 +31,15 @@ module RevealCK
       'transition' => 'default'
     }
 
+    def from_file(args)
+      file = args[:file] || fail(':file is required')
+      config = YAML.load_file file
+      @author = config['author']
+      @title = config['title']
+      @theme = config['theme']
+      @transition = config['transition']
+    end
+
     def merge(config)
       if config.author && config.author != DEFAULTS['author']
         @author = config.author

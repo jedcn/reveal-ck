@@ -6,14 +6,14 @@ module RevealCK
     class CreateSlidesHtml
       require 'rake'
 
-      attr_reader :slides_file, :output_dir, :config_file
+      attr_reader :slides_file, :output_dir, :config
       attr_reader :application
 
       def initialize(args)
         @slides_file = args[:slides_file] || fail(':slides_file is required')
         @output_dir  = args[:output_dir]  || fail(':output_dir is required')
         @application = args[:application] || fail(':application is required')
-        @config_file = args[:config_file] || fail(':config_file is required')
+        @config = args[:config] || fail(':config is required')
         setup
       end
 
@@ -23,7 +23,7 @@ module RevealCK
         slides_html_file = "#{output_dir}/slides.html"
         application.define_task(Rake::Task, slides_html_file) do
           presentation = RevealCK::Presentation.load slides_file
-          presentation.merge_config(file: config_file) if File.exists?(config_file)
+          config.merge(presentation)
           File.open(slides_html_file, 'w') do |slides_html|
             slides_html.puts(presentation.html)
           end

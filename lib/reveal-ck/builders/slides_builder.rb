@@ -17,7 +17,7 @@ module RevealCK
 
       def build
         config_file = File.join(@revealck_dir, 'config.yml')
-        self.merge_config(file: config_file) if File.exists?(config_file)
+        self.from_file(file: config_file) if File.exists?(config_file)
 
         CopyUserFiles.new(user_files_dir: revealck_dir,
                           output_dir: output_dir,
@@ -28,7 +28,7 @@ module RevealCK
                          application: application)
 
         CreateSlidesHtml.new(slides_file: slides_file,
-                             config_file: config_file,
+                             config: self,
                              output_dir: output_dir,
                              application: application)
 

@@ -55,6 +55,17 @@ module RevealCK
 
     end
 
+    describe '#from_file' do
+      it 'can read in settings from a .yml' do
+        example = Example.new
+        example.from_file(file: spec_data('config', 'full_config.yml'))
+        expect(example.title).to eq 'The Never Sea Slides'
+        expect(example.author).to eq 'Captain Hook'
+        expect(example.theme).to eq 'night'
+        expect(example.transition).to eq 'page'
+      end
+    end
+
     describe '#merge' do
 
       let :full_config do
