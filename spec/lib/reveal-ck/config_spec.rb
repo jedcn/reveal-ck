@@ -87,18 +87,23 @@ module RevealCK
         expect(example.title).to eq 'The Never Sea Slides'
       end
 
-      it 'will not overwrite already set config options' do
+      it 'will overwrite already set config options' do
         example = Example.new
         example.author = 'Jed Northridge'
         example.transition = 'fade'
         example.merge(full_config)
-        expect(example.author).to eq 'Jed Northridge'
-        expect(example.transition).to eq 'fade'
+        expect(example.author).to eq 'Captain Hook'
+        expect(example.transition).to eq 'page'
         expect(example.title).to eq 'The Never Sea Slides'
         expect(example.theme).to eq 'night'
       end
 
+      it 'will not overwrite set config options with defaults' do
+        example = Example.new
+        example.author = 'Jed Northridge'
+        example.merge(partial_config)
+        expect(example.author).to eq 'Jed Northridge'
+      end
     end
-
   end
 end

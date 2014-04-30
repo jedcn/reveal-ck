@@ -32,10 +32,18 @@ module RevealCK
     }
 
     def merge(config)
-      @author     ||= config.author
-      @title      ||= config.title
-      @theme      ||= config.theme
-      @transition ||= config.transition
+      if config.author && config.author != DEFAULTS['author']
+        @author = config.author
+      end
+      if config.title && config.title != DEFAULTS['title']
+        @title = config.title
+      end
+      if config.theme && config.theme != DEFAULTS['theme']
+        @theme = config.theme
+      end
+      if config.transition && config.transition != DEFAULTS['transition']
+        @transition = config.transition
+      end
     end
   end
 end
