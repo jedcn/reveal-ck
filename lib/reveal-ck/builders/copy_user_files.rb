@@ -24,21 +24,21 @@ module RevealCK
       def analyze
         files = UserFiles.new(user_files_dir: user_files_dir)
         files.all.each do |file|
-          analyze_file(file)
+          analyze_file(file) unless File.directory?(file)
         end
         application.define_task(Rake::Task, 'copy_user_files' => things_to_create.to_a)
       end
 
-      def analyze_file(file)
-        dest = file.pathmap("%{^#{user_files_dir}/,#{output_dir}/}p")
-        application.define_task(Rake::FileTask, dest => file) do
-          FileUtils.cp file, dest
+      def analyze_file(src)
+        dest = src.pathmap("%{^#{user_files_dir}/,#{output_dir}/}p")
+        application.define_task(Rake::FileTask, dest => src) do
+          FileUtils.cp src, dest
         end
-        dest_dir = dest.pathmap('%d')
-        application.define_task(Rake::Task, dest_dir) do
-          FileUtils.mkdir_p dest_dir
+        dir = dest.pathmap('%d')
+        application.define_task(Rake::Task, dir) do
+          FileUtils.mkdir_p dir
         end
-        things_to_create.add(dest_dir)
+        things_to_create.add(dir)
         things_to_create.add(dest)
       end
     end
