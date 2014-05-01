@@ -41,18 +41,17 @@ module RevealCK
     end
 
     def merge(config)
-      if config.author && config.author != DEFAULTS['author']
-        @author = config.author
-      end
-      if config.title && config.title != DEFAULTS['title']
-        @title = config.title
-      end
-      if config.theme && config.theme != DEFAULTS['theme']
-        @theme = config.theme
-      end
-      if config.transition && config.transition != DEFAULTS['transition']
-        @transition = config.transition
-      end
+      set_value_if_not_default(config, 'author')
+      set_value_if_not_default(config, 'title')
+      set_value_if_not_default(config, 'theme')
+      set_value_if_not_default(config, 'transition')
+    end
+
+    private
+
+    def set_value_if_not_default(config, name)
+      value = config.send(name)
+      send("#{name}=", value) unless value == DEFAULTS[name]
     end
   end
 end
