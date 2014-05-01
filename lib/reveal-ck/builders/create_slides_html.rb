@@ -28,7 +28,8 @@ module RevealCK
             slides_html.puts(presentation.html)
           end
         end
-        application.define_task(Rake::Task, 'create_slides_html' => slides_html_file)
+        application.define_task(Rake::Task,
+                                'create_slides_html' => slides_html_file)
       end
     end
   end

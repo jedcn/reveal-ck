@@ -8,7 +8,8 @@ module RevealCK
       attr_reader :user_files_dir
 
       def initialize(args)
-        @user_files_dir = args[:user_files_dir] || fail(':user_files_dir is required')
+        @user_files_dir =
+          args[:user_files_dir] || fail(':user_files_dir is required')
       end
 
       def all
@@ -42,7 +43,5 @@ module RevealCK
         FileList["#{user_files_dir}/images/**/*"]
       end
     end
-
   end
-
 end

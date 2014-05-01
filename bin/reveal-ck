@@ -92,5 +92,4 @@ class RevealCKExecutable
   end
 
   exit run(ARGV)
-
 end

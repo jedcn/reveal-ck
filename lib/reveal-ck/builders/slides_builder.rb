@@ -2,22 +2,26 @@ require 'rake'
 
 module RevealCK
   module Builders
+    # Given a location of reveal.js files, reveal-ck files, and slides
+    # file to work with, and a place to put it all.. this class
+    # creates a presentation.
     class SlidesBuilder
       include Config
+      include RequiredArg
       attr_reader :revealjs_dir, :revealck_dir
       attr_reader :slides_file, :output_dir
       attr_reader :application
       def initialize(args)
-        @revealjs_dir = args[:revealjs_dir] || fail(':revealjs_dir is required')
-        @revealck_dir = args[:revealck_dir] || fail(':revealck_dir is required')
-        @output_dir   = args[:output_dir]   || fail(':output_dir is required')
-        @slides_file  = args[:slides_file]  || fail(':slides_file is required')
-        @application  = Rake::Application.new
+        @revealjs_dir = required_arg(args, :revealjs_dir)
+        @revealck_dir = required_arg(args, :revealck_dir)
+        @output_dir = required_arg(args, :output_dir)
+        @slides_file = required_arg(args, :slides_file)
+        @application = Rake::Application.new
       end
 
       def build
         config_file = File.join(@revealck_dir, 'config.yml')
-        self.from_file(file: config_file) if File.exists?(config_file)
+        from_file(file: config_file) if File.exist?(config_file)
 
         CopyUserFiles.new(user_files_dir: revealck_dir,
                           output_dir: output_dir,
@@ -37,10 +41,10 @@ module RevealCK
                             config: self,
                             application: application)
 
-        dependencies = ['copy_user_files',
-                        'copy_reveal_js',
-                        'create_slides_html',
-                        'create_index_html']
+        dependencies = %w(copy_user_files
+                          copy_reveal_js
+                          create_slides_html
+                          create_index_html)
 
         application.define_task(Rake::Task, 'create' => dependencies)
         application['create'].invoke

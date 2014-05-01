@@ -1,3 +1,5 @@
+require 'rake'
+
 module RevealCK
   module Builders
     # Given a location of the user's reveal-ck files, a Rake
@@ -5,16 +7,15 @@ module RevealCK
     # class knows how to work with Rake and build up a presentation
     # with the user's stuff.
     class CopyUserFiles
-      require 'rake'
-
+      include RequiredArg
       attr_reader :user_files_dir, :output_dir
       attr_reader :application
       attr_reader :things_to_create
 
       def initialize(args)
-        @user_files_dir = args[:user_files_dir] || fail(':user_files_dir is required')
-        @output_dir     = args[:output_dir]     || fail(':output_dir is required')
-        @application    = args[:application]    || fail(':application is required')
+        @user_files_dir = retrieve(:user_files_dir, args)
+        @output_dir = retrieve(:output_dir, args)
+        @application = retrieve(:application, args)
         @things_to_create = Set.new
         analyze
       end
@@ -26,7 +27,8 @@ module RevealCK
         files.all.each do |file|
           analyze_file(file) unless File.directory?(file)
         end
-        application.define_task(Rake::Task, 'copy_user_files' => things_to_create.to_a)
+        application.define_task(Rake::Task,
+                                'copy_user_files' => things_to_create.to_a)
       end
 
       def analyze_file(src)
@@ -42,6 +44,5 @@ module RevealCK
         things_to_create.add(dest)
       end
     end
-
   end
 end

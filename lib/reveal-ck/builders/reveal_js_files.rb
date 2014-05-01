@@ -5,10 +5,11 @@ module RevealCK
     # Given a copy of reveal.js, this class knows which files should be
     # included.
     class RevealJsFiles
+      include RequiredArg
       attr_reader :revealjs_dir
 
       def initialize(args)
-        @revealjs_dir = args[:revealjs_dir] || fail(':revealjs_dir is required')
+        @revealjs_dir = retrieve(:revealjs_dir, args)
       end
 
       def all
@@ -53,7 +54,5 @@ module RevealCK
         FileList["#{revealjs_dir}/index.html"]
       end
     end
-
   end
-
 end
