@@ -10,6 +10,9 @@ module RevealCK
       @slides = []
     end
 
+    # Rubocop doesn't like trivial accessors, but docile breaks if
+    # trivial accessors are used.
+    # rubocop:disable TrivialAccessors
     def theme(theme)
       @theme = theme
     end
@@ -25,6 +28,7 @@ module RevealCK
     def author(author)
       @author = author
     end
+    # rubocop:enable TrivialAccessors
 
     def slide(template, variables = {})
       variables[:template] = template
