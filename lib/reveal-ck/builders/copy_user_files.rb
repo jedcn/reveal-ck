@@ -17,12 +17,12 @@ module RevealCK
         @output_dir = retrieve(:output_dir, args)
         @application = retrieve(:application, args)
         @things_to_create = Set.new
-        analyze
+        setup
       end
 
       private
 
-      def analyze
+      def setup
         files = UserFiles.new(user_files_dir: user_files_dir)
         files.all.each do |file|
           analyze_file(file) unless File.directory?(file)
