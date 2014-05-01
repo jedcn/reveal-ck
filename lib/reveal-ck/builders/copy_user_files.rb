@@ -8,6 +8,7 @@ module RevealCK
     # with the user's stuff.
     class CopyUserFiles
       include RequiredArg
+      include RakeAware
       attr_reader :user_files_dir, :output_dir
       attr_reader :application
       attr_reader :things_to_create
@@ -27,19 +28,14 @@ module RevealCK
         files.all.each do |file|
           analyze_file(file) unless File.directory?(file)
         end
-        application.define_task(Rake::Task,
-                                'copy_user_files' => things_to_create.to_a)
+        task('copy_user_files' => things_to_create.to_a)
       end
 
       def analyze_file(src)
         dest = src.pathmap("%{^#{user_files_dir}/,#{output_dir}/}p")
-        application.define_task(Rake::FileTask, dest => src) do
-          FileUtils.cp src, dest
-        end
+        copy_file(src, dest)
         dir = dest.pathmap('%d')
-        application.define_task(Rake::Task, dir) do
-          FileUtils.mkdir_p dir
-        end
+        create_directory(dir)
         things_to_create.add(dir)
         things_to_create.add(dest)
       end

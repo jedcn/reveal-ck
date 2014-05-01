@@ -7,6 +7,7 @@ module RevealCK
     # work with Rake and create the index.html.
     class CreateIndexHtml
       include RequiredArg
+      include RakeAware
 
       attr_reader :slides_html, :output_dir, :config
       attr_reader :application
@@ -23,14 +24,12 @@ module RevealCK
 
       def setup
         index_html_file = "#{output_dir}/index.html"
-        application.define_task(Rake::Task,
-                                index_html_file => 'slides/slides.html') do
+        task(index_html_file => 'slides/slides.html') do
           IndexHtml.new(user_slides: "#{output_dir}/slides.html",
                         reveal_slides: "#{output_dir}/index.html",
                         config: config).build!
         end
-        application.define_task(Rake::Task,
-                                'create_index_html' => index_html_file)
+        task('create_index_html' => index_html_file)
       end
     end
   end

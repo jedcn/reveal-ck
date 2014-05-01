@@ -1,3 +1,4 @@
+require_relative 'builders/rake_aware'
 require_relative 'builders/build_task'
 require_relative 'builders/builder'
 require_relative 'builders/slides_builder'

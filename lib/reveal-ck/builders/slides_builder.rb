@@ -8,6 +8,7 @@ module RevealCK
     class SlidesBuilder
       include Config
       include RequiredArg
+      include RakeAware
       attr_reader :revealjs_dir, :revealck_dir
       attr_reader :slides_file, :output_dir
       attr_reader :application
@@ -28,7 +29,7 @@ module RevealCK
 
       def setup
         read_config
-        application.define_task(Rake::Task, 'create' => setup_dependencies)
+        task('create' => setup_dependencies)
       end
 
       def read_config
