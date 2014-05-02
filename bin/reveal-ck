@@ -28,7 +28,7 @@ class RevealCKExecutable
       slides_file = options[:file]
       puts "Generating slides for '#{slides_file}'.."
       builder_args = {
-        revealjs_dir: File.join(RevealCK::LOCATION, 'reveal.js'),
+        reveal_js_dir: File.join(RevealCK::LOCATION, 'reveal.js'),
         revealck_dir: Dir.pwd,
         output_dir: options[:dir],
         slides_file: options[:file]

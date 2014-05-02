@@ -9,11 +9,11 @@ module RevealCK
       include Config
       include RequiredArg
       include RakeAware
-      attr_reader :revealjs_dir, :revealck_dir
+      attr_reader :reveal_js_dir, :revealck_dir
       attr_reader :slides_file, :output_dir
       attr_reader :application
       def initialize(args)
-        @revealjs_dir = required_arg(args, :revealjs_dir)
+        @reveal_js_dir = required_arg(args, :reveal_js_dir)
         @revealck_dir = required_arg(args, :revealck_dir)
         @output_dir = required_arg(args, :output_dir)
         @slides_file = required_arg(args, :slides_file)
@@ -52,7 +52,7 @@ module RevealCK
       end
 
       def setup_copy_reveal_js
-        CopyRevealJs.new(revealjs_dir: revealjs_dir,
+        CopyRevealJs.new(reveal_js_dir: reveal_js_dir,
                          output_dir: output_dir,
                          application: application)
         'copy_reveal_js'

@@ -8,12 +8,12 @@ module RevealCK
     class CopyRevealJs
       include RequiredArg
       include RakeAware
-      attr_reader :revealjs_dir, :output_dir
+      attr_reader :reveal_js_dir, :output_dir
       attr_reader :application
       attr_reader :things_to_create
 
       def initialize(args)
-        @revealjs_dir = retrieve(:revealjs_dir, args)
+        @reveal_js_dir = retrieve(:reveal_js_dir, args)
         @output_dir = retrieve(:output_dir, args)
         @application = retrieve(:application, args)
         @things_to_create = Set.new
@@ -23,13 +23,13 @@ module RevealCK
       private
 
       def setup
-        files = RevealJsFiles.new(revealjs_dir: revealjs_dir)
+        files = RevealJsFiles.new(reveal_js_dir: reveal_js_dir)
         files.all.each { |file| analyze_file(file) }
         task('copy_reveal_js' => things_to_create.to_a)
       end
 
       def analyze_file(file)
-        dest = file.pathmap("%{^#{revealjs_dir}/,#{output_dir}/}p")
+        dest = file.pathmap("%{^#{reveal_js_dir}/,#{output_dir}/}p")
         copy_file(file, dest)
         dest_dir = dest.pathmap('%d')
         create_directory(dest_dir)

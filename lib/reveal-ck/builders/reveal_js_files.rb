@@ -6,10 +6,9 @@ module RevealCK
     # included.
     class RevealJsFiles
       include RequiredArg
-      attr_reader :revealjs_dir
-
+      attr_reader :reveal_js_dir
       def initialize(args)
-        @revealjs_dir = retrieve(:revealjs_dir, args)
+        @reveal_js_dir = retrieve(:reveal_js_dir, args)
       end
 
       def all
@@ -25,33 +24,33 @@ module RevealCK
       private
 
       def css
-        FileList["#{revealjs_dir}/css/reveal.min.css",
-                 "#{revealjs_dir}/css/print/*",
-                 "#{revealjs_dir}/css/theme/*.css"]
+        FileList["#{reveal_js_dir}/css/reveal.min.css",
+                 "#{reveal_js_dir}/css/print/*",
+                 "#{reveal_js_dir}/css/theme/*.css"]
       end
 
       def js
-        FileList["#{revealjs_dir}/js/reveal.min.js"]
+        FileList["#{reveal_js_dir}/js/reveal.min.js"]
       end
 
       def lib
-        FileList["#{revealjs_dir}/lib/**/*.css",
-                 "#{revealjs_dir}/lib/font/*",
-                 "#{revealjs_dir}/lib/**/*.js"]
+        FileList["#{reveal_js_dir}/lib/**/*.css",
+                 "#{reveal_js_dir}/lib/font/*",
+                 "#{reveal_js_dir}/lib/**/*.js"]
       end
 
       def plugin
-        FileList["#{revealjs_dir}/plugin/**/*.js"]
+        FileList["#{reveal_js_dir}/plugin/**/*.js"]
       end
 
       def meta
-        FileList["#{revealjs_dir}/README.md",
-                 "#{revealjs_dir}/LICENSE",
-                 "#{revealjs_dir}/package.json"]
+        FileList["#{reveal_js_dir}/README.md",
+                 "#{reveal_js_dir}/LICENSE",
+                 "#{reveal_js_dir}/package.json"]
       end
 
       def index
-        FileList["#{revealjs_dir}/index.html"]
+        FileList["#{reveal_js_dir}/index.html"]
       end
     end
   end
