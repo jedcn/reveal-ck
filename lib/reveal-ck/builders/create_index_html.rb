@@ -20,7 +20,9 @@ module RevealCK
         setup
       end
 
-      private
+      def name
+        'create_index_html'
+      end
 
       def setup
         index_html_file = "#{output_dir}/index.html"
@@ -29,7 +31,7 @@ module RevealCK
                         reveal_slides: "#{output_dir}/index.html",
                         config: config).build!
         end
-        task('create_index_html' => index_html_file)
+        task(name => index_html_file)
       end
     end
   end

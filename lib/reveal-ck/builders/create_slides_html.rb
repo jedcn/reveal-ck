@@ -3,21 +3,20 @@ module RevealCK
     # Given a slides_file, a Rake application, and a place where the
     # transformed slides file should end up, this class knows how to
     # work with Rake and create the slides.html.
-    class CreateSlidesHtml
-      include RakeAware
-
+    class CreateSlidesHtml < CreationTask
       attr_reader :slides_file, :output_dir, :config
-      attr_reader :application
 
       def initialize(args)
-        @slides_file = args[:slides_file] || fail(':slides_file is required')
-        @output_dir  = args[:output_dir]  || fail(':output_dir is required')
-        @application = args[:application] || fail(':application is required')
-        @config = args[:config] || fail(':config is required')
+        @slides_file = retrieve(:slides_file, args)
+        @output_dir = retrieve(:output_dir, args)
+        @config = retrieve(:config, args)
+        super
         setup
       end
 
-      private
+      def name
+        'create_slides_html'
+      end
 
       def setup
         slides_html_file = "#{output_dir}/slides.html"
@@ -28,7 +27,7 @@ module RevealCK
             slides_html.puts(presentation.html)
           end
         end
-        task('create_slides_html' => slides_html_file)
+        things_to_create.add(slides_html_file)
       end
     end
   end
