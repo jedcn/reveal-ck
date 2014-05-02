@@ -5,11 +5,11 @@ module RevealCK
     # Given a location to a user's files, this class knows which files
     # should be included.
     class UserFiles
+      include RequiredArg
       attr_reader :user_files_dir
 
       def initialize(args)
-        @user_files_dir =
-          args[:user_files_dir] || fail(':user_files_dir is required')
+        @user_files_dir = retrieve(:user_files_dir, args)
       end
 
       def all
