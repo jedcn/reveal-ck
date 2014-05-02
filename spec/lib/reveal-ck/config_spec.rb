@@ -55,19 +55,37 @@ module RevealCK
 
     end
 
-    describe '#merge_config' do
-
-      let :full_config_file do
-        spec_data 'config', 'full_config.yml'
-      end
-
-      let :partial_config_file do
-        spec_data 'config', 'partial_config.yml'
-      end
-
-      it 'writes unset config options stored in a file' do
+    describe '#from_file' do
+      it 'can read in settings from a .yml' do
         example = Example.new
-        example.merge_config file: full_config_file
+        example.from_file(file: spec_data('config', 'full_config.yml'))
+        expect(example.title).to eq 'The Never Sea Slides'
+        expect(example.author).to eq 'Captain Hook'
+        expect(example.theme).to eq 'night'
+        expect(example.transition).to eq 'page'
+      end
+    end
+
+    describe '#merge' do
+
+      let :full_config do
+        example = Example.new
+        example.title = 'The Never Sea Slides'
+        example.author = 'Captain Hook'
+        example.theme = 'night'
+        example.transition = 'page'
+        example
+      end
+
+      let :partial_config do
+        example = Example.new
+        example.title = 'The Never Sea Slides'
+        example
+      end
+
+      it 'merges unset config options' do
+        example = Example.new
+        example.merge(full_config)
         expect(example.title).to eq 'The Never Sea Slides'
         expect(example.author).to eq 'Captain Hook'
         expect(example.theme).to eq 'night'
@@ -76,22 +94,27 @@ module RevealCK
 
       it 'can grab just a single option' do
         example = Example.new
-        example.merge_config file: partial_config_file
+        example.merge(partial_config)
         expect(example.title).to eq 'The Never Sea Slides'
       end
 
-      it 'will not overwrite already set config options' do
+      it 'will overwrite already set config options' do
         example = Example.new
         example.author = 'Jed Northridge'
         example.transition = 'fade'
-        example.merge_config file: full_config_file
-        expect(example.author).to eq 'Jed Northridge'
-        expect(example.transition).to eq 'fade'
+        example.merge(full_config)
+        expect(example.author).to eq 'Captain Hook'
+        expect(example.transition).to eq 'page'
         expect(example.title).to eq 'The Never Sea Slides'
         expect(example.theme).to eq 'night'
       end
 
+      it 'will not overwrite set config options with defaults' do
+        example = Example.new
+        example.author = 'Jed Northridge'
+        example.merge(partial_config)
+        expect(example.author).to eq 'Jed Northridge'
+      end
     end
-
   end
 end

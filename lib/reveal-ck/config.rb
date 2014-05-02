@@ -31,14 +31,27 @@ module RevealCK
       'transition' => 'default'
     }
 
-    def merge_config(args)
+    def from_file(args)
       file = args[:file] || fail(':file is required')
       config = YAML.load_file file
+      @author = config['author']
+      @title = config['title']
+      @theme = config['theme']
+      @transition = config['transition']
+    end
 
-      @author     ||= config['author']
-      @title      ||= config['title']
-      @theme      ||= config['theme']
-      @transition ||= config['transition']
+    def merge(config)
+      set_value_if_not_default(config, 'author')
+      set_value_if_not_default(config, 'title')
+      set_value_if_not_default(config, 'theme')
+      set_value_if_not_default(config, 'transition')
+    end
+
+    private
+
+    def set_value_if_not_default(config, name)
+      value = config.send(name)
+      send("#{name}=", value) unless value == DEFAULTS[name]
     end
   end
 end
