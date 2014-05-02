@@ -13,7 +13,7 @@ namespace :relish do
     end
   end
 
-  desc 'Publish to resish'
+  desc 'Publish to relish'
   task :push do
     run 'relish push jedcn/reveal-ck'
   end

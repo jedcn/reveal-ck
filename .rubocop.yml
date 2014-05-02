@@ -3,6 +3,7 @@ CyclomaticComplexity:
 
 AllCops:
   Include:
+    - Rakefile
     - rakelib/*.rake
 
 FileName:
