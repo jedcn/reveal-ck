@@ -13,10 +13,10 @@ module RevealCK
       attr_reader :slides_file, :output_dir
       attr_reader :application
       def initialize(args)
-        @reveal_js_dir = required_arg(args, :reveal_js_dir)
-        @revealck_dir = required_arg(args, :revealck_dir)
-        @output_dir = required_arg(args, :output_dir)
-        @slides_file = required_arg(args, :slides_file)
+        @reveal_js_dir = retrieve(:reveal_js_dir, args)
+        @revealck_dir = retrieve(:revealck_dir, args)
+        @output_dir = retrieve(:output_dir, args)
+        @slides_file = retrieve(:slides_file, args)
         @application = Rake::Application.new
         setup
       end
