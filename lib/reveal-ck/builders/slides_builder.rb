@@ -45,33 +45,37 @@ module RevealCK
       end
 
       def setup_copy_user_files
-        CopyUserFiles.new(user_files_dir: revealck_dir,
-                          output_dir: output_dir,
-                          application: application)
-        'copy_user_files'
+        task =
+          CopyUserFiles.new(user_files_dir: revealck_dir,
+                            output_dir: output_dir,
+                            application: application)
+        task.name
       end
 
       def setup_copy_reveal_js
-        CopyRevealJs.new(reveal_js_dir: reveal_js_dir,
-                         output_dir: output_dir,
-                         application: application)
-        'copy_reveal_js'
+        task =
+          CopyRevealJs.new(reveal_js_dir: reveal_js_dir,
+                           output_dir: output_dir,
+                           application: application)
+        task.name
       end
 
       def setup_create_slides_html
-        CreateSlidesHtml.new(slides_file: slides_file,
-                             config: self,
-                             output_dir: output_dir,
-                             application: application)
-        'create_slides_html'
+        task =
+          CreateSlidesHtml.new(slides_file: slides_file,
+                               config: self,
+                               output_dir: output_dir,
+                               application: application)
+        task.name
       end
 
       def setup_create_index_html
-        CreateIndexHtml.new(slides_html: "#{output_dir}/slides.html",
-                            output_dir: output_dir,
-                            config: self,
-                            application: application)
-        'create_index_html'
+        task =
+          CreateIndexHtml.new(slides_html: "#{output_dir}/slides.html",
+                              output_dir: output_dir,
+                              config: self,
+                              application: application)
+        task.name
       end
     end
   end
