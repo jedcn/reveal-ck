@@ -42,3 +42,7 @@ Feature: How to store and reference css
     """
     <link rel="stylesheet" href="css/custom.css">
     """
+    And the file "slides/index.html" should contain:
+    """
+    <link rel="stylesheet" href="css/nested/custom.css">
+    """
