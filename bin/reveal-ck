@@ -24,7 +24,7 @@ class RevealCKExecutable
     c.desc 'The directory to place your generated slides in'
     c.flag [:d, :dir], default_value: 'slides'
 
-    c.action do |global_options, options, args|
+    c.action do |_, options, _|
       slides_file = options[:file]
       puts "Generating slides for '#{slides_file}'.."
       builder_args = {
@@ -48,7 +48,7 @@ class RevealCKExecutable
     c.desc 'The port to serve on'
     c.flag [:p, :port], default_value: 10_000
 
-    c.action do |global_options, options, args|
+    c.action do |_, options, _|
       dir = options[:dir]
       port = options[:port]
 
@@ -67,29 +67,6 @@ class RevealCKExecutable
       puts
       server.start
     end
-
   end
-
-  pre do |global, command, options, args|
-    # Pre logic here
-    # Return true to proceed; false to abort and not call the
-    # chosen command
-    # Use skips_pre before a command to skip this block
-    # on that command only
-    true
-  end
-
-  post do |global, command, options, args|
-    # Post logic here
-    # Use skips_post before a command to skip this
-    # block on that command only
-  end
-
-  on_error do |exception|
-    # Error logic here
-    # return false to skip default error handling
-    true
-  end
-
   exit run(ARGV)
 end

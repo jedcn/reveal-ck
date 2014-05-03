@@ -11,7 +11,7 @@ module RevealCK
       def prepare
       end
 
-      def evaluate(scope, locals, &block)
+      def evaluate(*)
         markdown = Redcarpet::Markdown.new(
                                            SlideMarkdown,
                                            fenced_code_blocks: true

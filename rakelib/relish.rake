@@ -4,7 +4,7 @@ namespace :relish do
   def run(cmd)
     require 'open3'
     puts "Running '#{cmd}'"
-    Open3.popen3(cmd) do |i, o, e, t|
+    Open3.popen3(cmd) do |_, o, e, _|
       puts 'STDOUT:'
       puts o.readlines
       puts
