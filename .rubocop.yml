@@ -6,6 +6,9 @@ AllCops:
     - Rakefile
     - rakelib/*.rake
 
+Encoding:
+  EnforcedStyle: when_needed
+
 FileName:
   Exclude:
     - lib/reveal-ck.rb
