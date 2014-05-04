@@ -20,8 +20,8 @@ module RevealCK
       def setup
         slides_html_file = "#{output_dir}/slides.html"
         task(slides_html_file) do
-          presentation = RevealCK::Presentation.load slides_file
-          config.merge(presentation)
+          presentation = RevealCK::Presentation.load(file: slides_file,
+                                                     config: config)
           File.open(slides_html_file, 'w') do |slides_html|
             slides_html.puts(presentation.html)
           end

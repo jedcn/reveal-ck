@@ -54,7 +54,7 @@ code_slide =
                       content:  sample_code
                      )
 
-p = RevealCK::Presentation.new
+p = RevealCK::Presentation.new config: RevealCK::Config.new
 p.add intro_slide
 p.add quote_slide
 p.add image_slide
