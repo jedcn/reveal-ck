@@ -11,7 +11,6 @@ module RevealCK
         @output_dir = retrieve(:output_dir, args)
         @config = retrieve(:config, args)
         super
-        setup
       end
 
       def name
