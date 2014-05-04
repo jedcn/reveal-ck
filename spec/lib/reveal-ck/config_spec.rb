@@ -42,5 +42,17 @@ module RevealCK
     it 'supplies a default transition' do
       expect(config.transition).to eq 'default'
     end
+
+    describe '#merge!' do
+      it 'allows for a mass assignment of hash values' do
+        new_value = 'New Value'
+        config.merge!('author' => new_value,
+                      'new_item' => new_value,
+                      :new_symbol => new_value)
+        expect(config.author).to eq(new_value)
+        expect(config.new_item).to eq(new_value)
+        expect(config.new_symbol).to eq(new_value)
+      end
+    end
   end
 end
