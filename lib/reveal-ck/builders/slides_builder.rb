@@ -6,7 +6,6 @@ module RevealCK
     # file to work with, and a place to put it all.. this class
     # creates a presentation.
     class SlidesBuilder
-      include Config
       include RequiredArg
       include RakeAware
       attr_reader :reveal_js_dir, :revealck_dir
@@ -18,6 +17,7 @@ module RevealCK
         @output_dir = retrieve(:output_dir, args)
         @slides_file = retrieve(:slides_file, args)
         @application = Rake::Application.new
+        @config = Config.new
         setup
       end
 
@@ -34,7 +34,10 @@ module RevealCK
 
       def read_config
         config_file = File.join(@revealck_dir, 'config.yml')
-        from_file(file: config_file) if File.exist?(config_file)
+        if File.exist?(config_file)
+          config_as_hash = YAML.load_file config_file
+          @config.merge!(config_as_hash)
+        end
       end
 
       def setup_dependencies
@@ -63,7 +66,7 @@ module RevealCK
       def setup_create_slides_html
         task =
           CreateSlidesHtml.new(slides_file: slides_file,
-                               config: self,
+                               config: @config,
                                output_dir: output_dir,
                                application: application)
         task.name
@@ -78,7 +81,7 @@ module RevealCK
           CreateIndexHtml.new(slides_html: "#{output_dir}/slides.html",
                               index_html: index_html_erb,
                               output_dir: output_dir,
-                              config: self,
+                              config: @config,
                               application: application)
         task.name
       end

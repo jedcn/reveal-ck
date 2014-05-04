@@ -4,29 +4,31 @@ module RevealCK
   # presentation. It also knows how to load file containing the DSL.
   #
   class PresentationDSL
+    include RequiredArg
     attr_reader :author, :title, :theme, :transition
 
-    def initialize
+    def initialize(args)
       @slides = []
+      @config = retrieve(:config, args)
     end
 
     # Rubocop doesn't like trivial accessors, but docile breaks if
     # trivial accessors are used.
     # rubocop:disable TrivialAccessors
     def theme(theme)
-      @theme = theme
+      @config.theme = theme
     end
 
     def transition(transition)
-      @transition = transition
+      @config.transition = transition
     end
 
     def title(title)
-      @title = title
+      @config.title = title
     end
 
     def author(author)
-      @author = author
+      @config.author = author
     end
     # rubocop:enable TrivialAccessors
 
@@ -40,7 +42,7 @@ module RevealCK
     end
 
     def build
-      presentation = RevealCK::Presentation.new
+      presentation = RevealCK::Presentation.new config: @config
       presentation.theme = @theme if @theme
       presentation.transition = @transition if @transition
       presentation.author = @author if @author
@@ -52,11 +54,13 @@ module RevealCK
     require 'docile'
 
     def presentation(&block)
-      Docile.dsl_eval(PresentationDSL.new, &block).build
+      Docile.dsl_eval(self, &block).build
     end
 
-    def self.load(file)
-      builder = PresentationDSL.new
+    def self.load(args)
+      file = args[:file] || fail(':file is required')
+      config = args[:config] || fail(':config is required')
+      builder = PresentationDSL.new config: config
       contents = File.open(file).read
       builder.instance_eval(contents)
     end

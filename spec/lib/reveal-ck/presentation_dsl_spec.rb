@@ -3,17 +3,21 @@ require 'spec_helper'
 module RevealCK
   describe PresentationDSL do
 
+    let :config do
+      Config.new
+    end
+
     let :dsl_file do
       spec_data 'presentation_dsl', 'dsl.rb'
     end
 
     let :presentation do
-      PresentationDSL.load dsl_file
+      PresentationDSL.load file: dsl_file, config: config
     end
 
     describe '.load' do
       it 'can build a RevealCK::Presentation from a file' do
-        result = PresentationDSL.load dsl_file
+        result = PresentationDSL.load file: dsl_file, config: config
         expect(result).to be_a Presentation
       end
     end

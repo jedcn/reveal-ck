@@ -3,8 +3,12 @@ require 'spec_helper'
 module RevealCK
   describe Presentation do
 
+    let :config do
+      Config.new
+    end
+
     let :presentation do
-      presentation = Presentation.new
+      presentation = Presentation.new config: config
       presentation.add double('content', html: 'first')
       presentation.add double('content', html: 'second')
       presentation
@@ -36,7 +40,8 @@ module RevealCK
 
     describe '.from_template' do
       it 'loads presentation html from a template' do
-        presentation = Presentation.from_template slides_haml
+        presentation = Presentation.from_template(file: slides_haml,
+                                                  config: config)
         html = presentation.html
         expect(html).to start_with '<section>'
         expect(html).to include 'slides.haml'
@@ -50,7 +55,7 @@ module RevealCK
 
     describe '.from_dsl' do
       it 'loads presentation html and metadata from a dsl' do
-        presentation = Presentation.from_dsl slides_rb
+        presentation = Presentation.from_dsl file: slides_rb, config: config
         html = presentation.html
         expect(html).to start_with '<section>'
         expect(html).to include 'slides.rb'
@@ -61,7 +66,7 @@ module RevealCK
 
     describe '.load' do
       it 'can work with a .rb file' do
-        presentation = Presentation.load slides_rb
+        presentation = Presentation.load file: slides_rb, config: config
         html = presentation.html
         expect(html).to start_with '<section>'
       end
@@ -69,7 +74,7 @@ module RevealCK
 
     describe '.load' do
       it 'can work with a template file' do
-        presentation = Presentation.load slides_haml
+        presentation = Presentation.load file: slides_haml, config: config
         html = presentation.html
         expect(html).to start_with '<section>'
       end

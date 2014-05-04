@@ -1,9 +1,5 @@
 require 'spec_helper'
 
-class SampleConfig
-  include RevealCK::Config
-end
-
 module RevealCK
   module Builders
     describe IndexHtml do
@@ -16,7 +12,7 @@ module RevealCK
       end
 
       let :config do
-        config = SampleConfig.new
+        config = Config.new
         config.title = 'Sample Title'
         config.author = 'Sample Author'
         config.theme = 'night'
