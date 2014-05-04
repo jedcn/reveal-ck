@@ -5,44 +5,16 @@ module RevealCK
   #
   class Presentation
     include RequiredArg
+    extend Forwardable
+    [:author, :title, :transition, :theme].each do |name|
+      def_delegators :@config, name, "#{name}=".to_sym
+    end
 
     attr_accessor :html, :config
 
     def initialize(args)
       @html = ''
       @config = retrieve(:config, args)
-    end
-
-    def author
-      @config.author
-    end
-
-    def author=(value)
-      @config.author = value
-    end
-
-    def title
-      @config.title
-    end
-
-    def title=(value)
-      @config.title = value
-    end
-
-    def theme
-      @config.theme
-    end
-
-    def theme=(value)
-      @config.theme = value
-    end
-
-    def transition
-      @config.transition
-    end
-
-    def transition=(value)
-      @config.transition = value
     end
 
     def add(content)
