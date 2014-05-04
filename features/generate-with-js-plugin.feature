@@ -3,7 +3,7 @@ Feature: How to store and reference a js plugin
   Contents of the `plugin` directory are recursively copied into the
   presentation.
 
-  Scenario: Generating slides that contain a css file
+  Scenario: Generating slides that contain a js plugin
     Given a file named "slides.md" with:
     """
     # Slides

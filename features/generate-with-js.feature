@@ -3,7 +3,7 @@ Feature: How to store and reference js
   Files placed into the `js/` directory will be copied into the
   presentation.
 
-  Scenario: Generating slides that contain a css file
+  Scenario: Generating slides that contain a js file
     Given a file named "slides.md" with:
     """
     # Slides

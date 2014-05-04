@@ -3,7 +3,7 @@ Feature: How to store and reference media
   Files placed into the `media/` directory will be copied into the
   presentation.
 
-  Scenario: Generating slides that contain a css file
+  Scenario: Generating slides that contain a media file
     Given a file named "slides.md" with:
     """
     # Slides
