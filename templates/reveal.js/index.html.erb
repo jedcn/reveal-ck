@@ -51,11 +51,9 @@
       // Full list of configuration options available here:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
-        controls: true,
-        progress: true,
-        history: true,
-        center: true,
-        theme: Reveal.getQueryHash().theme,
+      <% config.reveal_js.each_pair do |key, value| %>
+        <%= key %>: <%= value %>,
+      <% end %>
         transition: Reveal.getQueryHash().transition || '<%= config.transition %>',
         dependencies: [
           { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },

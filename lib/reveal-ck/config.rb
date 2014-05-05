@@ -18,7 +18,13 @@ module RevealCK
       'title'      => 'Slides',
       'author'     => '',
       'theme'      => 'default',
-      'transition' => 'default'
+      'transition' => 'default',
+      'reveal_js' => {
+        'controls' => true,
+        'progress' => true,
+        'history' => true,
+        'center' => true
+      }
     }
   end
 end

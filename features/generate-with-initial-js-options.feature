@@ -10,12 +10,16 @@ Feature: How to configure reveal.js initialization options
     Given a file named "slides.md" with:
     """
     # Slides
+    ---
+    # Are Fun
+    ---
+    # Don't You Think?
     """
     And a file named "config.yml" with:
     """
-    init_js:
+    reveal_js:
       autoSlide: 5000
-      controls: false
+      loop: true
     """
     When I run `reveal-ck generate`
     Then the exit status should be 0
@@ -25,5 +29,5 @@ Feature: How to configure reveal.js initialization options
     """
     And the file "slides/index.html" should contain:
     """
-    controls: false,
+    loop: true,
     """
