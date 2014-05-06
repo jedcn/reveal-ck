@@ -32,6 +32,10 @@ module RevealCK
     end
     # rubocop:enable TrivialAccessors
 
+    def revealjs_config(key, value)
+      @config.revealjs_config[key] = value
+    end
+
     def slide(template, variables = {})
       variables[:template] = template
       @slides << RevealCK::Slide.new(variables)

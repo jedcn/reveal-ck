@@ -44,6 +44,11 @@ module RevealCK
         expect(presentation.transition).to eq 'page'
       end
 
+      it 'retains the revealjs config options in the dsl file' do
+        auto_slide_value = presentation.revealjs_config['autoSlide']
+        expect(auto_slide_value).to eq 5000
+      end
+
       it 'retains the slides defined in the dsl file' do
         expect(html).to include 'Hello World'
         expect(html).to include 'Thanks!'
