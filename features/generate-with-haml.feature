@@ -55,5 +55,5 @@ Feature: Slides with haml
     """
     And the file "slides/index.html" should contain:
     """
-    transition: Reveal.getQueryHash().transition || 'default'
+    transition: 'default'
     """

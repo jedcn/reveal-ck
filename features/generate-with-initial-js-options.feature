@@ -20,14 +20,19 @@ Feature: How to configure reveal.js initialization options
     reveal_js:
       autoSlide: 5000
       loop: true
+      parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'
     """
     When I run `reveal-ck generate`
     Then the exit status should be 0
     And the file "slides/index.html" should contain:
     """
-    autoSlide: 5000,
+    "autoSlide":5000,
     """
     And the file "slides/index.html" should contain:
     """
-    loop: true,
+    "loop":true,
+    """
+    And the file "slides/index.html" should contain:
+    """
+    "parallaxBackgroundImage":"https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg"
     """

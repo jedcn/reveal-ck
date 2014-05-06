@@ -1,4 +1,5 @@
 require 'ostruct'
+require 'json'
 
 module RevealCK
   # A Config represents core configuration options within
@@ -26,5 +27,10 @@ module RevealCK
         'center' => true
       }
     }
+
+    def reveal_js_as_json
+      require 'json'
+      JSON.pretty_generate(@table[:reveal_js])
+    end
   end
 end

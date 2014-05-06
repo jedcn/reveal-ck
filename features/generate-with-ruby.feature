@@ -62,7 +62,7 @@ Feature: Slides with ruby
     """
     And the file "slides/index.html" should contain:
     """
-    transition: Reveal.getQueryHash().transition || 'default'
+    transition: 'default'
     """
 
   Scenario: Generating slides with slides.rb and a config.yml

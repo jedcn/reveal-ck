@@ -48,22 +48,31 @@
     <script src="js/reveal.min.js"></script>
 
     <script>
-      // Full list of configuration options available here:
-      // https://github.com/hakimel/reveal.js#configuration
-      Reveal.initialize({
-      <% config.reveal_js.each_pair do |key, value| %>
-        <%= key %>: <%= value %>,
-      <% end %>
-        transition: Reveal.getQueryHash().transition || '<%= config.transition %>',
-        dependencies: [
-          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-        ]
-      });
+      (function() {
+        function extend( a, b ) {
+          for(var i in b) {
+            a[i] = b[i];
+          }
+        }
+        var baseOptions = {
+          transition: '<%= config.transition %>',
+          dependencies: [
+            { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          ]
+        };
+
+        var configOptions = <%= config.reveal_js.to_json %>
+
+        var initializeOptions = {};
+        extend(initializeOptions, baseOptions);
+        extend(initializeOptions, configOptions);
+        Reveal.initialize(initializeOptions);
+      })();
     </script>
   </body>
 </html>

@@ -46,7 +46,7 @@ Feature: The capabilities of config.yml
     """
     And the file "slides/index.html" should contain:
     """
-    transition: Reveal.getQueryHash().transition || 'page'
+    transition: 'page'
     """
 
   Scenario: Generating slides with slides.rb and config.yml
@@ -82,5 +82,5 @@ Feature: The capabilities of config.yml
     """
     And the file "slides/index.html" should contain:
     """
-    transition: Reveal.getQueryHash().transition || 'page'
+    transition: 'page'
     """
