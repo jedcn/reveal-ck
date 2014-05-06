@@ -9,8 +9,8 @@ module RevealCK
     end
 
     def merge!(hash)
-      hash.each_pair do |key, value|
-        self[key.to_sym] = value
+      hash.each_pair do |name, value|
+        modifiable[new_ostruct_member(name)] = value
       end
     end
 
