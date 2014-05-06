@@ -46,12 +46,17 @@ module RevealCK
       end
     end
 
-    describe 'reveal_js options' do
+    describe 'revealjs_config options' do
       it 'supplies standard defaults' do
-        expect(config.reveal_js['controls']).to eq true
-        expect(config.reveal_js['progress']).to eq true
-        expect(config.reveal_js['history']).to eq true
-        expect(config.reveal_js['center']).to eq true
+        expect(config.revealjs_config['controls']).to eq true
+        expect(config.revealjs_config['progress']).to eq true
+        expect(config.revealjs_config['history']).to eq true
+        expect(config.revealjs_config['center']).to eq true
+      end
+
+      it 'can be made into JSON' do
+        revealjs_config_json = config.revealjs_config.to_json
+        expect(revealjs_config_json).to include '"controls":true'
       end
     end
 

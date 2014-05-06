@@ -20,17 +20,12 @@ module RevealCK
       'author'     => '',
       'theme'      => 'default',
       'transition' => 'default',
-      'reveal_js' => {
+      'revealjs_config' => {
         'controls' => true,
         'progress' => true,
         'history' => true,
         'center' => true
       }
     }
-
-    def reveal_js_as_json
-      require 'json'
-      JSON.pretty_generate(@table[:reveal_js])
-    end
   end
 end

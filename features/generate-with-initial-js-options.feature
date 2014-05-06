@@ -17,7 +17,7 @@ Feature: How to configure reveal.js initialization options
     """
     And a file named "config.yml" with:
     """
-    reveal_js:
+    revealjs_config:
       autoSlide: 5000
       loop: true
       parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'
