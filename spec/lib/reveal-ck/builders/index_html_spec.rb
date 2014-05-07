@@ -57,7 +57,7 @@ module RevealCK
 
       it 'supports replacing the configured transition' do
         expect(rendered_content)
-          .to include("transition: Reveal.getQueryHash().transition || 'page'")
+          .to include("transition: 'page'")
       end
 
       it 'supports replacing the associated slides' do

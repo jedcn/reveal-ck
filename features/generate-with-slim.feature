@@ -54,5 +54,5 @@ Feature: Slides with slim
     """
     And the file "slides/index.html" should contain:
     """
-    transition: Reveal.getQueryHash().transition || 'default'
+    transition: 'default'
     """

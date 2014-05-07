@@ -5,6 +5,8 @@ AllCops:
   Include:
     - Rakefile
     - rakelib/*.rake
+  Exclude:
+    - tmp/**/*
 
 Encoding:
   EnforcedStyle: when_needed

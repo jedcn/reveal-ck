@@ -10,6 +10,10 @@ module RevealCK
       def_delegators :@config, name, "#{name}=".to_sym
     end
 
+    def revealjs_config
+      @config.revealjs_config
+    end
+
     attr_accessor :html, :config
 
     def initialize(args)

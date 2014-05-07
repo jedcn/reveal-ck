@@ -1,4 +1,5 @@
 require 'ostruct'
+require 'json'
 
 module RevealCK
   # A Config represents core configuration options within
@@ -18,7 +19,13 @@ module RevealCK
       'title'      => 'Slides',
       'author'     => '',
       'theme'      => 'default',
-      'transition' => 'default'
+      'transition' => 'default',
+      'revealjs_config' => {
+        'controls' => true,
+        'progress' => true,
+        'history' => true,
+        'center' => true
+      }
     }
   end
 end
