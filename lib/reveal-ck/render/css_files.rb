@@ -1,15 +1,7 @@
-require 'rake'
-
 module RevealCK
-  module Builders
-    # This class serves as the 'scope' that's present when
-    # index.html.erb is being rendered.
-    class IndexHtmlRenderScope
-      include RequiredArg
-      def initialize(args)
-        @dir = retrieve(:dir, args)
-      end
-
+  module Render
+    # Determine which .css files are underneath a @dir
+    module CssFiles
       def css_files
         things_in_css_dir = FileList["#{@dir}/css/**/*"]
         only_css_files = things_in_css_dir.grep(/\.css$/)

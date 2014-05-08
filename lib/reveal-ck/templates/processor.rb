@@ -17,7 +17,7 @@ module RevealCK
       end
 
       def output(locals = {})
-        scope = RenderScope.new
+        scope = RevealCK::Render::Scope.new(dir: Dir.pwd)
         @template.render scope, locals
       end
 
