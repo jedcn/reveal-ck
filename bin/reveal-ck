@@ -13,6 +13,7 @@ class RevealCKExecutable
   command :generate do |c|
 
     # Where is the slides file?
+    default_file = 'slides.html'    if File.exist? 'slides.html'
     default_file = 'slides.md'      if File.exist? 'slides.md'
     default_file = 'slides.textile' if File.exist? 'slides.textile'
     default_file = 'slides.haml'    if File.exist? 'slides.haml'
