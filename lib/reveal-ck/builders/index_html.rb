@@ -18,7 +18,7 @@ module RevealCK
       end
 
       def render
-        scope = IndexHtmlRenderScope.new(dir: Dir.pwd)
+        scope = RevealCK::Render::Scope.new(dir: Dir.pwd)
         template = Tilt.new(index_file)
         locals = {
           config: config,
