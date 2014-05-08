@@ -12,12 +12,9 @@ class RevealCKExecutable
   desc 'Generate reveal.js slides'
   command :generate do |c|
 
-    # Where is the slides file?
-    default_file = 'slides.md'      if File.exist? 'slides.md'
-    default_file = 'slides.textile' if File.exist? 'slides.textile'
-    default_file = 'slides.haml'    if File.exist? 'slides.haml'
-    default_file = 'slides.slim'    if File.exist? 'slides.slim'
-    default_file = 'slides.rb'      if File.exist? 'slides.rb'
+    slide_files = FileList['slides.*']
+    default_file = slide_files.empty? ? nil : slide_files.first
+
     c.desc 'The file containing your slide content'
     c.flag [:f, :file], default_value: default_file
 
@@ -26,6 +23,20 @@ class RevealCKExecutable
 
     c.action do |_, options, _|
       slides_file = options[:file]
+      if slides_file.nil?
+        puts
+        puts 'Problem:'
+        puts
+        puts '  reveal-ck could not find a slides file, and it cannnot build'
+        puts '  your presentation without one.'
+        puts
+        puts '  It thinks anything that matches "slides.*" is a slides file.'
+        puts
+        puts '  Some examples are: slides.md, slides.html, slides.haml'
+        puts
+        msg = 'Create a file matching slides.* to proceed, such as slides.md.'
+        exit_now!(msg)
+      end
       puts "Generating slides for '#{slides_file}'.."
       builder_args = {
         reveal_js_dir: File.join(RevealCK::LOCATION, 'reveal.js'),
