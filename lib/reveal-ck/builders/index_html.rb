@@ -18,10 +18,9 @@ module RevealCK
       end
 
       def render
-        scope = RevealCK::Render::Scope.new(dir: Dir.pwd)
+        scope = RevealCK::Render::Scope.new(dir: Dir.pwd, config: config)
         template = Tilt.new(index_file)
         locals = {
-          config: config,
           slides_file: slides_file
         }
         template.render(scope, locals)
