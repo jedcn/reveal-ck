@@ -16,6 +16,10 @@ module RevealCK
   lib = File.dirname __FILE__
   root = File.join lib, '..'
   LOCATION = File.expand_path root
+
+  def self.path_to(*args)
+    File.join(LOCATION, *args)
+  end
 end
 
 # RevealCK::REVEALJS_FILES is a list of files that compromise

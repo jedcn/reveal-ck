@@ -84,3 +84,49 @@ Feature: The capabilities of config.yml
     """
     transition: 'page'
     """
+
+  Scenario: Referencing config data with a templating language
+    Given a file named "config.yml" with:
+    """
+    data:
+      neat_image: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'
+    """
+    Given a file named "slides.haml" with:
+    """
+    %section
+      %img{ src: "#{config.data['neat_image']}" }
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the following files should exist:
+    | slides/index.html  |
+    And the file "slides/index.html" should contain:
+    """
+    <img src='https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'>
+    """
+
+  Scenario: Referencing config data with ruby
+    Given a file named "config.yml" with:
+    """
+    data:
+      neat_image: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'
+    """
+    Given a file named "slides.rb" with:
+    """
+    presentation do
+      slide 'neat_image'
+    end
+    """
+    Given a file named "templates/neat_image.haml" with:
+    """
+    %section
+      %img{ src: "#{config.data['neat_image']}" }
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the following files should exist:
+    | slides/index.html  |
+    And the file "slides/index.html" should contain:
+    """
+    <img src='https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'>
+    """

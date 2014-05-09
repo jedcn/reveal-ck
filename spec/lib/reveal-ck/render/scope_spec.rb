@@ -10,7 +10,7 @@ module RevealCK
         end
 
         let :scope do
-          Scope.new(dir: Dir.pwd)
+          Scope.new(dir: Dir.pwd, config: {})
         end
 
         it 'provides access to a file on the file system' do
@@ -25,7 +25,7 @@ module RevealCK
         end
 
         let :scope do
-          Scope.new(dir: css_dir)
+          Scope.new(dir: css_dir, config: {})
         end
 
         it 'can return a list of the css files' do

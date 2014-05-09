@@ -38,6 +38,7 @@ module RevealCK
 
     def slide(template, variables = {})
       variables[:template] = template
+      variables[:config] = @config
       @slides << RevealCK::Slide.new(variables)
     end
 
