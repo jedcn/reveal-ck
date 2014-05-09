@@ -25,6 +25,9 @@ module RevealCK
         'progress' => true,
         'history' => true,
         'center' => true
+      },
+      'data' => {
+
       }
     }
   end
