@@ -7,7 +7,7 @@ module RevealCK
     # core slides) within a reveal.js presentation.
     #
     class IndexHtml
-      include RequiredArg
+      include Retrieve
 
       attr_reader :index_file, :slides_file, :config
 

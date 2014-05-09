@@ -1,8 +1,6 @@
 module RevealCK
-  #
-  # Classes that include this module get access to required_arg
-  #
-  module RequiredArg
+  # Retrieve the value of a symbol from a hash or fail
+  module Retrieve
     def retrieve(symbol, hash)
       hash[symbol] || fail("#{symbol} is required")
     end

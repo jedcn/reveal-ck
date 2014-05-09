@@ -10,7 +10,7 @@ module RevealCK
     # Public: A Processor is given a template and expected to render
     # it.
     class Processor
-      include RequiredArg
+      include Retrieve
 
       attr_reader :config
 

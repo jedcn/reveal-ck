@@ -3,7 +3,7 @@ module RevealCK
     # A Scope provides methods available at render time.
     class Scope
       attr_reader :config
-      include RequiredArg
+      include Retrieve
       include ContentsOf
       include CssFiles
       include IndexHtmlMaker

@@ -4,7 +4,7 @@ module RevealCK
   # #html. Access metadata via theme, title, author, transition.
   #
   class Presentation
-    include RequiredArg
+    include Retrieve
     extend Forwardable
     [:author, :title, :transition, :theme].each do |name|
       def_delegators :@config, name, "#{name}=".to_sym

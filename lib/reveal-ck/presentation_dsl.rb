@@ -4,7 +4,7 @@ module RevealCK
   # presentation. It also knows how to load file containing the DSL.
   #
   class PresentationDSL
-    include RequiredArg
+    include Retrieve
     attr_reader :author, :title, :theme, :transition
 
     def initialize(args)
