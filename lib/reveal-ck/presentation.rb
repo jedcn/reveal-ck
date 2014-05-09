@@ -4,7 +4,7 @@ module RevealCK
   # #html. Access metadata via theme, title, author, transition.
   #
   class Presentation
-    include RequiredArg
+    include Retrieve
     extend Forwardable
     [:author, :title, :transition, :theme].each do |name|
       def_delegators :@config, name, "#{name}=".to_sym
@@ -26,8 +26,7 @@ module RevealCK
     end
 
     def self.from_template(args)
-      file = args[:file] || fail(':file is required')
-      config = args[:config] || fail(':config is required')
+      file, config = retrieve(:file, args), retrieve(:config, args)
       presentation = Presentation.new config: config
       template = Templates::Processor.open(file: file, config: config)
       presentation.html = template.output({})
@@ -35,14 +34,12 @@ module RevealCK
     end
 
     def self.from_dsl(args)
-      file = args[:file] || fail(':file is required')
-      config = args[:config] || fail(':config is required')
+      file, config = retrieve(:file, args), retrieve(:config, args)
       RevealCK::PresentationDSL.load file: file, config: config
     end
 
     def self.load(args)
-      file = args[:file] || fail(':file is required')
-      config = args[:config] || fail(':config is required')
+      file, config = retrieve(:file, args), retrieve(:config, args)
       if file.end_with? '.rb'
         Presentation.from_dsl file: file, config: config
       else

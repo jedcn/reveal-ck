@@ -3,7 +3,7 @@ module RevealCK
     # Works within the context of Rake to setup a task for a given
     # name
     class CreationTask
-      include RequiredArg
+      include Retrieve
       include RakeAware
       attr_reader :application, :things_to_create
 

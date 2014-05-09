@@ -4,7 +4,7 @@ module RevealCK
   # presentation. It also knows how to load file containing the DSL.
   #
   class PresentationDSL
-    include RequiredArg
+    include Retrieve
     attr_reader :author, :title, :theme, :transition
 
     def initialize(args)
@@ -63,8 +63,7 @@ module RevealCK
     end
 
     def self.load(args)
-      file = args[:file] || fail(':file is required')
-      config = args[:config] || fail(':config is required')
+      file, config = retrieve(:file, args), retrieve(:config, args)
       builder = PresentationDSL.new config: config
       contents = File.open(file).read
       builder.instance_eval(contents)

@@ -5,7 +5,7 @@ module RevealCK
     # Given a copy of reveal.js, this class knows which files should be
     # included.
     class RevealJsFiles
-      include RequiredArg
+      include Retrieve
       attr_reader :reveal_js_dir
       def initialize(args)
         @reveal_js_dir = retrieve(:reveal_js_dir, args)

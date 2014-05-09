@@ -5,7 +5,7 @@ module RevealCK
     # Given a location to a user's files, this class knows which files
     # should be included.
     class UserFiles
-      include RequiredArg
+      include Retrieve
       attr_reader :user_files_dir
 
       def initialize(args)

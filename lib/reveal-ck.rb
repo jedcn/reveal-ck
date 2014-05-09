@@ -1,6 +1,6 @@
 require_relative 'reveal-ck/version'
 require_relative 'reveal-ck/config'
-require_relative 'reveal-ck/required_arg'
+require_relative 'reveal-ck/retrieve'
 require_relative 'reveal-ck/render'
 require_relative 'reveal-ck/slide'
 require_relative 'reveal-ck/presentation'

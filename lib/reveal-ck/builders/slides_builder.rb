@@ -6,7 +6,7 @@ module RevealCK
     # file to work with, and a place to put it all.. this class
     # creates a presentation.
     class SlidesBuilder
-      include RequiredArg
+      include Retrieve
       include RakeAware
       attr_reader :reveal_js_dir, :revealck_dir
       attr_reader :slides_file, :output_dir
