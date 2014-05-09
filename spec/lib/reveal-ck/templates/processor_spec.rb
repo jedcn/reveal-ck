@@ -4,6 +4,10 @@ module RevealCK
   module Templates
     describe Processor do
 
+      let :config do
+        Config.new
+      end
+
       let :slim_file do
         spec_data 'templates', 'processor', 'basic.slim'
       end
@@ -17,12 +21,12 @@ module RevealCK
       end
 
       it 'can process a slim template' do
-        processor = Processor.open slim_file
+        processor = Processor.open file: slim_file, config: config
         processor.output.should match pretty_printed_basic
       end
 
       it 'can process a haml template' do
-        processor = Processor.open haml_file
+        processor = Processor.open file: haml_file, config: config
         processor.output.should match pretty_printed_basic
       end
 

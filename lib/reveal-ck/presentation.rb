@@ -29,7 +29,7 @@ module RevealCK
       file = args[:file] || fail(':file is required')
       config = args[:config] || fail(':config is required')
       presentation = Presentation.new config: config
-      template = Templates::Processor.open file
+      template = Templates::Processor.open(file: file, config: config)
       presentation.html = template.output({})
       presentation
     end
