@@ -4,5 +4,9 @@ module RevealCK
     def retrieve(symbol, hash)
       hash[symbol] || fail("#{symbol} is required")
     end
+
+    def self.included(base)
+      base.extend(Retrieve)
+    end
   end
 end
