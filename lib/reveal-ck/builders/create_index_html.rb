@@ -16,10 +16,6 @@ module RevealCK
         super
       end
 
-      def name
-        'create_index_html'
-      end
-
       def setup
         index_html_file = "#{output_dir}/index.html"
         task(index_html_file => 'slides/slides.html') do

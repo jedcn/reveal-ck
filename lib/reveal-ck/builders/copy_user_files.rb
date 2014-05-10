@@ -13,10 +13,6 @@ module RevealCK
         super
       end
 
-      def name
-        'copy_user_files'
-      end
-
       def setup
         files = UserFiles.new(user_files_dir: user_files_dir)
         files.all.each do |file|

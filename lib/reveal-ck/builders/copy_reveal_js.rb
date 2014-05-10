@@ -14,10 +14,6 @@ module RevealCK
         super
       end
 
-      def name
-        'copy_reveal_js'
-      end
-
       def setup
         files = RevealJsFiles.new(reveal_js_dir: reveal_js_dir)
         files.all.each { |file| analyze_file(file) }
