@@ -19,7 +19,11 @@ module RevealCK
       end
 
       def name
-        fail('name must be implemented by subclasses')
+        full_class_name = self.class.to_s
+        class_name = full_class_name.gsub(/.*::/, '')
+        add_underscores = class_name.gsub(/([A-Z])/, '_\1')
+        trim_first_underscore = add_underscores[1..add_underscores.size]
+        trim_first_underscore.downcase
       end
     end
   end
