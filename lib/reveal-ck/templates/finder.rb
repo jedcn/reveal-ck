@@ -15,7 +15,7 @@ module RevealCK
 
       def default_paths
         pwd_templates = File.join Dir.pwd, 'templates'
-        reveal_ck_templates = File.join RevealCK::LOCATION, 'templates'
+        reveal_ck_templates = RevealCK.path_to 'templates'
         [pwd_templates, reveal_ck_templates]
       end
 

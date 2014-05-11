@@ -6,13 +6,13 @@ module RevealCK
     # should be included.
     class UserFiles
       include Retrieve
-      attr_reader :user_files_dir
+      attr_reader :dir
 
       def initialize(args)
-        @user_files_dir = retrieve(:user_files_dir, args)
+        @dir = retrieve(:dir, args)
       end
 
-      def all
+      def files
         []
           .concat(css)
           .concat(js)
@@ -24,23 +24,23 @@ module RevealCK
       private
 
       def css
-        FileList["#{user_files_dir}/css/**/*"]
+        FileList["#{dir}/css/**/*"]
       end
 
       def js
-        FileList["#{user_files_dir}/js/**/*"]
+        FileList["#{dir}/js/**/*"]
       end
 
       def plugin
-        FileList["#{user_files_dir}/plugin/**/*"]
+        FileList["#{dir}/plugin/**/*"]
       end
 
       def media
-        FileList["#{user_files_dir}/media/**/*"]
+        FileList["#{dir}/media/**/*"]
       end
 
       def images
-        FileList["#{user_files_dir}/images/**/*"]
+        FileList["#{dir}/images/**/*"]
       end
     end
   end

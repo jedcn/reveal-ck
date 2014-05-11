@@ -29,7 +29,7 @@ module RevealCK
       file, config = retrieve(:file, args), retrieve(:config, args)
       presentation = Presentation.new config: config
       template = Templates::Processor.open(file: file, config: config)
-      presentation.html = template.output({})
+      presentation.html = template.output
       presentation
     end
 

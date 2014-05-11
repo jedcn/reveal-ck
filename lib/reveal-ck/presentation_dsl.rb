@@ -6,6 +6,7 @@ module RevealCK
   class PresentationDSL
     include Retrieve
     attr_reader :author, :title, :theme, :transition
+    attr_reader :config
 
     def initialize(args)
       @slides = []
@@ -16,24 +17,24 @@ module RevealCK
     # trivial accessors are used.
     # rubocop:disable TrivialAccessors
     def theme(theme)
-      @config.theme = theme
+      config.theme = theme
     end
 
     def transition(transition)
-      @config.transition = transition
+      config.transition = transition
     end
 
     def title(title)
-      @config.title = title
+      config.title = title
     end
 
     def author(author)
-      @config.author = author
+      config.author = author
     end
     # rubocop:enable TrivialAccessors
 
     def revealjs_config(key, value)
-      @config.revealjs_config[key] = value
+      config.revealjs_config[key] = value
     end
 
     def slide(template, variables = {})
@@ -47,7 +48,7 @@ module RevealCK
     end
 
     def build
-      presentation = RevealCK::Presentation.new config: @config
+      presentation = RevealCK::Presentation.new config: config
       presentation.theme = @theme if @theme
       presentation.transition = @transition if @transition
       presentation.author = @author if @author

@@ -10,21 +10,20 @@ require_relative 'reveal-ck/builders'
 require_relative 'reveal-ck/markdown'
 require_relative 'reveal-ck/tilt/config'
 
-# RevealCK::LOCATION is the path where reveal-ck is residing on your
-# system as a gem.
+# RevealCK::path_to provides the path where files within the reveal-ck
+# gem are located on your system.
 module RevealCK
-  lib = File.dirname __FILE__
-  root = File.join lib, '..'
-  LOCATION = File.expand_path root
-
   def self.path_to(*args)
-    File.join(LOCATION, *args)
+    lib = File.dirname(__FILE__)
+    gem_root = File.join(lib, '..')
+    location = File.expand_path(gem_root)
+    File.join(location, *args)
   end
 end
 
 # RevealCK::REVEALJS_FILES is a list of files that compromise
 # reveal.js bundled into this gem.
 module RevealCK
-  revealjs = File.join LOCATION, 'reveal.js'
-  REVEALJS_FILES = Dir.glob "#{revealjs}/**/*"
+  revealjs = path_to('reveal.js')
+  REVEALJS_FILES = Dir.glob("#{revealjs}/**/*")
 end
