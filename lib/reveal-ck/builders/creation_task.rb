@@ -10,8 +10,6 @@ module RevealCK
       def initialize(args)
         @application = retrieve(:application, args)
         @things_to_create = Set.new
-        setup
-        task(name => things_to_create.to_a)
       end
 
       def setup
@@ -24,6 +22,12 @@ module RevealCK
         add_underscores = class_name.gsub(/([A-Z])/, '_\1')
         trim_first_underscore = add_underscores[1..add_underscores.size]
         trim_first_underscore.downcase
+      end
+
+      def prepare
+        setup
+        task(name => things_to_create.to_a)
+        name
       end
     end
   end

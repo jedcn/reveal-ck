@@ -74,9 +74,10 @@ module RevealCK
           .with(Rake::Task,
                 name_of_class => tasks_to_be_executed)
 
-        CopyFilesTask.new(application: application,
-                          file_listing: file_listing,
-                          output_dir: directory_to_be_created)
+        task = CopyFilesTask.new(application: application,
+                                 file_listing: file_listing,
+                                 output_dir: directory_to_be_created)
+        task.prepare
       end
     end
   end

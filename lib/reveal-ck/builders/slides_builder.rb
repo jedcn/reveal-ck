@@ -52,7 +52,7 @@ module RevealCK
           CopyUserFiles.new(user_files_dir: revealck_dir,
                             output_dir: output_dir,
                             application: application)
-        task.name
+        task.prepare
       end
 
       def setup_copy_reveal_js
@@ -60,7 +60,7 @@ module RevealCK
           CopyRevealJs.new(reveal_js_dir: reveal_js_dir,
                            output_dir: output_dir,
                            application: application)
-        task.name
+        task.prepare
       end
 
       def setup_create_slides_html
@@ -69,7 +69,7 @@ module RevealCK
                                config: @config,
                                output_dir: output_dir,
                                application: application)
-        task.name
+        task.prepare
       end
 
       def setup_create_index_html
@@ -82,7 +82,7 @@ module RevealCK
                               output_dir: output_dir,
                               config: @config,
                               application: application)
-        task.name
+        task.prepare
       end
     end
   end
