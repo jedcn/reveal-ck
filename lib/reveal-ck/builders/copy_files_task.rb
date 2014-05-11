@@ -11,7 +11,9 @@ module RevealCK
       end
 
       def setup
-        file_listing.files.each { |file| analyze_file(file) }
+        file_listing.files.each do |file|
+          analyze_file(file) unless File.directory?(file)
+        end
       end
 
       def analyze_file(file)

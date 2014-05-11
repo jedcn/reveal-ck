@@ -33,7 +33,7 @@ module RevealCK
       end
 
       def read_config
-        config_file = File.join(@revealck_dir, 'config.yml')
+        config_file = File.join(revealck_dir, 'config.yml')
         if File.exist?(config_file)
           config_as_hash = YAML.load_file config_file
           @config.merge!(config_as_hash)
@@ -48,18 +48,18 @@ module RevealCK
       end
 
       def setup_copy_user_files
-        task =
-          CopyUserFiles.new(user_files_dir: revealck_dir,
-                            output_dir: output_dir,
-                            application: application)
+        file_listing = UserFiles.new(dir: revealck_dir)
+        task = CopyFilesTask.new(file_listing: file_listing,
+                                 output_dir: output_dir,
+                                 application: application)
         task.prepare
       end
 
       def setup_copy_reveal_js
-        task =
-          CopyRevealJs.new(reveal_js_dir: reveal_js_dir,
-                           output_dir: output_dir,
-                           application: application)
+        file_listing = RevealJsFiles.new(dir: reveal_js_dir)
+        task = CopyFilesTask.new(file_listing: file_listing,
+                                 output_dir: output_dir,
+                                 application: application)
         task.prepare
       end
 

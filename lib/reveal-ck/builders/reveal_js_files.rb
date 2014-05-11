@@ -2,16 +2,18 @@ require 'rake'
 
 module RevealCK
   module Builders
-    # Given a copy of reveal.js, this class knows which files should be
-    # included.
+    # Given a copy of reveal.js, this class knows which files are
+    # vital to the presentation.
     class RevealJsFiles
       include Retrieve
-      attr_reader :reveal_js_dir
+
+      attr_reader :dir
+
       def initialize(args)
-        @reveal_js_dir = retrieve(:reveal_js_dir, args)
+        @dir = retrieve(:dir, args)
       end
 
-      def all
+      def files
         []
           .concat(css)
           .concat(js)
@@ -24,33 +26,33 @@ module RevealCK
       private
 
       def css
-        FileList["#{reveal_js_dir}/css/reveal.min.css",
-                 "#{reveal_js_dir}/css/print/*",
-                 "#{reveal_js_dir}/css/theme/*.css"]
+        FileList["#{dir}/css/reveal.min.css",
+                 "#{dir}/css/print/*",
+                 "#{dir}/css/theme/*.css"]
       end
 
       def js
-        FileList["#{reveal_js_dir}/js/reveal.min.js"]
+        FileList["#{dir}/js/reveal.min.js"]
       end
 
       def lib
-        FileList["#{reveal_js_dir}/lib/**/*.css",
-                 "#{reveal_js_dir}/lib/font/*",
-                 "#{reveal_js_dir}/lib/**/*.js"]
+        FileList["#{dir}/lib/**/*.css",
+                 "#{dir}/lib/font/*",
+                 "#{dir}/lib/**/*.js"]
       end
 
       def plugin
-        FileList["#{reveal_js_dir}/plugin/**/*.js"]
+        FileList["#{dir}/plugin/**/*.js"]
       end
 
       def meta
-        FileList["#{reveal_js_dir}/README.md",
-                 "#{reveal_js_dir}/LICENSE",
-                 "#{reveal_js_dir}/package.json"]
+        FileList["#{dir}/README.md",
+                 "#{dir}/LICENSE",
+                 "#{dir}/package.json"]
       end
 
       def index
-        FileList["#{reveal_js_dir}/index.html"]
+        FileList["#{dir}/index.html"]
       end
     end
   end
