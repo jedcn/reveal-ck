@@ -29,54 +29,44 @@ module RevealCK
         file_listing
       end
 
-      let :directory_to_be_created do
+      let :destination_directory do
         'destination'
       end
 
-      let :file_a_to_be_created do
-        "#{directory_to_be_created}/file_a"
+      let :file_a_destination do
+        "#{destination_directory}/file_a"
       end
 
-      let :file_b_to_be_created do
-        "#{directory_to_be_created}/file_b"
+      let :file_b_destination do
+        "#{destination_directory}/file_b"
       end
 
-      it 'sets up application tasks to copy files' do
-        application = double
+      it 'creates the directory from the file_listing' do
 
-        # Expect a task to be defined that will cause the output_dir
-        # to be created
-        expect(application)
-          .to receive(:define_task)
-          .with(Rake::Task, directory_to_be_created).at_least(:once)
-
-        # Expect tasks to be defined that will cause the destination
-        # files to be created
-        expect(application)
-          .to receive(:define_task)
-          .with(Rake::FileTask,
-                file_a_to_be_created => file_a_source)
-
-        expect(application)
-          .to receive(:define_task)
-          .with(Rake::FileTask,
-                file_b_to_be_created => file_b_source)
-
-        # Expect a call that creates a task that matches the name of
-        # the class and all dependencies that should be created
-        name_of_class = 'copy_files_task'
-        tasks_to_be_executed = [directory_to_be_created,
-                                file_a_to_be_created,
-                                file_b_to_be_created]
-
-        expect(application)
-          .to receive(:define_task)
-          .with(Rake::Task,
-                name_of_class => tasks_to_be_executed)
-
-        task = CopyFilesTask.new(application: application,
+        task = CopyFilesTask.new(application: Rake::Application.new,
                                  file_listing: file_listing,
-                                 output_dir: directory_to_be_created)
+                                 output_dir: destination_directory)
+        expect(task)
+          .to receive(:create_directory)
+          .with(destination_directory)
+          .at_least(:once)
+
+        task.prepare
+      end
+
+      it 'creates the files from the file_listing' do
+        task = CopyFilesTask.new(application: Rake::Application.new,
+                                 file_listing: file_listing,
+                                 output_dir: destination_directory)
+
+        expect(task)
+          .to receive(:copy_file)
+          .with(file_a_source, file_a_destination)
+
+        expect(task)
+          .to receive(:copy_file)
+          .with(file_b_source, file_b_destination)
+
         task.prepare
       end
     end
