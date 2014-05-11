@@ -1,5 +1,3 @@
-require 'rake'
-
 module RevealCK
   module Builders
     # Given a copy of reveal.js, a Rake application, and a place where
