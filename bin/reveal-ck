@@ -46,6 +46,7 @@ class RevealCKExecutable
       }
       slides_builder =
         RevealCK::Builders::SlidesBuilder.new(builder_args)
+      slides_builder.prepare
       slides_builder.build
     end
   end

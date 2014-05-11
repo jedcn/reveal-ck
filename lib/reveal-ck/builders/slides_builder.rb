@@ -5,9 +5,7 @@ module RevealCK
     # Given a location of reveal.js files, reveal-ck files, and slides
     # file to work with, and a place to put it all.. this class
     # creates a presentation.
-    class SlidesBuilder
-      include Retrieve
-      include RakeAware
+    class SlidesBuilder < CreationTask
       attr_reader :reveal_js_dir, :revealck_dir
       attr_reader :slides_file, :output_dir
       attr_reader :application
@@ -18,18 +16,18 @@ module RevealCK
         @slides_file = retrieve(:slides_file, args)
         @application = Rake::Application.new
         @config = Config.new
-        setup
+        @things_to_create = Set.new
       end
 
       def build
-        application['create'].invoke
+        application['slides_builder'].invoke
       end
 
       private
 
       def setup
         read_config
-        task('create' => setup_dependencies)
+        things_to_create.merge(dependencies)
       end
 
       def read_config
@@ -40,14 +38,14 @@ module RevealCK
         end
       end
 
-      def setup_dependencies
-        [setup_copy_user_files,
-         setup_copy_reveal_js,
-         setup_create_slides_html,
-         setup_create_index_html]
+      def dependencies
+        [copy_user_files,
+         copy_reveal_js,
+         create_slides_html,
+         create_index_html]
       end
 
-      def setup_copy_user_files
+      def copy_user_files
         file_listing = UserFiles.new(dir: revealck_dir)
         task = CopyFilesTask.new(file_listing: file_listing,
                                  output_dir: output_dir,
@@ -55,7 +53,7 @@ module RevealCK
         task.prepare
       end
 
-      def setup_copy_reveal_js
+      def copy_reveal_js
         file_listing = RevealJsFiles.new(dir: reveal_js_dir)
         task = CopyFilesTask.new(file_listing: file_listing,
                                  output_dir: output_dir,
@@ -63,7 +61,7 @@ module RevealCK
         task.prepare
       end
 
-      def setup_create_slides_html
+      def create_slides_html
         task =
           CreateSlidesHtml.new(slides_file: slides_file,
                                config: @config,
@@ -72,7 +70,7 @@ module RevealCK
         task.prepare
       end
 
-      def setup_create_index_html
+      def create_index_html
         index_html_erb = RevealCK.path_to('templates',
                                           'reveal.js',
                                           'index.html.erb')
