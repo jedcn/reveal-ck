@@ -1,4 +1,5 @@
 require 'rake'
+require 'yaml'
 
 module RevealCK
   module Builders
