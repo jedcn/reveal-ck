@@ -6,12 +6,12 @@ module RevealCK
     # file to work with, and a place to put it all.. this class
     # creates a presentation.
     class SlidesBuilder < CreationTask
-      attr_reader :reveal_js_dir, :revealck_dir
+      attr_reader :reveal_js_dir, :reveal_ck_dir
       attr_reader :slides_file, :output_dir
       attr_reader :application
       def initialize(args)
         @reveal_js_dir = retrieve(:reveal_js_dir, args)
-        @revealck_dir = retrieve(:revealck_dir, args)
+        @reveal_ck_dir = retrieve(:reveal_ck_dir, args)
         @output_dir = retrieve(:output_dir, args)
         @slides_file = retrieve(:slides_file, args)
         @application = Rake::Application.new
@@ -31,7 +31,7 @@ module RevealCK
       end
 
       def read_config
-        config_file = File.join(revealck_dir, 'config.yml')
+        config_file = File.join(reveal_ck_dir, 'config.yml')
         if File.exist?(config_file)
           config_as_hash = YAML.load_file config_file
           @config.merge!(config_as_hash)
@@ -46,7 +46,7 @@ module RevealCK
       end
 
       def copy_user_files
-        file_listing = UserFiles.new(dir: revealck_dir)
+        file_listing = UserFiles.new(dir: reveal_ck_dir)
         task = CopyFilesTask.new(file_listing: file_listing,
                                  output_dir: output_dir,
                                  application: application)
