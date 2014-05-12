@@ -12,13 +12,13 @@ module RevealCK
         template.render(self)
       end
 
-      def index_body(slides_file)
+      def index_body(slides_html)
         index_body_html_erb = RevealCK.path_to('templates',
                                                'reveal.js',
                                                'index_body.html.erb')
         template = Tilt.new(index_body_html_erb)
         locals = {
-          slides_file: slides_file
+          slides_html: slides_html
         }
         template.render(self, locals)
       end

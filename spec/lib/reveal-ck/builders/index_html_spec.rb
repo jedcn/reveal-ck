@@ -22,7 +22,7 @@ module RevealCK
 
       let :index_html do
         IndexHtml.new(index_file: index_html_erb,
-                      slides_file: slides_html,
+                      slides_html: slides_html,
                       config: config)
       end
 

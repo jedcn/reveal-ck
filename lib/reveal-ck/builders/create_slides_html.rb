@@ -13,10 +13,6 @@ module RevealCK
         super
       end
 
-      def name
-        'create_slides_html'
-      end
-
       def setup
         slides_html_file = "#{output_dir}/slides.html"
         task(slides_html_file) do
