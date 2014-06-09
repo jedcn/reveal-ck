@@ -1,3 +1,70 @@
+### 0.3.0 / 2014-06-08
+
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.2.0...v0.3.0)
+
+#### CSS Inclusion
+
+If you have a reveal.js presentation, and you'd like to tweak some
+CSS, create a directory named `css/` and put your tweaks into a css
+file in that directory. The file you create will automatically be
+included in your presentation and `<link>`ed to.
+
+See [generate-with-css.feature][features/generate-with-css.feature].
+
+#### Media inclusion
+
+Any files in the `media/` directory are now included in your
+presentation.
+
+See
+[generate-with-media.feature][features/generate-with-media.feature].
+
+#### JS inclusion
+
+Any files in the `js/` directory are now included in your
+presentation.
+
+See [generate-with-js.feature][features/generate-with-js.feature].
+
+#### `slides.html` is now supported
+
+You can now create slides using vanilla HTML.
+
+See [generate-with-html.feature][features/generate-with-html.feature].
+
+#### `slides.html.erb` is now supported
+
+You can now create slides using HTML and erb.
+
+See [generate-with-erb.feature][features/generate-with-erb.feature].
+
+#### `config.yml` now allows to override reveal.js init
+
+You can now supply the standard reveal.js configuration options in
+`config.yml`
+
+Add a top level `revealjs_config` and then use the key/values that
+reveal.js expects. For example:
+
+```yaml
+revealjs_config:
+  autoSlide: 5000
+  loop: true
+```
+
+See
+[generate-with-initial-js-options.feature][features/generate-with-initial-js-options.feature].
+
+#### Updated reveal.js
+
+It is now: 131c0068.
+
+#### Started using RelishApp
+
+You can find the results here:
+
+https://www.relishapp.com/jedcn/reveal-ck/
+
 ### 0.2.0 / 2013-12-26
 
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.1.8...v0.2.0)
