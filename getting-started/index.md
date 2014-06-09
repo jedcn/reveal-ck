@@ -5,16 +5,21 @@ title: Getting Started
 
 # Getting Started
 
-[reveal-ck is a ruby gem][reveal-ck-gem].
+<p class="lead">
+<a href="http://rubygems.org/gems/reveal-ck">reveal-ck is a ruby
+gem</a>.
+</p>
 
-To get going, you install the gem, create some slides, and then run
-`reveal-ck` from the command line.
+To get going, you install the gem, put some content into a file named
+`slides.md`, and then run `reveal-ck generate` from the command line.
 
 Let's go through those steps one by one.
 
 ## Installation
 
-To get going, you need a relatively modern ruby (1.9 or 2.0).
+<p class="lead">
+To get going, you need a relatively modern ruby (1.9 or greater).
+</p>
 
 Once you've got that, reveal-ck installs as a standard gem:
 
@@ -24,27 +29,25 @@ gem install reveal-ck
 
 ## First Presentation
 
-Once the gem is installed, create a new file named `slides.haml` and
+<p class="lead">
+Now that you have the gem, create a new file named `slides.md` and
 put the following into it:
+</p>
 
-{% highlight haml %}
-%section
-  %h1
-    Slides
-  %h3
-    with Ruby?
-  %aside.notes
-    These are notes. Press 's' to see them.
+```
+# Slides
 
-%section
-  %h1
-    Awesome!
-{% endhighlight %}
+### with Ruby?
 
-By default, reveal-ck looks for files named `slides.haml` or
-`slides.slim` or `slides.rb`. In this case, we've used Haml.
+---
 
-The haml specifies HTML that looks, roughly, like:
+# Awesome!
+```
+
+By default, reveal-ck looks for files that match `slides.*`. In this
+case it will find `slides.md` and generate your slides from it.
+
+When translated from markdown into HTML, it looks, roughly, like:
 
 {% highlight html %}
 <section>
@@ -59,16 +62,22 @@ The haml specifies HTML that looks, roughly, like:
 As you may have guessed, [reveal.js][reveal.js] treats each
 `<section/>` as a distinct slide. We have two slides here.
 
+When you're writing with markdown you don't need to know about
+`<section>`s. Instead-- save that knowledge for another time and just
+remember that you add `---` to separate slides.
+
 ## Generating Slides
 
+<p class="lead">
 Once you've saved that content, run the following command:
+</p>
 
 ```
 reveal-ck generate
 ```
 
-This command will transform the Haml into HTML and then integrate that
-HTML into a stock reveal.js presentation. It builds out the result in
+This command will transform the markdown into HTML and then integrate
+that HTML into a reveal.js presentation. It builds out the result in
 the `slides/` directory.
 
 To see what was created just now, open `slides/index.html` in a
@@ -76,18 +85,36 @@ browser. If you're on MacOS you can type: `open slides/index.html`.
 
 # What Next?
 
-This first step created a presentation in Haml. If you're good with
-haml, then [check out more information about haml][haml].
+<p class="lead">
+This first step created a presentation from markdown..
+</p>
 
-If you'd like to switch to slim, then
+Markdown gives you access to images, various headings, lists of items,
+code snippets, and quotes.
+
+We recommend that you keep going down this path until you want more
+control over what's produced. For many of our friends that day has
+never come.
+
+What are the limits of markdown? It can't easily create vertical
+slides, background images, or provide text treatments.
+
+If you'd like to get these things, then you'll need to use something
+with more expressiveness. Your choices are: html, erb (within html),
+haml, slim, or ruby itself.
+
+We've written up a few introductions for haml, slim, and ruby.
+
+If you're a haml specialist, then
+[check out more information about haml][haml].
+
+If you'd prefer slim, then
 [check out more information about slim][slim].
 
 If you'd like to learn about creating slides with ruby,
 [check out more information about ruby][ruby].
 
-
 [reveal.js]:     http://lab.hakim.se/reveal-js/#/
-[reveal-ck-gem]: http://rubygems.org/gems/reveal-ck
 [haml]:          ../haml
 [ruby]:          ../ruby
 [slim]:          ../slim
