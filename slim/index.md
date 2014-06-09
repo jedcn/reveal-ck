@@ -5,8 +5,10 @@ title: Slides with Slim
 
 # Slides with Slim
 
+<p class="lead">
 Making slides in Slim works best when you have a decent understanding
 of both Slim and some of the conventions that reveal.js follows.
+</p>
 
 If you're looking to become more comfortable with Slim, here's
 [the main slim][slim] site and the official [slim docs][slim-docs].
@@ -35,7 +37,9 @@ your slides), see the [config information][config].
 
 ## Sections represent slides
 
+<p class="lead">
 Here are three slides:
+</p>
 
 ```
 section 1
@@ -45,7 +49,10 @@ section 3
 
 ## Titles and Subtitles
 
-`<h1>`/`<h3>` serve as good title/subtitle combinations.
+<p class="lead">
+<code>&lt;h1&gt;</code>/<code>&lt;h3&gt;</code> serve as good
+title/subtitle combinations.
+</p>
 
 ```
 section
@@ -72,6 +79,11 @@ section
 
 ## Vertical Slides
 
+<p class="lead">
+Vertical slides are a hallmark of reveal.js, and are trivial to
+implement in slim.
+</p>
+
 Create a parent `<section>` that has two or more `<section>` children.
 
 ```
@@ -84,8 +96,12 @@ section
 
 ## Revealing Content
 
-You can progressively reveal parts of your slide. Mark the parts that
-should be revealed with a `class="fragment"`, as follows:
+<p class="lead">
+You can progressively reveal parts of your slide.
+</p>
+
+Mark the parts that should be revealed with a `class="fragment"`, as
+follows:
 
 ```
 section
@@ -138,11 +154,15 @@ section
 
 ## Referencing Images
 
+<p class="lead">
+It's easy to include images into your slides.
+</p>
+
 Your slides will likely contain images. These images may already be
 hosted on the internet somewhere (allowing them to be referenced
 absolutely). However, if they are not, or you'd prefer to maintain a
-local copy, then you should create a directory named `images/` and
-put your images here.
+local copy, then you should create a directory named `images/` and put
+your images here.
 
 The contents of the `images/` directory will be copied into the
 generated presentation by reveal-ck. This means that if you had an

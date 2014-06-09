@@ -5,8 +5,10 @@ title: Slides with Haml
 
 # Slides with Haml
 
+<p class="lead">
 Making slides in Haml works best when you have a decent understanding
 of both Haml and some of the conventions that reveal.js follows.
+</p>
 
 If you're looking to become more comfortable with Haml, here's
 [the main haml][haml] site and the official
@@ -36,7 +38,9 @@ your slides), see the [config information][config].
 
 ## Sections represent slides
 
+<p class="lead">
 Here are three slides:
+</p>
 
 {% highlight haml %}
 %section
@@ -49,7 +53,10 @@ Here are three slides:
 
 ## Titles and Subtitles
 
-`<h1>`/`<h3>` serve as good title/subtitle combinations.
+<p class="lead">
+<code>&lt;h1&gt;</code>/<code>&lt;h3&gt;</code> serve as good
+title/subtitle combinations.
+</p>
 
 {% highlight haml %}
 %section
@@ -79,6 +86,11 @@ Add `<aside class="notes">` underneath a `<section>` to get notes
 {% endhighlight %}
 
 ## Vertical Slides
+
+<p class="lead">
+Vertical slides are a hallmark of reveal.js, and are trivial to
+implement in slim.
+</p>
 
 Create a parent `<section>` that has two or more `<section>` children.
 
@@ -152,6 +164,10 @@ into a directory named `code/`, then you could inline it as follows:
 {% endhighlight %}
 
 ## Referencing Images
+
+<p class="lead">
+It's easy to include images into your slides.
+</p>
 
 Your slides will likely contain images. These images may already be
 hosted on the internet somewhere (allowing them to be referenced

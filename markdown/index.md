@@ -37,7 +37,9 @@ your slides), see the [config information][config].
 
 ## `---` separates slides
 
+<p class="lead">
 Here are three slides:
+</p>
 
 ```
   1
@@ -53,7 +55,10 @@ Here are three slides:
 
 ## Titles and Subtitles
 
-`<h1>`/`<h3>` serve as good title/subtitle combinations.
+<p class="lead">
+<code>&lt;h1&gt;</code>/<code>&lt;h3&gt;</code> serve as good
+title/subtitle combinations.
+</p>
 
 ```
 # Title
@@ -84,21 +89,29 @@ speaker mode) for that slide.
 
 ## Vertical Slides
 
+<p class="lead">
 Vertical Slides aren't supported when using Markdown.
+</p>
 
 Markdown is great to get started with, but it doesn't offer the fine
 grained control that's needed for this feature.
 
 ## Revealing Content
 
+<p class="lead">
 Reveal content isn't supported when using Markdown.
+</p>
 
 Markdown is great to get started with, but it doesn't offer the fine
 grained control that's needed for this feature.
 
 ## Displaying Code
 
-You can follow markdown standards (4 spaces):
+<p class="lead">
+You can put code into slides using standard markdown conventions:
+</p>
+
+You can choose to use 4 spaces:
 
 ```
     def adder(a, b)
@@ -106,7 +119,7 @@ You can follow markdown standards (4 spaces):
     end
 ```
 
-Or use a triple fence block.
+Or use a triple fence block:
 
 <pre>
 ```
@@ -118,11 +131,15 @@ end
 
 ## Referencing Images
 
+<p class="lead">
+It's easy to include images into your slides.
+</p>
+
 Your slides will likely contain images. These images may already be
 hosted on the internet somewhere (allowing them to be referenced
 absolutely). However, if they are not, or you'd prefer to maintain a
-local copy, then you should create a directory named `images/` and
-put your images here.
+local copy, then you should create a directory named `images/` and put
+your images here.
 
 The contents of the `images/` directory will be copied into the
 generated presentation by reveal-ck. This means that if you had an
