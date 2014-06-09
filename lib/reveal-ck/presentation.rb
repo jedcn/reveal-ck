@@ -1,3 +1,5 @@
+require 'forwardable'
+
 module RevealCK
   #
   # Public: A Presentation is slide html and metadata. Access html via
