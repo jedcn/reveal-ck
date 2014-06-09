@@ -119,7 +119,7 @@ If you'd like to learn about creating slides with ruby,
 <p class="lead">
 Whether you stick with markdown or pick another language, you can
 tweak your presentation with <code>config.yml</code> settings. Be sure
-to check out the <a href="">configuration page</a> for the details.
+to check out the <a href="../config">configuration page</a> for the details.
 </p>
 
 [reveal.js]:     http://lab.hakim.se/reveal-js/#/

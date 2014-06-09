@@ -5,8 +5,10 @@ title: Configuration
 
 # Configuration
 
+<p class="lead">
 reveal-ck pays attention to a single, optional configuration file
-named `config.yml`.
+named <code>config.yml</code>.
+</p>
 
 As an example, consider:
 
