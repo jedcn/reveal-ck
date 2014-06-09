@@ -9,34 +9,33 @@ CSS, create a directory named `css/` and put your tweaks into a css
 file in that directory. The file you create will automatically be
 included in your presentation and `<link>`ed to.
 
-See [generate-with-css.feature][features/generate-with-css.feature].
+See [generate-with-css.feature][generate-with-css.feature].
 
 #### Media inclusion
 
 Any files in the `media/` directory are now included in your
 presentation.
 
-See
-[generate-with-media.feature][features/generate-with-media.feature].
+See [generate-with-media.feature][generate-with-media.feature].
 
 #### JS inclusion
 
 Any files in the `js/` directory are now included in your
 presentation.
 
-See [generate-with-js.feature][features/generate-with-js.feature].
+See [generate-with-js.feature][generate-with-js.feature].
 
 #### `slides.html` is now supported
 
 You can now create slides using vanilla HTML.
 
-See [generate-with-html.feature][features/generate-with-html.feature].
+See [generate-with-html.feature][generate-with-html.feature].
 
 #### `slides.html.erb` is now supported
 
 You can now create slides using HTML and erb.
 
-See [generate-with-erb.feature][features/generate-with-erb.feature].
+See [generate-with-erb.feature][generate-with-erb.feature].
 
 #### `config.yml` now allows to override reveal.js init
 
@@ -53,7 +52,14 @@ revealjs_config:
 ```
 
 See
-[generate-with-initial-js-options.feature][features/generate-with-initial-js-options.feature].
+[generate-with-initial-js-options.feature][generate-with-initial-js-options.feature].
+
+[generate-with-css.feature]: features/generate-with-css.feature
+[generate-with-media.feature]: features/generate-with-media.feature
+[generate-with-js.feature]: features/generate-with-js.feature
+[generate-with-html.feature]: features/generate-with-html.feature
+[generate-with-erb.feature]: features/generate-with-erb.feature
+[generate-with-initial-js-options.feature]: features/generate-with-initial-js-options.feature
 
 #### Updated reveal.js
 
