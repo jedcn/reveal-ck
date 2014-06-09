@@ -1,8 +1,7 @@
-Feature: Generate slides
+Feature: Using the :markdown filter within haml
 
-  In order to easily generate reveal.js presentations
-  As a user of reveal-ck
-  I want to use the "reveal-ck generate" command
+  If you're authoring slides in haml you can activate the markdown
+  filter and markdown.
 
   Scenario: Generating slides with embedded markdown
     Given a file named "slides.haml" with:

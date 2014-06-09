@@ -1,47 +1,34 @@
-require 'yaml'
+require 'ostruct'
+require 'json'
 
 module RevealCK
-  #
-  # Public: The Config module supports the core metadata surrounding a
-  # RevealCK Presentation: title, author, theme, and transition.
-  #
-  module Config
-
-    attr_writer :author, :title, :theme, :transition
-
-    def author
-      @author || DEFAULTS['author']
+  # A Config represents core configuration options within
+  # reveal-ck. It has defaults. It is mutable.
+  class Config < OpenStruct
+    def initialize
+      super DEFAULTS
     end
 
-    def title
-      @title || DEFAULTS['title']
-    end
-
-    def theme
-      @theme || DEFAULTS['theme']
-    end
-
-    def transition
-      @transition || DEFAULTS['transition']
+    def merge!(hash)
+      hash.each_pair do |name, value|
+        modifiable[new_ostruct_member(name)] = value
+      end
     end
 
     DEFAULTS = {
       'title'      => 'Slides',
       'author'     => '',
       'theme'      => 'default',
-      'transition' => 'default'
+      'transition' => 'default',
+      'revealjs_config' => {
+        'controls' => true,
+        'progress' => true,
+        'history' => true,
+        'center' => true
+      },
+      'data' => {
+
+      }
     }
-
-    def merge_config(args)
-      file = args[:file] || raise(':file is required')
-      config = YAML.load_file file
-
-      @author     = @author     || config['author']
-      @title      = @title      || config['title']
-      @theme      = @theme      || config['theme']
-      @transition = @transition || config['transition']
-    end
-
   end
-
 end

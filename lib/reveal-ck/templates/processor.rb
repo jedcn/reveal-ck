@@ -3,30 +3,31 @@
 require 'slim'
 ::Slim::Engine.set_default_options pretty: true
 
+require 'tilt'
+
 module RevealCK
   module Templates
-    #
     # Public: A Processor is given a template and expected to render
     # it.
-    #
     class Processor
+      include Retrieve
 
-      require 'tilt'
+      attr_reader :config
 
-      def initialize(file)
+      def initialize(args)
+        file, @config = retrieve(:file, args), retrieve(:config, args)
         @template = Tilt.new file
       end
 
       def output(locals = {})
-        scope = RenderScope.new
+        scope = RevealCK::Render::Scope.new(dir: Dir.pwd, config: config)
         @template.render scope, locals
       end
 
-      def self.open(file)
-        Processor.new file
+      def self.open(args)
+        file, config = retrieve(:file, args), retrieve(:config, args)
+        Processor.new(file: file, config: config)
       end
-
     end
-
   end
 end

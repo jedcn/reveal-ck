@@ -5,7 +5,7 @@ popular markup and templating languages.
 
 You write in Markdown, Textile, Haml, Slim or Ruby itself.
 
-## Written Introduction
+## A Written Introduction
 
 ..is available at http://jedcn.github.io/reveal-ck.
 
@@ -28,5 +28,8 @@ You write in Markdown, Textile, Haml, Slim or Ruby itself.
 <a href='https://vimeo.com/jedcn/reveal-ck-stop-haml-time'>
   <img alt="Video Thumbnail" width="306" height="178" src='https://raw2.github.com/jedcn/reveal-ck/gh-pages/images/reveal-ck-stop-haml-time-thumbnail.png' />
 </a>
+
+[![Build Status][travis]](https://travis-ci.org/jedcn/reveal-ck)
+[![Code Climate][code-climate]](https://codeclimate.com/github/jedcn/reveal-ck)
 
 [reveal.js]:    http://lab.hakim.se/reveal-js

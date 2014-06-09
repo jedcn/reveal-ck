@@ -1,9 +1,10 @@
 presentation do
 
-  title      'Presentation Title'
-  author     'Presentation Author'
-  theme      'night'
+  title 'Presentation Title'
+  author 'Presentation Author'
+  theme 'night'
   transition 'page'
+  revealjs_config 'autoSlide', 5000
 
   slide 'text',
         content: 'Hello World'

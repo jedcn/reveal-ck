@@ -7,7 +7,6 @@ module RevealCK
     # find the file you've asked for.
     #
     class Finder
-
       attr_reader :paths
 
       def initialize(args = {})
@@ -16,7 +15,7 @@ module RevealCK
 
       def default_paths
         pwd_templates = File.join Dir.pwd, 'templates'
-        reveal_ck_templates = File.join RevealCK::LOCATION, 'templates'
+        reveal_ck_templates = RevealCK.path_to 'templates'
         [pwd_templates, reveal_ck_templates]
       end
 
@@ -27,9 +26,8 @@ module RevealCK
             return match unless File.directory? match
           end
         end
-        raise "Unable to find #{template_name} in #{paths}"
+        fail "Unable to find #{template_name} in #{paths}"
       end
-
     end
   end
 end

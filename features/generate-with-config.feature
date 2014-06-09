@@ -1,8 +1,17 @@
-Feature: Generate slides
+Feature: The capabilities of config.yml
 
-  In order to easily generate reveal.js presentations
-  As a user of reveal-ck
-  I want to use the "reveal-ck generate" command
+  When you're creating a presentation you mainly focus your efforts on
+  your 'slides file'. This contains your content.
+
+  However, `config.yml` is another file that plays an important role:
+  it lets you supply general configuration. You can call out:
+
+  * The theme of your presentation
+  * The transitions used in your presentation
+  * The title of your presentation
+  * The author of your presentation
+
+  It is taken into account when you run a `reveal-ck generate`.
 
   Scenario: Generating slides with a template and config.yml
     Given a file named "config.yml" with:
@@ -37,7 +46,7 @@ Feature: Generate slides
     """
     And the file "slides/index.html" should contain:
     """
-    transition: Reveal.getQueryHash().transition || 'page'
+    transition: 'page'
     """
 
   Scenario: Generating slides with slides.rb and config.yml
@@ -73,5 +82,51 @@ Feature: Generate slides
     """
     And the file "slides/index.html" should contain:
     """
-    transition: Reveal.getQueryHash().transition || 'page'
+    transition: 'page'
+    """
+
+  Scenario: Referencing config data with a templating language
+    Given a file named "config.yml" with:
+    """
+    data:
+      neat_image: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'
+    """
+    Given a file named "slides.haml" with:
+    """
+    %section
+      %img{ src: "#{config.data['neat_image']}" }
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the following files should exist:
+    | slides/index.html  |
+    And the file "slides/index.html" should contain:
+    """
+    <img src='https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'>
+    """
+
+  Scenario: Referencing config data with ruby
+    Given a file named "config.yml" with:
+    """
+    data:
+      neat_image: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'
+    """
+    Given a file named "slides.rb" with:
+    """
+    presentation do
+      slide 'neat_image'
+    end
+    """
+    Given a file named "templates/neat_image.haml" with:
+    """
+    %section
+      %img{ src: "#{config.data['neat_image']}" }
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the following files should exist:
+    | slides/index.html  |
+    And the file "slides/index.html" should contain:
+    """
+    <img src='https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'>
     """

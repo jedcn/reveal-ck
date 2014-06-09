@@ -1,0 +1,16 @@
+CyclomaticComplexity:
+  Max: 5
+
+AllCops:
+  Include:
+    - Rakefile
+    - rakelib/*.rake
+  Exclude:
+    - tmp/**/*
+
+Encoding:
+  EnforcedStyle: when_needed
+
+FileName:
+  Exclude:
+    - lib/reveal-ck.rb

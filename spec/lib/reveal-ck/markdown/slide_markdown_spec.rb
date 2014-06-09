@@ -2,7 +2,6 @@ require 'spec_helper'
 
 module RevealCK
   module Markdown
-
     describe SlideMarkdown, '#postprocess' do
 
       let :slide_markdown do
@@ -45,12 +44,12 @@ eos
 
       it 'prepends an opening "<section>"' do
         output = slide_markdown.postprocess(basic_input)
-        output.should start_with "<section>"
+        output.should start_with '<section>'
       end
 
       it 'appends a closing "</section>"' do
         output = slide_markdown.postprocess(basic_input)
-        output.should end_with "</section>"
+        output.should end_with '</section>'
       end
 
       it 'replaces "<hr>"s with section breaks' do
@@ -71,6 +70,5 @@ eos
       end
 
     end
-
   end
 end

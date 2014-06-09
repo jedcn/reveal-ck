@@ -24,3 +24,11 @@ Feature: Getting Command Line Help
      * help          * - Shows a list of commands or help for one command
      * serve, server * - Start webserver so slides are available via http
     """
+
+  Scenario: You need a slides file to get going
+    When I run `reveal-ck generate`
+    Then the exit status should be 1
+    And the output should match:
+    """
+    Create a file matching slides.* to proceed, such as slides.md
+    """

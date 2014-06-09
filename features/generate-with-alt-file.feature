@@ -1,8 +1,20 @@
-Feature: Generate slides
+Feature: reveal-ck generate --file
 
-  In order to easily generate reveal.js presentations
-  As a user of reveal-ck
-  I want to use the "reveal-ck generate" command
+  By default, `reveal-ck generate` looks for file names like:
+
+  * slides.md
+  * slides.textile
+  * slides.haml
+  * slides.slim
+  * slides.rb
+
+  And this is known as your 'slides file.'
+
+  However, if you'd prefer, you can create an alternate file like
+  `slides_for_google_talk.md` and have reveal-ck use that instead. To
+  do this, you'd say:
+
+      reveal-ck generate --file 'slides_for_google_talk.md'
 
   Scenario: Generating basic slides any file
     Given a file named "hump-day.haml" with:
