@@ -3,32 +3,34 @@ layout: bare
 title: reveal-ck
 ---
 
-# Use Ruby to make slides for your next presentation.
+# Use Ruby and Markdown to make slides for your next presentation.
 
 ## Write this:
 
-{% highlight haml %}
-%section
-  %h1
-    Slides
-  %h3
-    with Ruby?
-  %aside.notes
-    These are notes. Press 's' to see them.
+```
+# Slides
 
-%section
-  %h1
-    Awesome!
-{% endhighlight %}
+### With Ruby?
+
+---
+
+# Awesome!
+```
 
 ## Get this:
 
-[Generated, static html slides][getting-started-slides].
+<p class="lead">
+<a href="./getting-started-slides">Generated, static html slides</a>.
+</p>
 
 # reveal-ck
 
-With the [reveal-ck gem][reveal-ck-gem], you author slides in
-[haml][haml], [slim][slim], or even [ruby][ruby] itself.
+<p class="lead">
+With the <a href="http://rubygems.org/gems/reveal-ck">reveal-ck
+gem</a>, you author slides in <a href="./markdown">markdown</a>, <a
+href="./haml">haml</a>, <a href="./slim">slim</a>, or even <a
+href="./ruby">ruby</a> itself.
+</p>
 
 You get to stay focused on a single, [text-based][it-is-just-text]
 file. Creating a presentation doesn't have to involve
@@ -48,8 +50,10 @@ focusing on your content and using a ruby toolset.
 
 # Why?
 
-reveal-ck was created so that any rubyist could quickly create
-slides.
+<p class="lead">
+reveal-ck was created so that any rubyist could quickly create slides.
+</p>
+
 
 Write in plain text. Scan content quickly. Track slides the way you
 track code. Use standard Ruby tools.
@@ -60,10 +64,7 @@ helps you focus on your content.
 If that sounds good, then [let's get started][getting-started].
 
 [getting-started]: ./getting-started
-[haml]:            ./haml
 [it-is-just-text]: ./it-is-just-text
-[ruby]:            ./ruby
-[slim]:            ./slim
 
 [keynote]:       http://www.apple.com/ios/keynote/
 [powerpoint]:    http://office.microsoft.com/en-us/powerpoint/
