@@ -89,7 +89,7 @@ Add `<aside class="notes">` underneath a `<section>` to get notes
 
 <p class="lead">
 Vertical slides are a hallmark of reveal.js, and are trivial to
-implement in slim.
+implement in haml.
 </p>
 
 Create a parent `<section>` that has two or more `<section>` children.
