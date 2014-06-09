@@ -27,21 +27,27 @@ title: reveal-ck
 
 <p class="lead">
 With the <a href="http://rubygems.org/gems/reveal-ck">reveal-ck
-gem</a>, you author slides in <a href="./markdown">markdown</a>, <a
-href="./haml">haml</a>, <a href="./slim">slim</a>, or even <a
-href="./ruby">ruby</a> itself.
+gem</a>, you author slides in <a href="./markdown">markdown</a>, html,
+erb, textile, <a href="./haml">haml</a>, <a href="./slim">slim</a>, or
+even <a href="./ruby">ruby</a> itself.
 </p>
 
 You get to stay focused on a single, [text-based][it-is-just-text]
-file. Creating a presentation doesn't have to involve
-[Powerpoint][powerpoint] or [Keynote][keynote]. Use your favorite
-editor. Use popular templating languages. Use conventions and tools
-that you already know.
+file.
+
+Creating a presentation doesn't have to involve
+[Powerpoint][powerpoint] or [Keynote][keynote].
+
+You don't have to leave ruby behind. You don't have to check your
+favorite editor at the door.
+
+Use popular templating languages. Use version control systems,
+conventions and tools that you already know.
 
 The gem provides a command line program that generates static html in
 the form of a [reveal.js][reveal.js] presentation.
 
-Your presentation looks good, works on phones and tablets, supports
+Your presentation will look good, work on phones and tablets, support
 speaker notes, themes, transition styles, effects, and syntax
 highlighting.
 
@@ -61,7 +67,12 @@ track code. Use standard Ruby tools.
 You matter, your presentation matters, your message matters. reveal-ck
 helps you focus on your content.
 
-If that sounds good, then [let's get started][getting-started].
+<hr>
+
+<p class="lead">
+If that sounds good, then <a href="./getting-started">let's get
+started..</a>.
+</p>
 
 [getting-started]: ./getting-started
 [it-is-just-text]: ./it-is-just-text
