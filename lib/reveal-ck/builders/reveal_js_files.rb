@@ -42,7 +42,8 @@ module RevealCK
       end
 
       def plugin
-        FileList["#{dir}/plugin/**/*.js"]
+        FileList["#{dir}/plugin/**/*.js",
+                 "#{dir}/plugin/**/*.html"]
       end
 
       def meta
