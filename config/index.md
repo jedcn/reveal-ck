@@ -15,11 +15,15 @@ author:     "Jed Northridge"
 title:      "My Presentation!"
 theme:      "night"
 transition: "page"
+revealjs_config:
+  autoSlide: 5000
+  loop: true
 ```
 
 ## author
 
-The value here, if any, will appear as a `<meta>` tag in your slides.
+The value here, if any, will appear as a `<meta>` tag indicating
+authorship in your slides.
 
 ## title
 
@@ -36,3 +40,11 @@ reveal.js.
 The value here, if any, will control the transition style of all
 slides in the presentation. It must be one of the transitions that's
 included with reveal.js.
+
+## revealjs_config
+
+This is a yaml key that points to a mapping of keys to values. Valid
+key and value combinations are any
+[reveal.js configuration][reveal.js-config] pair.
+
+[reveal.js-config]: https://github.com/hakimel/reveal.js/#configuration

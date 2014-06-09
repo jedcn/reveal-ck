@@ -5,7 +5,9 @@ title: Slides with Ruby
 
 # Slides with Ruby
 
+<p class="lead">
 Slim and Haml are great, but what about writing slides in Ruby?
+</p>
 
 When using reveal-ck with ruby slides, it's most straight forward to
 create a file named `slides.rb` into which you put your Ruby
@@ -55,6 +57,8 @@ presentation do
   theme      = "..."
   transition = "..."
 
+  revealjs_config key, value
+
   # First Slide
   slide(...)
 
@@ -65,6 +69,10 @@ end
 defaults. You can leave them out until you need them. These values are
 normally defined in the main [config file][config], but if you're
 building slides with Ruby you can place them right here.
+
+`revealjs_config` takes two arguments: a key and a value. This allows
+you to supply key/value combinations that match
+[reveal.js's configuration settings][reveal.js-config].
 
 ## Concrete Example
 
@@ -292,9 +300,10 @@ image named `cat.png` and you placed it into the `images/` directory,
 you could reference its source as `images/cat.png`
 
 [config]:         ../config
-[reveal.js]:      http://lab.hakim.se/reveal-js/#/
 
-[templates]: https://github.com/jedcn/reveal-ck/tree/master/templates
-[intro.slim]: https://github.com/jedcn/reveal-ck/blob/master/templates/intro.slim
-[quote.slim]: https://github.com/jedcn/reveal-ck/blob/master/templates/quote.slim
-[code.slim]: https://github.com/jedcn/reveal-ck/blob/master/templates/code.slim
+[reveal.js]:        http://lab.hakim.se/reveal-js/#/
+[reveal.js-config]: https://github.com/hakimel/reveal.js/#configuration
+[templates]:        https://github.com/jedcn/reveal-ck/tree/master/templates
+[intro.slim]:       https://github.com/jedcn/reveal-ck/blob/master/templates/intro.slim
+[quote.slim]:       https://github.com/jedcn/reveal-ck/blob/master/templates/quote.slim
+[code.slim]:        https://github.com/jedcn/reveal-ck/blob/master/templates/code.slim

@@ -96,8 +96,10 @@ We recommend that you keep going down this path until you want more
 control over what's produced. For many of our friends that day has
 never come.
 
+<p class="lead">
 What are the limits of markdown? It can't easily create vertical
 slides, background images, or provide text treatments.
+</p>
 
 If you'd like to get these things, then you'll need to use something
 with more expressiveness. Your choices are: html, erb (within html),
@@ -113,6 +115,12 @@ If you'd prefer slim, then
 
 If you'd like to learn about creating slides with ruby,
 [check out more information about ruby][ruby].
+
+<p class="lead">
+Whether you stick with markdown or pick another language, you can
+tweak your presentation with <code>config.yml</code> settings. Be sure
+to check out the <a href="">configuration page</a> for the details.
+</p>
 
 [reveal.js]:     http://lab.hakim.se/reveal-js/#/
 [haml]:          ../haml
