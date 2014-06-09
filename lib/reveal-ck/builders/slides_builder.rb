@@ -33,10 +33,9 @@ module RevealCK
 
       def read_config
         config_file = File.join(reveal_ck_dir, 'config.yml')
-        if File.exist?(config_file)
-          config_as_hash = YAML.load_file config_file
-          @config.merge!(config_as_hash)
-        end
+        return unless File.exist?(config_file)
+        config_as_hash = YAML.load_file config_file
+        @config.merge!(config_as_hash)
       end
 
       def dependencies
