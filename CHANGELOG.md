@@ -1,3 +1,7 @@
+### 0.4.0 / 2014-06-??
+
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.3.0...v0.4.0)
+
 ### 0.3.0 / 2014-06-08
 
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.2.0...v0.3.0)
