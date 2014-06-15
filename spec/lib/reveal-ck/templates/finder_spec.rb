@@ -18,8 +18,7 @@ module RevealCK
               finder = Finder.new
               expect(finder.paths).to include File.join(Dir.pwd, 'templates')
               expect(finder.paths)
-                .to(include(RevealCK.path('files', 'reveal-ck',
-                                          'templates', 'slides')))
+                .to(include(RevealCK.template_path('slides')))
               expect(finder.paths.size).to eq 2
             end
           end
@@ -58,9 +57,7 @@ module RevealCK
           expect(result).to include template_one
 
           result = finder.find 'intro'
-          intro_slim = File.join('reveal-ck', 'files',
-                                 'reveal-ck', 'templates',
-                                 'slides', 'intro.slim')
+          intro_slim = RevealCK.template_path('slides', 'intro.slim')
           expect(result).to include intro_slim
         end
 

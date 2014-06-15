@@ -19,4 +19,11 @@ module RevealCK
     location = File.expand_path(gem_root)
     File.join(location, *args)
   end
+
+  def self.template_path(*args)
+    lib = File.dirname(__FILE__)
+    gem_root = File.join(lib, '..', 'files', 'reveal-ck', 'templates')
+    location = File.expand_path(gem_root)
+    File.join(location, *args)
+  end
 end
