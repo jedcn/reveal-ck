@@ -15,7 +15,8 @@ module RevealCK
 
       def default_paths
         pwd_templates = File.join Dir.pwd, 'templates'
-        reveal_ck_templates = RevealCK.path_to 'templates'
+        reveal_ck_templates =
+          RevealCK.template_path('slides')
         [pwd_templates, reveal_ck_templates]
       end
 
