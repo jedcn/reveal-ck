@@ -10,10 +10,10 @@ require_relative 'reveal-ck/builders'
 require_relative 'reveal-ck/markdown'
 require_relative 'reveal-ck/tilt/config'
 
-# RevealCK::path_to provides the path where files within the reveal-ck
+# RevealCK::path provides the path where files within the reveal-ck
 # gem are located on your system.
 module RevealCK
-  def self.path_to(*args)
+  def self.path(*args)
     lib = File.dirname(__FILE__)
     gem_root = File.join(lib, '..')
     location = File.expand_path(gem_root)

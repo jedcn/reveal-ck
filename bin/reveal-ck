@@ -39,7 +39,7 @@ class RevealCKExecutable
       end
       puts "Generating slides for '#{slides_file}'.."
       builder_args = {
-        reveal_js_dir: RevealCK.path_to('files/reveal.js'),
+        reveal_js_dir: RevealCK.path('files/reveal.js'),
         reveal_ck_dir: Dir.pwd,
         output_dir: options[:dir],
         slides_file: options[:file]
