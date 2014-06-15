@@ -47,7 +47,7 @@ style conformity.
 If you've got things checked out, and submodules inited, then you can
 updated the embedded reveal.js as follows:
 
-* cd into `reveal.js/`
+* cd into `files/reveal.js/`
 * Run a `git fetch` and then merge/reset as is appropriate
 * Run tests
 

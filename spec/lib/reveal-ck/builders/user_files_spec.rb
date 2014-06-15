@@ -5,7 +5,7 @@ module RevealCK
     describe UserFiles do
       describe '#all' do
         let :stand_in_user_files_dir do
-          File.join(Dir.pwd, 'reveal.js')
+          File.join(Dir.pwd, 'files', 'reveal.js')
         end
 
         let :user_files do

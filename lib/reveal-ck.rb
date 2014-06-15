@@ -20,10 +20,3 @@ module RevealCK
     File.join(location, *args)
   end
 end
-
-# RevealCK::REVEALJS_FILES is a list of files that compromise
-# reveal.js bundled into this gem.
-module RevealCK
-  revealjs = path_to('reveal.js')
-  REVEALJS_FILES = Dir.glob("#{revealjs}/**/*")
-end
