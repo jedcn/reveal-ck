@@ -17,7 +17,11 @@ module RevealCK
             end
 
             index_html_erb =
-              RevealCK.path_to('templates/reveal.js/index.html.erb')
+              RevealCK.path_to('files',
+                               'reveal-ck',
+                               'templates',
+                               'index.html',
+                               'index.html.erb')
 
             application = Rake::Application.new
             create_index_html =

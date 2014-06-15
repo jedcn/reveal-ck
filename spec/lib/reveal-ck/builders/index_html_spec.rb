@@ -4,7 +4,9 @@ module RevealCK
   module Builders
     describe IndexHtml do
       let :index_html_erb do
-        File.join(Dir.pwd, 'templates', 'reveal.js', 'index.html.erb')
+        File.join(Dir.pwd, 'files', 'reveal-ck',
+                  'templates', 'index.html',
+                  'index.html.erb')
       end
 
       let :slides_html do

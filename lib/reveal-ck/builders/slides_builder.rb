@@ -71,8 +71,8 @@ module RevealCK
       end
 
       def create_index_html
-        index_html_erb = RevealCK.path_to('templates',
-                                          'reveal.js',
+        index_html_erb = RevealCK.path_to('files', 'reveal-ck',
+                                          'templates', 'index.html',
                                           'index.html.erb')
         task =
           CreateIndexHtml.new(slides_html: "#{output_dir}/slides.html",
