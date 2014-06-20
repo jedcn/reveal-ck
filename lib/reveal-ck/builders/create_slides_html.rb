@@ -1,3 +1,5 @@
+require 'html/pipeline'
+
 module RevealCK
   module Builders
     # Given a slides_file, a Rake application, and a place where the
@@ -16,13 +18,31 @@ module RevealCK
       def setup
         slides_html_file = "#{output_dir}/slides.html"
         task(slides_html_file) do
-          presentation = RevealCK::Presentation.load(file: slides_file,
-                                                     config: config)
           File.open(slides_html_file, 'w') do |slides_html|
-            slides_html.puts(presentation.html)
+            slides_html.puts(presentation_html)
           end
         end
         things_to_create.add(slides_html_file)
+      end
+
+      private
+
+      def presentation_html
+        presentation = RevealCK::Presentation.load(file: slides_file,
+                                                   config: config)
+        initial_html = presentation.html
+        apply_filters_to(initial_html)
+      end
+
+      def apply_filters_to(html)
+        pipeline = HTML::Pipeline.new([HTML::Pipeline::EmojiFilter])
+        config = {
+          asset_root: 'https://assets-cdn.github.com/images/icons/'
+        }
+        filtered_html_string = FilteredHtmlString.new(html: html,
+                                                      config: config,
+                                                      pipeline: pipeline)
+        filtered_html_string.render
       end
     end
   end
