@@ -29,37 +29,13 @@ Feature: Slides with ruby
     When I run `reveal-ck generate`
     Then the exit status should be 0
     And the output should contain exactly "Generating slides for 'slides.rb'..\n"
-    And the following files should exist:
-    | slides/slides.html  |
-    | slides/index.html  |
-    And the file "slides/slides.html" should contain:
-    """
-    <section>
-      <p>
-        Slides with Ruby
-      </p>
-    </section>
-    """
-    And the file "slides/index.html" should contain:
-    """
-    <section>
-      <p>
-        Slides with Ruby
-      </p>
-    </section>
-    """
-    And the file "slides/index.html" should contain:
-    """
-    <title>Slides</title>
-    """
-    And the file "slides/index.html" should contain:
-    """
-    <meta name="author" content="">
-    """
-    And the file "slides/index.html" should contain:
-    """
-    <link rel="stylesheet" href="css/theme/default.css" id="theme">
-    """
+    And the file "slides/slides.html" should have html matching the xpath:
+    | //section/p[contains(., "Slides with Ruby")] | the p |
+    And the file "slides/index.html" should have html matching the xpath:
+    | //section/p[contains(., "Slides with Ruby")]             | the p                 |
+    | /html/head/title[contains(., "Slides")]                  | the title             |
+    | //meta[@name="author"][@content=""]                      | the empty author meta |
+    | //link[@rel="stylesheet"][@href="css/theme/default.css"] | the theme css         |
     And the file "slides/index.html" should contain:
     """
     transition: 'default'
@@ -81,18 +57,10 @@ Feature: Slides with ruby
     When I run `reveal-ck generate`
     Then the exit status should be 0
     And the output should contain exactly "Generating slides for 'slides.rb'..\n"
-    And the following files should exist:
-    | slides/slides.html  |
-    | slides/index.html  |
-    And the file "slides/index.html" should contain:
-    """
-    <title>Slides</title>
-    """
-    And the file "slides/index.html" should contain:
-    """
-    <meta name="author" content="Jed Northridge">
-    """
-    And the file "slides/index.html" should contain:
-    """
-    <link rel="stylesheet" href="css/theme/night.css" id="theme">
-    """
+    And the file "slides/slides.html" should have html matching the xpath:
+    | //section/p[contains(., "Slides with Ruby")] | the p |
+    And the file "slides/index.html" should have html matching the xpath:
+    | //section/p[contains(., "Slides with Ruby")]           | the p                  |
+    | /html/head/title[contains(., "Slides")]                | the title              |
+    | //meta[@name="author"][@content="Jed Northridge"]      | the author meta        |
+    | //link[@rel="stylesheet"][@href="css/theme/night.css"] | the assigned theme css |

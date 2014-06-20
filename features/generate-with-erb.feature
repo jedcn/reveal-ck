@@ -17,7 +17,6 @@ Feature: Slides with ERB
     <section>
       <h1>Reveal.js</h1>
       <h3>HTML Presentations Made Easy</h3>
-      Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">twitter</a>
     </section>
     <% ['Fancy', 'Cats'].each do |word| %>
     <section>
@@ -26,7 +25,6 @@ Feature: Slides with ERB
     <% end %>
     <section>
       <h1>THE END</h1>
-      <h3>BY Hakim El Hattab / hakim.se</h3>
     </section>
     """
     When I run `reveal-ck generate`
@@ -35,39 +33,15 @@ Feature: Slides with ERB
     And the following files should exist:
     | slides/slides.html |
     | slides/index.html  |
-    And the file "slides/slides.html" should contain:
-    """
-    <section>
-      <h1>Reveal.js</h1>
-      <h3>HTML Presentations Made Easy</h3>
-      Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">twitter</a>
-    </section>
-    <section>
-      <h1>Fancy</h1>
-    </section>
-    <section>
-      <h1>Cats</h1>
-    </section>
-    <section>
-      <h1>THE END</h1>
-      <h3>BY Hakim El Hattab / hakim.se</h3>
-    </section>
-    """
-    And the file "slides/index.html" should contain:
-    """
-    <section>
-      <h1>Reveal.js</h1>
-      <h3>HTML Presentations Made Easy</h3>
-      Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">twitter</a>
-    </section>
-    <section>
-      <h1>Fancy</h1>
-    </section>
-    <section>
-      <h1>Cats</h1>
-    </section>
-    <section>
-      <h1>THE END</h1>
-      <h3>BY Hakim El Hattab / hakim.se</h3>
-    </section>
-    """
+    And the file "slides/slides.html" should have html matching the xpath:
+    | //section/h1[text()="Reveal.js"]                    | the opening h1    |
+    | //section/h3[text()="HTML Presentations Made Easy"] | the opening h3    |
+    | //section/h1[text()="Fancy"]                        | the evaluated erb |
+    | //section/h1[text()="Cats"]                         | the evaluated erb |
+    | //section/h1[text()="THE END"]                      | the closing h1    |
+    And the file "slides/index.html" should have html matching the xpath:
+    | //section/h1[text()="Reveal.js"]                    | the opening h1    |
+    | //section/h3[text()="HTML Presentations Made Easy"] | the opening h3    |
+    | //section/h1[text()="Fancy"]                        | the evaluated erb |
+    | //section/h1[text()="Cats"]                         | the evaluated erb |
+    | //section/h1[text()="THE END"]                      | the closing h1    |
