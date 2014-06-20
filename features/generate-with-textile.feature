@@ -22,48 +22,21 @@ Feature: Slides with textile
 
     h3. HTML Presentations Made Easy
 
-    Created by "Hakim El Hattab":hakim / "@hakimel":twitter
-
     </section>
 
     <section>
 
     h1. THE END
 
-    h3. BY Hakim El Hattab / hakim.se
-
     </section>
-
-    [hakim]http://hakim.se
-    [twitter]http://twitter.com/hakimel
     """
     When I run `reveal-ck generate`
     Then the exit status should be 0
-    And the output should contain exactly "Generating slides for 'slides.textile'..\n"
-    And the following files should exist:
-    | slides/slides.html |
-    | slides/index.html  |
-    And the file "slides/slides.html" should contain:
-    """
-    <section>
-    <h1>Reveal.js</h1>
-    <h3><span class="caps">HTML</span> Presentations Made Easy</h3>
-    <p>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></p>
-    </section>
-    <section>
-    <h1><span class="caps">THE</span> <span class="caps">END</span></h1>
-    <h3>BY Hakim El Hattab / hakim.se</h3>
-    </section>
-    """
-    And the file "slides/index.html" should contain:
-    """
-    <section>
-    <h1>Reveal.js</h1>
-    <h3><span class="caps">HTML</span> Presentations Made Easy</h3>
-    <p>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></p>
-    </section>
-    <section>
-    <h1><span class="caps">THE</span> <span class="caps">END</span></h1>
-    <h3>BY Hakim El Hattab / hakim.se</h3>
-    </section>
-    """
+    And the file "slides/slides.html" should have html matching the xpath:
+    | //section/h1[contains(., "Reveal.js")]                    | the opening h1 |
+    | //section/h3[contains(., "HTML Presentations Made Easy")] | the opening h3 |
+    | //section/h1[contains(., "THE END")]                      | the closing h1 |
+    And the file "slides/index.html" should have html matching the xpath:
+    | //section/h1[contains(., "Reveal.js")]                    | the opening h1 |
+    | //section/h3[contains(., "HTML Presentations Made Easy")] | the opening h3 |
+    | //section/h1[contains(., "THE END")]                      | the closing h1 |

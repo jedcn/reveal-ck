@@ -19,7 +19,7 @@ Feature: Slides with markdown
     # Reveal.js
     ### HTML Presentations Made Easy
 
-    Created by [Hakim El Hattab][hakim]/[@hakimel][twitter]
+    Created by [Hakim El Hattab][hakim]
 
     ---
 
@@ -27,7 +27,6 @@ Feature: Slides with markdown
     ### BY Hakim El Hattab / hakim.se
 
     [hakim]: http://hakim.se
-    [twitter]: http://twitter.com/hakimel
     """
     When I run `reveal-ck generate`
     Then the exit status should be 0
@@ -35,39 +34,13 @@ Feature: Slides with markdown
     And the following files should exist:
     | slides/slides.html |
     | slides/index.html  |
-    And the file "slides/slides.html" should contain:
-    """
-    <section>
-    <h1>Reveal.js</h1>
-
-    <h3>HTML Presentations Made Easy</h3>
-
-    <p>Created by <a href="http://hakim.se">Hakim El Hattab</a>/<a href="http://twitter.com/hakimel">@hakimel</a></p>
-
-    </section>
-    <section>
-
-    <h1>THE END</h1>
-
-    <h3>BY Hakim El Hattab / hakim.se</h3>
-
-    </section>
-    """
-    And the file "slides/index.html" should contain:
-    """
-    <section>
-    <h1>Reveal.js</h1>
-
-    <h3>HTML Presentations Made Easy</h3>
-
-    <p>Created by <a href="http://hakim.se">Hakim El Hattab</a>/<a href="http://twitter.com/hakimel">@hakimel</a></p>
-
-    </section>
-    <section>
-
-    <h1>THE END</h1>
-
-    <h3>BY Hakim El Hattab / hakim.se</h3>
-
-    </section>
-    """
+    And the file "slides/slides.html" should have html matching the xpath:
+    | //section/h1[text()="Reveal.js"]                                 | the opening h1           |
+    | //section/h3[text()="HTML Presentations Made Easy"]              | the opening h3           |
+    | //section/h1[text()="THE END"]                                   | the closing h1           |
+    | //section/p/a[@href='http://hakim.se'][text()="Hakim El Hattab"] | the link to hakim's site |
+    And the file "slides/index.html" should have html matching the xpath:
+    | //section/h1[text()="Reveal.js"]                                 | the opening h1           |
+    | //section/h3[text()="HTML Presentations Made Easy"]              | the opening h3           |
+    | //section/h1[text()="THE END"]                                   | the closing h1           |
+    | //section/p/a[@href='http://hakim.se'][text()="Hakim El Hattab"] | the link to hakim's site |

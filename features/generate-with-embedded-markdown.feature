@@ -13,13 +13,6 @@ Feature: Using the :markdown filter within haml
     """
     When I run `reveal-ck generate`
     Then the exit status should be 0
-    And the file "slides/index.html" should contain:
-    """
-    <section>
-      <h1>Things That Go</h1>
-    """
-    And the file "slides/index.html" should contain:
-    """
-      <h3>...Bump In The Night</h3>
-    </section>
-    """
+    And the file "slides/index.html" should have html matching the xpath:
+    | //section/h1[text()="Things That Go"]       | the h1 |
+    | //section/h3[text()="...Bump In The Night"] | the h3 |
