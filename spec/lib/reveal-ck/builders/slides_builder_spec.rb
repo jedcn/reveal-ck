@@ -24,8 +24,8 @@ module RevealCK
             end
 
             args = {
-              reveal_js_dir: RevealCK.path('files/reveal.js'),
-              reveal_ck_dir: dir,
+              user_dir: dir,
+              gem_dir: RevealCK.path,
               output_dir: 'presentation',
               slides_file: slides_file
             }

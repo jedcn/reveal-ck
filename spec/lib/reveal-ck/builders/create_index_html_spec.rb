@@ -23,7 +23,7 @@ module RevealCK
             application = Rake::Application.new
             create_index_html =
               CreateIndexHtml.new(slides_html: slides_html,
-                                  index_html: index_html_erb,
+                                  template: index_html_erb,
                                   output_dir: dir,
                                   config: Config.new,
                                   application: application)

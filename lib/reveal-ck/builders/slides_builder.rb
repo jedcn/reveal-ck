@@ -7,12 +7,13 @@ module RevealCK
     # file to work with, and a place to put it all.. this class
     # creates a presentation.
     class SlidesBuilder < CreationTask
-      attr_reader :reveal_js_dir, :reveal_ck_dir
+      attr_reader :user_dir, :gem_dir, :reveal_js_dir
       attr_reader :slides_file, :output_dir
       attr_reader :application
       def initialize(args)
-        @reveal_js_dir = retrieve(:reveal_js_dir, args)
-        @reveal_ck_dir = retrieve(:reveal_ck_dir, args)
+        @user_dir = retrieve(:user_dir, args)
+        @gem_dir = retrieve(:gem_dir, args)
+        @reveal_js_dir = File.join(gem_dir, 'files', 'reveal.js')
         @output_dir = retrieve(:output_dir, args)
         @slides_file = retrieve(:slides_file, args)
         @application = Rake::Application.new
@@ -32,7 +33,7 @@ module RevealCK
       end
 
       def read_config
-        config_file = File.join(reveal_ck_dir, 'config.yml')
+        config_file = File.join(user_dir, 'config.yml')
         return unless File.exist?(config_file)
         config_as_hash = YAML.load_file config_file
         @config.merge!(config_as_hash)
@@ -40,20 +41,30 @@ module RevealCK
 
       def dependencies
         [copy_user_files,
-         copy_reveal_js,
+         copy_reveal_ck_files,
+         copy_reveal_js_files,
          create_slides_html,
          create_index_html]
       end
 
       def copy_user_files
-        file_listing = UserFiles.new(dir: reveal_ck_dir)
+        file_listing = UserFiles.new(dir: user_dir)
         task = CopyFilesTask.new(file_listing: file_listing,
                                  output_dir: output_dir,
                                  application: application)
         task.prepare
       end
 
-      def copy_reveal_js
+      def copy_reveal_ck_files
+        reveal_ck_files_dir = File.join(gem_dir, 'files', 'reveal-ck')
+        file_listing = RevealCkFiles.new(dir: reveal_ck_files_dir)
+        task = CopyFilesTask.new(file_listing: file_listing,
+                                 output_dir: output_dir,
+                                 application: application)
+        task.prepare
+      end
+
+      def copy_reveal_js_files
         file_listing = RevealJsFiles.new(dir: reveal_js_dir)
         task = CopyFilesTask.new(file_listing: file_listing,
                                  output_dir: output_dir,
@@ -76,7 +87,7 @@ module RevealCK
                                  'index.html.erb')
         task =
           CreateIndexHtml.new(slides_html: "#{output_dir}/slides.html",
-                              index_html: index_html_erb,
+                              template: index_html_erb,
                               output_dir: output_dir,
                               config: @config,
                               application: application)

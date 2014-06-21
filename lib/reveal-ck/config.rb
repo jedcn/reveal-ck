@@ -26,6 +26,7 @@ module RevealCK
         'history' => true,
         'center' => true
       },
+      'asset_root' => 'https://assets-cdn.github.com/images/icons/',
       'data' => {
 
       }
