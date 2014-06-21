@@ -35,11 +35,27 @@ module RevealCK
       end
 
       def apply_filters_to(html)
-        pipeline = HTML::Pipeline.new([HTML::Pipeline::EmojiFilter])
+        pipeline = HTML::Pipeline.new([HTML::Pipeline::RevealCKEmojiFilter])
         filtered_html_string = FilteredHtmlString.new(html: html,
                                                       config: config.to_h,
                                                       pipeline: pipeline)
         filtered_html_string.render
+      end
+    end
+  end
+end
+
+
+module HTML
+  class Pipeline
+    class RevealCKEmojiFilter < EmojiFilter
+      def emoji_image_filter(text)
+        return text unless text.include?(':')
+
+        text.gsub EmojiPattern do |match|
+          name = $1
+          "<img class='emoji' title=':#{name}:' alt=':#{name}:' src='#{emoji_url(name)}' height='20' width='20' align='absmiddle' />"
+        end
       end
     end
   end
