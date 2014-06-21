@@ -22,10 +22,12 @@ module RevealCK
       end
 
       def block_code(code, language)
-        if language == 'notes' || language == 'note'
+        if language.nil?
+          "<pre><code>#{code}</code></pre>"
+        elsif language == 'notes' || language == 'note'
           "<aside class='notes'>#{code}</aside>"
         else
-          "<pre><code>#{code}</code></pre>"
+          "<pre><code class=\"#{language}\">#{code}</code></pre>"
         end
       end
     end

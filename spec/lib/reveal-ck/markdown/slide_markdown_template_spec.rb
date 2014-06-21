@@ -36,6 +36,17 @@ eos
         expect(output).to include 'a + b'
       end
 
+      it 'wraps ```ruby code in a <pre> and <code class="ruby">' do
+        output = render_markdown <<-eos
+```ruby
+def adder(a, b); a + b; end
+```
+eos
+        expect(output).to include '<pre><code class="ruby">'
+        expect(output).to include '</code></pre>'
+        expect(output).to include 'a + b'
+      end
+
       it 'creates an <aside class="notes"> when it sees a ```notes' do
         output = render_markdown <<-eos
 ```notes
