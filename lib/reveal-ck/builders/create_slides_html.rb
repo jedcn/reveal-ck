@@ -45,16 +45,18 @@ module RevealCK
   end
 end
 
-
 module HTML
   class Pipeline
+    # This class is very similar EmojiFilter. It has been slightly
+    # tweaked to make emoji function better within reveal.js
     class RevealCKEmojiFilter < EmojiFilter
       def emoji_image_filter(text)
         return text unless text.include?(':')
 
-        text.gsub EmojiPattern do |match|
-          name = $1
-          "<img class='emoji' title=':#{name}:' alt=':#{name}:' src='#{emoji_url(name)}' align='absmiddle' />"
+        text.gsub EmojiPattern do
+          name = Regexp.last_match[1]
+          result = "<img class='emoji' title=':#{name}:' alt=':#{name}:'"
+          result + "src='#{emoji_url(name)}' align='absmiddle' />"
         end
       end
     end
