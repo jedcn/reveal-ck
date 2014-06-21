@@ -20,6 +20,7 @@ module RevealCK
       'author'     => '',
       'theme'      => 'default',
       'transition' => 'default',
+      'filters' => ['HTML::Pipeline::RevealCKEmojiFilter'],
       'revealjs_config' => {
         'controls' => true,
         'progress' => true,

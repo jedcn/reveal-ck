@@ -40,9 +40,17 @@ module RevealCK
         expect(config.transition).to eq 'default'
       end
 
-      it 'supplies an #transition, and #transition=' do
+      it 'supplies a #transition, and #transition=' do
         config.transition = 'page'
         expect(config.transition).to eq 'page'
+      end
+
+      it 'supplies a default asset_root' do
+        expect(config.asset_root).to eq 'https://assets-cdn.github.com/images/icons/'
+      end
+
+      it 'supplies a default list of filters' do
+        expect(config.filters).to eq ['HTML::Pipeline::RevealCKEmojiFilter']
       end
     end
 
