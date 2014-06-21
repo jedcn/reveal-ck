@@ -29,7 +29,8 @@ You write in Markdown, Textile, Haml, Slim or Ruby itself.
   <img alt="Video Thumbnail" width="306" height="178" src='https://raw2.github.com/jedcn/reveal-ck/gh-pages/images/reveal-ck-stop-haml-time-thumbnail.png' />
 </a>
 
-[![Build Status][travis]](https://travis-ci.org/jedcn/reveal-ck)
-[![Code Climate][code-climate]](https://codeclimate.com/github/jedcn/reveal-ck)
 
-[reveal.js]:    http://lab.hakim.se/reveal-js
+[![Build Status](https://travis-ci.org/jedcn/reveal-ck.svg)](https://travis-ci.org/jedcn/reveal-ck)
+[![Code Climate](https://codeclimate.com/github/jedcn/reveal-ck.png)](https://codeclimate.com/github/jedcn/reveal-ck)
+
+[reveal.js]:          http://lab.hakim.se/reveal-js
