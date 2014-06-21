@@ -22,12 +22,12 @@ module RevealCK
 
       it 'can process a slim template' do
         processor = Processor.open file: slim_file, config: config
-        processor.output.should match pretty_printed_basic
+        expect(processor.output).to match pretty_printed_basic
       end
 
       it 'can process a haml template' do
         processor = Processor.open file: haml_file, config: config
-        processor.output.should match pretty_printed_basic
+        expect(processor.output).to match pretty_printed_basic
       end
 
     end

@@ -20,9 +20,9 @@ module RevealCK
 ---
 ## h2 Slide
 eos
-        output.should include '<h1>h1 Slide</h1>'
-        output.should include "</section>\n<section>"
-        output.should include '<h2>h2 Slide</h2>'
+        expect(output).to include '<h1>h1 Slide</h1>'
+        expect(output).to include "</section>\n<section>"
+        expect(output).to include '<h2>h2 Slide</h2>'
       end
 
       it 'wraps ``` code in a <pre> and <code>' do
