@@ -54,7 +54,7 @@ module HTML
 
         text.gsub EmojiPattern do |match|
           name = $1
-          "<img class='emoji' title=':#{name}:' alt=':#{name}:' src='#{emoji_url(name)}' height='20' width='20' align='absmiddle' />"
+          "<img class='emoji' title=':#{name}:' alt=':#{name}:' src='#{emoji_url(name)}' align='absmiddle' />"
         end
       end
     end
