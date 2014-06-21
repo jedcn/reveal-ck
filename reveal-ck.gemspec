@@ -3,6 +3,8 @@ $:.push File.expand_path('../lib', __FILE__)
 require File.join([File.dirname(__FILE__),'lib','reveal-ck','version.rb'])
 
 Gem::Specification.new do |s|
+  s.required_ruby_version = '>= 2.0.0'
+
   s.name        = 'reveal-ck'
   s.version     = RevealCK::VERSION
   s.platform    = Gem::Platform::RUBY
