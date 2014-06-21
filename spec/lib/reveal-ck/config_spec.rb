@@ -46,11 +46,19 @@ module RevealCK
       end
 
       it 'supplies a default asset_root' do
-        expect(config.asset_root).to eq 'https://assets-cdn.github.com/images/icons/'
+        expect(config.asset_root)
+          .to eq 'https://assets-cdn.github.com/images/icons/'
       end
 
       it 'supplies a default list of filters' do
         expect(config.filters).to eq ['HTML::Pipeline::RevealCKEmojiFilter']
+      end
+
+      it 'does not share attributes between instances' do
+        first = Config.new
+        first.filters << 'A'
+        second = Config.new
+        expect(second.filters).to_not include 'A'
       end
     end
 
