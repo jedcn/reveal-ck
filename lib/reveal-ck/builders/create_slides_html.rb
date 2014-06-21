@@ -36,11 +36,8 @@ module RevealCK
 
       def apply_filters_to(html)
         pipeline = HTML::Pipeline.new([HTML::Pipeline::EmojiFilter])
-        config = {
-          asset_root: 'https://assets-cdn.github.com/images/icons/'
-        }
         filtered_html_string = FilteredHtmlString.new(html: html,
-                                                      config: config,
+                                                      config: config.to_h,
                                                       pipeline: pipeline)
         filtered_html_string.render
       end

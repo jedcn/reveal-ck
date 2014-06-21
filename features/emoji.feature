@@ -60,3 +60,21 @@ Feature: Using Emoji in your Slides
     | //section/p/img[@src="https://assets-cdn.github.com/images/icons/emoji/heart.png"] | an img with src on github cdn |
     | //link[@rel="stylesheet"][@href="css/reveal-ck.css"]                               | the default reveal-ck.css     |
     And a file named "slides/css/reveal-ck.css" should exist
+
+  Scenario: Including Emoji hosted at a specific location
+    Given a file named "slides.md" with:
+    """
+    # Emoji
+
+    i :heart: it
+    """
+    And a file named "config.yml" with:
+    """
+    asset_root: http://localhost:10000/images
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the file "slides/slides.html" should have html matching the xpath:
+    | //section/p/img[@src="http://localhost:10000/images/emoji/heart.png"] | an img with configured asset_root |
+    And the file "slides/index.html" should have html matching the xpath:
+    | //section/p/img[@src="http://localhost:10000/images/emoji/heart.png"] | an img with configured asset_root |
