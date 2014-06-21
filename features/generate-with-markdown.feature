@@ -8,6 +8,9 @@ Feature: Slides with markdown
   The '---' is used to separate slides rather than represent a
   `<hr/>`, and so it's not exactly markdown, but it's close.
 
+  Further- you can also used the triple-fence block to quickly speaker
+  notes. See the example below.
+
   If you'd like to see the intermediate file where your `slides.md` is
   transformed into `.html` you can visit `slides/slides.html`
 
@@ -30,10 +33,6 @@ Feature: Slides with markdown
     """
     When I run `reveal-ck generate`
     Then the exit status should be 0
-    And the output should contain exactly "Generating slides for 'slides.md'..\n"
-    And the following files should exist:
-    | slides/slides.html |
-    | slides/index.html  |
     And the file "slides/slides.html" should have html matching the xpath:
     | //section/h1[text()="Reveal.js"]                                 | the opening h1           |
     | //section/h3[text()="HTML Presentations Made Easy"]              | the opening h3           |
@@ -44,3 +43,32 @@ Feature: Slides with markdown
     | //section/h3[text()="HTML Presentations Made Easy"]              | the opening h3           |
     | //section/h1[text()="THE END"]                                   | the closing h1           |
     | //section/p/a[@href='http://hakim.se'][text()="Hakim El Hattab"] | the link to hakim's site |
+
+  Scenario: Supplying Speaker Notes with Markdown
+    Given a file named "slides.md" with:
+    """
+    # Reveal.js
+    ### HTML Presentations Made Easy
+
+    ```notes
+    This will be a speaker note
+    ```
+
+    ---
+
+    # Second Slide
+
+    ```note
+    Another note (note the singular)
+    ```
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the file "slides/slides.html" should have html matching the xpath:
+    | //section/aside[@class="notes"]                             | a speaker note  |
+    | //section/aside[contains(., "This will be a speaker note")] | the first note  |
+    | //section/aside[contains(., "Another note")]                | the second note |
+    And the file "slides/index.html" should have html matching the xpath:
+    | //section/aside[@class="notes"]                             | a speaker note  |
+    | //section/aside[contains(., "This will be a speaker note")] | the first note  |
+    | //section/aside[contains(., "Another note")]                | the second note |
