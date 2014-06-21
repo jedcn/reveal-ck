@@ -46,8 +46,10 @@ module RevealCK
 
     def filter_defaults
       {
-        'filters' => ['HTML::Pipeline::RevealCKEmojiFilter'],
-        'asset_root' => 'https://assets-cdn.github.com/images/icons/'
+        'filters' => ['HTML::Pipeline::RevealCKEmojiFilter',
+                      'HTML::Pipeline::MentionFilter'],
+        'asset_root' => 'https://assets-cdn.github.com/images/icons/',
+        'base_url' => 'https://github.com'
       }
     end
   end
