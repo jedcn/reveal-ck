@@ -2,11 +2,7 @@ require 'redcarpet'
 
 module RevealCK
   module Markdown
-    #
-    # Public: This class defines what "Slide Markdown" is: an
-    # extension of regular Redcarpet Markdown with some basic post
-    # processing.
-    #
+    # This class defines what "Slide Markdown" is.
     class SlideMarkdown < Redcarpet::Render::HTML
       HR = '<hr>'
       HR_NEWLINE = "<hr>\n"
