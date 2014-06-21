@@ -47,29 +47,27 @@ module RevealCK
          create_index_html]
       end
 
-      def copy_user_files
-        file_listing = UserFiles.new(dir: user_dir)
+      def copy_files(file_listing)
         task = CopyFilesTask.new(file_listing: file_listing,
                                  output_dir: output_dir,
                                  application: application)
         task.prepare
+      end
+
+      def copy_user_files
+        user_files = UserFiles.new(dir: user_dir)
+        copy_files(user_files)
       end
 
       def copy_reveal_ck_files
         reveal_ck_files_dir = File.join(gem_dir, 'files', 'reveal-ck')
-        file_listing = RevealCkFiles.new(dir: reveal_ck_files_dir)
-        task = CopyFilesTask.new(file_listing: file_listing,
-                                 output_dir: output_dir,
-                                 application: application)
-        task.prepare
+        reveal_ck_files = RevealCkFiles.new(dir: reveal_ck_files_dir)
+        copy_files(reveal_ck_files)
       end
 
       def copy_reveal_js_files
-        file_listing = RevealJsFiles.new(dir: reveal_js_dir)
-        task = CopyFilesTask.new(file_listing: file_listing,
-                                 output_dir: output_dir,
-                                 application: application)
-        task.prepare
+        reveal_js_files = RevealJsFiles.new(dir: reveal_js_dir)
+        copy_files(reveal_js_files)
       end
 
       def create_slides_html
