@@ -31,7 +31,7 @@ module RevealCK
         end
       end
 
-      it 'can handle transforming emoji' do
+      it 'can transform emoji' do
         Dir.mktmpdir do |dir|
           Dir.chdir(dir) do
 
@@ -40,11 +40,13 @@ module RevealCK
               file.puts('# I :heart: Slides')
             end
 
+            config = Config.new
+            config.filters = ['HTML::Pipeline::RevealCKEmojiFilter']
             application = Rake::Application.new
             slides_html =
               CreateSlidesHtml.new(slides_file: slides_file_initial,
                                    output_dir: dir,
-                                   config: Config.new,
+                                   config: config,
                                    application: application)
 
             slides_html.prepare

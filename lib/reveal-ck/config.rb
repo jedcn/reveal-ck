@@ -6,7 +6,7 @@ module RevealCK
   # reveal-ck. It has defaults. It is mutable.
   class Config < OpenStruct
     def initialize
-      super DEFAULTS
+      super defaults
     end
 
     def merge!(hash)
@@ -15,21 +15,40 @@ module RevealCK
       end
     end
 
-    DEFAULTS = {
-      'title'      => 'Slides',
-      'author'     => '',
-      'theme'      => 'default',
-      'transition' => 'default',
-      'revealjs_config' => {
-        'controls' => true,
-        'progress' => true,
-        'history' => true,
-        'center' => true
-      },
-      'asset_root' => 'https://assets-cdn.github.com/images/icons/',
-      'data' => {
+    def defaults
+      [core_defaults,
+       revealjs_config_defaults,
+       filter_defaults].reduce({}) { |a, e| a.merge(e) }
+    end
 
+    def core_defaults
+      {
+        'title'      => 'Slides',
+        'author'     => '',
+        'theme'      => 'default',
+        'transition' => 'default',
+        'data' => {
+
+        }
       }
-    }
+    end
+
+    def revealjs_config_defaults
+      {
+        'revealjs_config' => {
+          'controls' => true,
+          'progress' => true,
+          'history' => true,
+          'center' => true
+        }
+      }
+    end
+
+    def filter_defaults
+      {
+        'filters' => ['HTML::Pipeline::RevealCKEmojiFilter'],
+        'asset_root' => 'https://assets-cdn.github.com/images/icons/'
+      }
+    end
   end
 end

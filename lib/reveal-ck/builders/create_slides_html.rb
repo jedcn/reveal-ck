@@ -35,11 +35,18 @@ module RevealCK
       end
 
       def apply_filters_to(html)
-        pipeline = HTML::Pipeline.new([HTML::Pipeline::RevealCKEmojiFilter])
+        filters = get_classes_from_array(config.filters)
+        pipeline = HTML::Pipeline.new(filters)
         filtered_html_string = FilteredHtmlString.new(html: html,
                                                       config: config.to_h,
                                                       pipeline: pipeline)
         filtered_html_string.render
+      end
+
+      def get_classes_from_array(array_of_names)
+        array_of_names.map do |name|
+          name.split('::').reduce(Object) { |a, e| a.const_get(e) }
+        end
       end
     end
   end
