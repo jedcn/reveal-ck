@@ -22,7 +22,7 @@ Feature: Using Emoji in your Slides
     Given a file named "slides.html" with:
     """
     <section>
-      <h1>Emoji</h1>
+      <h1>Emoji :thumbsup:</h1>
       <p>i :heart: it</p>
     </section>
     """
@@ -58,3 +58,5 @@ Feature: Using Emoji in your Slides
     | //section/p/img[@title=":heart:"]                                                  | an img with title=":heart"    |
     | //section/p/img[@alt=":heart:"]                                                    | an img with alt=":heart"      |
     | //section/p/img[@src="https://assets-cdn.github.com/images/icons/emoji/heart.png"] | an img with src on github cdn |
+    | //link[@rel="stylesheet"][@href="css/reveal-ck.css"]                               | the default reveal-ck.css     |
+    And a file named "slides/css/reveal-ck.css" should exist
