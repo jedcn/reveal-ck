@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'html-pipeline', '~> 1.8'
   s.add_dependency 'rake',          '~> 10.1'
   s.add_dependency 'redcarpet',     '~> 2.3'
+  s.add_dependency 'rinku',         '~> 1.7'
   s.add_dependency 'slim',          '~> 2.0'
   s.add_dependency 'tilt',          '~> 2.0'
 

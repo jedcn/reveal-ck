@@ -52,7 +52,8 @@ module RevealCK
 
       it 'supplies a default list of filters' do
         expect(config.filters).to eq ['HTML::Pipeline::RevealCKEmojiFilter',
-                                      'HTML::Pipeline::MentionFilter']
+                                      'HTML::Pipeline::MentionFilter',
+                                      'HTML::Pipeline::AutolinkFilter']
       end
 
       it 'does not share attributes between instances' do
