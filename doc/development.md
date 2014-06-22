@@ -1,10 +1,17 @@
 # Upcoming Changes
 
-The following changes are slated for the next release:
+The following changes are slated for an upcoming release:
 
-* Built in [HtmlPipeline][https://github.com/jch/html-pipeline]
-  filtering
-* emoji support
+* Supply an entry point for a rubyist to run code before slides are
+  generated. For example-- this code could define an HTML::Pipeline
+  filter and then configure the filter to run over the slides. The
+  proof of concept I've got in my mind is setting up notation along
+  the lines of :emoji: but for font-awesome icons.
+
+* Provide a notation to enable "Vertical Slides" when working in the
+  DSL.
+
+* ???
 
 # Development
 
