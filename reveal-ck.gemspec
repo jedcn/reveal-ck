@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   # Runtime Dependencies
   s.add_dependency 'RedCloth',      '~> 4.2'
   s.add_dependency 'docile',        '~> 1.1'
-  s.add_dependency 'gemoji'
+  s.add_dependency 'gemoji',        '~> 1.5'
   s.add_dependency 'gli',           '~> 2.7'
   s.add_dependency 'haml',          '~> 4.0'
   s.add_dependency 'html-pipeline', '~> 1.8'
@@ -50,7 +50,7 @@ Gem::Specification.new do |s|
   s.executables   = ['reveal-ck']
   s.require_paths = ['lib']
 
-  s.date = '2014-06-15'
+  s.date = '2014-06-21'
   s.extra_rdoc_files = [
     'LICENSE',
     'README.md'
