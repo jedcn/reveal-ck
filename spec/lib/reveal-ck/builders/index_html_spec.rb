@@ -4,7 +4,8 @@ module RevealCK
   module Builders
     describe IndexHtml do
       let :index_html_erb do
-        File.join(Dir.pwd, 'templates', 'reveal.js', 'index.html.erb')
+        RevealCK.template_path('index.html',
+                               'index.html.erb')
       end
 
       let :slides_html do
@@ -21,7 +22,7 @@ module RevealCK
       end
 
       let :index_html do
-        IndexHtml.new(index_file: index_html_erb,
+        IndexHtml.new(template: index_html_erb,
                       slides_html: slides_html,
                       config: config)
       end
@@ -31,7 +32,7 @@ module RevealCK
       end
 
       it 'is created with a file location and a config' do
-        expect(index_html.index_file).to include 'index.html.erb'
+        expect(index_html.template).to include 'index.html.erb'
         expect(index_html.config.title).to eq config.title
       end
 

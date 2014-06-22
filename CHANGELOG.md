@@ -1,3 +1,45 @@
+### 0.4.0 / 2014-06-??
+
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.3.0...v0.4.0)
+
+#### Ruby 1.9.3 is no longer supported
+
+It's now 2.0 and 2.1.
+
+#### Easier Speaker Notes in Markdown
+
+You can now use a triple-fenced code block with "note" or "notes"
+within markdown and instead of being code.. what you put within the
+"note" will appear as a speaker note.
+
+See [generate-with-markdown.feature][generate-with-markdown.feature].
+
+#### Emoji Support
+
+You can now type :thumbsup: within a slide and it'll display as emoji.
+
+See [emoji.feature][emoji.feature].
+
+#### AutoLinking Support
+
+When you write out a URL like "http://github.com/" it'll be
+transformed into an actual link.
+
+See [auto-link.feature][auto-link.feature].
+
+#### Mention Support
+
+When you write out @jedcn within a slide, it'll become a link to that
+users page on github.com (https://github.com/jedcn).
+
+See [mention.feature][mention.feature].
+
+[generate-with-markdown.feature]: features/generate-with-markdown.feature#L47
+[emoji.feature]: features/emoji.feature
+[auto-link.feature]: features/auto-link.feature
+[mention.feature]: features/mention.feature
+
+
 ### 0.3.0 / 2014-06-08
 
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.2.0...v0.3.0)

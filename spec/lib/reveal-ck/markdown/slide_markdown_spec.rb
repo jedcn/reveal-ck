@@ -8,67 +8,70 @@ module RevealCK
         SlideMarkdown.new
       end
 
-      let :basic_input do
-        <<-eos
-<h1>First Slide</h1>
+      describe '#postprocess' do
+        let :basic_input do
+          <<-eos
+<h1>h1 Slide</h1>
 
 <hr>
 
-<h1>Second Slide</h1>
+<h2>h2 Slide</h2>
 eos
-      end
+        end
 
-      let :leading_hr_input do
-        <<-eos
+        let :leading_hr_input do
+          <<-eos
 <hr>
 
-<h1>First Slide</h1>
+<h1>h1 Slide</h1>
 
 <hr>
 
-<h1>Second Slide</h1>
+<h2>h2 Slide</h2>
 eos
-      end
+        end
 
-      let :trailing_hr_input do
-        <<-eos
-<h1>First Slide</h1>
+        let :trailing_hr_input do
+          <<-eos
+<h1>h1 Slide</h1>
 
 <hr>
 
-<h1>Second Slide</h1>
+<h2>h2 Slide</h2>
 
 <hr>
 eos
-      end
+        end
 
-      it 'prepends an opening "<section>"' do
-        output = slide_markdown.postprocess(basic_input)
-        output.should start_with '<section>'
-      end
+        it 'wraps its content in a <section>"' do
+          output = slide_markdown.postprocess(basic_input)
+          expect(output).to start_with '<section>'
+          expect(output).to end_with '</section>'
+          expect(output.scan('<section>').size).to eq 2
+          expect(output.scan('</section>').size).to eq 2
+        end
 
-      it 'appends a closing "</section>"' do
-        output = slide_markdown.postprocess(basic_input)
-        output.should end_with '</section>'
-      end
+        it 'replaces <hr> with section breaks' do
+          output = slide_markdown.postprocess(basic_input)
+          expect(output).to_not include 'hr'
+          expect(output).to include '<h1>h1 Slide</h1>'
+          expect(output).to include '<h2>h2 Slide</h2>'
+        end
 
-      it 'replaces "<hr>"s with section breaks' do
-        output = slide_markdown.postprocess(basic_input)
-        output.should include '<h1>First Slide</h1>'
-        output.should include "</section>\n<section>"
-        output.should include '<h1>Second Slide</h1>'
-      end
+        it 'does not turn an initial <hr> into a section' do
+          output = slide_markdown.postprocess(leading_hr_input)
+          expect(output.scan('<section>').size).to eq 2
+          expect(output.scan('</section>').size).to eq 2
+          expect(output).to_not include 'hr'
+        end
 
-      it 'trims off an initial <hr>' do
-        output = slide_markdown.postprocess(leading_hr_input)
-        output.should_not start_with "<section>\n</section>"
+        it 'does not turn a trailing <hr> into a section' do
+          output = slide_markdown.postprocess(trailing_hr_input)
+          expect(output.scan('<section>').size).to eq 2
+          expect(output.scan('</section>').size).to eq 2
+          expect(output).to_not include 'hr'
+        end
       end
-
-      it 'trims off a trailing <hr>' do
-        output = slide_markdown.postprocess(trailing_hr_input)
-        output.should_not =~ /<section>\s*<\/section>/m
-      end
-
     end
   end
 end

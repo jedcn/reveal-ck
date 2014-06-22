@@ -12,13 +12,13 @@ module RevealCK
 
       describe '#paths' do
 
-        it 'defaults to Dir.pwd/templates and reveal-ck/templates' do
+        it 'defaults to Dir.pwd/templates and reveal-ck\'s slide templates' do
           Dir.mktmpdir do |dir|
             Dir.chdir(dir) do
               finder = Finder.new
               expect(finder.paths).to include File.join(Dir.pwd, 'templates')
               expect(finder.paths)
-                .to(include File.join(reveal_ck_dir, 'templates'))
+                .to(include(RevealCK.template_path('slides')))
               expect(finder.paths.size).to eq 2
             end
           end
@@ -43,7 +43,7 @@ module RevealCK
         end
 
         let :reveal_ck_templates_dir do
-          File.join reveal_ck_dir, 'templates'
+          File.join(reveal_ck_dir, 'files', 'reveal-ck', 'templates', 'slides')
         end
 
         let :finder do
@@ -51,13 +51,13 @@ module RevealCK
           Finder.new paths: paths
         end
 
-        it 'searches project templates/ and reveal-ck/templates' do
+        it 'searches project templates/ and reveal-ck\'s slide templates' do
           result = finder.find 'template_one'
           template_one = File.join('templates', 'template_one.slim')
           expect(result).to include template_one
 
           result = finder.find 'intro'
-          intro_slim = File.join('reveal-ck', 'templates', 'intro.slim')
+          intro_slim = RevealCK.template_path('slides', 'intro.slim')
           expect(result).to include intro_slim
         end
 

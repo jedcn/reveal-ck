@@ -30,6 +30,32 @@ module RevealCK
           end
         end
       end
+
+      it 'can transform emoji' do
+        Dir.mktmpdir do |dir|
+          Dir.chdir(dir) do
+
+            slides_file_initial = 'slides-initial.md'
+            File.open(slides_file_initial, 'w') do |file|
+              file.puts('# I :heart: Slides')
+            end
+
+            config = Config.new
+            config.filters = ['HTML::Pipeline::RevealCKEmojiFilter']
+            application = Rake::Application.new
+            slides_html =
+              CreateSlidesHtml.new(slides_file: slides_file_initial,
+                                   output_dir: dir,
+                                   config: config,
+                                   application: application)
+
+            slides_html.prepare
+            application['create_slides_html'].invoke
+            content = File.open('slides.html', 'r').read
+            expect(content).to include 'emoji/heart.png'
+          end
+        end
+      end
     end
   end
 end

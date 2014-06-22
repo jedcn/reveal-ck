@@ -2,11 +2,7 @@ require 'redcarpet'
 
 module RevealCK
   module Markdown
-    #
-    # Public: This class defines what "Slide Markdown" is: an
-    # extension of regular Redcarpet Markdown with some basic post
-    # processing.
-    #
+    # This class defines what "Slide Markdown" is.
     class SlideMarkdown < Redcarpet::Render::HTML
       HR = '<hr>'
       HR_NEWLINE = "<hr>\n"
@@ -23,6 +19,16 @@ module RevealCK
         end
         doc = doc.gsub(HR, SLIDE_DIVIDER)
         "#{SLIDE_START}\n#{doc}\n#{SLIDE_END}"
+      end
+
+      def block_code(code, language)
+        if language.nil?
+          "<pre><code>#{code}</code></pre>"
+        elsif language == 'notes' || language == 'note'
+          "<aside class='notes'>#{code}</aside>"
+        else
+          "<pre><code class=\"#{language}\">#{code}</code></pre>"
+        end
       end
     end
   end

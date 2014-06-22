@@ -100,10 +100,8 @@ Feature: The capabilities of config.yml
     Then the exit status should be 0
     And the following files should exist:
     | slides/index.html  |
-    And the file "slides/index.html" should contain:
-    """
-    <img src='https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'>
-    """
+    And the file "slides/index.html" should have html matching the css:
+    | img[src*="reveal-js/reveal-parallax-1.jpg"] | the referenced image |
 
   Scenario: Referencing config data with ruby
     Given a file named "config.yml" with:
@@ -126,7 +124,5 @@ Feature: The capabilities of config.yml
     Then the exit status should be 0
     And the following files should exist:
     | slides/index.html  |
-    And the file "slides/index.html" should contain:
-    """
-    <img src='https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'>
-    """
+    And the file "slides/index.html" should have html matching the css:
+    | img[src*="reveal-js/reveal-parallax-1.jpg"]  | the referenced image |

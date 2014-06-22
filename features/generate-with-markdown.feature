@@ -8,6 +8,9 @@ Feature: Slides with markdown
   The '---' is used to separate slides rather than represent a
   `<hr/>`, and so it's not exactly markdown, but it's close.
 
+  Further- you can also used the triple-fence block to quickly speaker
+  notes. See the example below.
+
   If you'd like to see the intermediate file where your `slides.md` is
   transformed into `.html` you can visit `slides/slides.html`
 
@@ -19,7 +22,7 @@ Feature: Slides with markdown
     # Reveal.js
     ### HTML Presentations Made Easy
 
-    Created by [Hakim El Hattab][hakim]/[@hakimel][twitter]
+    Created by [Hakim El Hattab][hakim]
 
     ---
 
@@ -27,47 +30,45 @@ Feature: Slides with markdown
     ### BY Hakim El Hattab / hakim.se
 
     [hakim]: http://hakim.se
-    [twitter]: http://twitter.com/hakimel
     """
     When I run `reveal-ck generate`
     Then the exit status should be 0
-    And the output should contain exactly "Generating slides for 'slides.md'..\n"
-    And the following files should exist:
-    | slides/slides.html |
-    | slides/index.html  |
-    And the file "slides/slides.html" should contain:
+    And the file "slides/slides.html" should have html matching the xpath:
+    | //section/h1[text()="Reveal.js"]                                 | the opening h1           |
+    | //section/h3[text()="HTML Presentations Made Easy"]              | the opening h3           |
+    | //section/h1[text()="THE END"]                                   | the closing h1           |
+    | //section/p/a[@href='http://hakim.se'][text()="Hakim El Hattab"] | the link to hakim's site |
+    And the file "slides/index.html" should have html matching the xpath:
+    | //section/h1[text()="Reveal.js"]                                 | the opening h1           |
+    | //section/h3[text()="HTML Presentations Made Easy"]              | the opening h3           |
+    | //section/h1[text()="THE END"]                                   | the closing h1           |
+    | //section/p/a[@href='http://hakim.se'][text()="Hakim El Hattab"] | the link to hakim's site |
+
+  Scenario: Supplying Speaker Notes with Markdown
+    Given a file named "slides.md" with:
     """
-    <section>
-    <h1>Reveal.js</h1>
+    # Reveal.js
+    ### HTML Presentations Made Easy
 
-    <h3>HTML Presentations Made Easy</h3>
+    ```notes
+    This will be a speaker note
+    ```
 
-    <p>Created by <a href="http://hakim.se">Hakim El Hattab</a>/<a href="http://twitter.com/hakimel">@hakimel</a></p>
+    ---
 
-    </section>
-    <section>
+    # Second Slide
 
-    <h1>THE END</h1>
-
-    <h3>BY Hakim El Hattab / hakim.se</h3>
-
-    </section>
+    ```note
+    Another note (note the singular)
+    ```
     """
-    And the file "slides/index.html" should contain:
-    """
-    <section>
-    <h1>Reveal.js</h1>
-
-    <h3>HTML Presentations Made Easy</h3>
-
-    <p>Created by <a href="http://hakim.se">Hakim El Hattab</a>/<a href="http://twitter.com/hakimel">@hakimel</a></p>
-
-    </section>
-    <section>
-
-    <h1>THE END</h1>
-
-    <h3>BY Hakim El Hattab / hakim.se</h3>
-
-    </section>
-    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the file "slides/slides.html" should have html matching the xpath:
+    | //section/aside[@class="notes"]                             | a speaker note  |
+    | //section/aside[contains(., "This will be a speaker note")] | the first note  |
+    | //section/aside[contains(., "Another note")]                | the second note |
+    And the file "slides/index.html" should have html matching the xpath:
+    | //section/aside[@class="notes"]                             | a speaker note  |
+    | //section/aside[contains(., "This will be a speaker note")] | the first note  |
+    | //section/aside[contains(., "Another note")]                | the second note |

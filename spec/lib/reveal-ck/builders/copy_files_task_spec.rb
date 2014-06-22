@@ -18,12 +18,12 @@ module RevealCK
       let :file_listing do
         file_listing = double
 
-        file_listing
-          .stub(:files)
+        allow(file_listing)
+          .to receive(:files)
           .and_return([file_a_source, file_b_source])
 
-        file_listing
-          .stub(:dir)
+        allow(file_listing)
+          .to receive(:dir)
           .and_return(source_dir)
 
         file_listing
