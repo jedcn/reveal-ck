@@ -1,5 +1,7 @@
 # Make Slides with a Quickness
 
+[![Gem Version](https://badge.fury.io/rb/reveal-ck.svg)](http://badge.fury.io/rb/reveal-ck)
+
 reveal-ck lets you author [reveal.js][reveal.js] presentations with
 popular markup and templating languages.
 
