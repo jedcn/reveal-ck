@@ -1,6 +1,6 @@
 ---
 layout: child
-title: Ruby Reference
+title: Installation
 ---
 
 # Coming Soon!

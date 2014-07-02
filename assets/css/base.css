@@ -1,0 +1,28 @@
+body {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    font-size: 18px;
+}
+
+code {
+    padding: 2px 2px;
+}
+
+pre {
+    line-height: 1;
+    padding: 0 1em;
+}
+
+.hljs {
+    padding: 0 0.5em;
+}
+
+blockquote {
+    font-size: 20px;
+}
+
+footer {
+    padding-top: 40px 0;
+    margin-top: 40px;
+    text-align: center;
+}

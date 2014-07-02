@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include head_content.html root=".." %}
+  </head>
+  <body data-spy="scroll" data-target="#navcolumn" data-offset="100">
+    {% include nav_bar.html root=".." %}
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3" id="navcolumn">
+          <div class="affix">
+            <h4>Concepts</h4>
+            <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+              <li>
+                <a href="#its-just-html">It's Just Html</a>
+              </li>
+              <li>
+                <a href="#start-with-markdown">Start with Markdown</a>
+              </li>
+              <li>
+                <a href="#other-languages">Use Other Languages (if needed)</a>
+              </li>
+              <li>
+                <a href="#generate-slides">Generate Slides</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-9">
+          <h1>In short,</h1>
+          <blockquote>
+            <p>
+              reveal.js presentations are html.
+              </p>
+            <p>
+              Ruby is good at producing html.
+            </p>
+            <p>
+              Let's produce reveal.js presentations with minimal work.
+            </p>
+            <small>reveal-ck mission statement</small>
+          </blockquote>
+          <h1>More?</h1>
+          <section id="its-just-html">
+            <h2>It's Just Html</h2>
+            <p>
+              Ruby has many tools that generate html and has famous
+              static site generators.
+            <p>
+              reveal.js presentations are static html.
+            </p>
+            <p class="lead">
+              reveal-ck is a static <em>slide</em> generator.
+            </p>
+          </section>
+          <section id="start-with-markdown">
+            <h2>Start with Markdown</h2>
+            <p>
+              reveal-ck slightly tweaks Markdown so that it produces
+              html that reveal.js recognizes.
+            </p>
+            <p class="lead">
+              Create slides even if you don't understand how reveal.js
+              works.
+            </p>
+          </section>
+          <section id="other-languages">
+            <h2>Use Other Languages (if needed)</h2>
+            <p>
+              If you want to take the time to understand how reveal.js
+              works, you will need finer control over the html in your
+              slides.
+            </p>
+            <p class="lead">
+              Author slides in the language of your choice.
+            </p>
+          </section>
+          <section id="generate-slides">
+            <h2>Generate Slides</h2>
+            <p>
+              There's support for a Ruby internal DSL that can generate
+              slides.
+            </p>
+            <p>
+              Want to create a presentation with a thousand slides based
+              on a flickr search? Want it to automatically change slides
+              every 10 seconds and loop?
+            </p>
+            <p>
+              Want a presentation that plays music with each slide, and
+              the music it plays comes from searching your file system?
+            </p>
+            <p class="lead">
+              Unlock a new category of possibilities with generated
+              slides.
+            </p>
+          </section>
+        </div>
+      </div>
+      {% include footer.html %}
+    </div>
+  </body>
+</html>

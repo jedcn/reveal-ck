@@ -1,0 +1,28 @@
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a href="{{ include.root }}" class="navbar-brand">{{ site.name }}</a>
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="{{ include.root }}/tutorial/">Tutorial</a></li>
+        <li><a href="{{ include.root }}/core-concepts/">Core Concepts</a></li>
+        <li><a href="{{ include.root }}/how-it-works/">How it Works</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ include.root }}/installation/">Installation</a></li>
+            <li><a href="{{ include.root }}/markdown/">Markdown</a></li>
+            <li><a href="{{ include.root }}/html/">Html</a></li>
+            <li><a href="{{ include.root }}/ruby/">Ruby</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
