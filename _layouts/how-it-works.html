@@ -11,13 +11,19 @@
           <h4>Steps</h4>
           <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
             <li>
+              <a href="#overview">Overview</a>
+            </li>
+            <li>
               <a href="#slides-file">The Slides File</a>
             </li>
             <li>
-              <a href="#filters">Filters</a>
+              <a href="#config-yml">config.yml</a>
             </li>
             <li>
-              <a href="#assets">Images, CSS, etc</a>
+              <a href="#supporting-files">Supporting Files</a>
+            </li>
+            <li>
+              <a href="#filters">Filters</a>
             </li>
             <li>
               <a href="#web-server">Web Server</a>
@@ -25,65 +31,113 @@
           </ul>
         </div>
         <div class="col-lg-9">
-          <h1>Overview</h1>
-          <p class="lead">
-            reveal-ck creates reveal.js presentation with a small,
-            series of steps. Everything starts with your <em>slides
-            file</em>.
-          </p>
-          <p>
-            If you author slide content in Markdown, your <em>slides
-            file</em> will be called <code>slides.md</code>. If you
-            write in html or haml your <em>slides file</em> will be
-            called <code>slides.html</code>
-            or <code>slides.haml</code>.
-          </p>
-          <h1>The Steps</h1>
-          The steps are:
-          <ol>
-            <li>
-              The reveal-ck gem contains a recent copy of reveal.js
-              within it. This copy is unpacked into
+          <section id="overview">
+            <h1>Overview</h1>
+            <p>
+              This is a high level description of how reveal-ck
+              creates a presentation. Greater detail is available in
+              the
+              <a href="https://www.relishapp.com/jedcn/reveal-ck/docs">
+                relishapp documentation for reveal-ck.
+              </a>
+            </p>
+            <h2>The Steps</h2>
+            <p>
+              Slide generation centers around running the command
+              <code>reveal-ck generate</code>.
+            </p>
+            <p>
+              The <code>generate</code> process takes a file
+              containing your slides and creates a presentation in
               the <code>slides/</code> directory.
-            </li>
-            <li>
-              If you have files in directories
-              named <code>images/</code>,
-              <code>css/</code>, <code>js/</code>,
-              or <code>media/</code>, these files are recursively
-              copied into the <code>slides/</code> directory.
-            </li>
-            <li>
-              Your <em>slides file</em> is transformed into html and
-              stored at <code>slides/slides.html</code>.
-            </li>
-            <li>
-              Pieces of a reveal.js <code>index.html</code> are also
-              stored within the reveal-ck gem. These pieces form
-              together along with the content
-              in <code>slides/slides.html</code>. The result is a
-              stored at <code>slides/index.html</code>.
-            </li>
-            <li>
-              The body of <code>slides/index.html</code> is run
-              through a series of filters. These filters replace
-              emoji.
-            </li>
-          </ol>
+            </p>
+            <p>
+              What happens during this process?
+            </p>
+            <p>
+              Everything starts with your <em>slides file</em>.
+            </p>
+            <p>
+              If you author slide content in Markdown, your <em>slides
+              file</em> will be named <code>slides.md</code>. If you
+              write in html it's <code>slides.html</code>. If you
+              write in erb it will
+              be <code>slides.html.erb</code>. The same pattern holds
+              true for <code>slides.haml</code>, <code>slides.textile</code>,
+              <code>slides.slim</code>, and <code>slides.rb</code>.
+            </p>
+            <p>
+              Regardless of authoring technology, you put your slide
+              content into the <em>slides files</em> and
+              run <code>reveal-ck generate</code>.
+            </p>
+            <h2>And then what happens?</h2>
+            <ol>
+              <li>
+                The file <code>config.yml</code> is scanned, if it
+                exists. Values within inform the generation process.
+              </li>
+              <li>
+                The reveal-ck gem contains a recent copy of reveal.js
+                within it. This copy is unpacked into
+                the <code>slides/</code> directory.
+              </li>
+              <li>
+                If you have supporting files in directories
+                named <code>images/</code>,
+                <code>css/</code>, <code>js/</code>,
+                or <code>media/</code>, these files are copied into
+                the <code>slides/</code> directory.
+              </li>
+              <li>
+                Your <em>slides file</em> is transformed into html and
+                stored at <code>slides/slides.html</code>.
+              </li>
+              <li>
+                Pieces of a reveal.js's <code>index.html</code> (which
+                serves as the demo) are also stored within the
+                reveal-ck gem. These pieces are merged together with
+                the content in <code>slides/slides.html</code>. The
+                result is a stored at <code>slides/index.html</code>.
+              </li>
+              <li>
+                The body of <code>slides/index.html</code> is run
+                through a series of filters. These filters provide
+                support for
+                <a href="https://www.relishapp.com/jedcn/reveal-ck/docs/using-emoji-in-your-slides">
+                  emoji
+                </a>
+                ,
+                <a href="https://www.relishapp.com/jedcn/reveal-ck/docs/mentioning-user-in-your-slides">
+                  @mentions
+                </a>
+                , and
+                <a href="https://www.relishapp.com/jedcn/reveal-ck/docs/auto-linking-in-your-slides">
+                  auto-linking.
+                </a>
+              </li>
+            </ol>
+          </section>
           <section id="slides-file">
-            <h2>Slides File</h2>
+            <h2>The Slides File</h2>
+            <p>
+              Coming Soon!
+            </p>
+          </section>
+          <section id="config-yml">
+            <h2>config.yml</h2>
+            <p>
+              Coming Soon!
+            </p>
+          </section>
+          <section id="supporting-files">
+            <h2>Supporting Files</h2>
             <p>
               Coming Soon!
             </p>
           </section>
           <section id="filters">
             <h2>Filters</h2>
-            <p>
-              Coming Soon!
-            </p>
-          </section>
-          <section id="assets">
-            <h2>Images, CSS, etc</h2>
             <p>
               Coming Soon!
             </p>
