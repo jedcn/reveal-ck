@@ -41,19 +41,17 @@
                 relishapp documentation for reveal-ck.
               </a>
             </p>
-            <h2>The Steps</h2>
+            <h2>Making Slides</h2>
             <p>
               Slide generation centers around running the command
               <code>reveal-ck generate</code>.
             </p>
             <p>
               The <code>generate</code> process takes a file
-              containing your slides and creates a presentation in
-              the <code>slides/</code> directory.
+              containing your slides and creates a presentation in a
+              new directory named <code>slides</code>.
             </p>
-            <p>
-              What happens during this process?
-            </p>
+            <h2>What happens during this process?</h2>
             <p>
               Everything starts with your <em>slides file</em>.
             </p>
@@ -121,31 +119,98 @@
           <section id="slides-file">
             <h2>The Slides File</h2>
             <p>
-              Coming Soon!
+              Your slide content lives in a single file known as
+              the <em>slides file</em>.
+            </p>
+            <p>
+              You can supply configuration and styling. You can have
+              distinct images and audio files. You can even include
+              text from other files, but everything revolves around
+              the <em>slides file</em>. It is the core of your
+              content.
             </p>
           </section>
           <section id="config-yml">
             <h2>config.yml</h2>
             <p>
-              Coming Soon!
+              This (optional) file contains configuration directives
+              that impact the generated presentation.
+            </p>
+            <p>
+              It can provide:
+              <ul>
+                <li>theme and transition settings</li>
+                <li>reveal.js initialization options</li>
+                <li>configuration info for filters</li>
+                <li>shared data accessible at render time</li>
+              </ul>
             </p>
           </section>
           <section id="supporting-files">
             <h2>Supporting Files</h2>
             <p>
-              Coming Soon!
+              reveal-ck <em>allows</em> you to reduce a presentation
+              to a single file, but what if you want to include
+              images? CSS? mp3s? reveal-ck expects that supporting
+              files are placed into directories.
+            </p>
+            <p>
+              Any images included in the <code>images</code> directory
+              will be copied into the presentation. This mean they can
+              be referenced relatively: <code>&lt;img
+              src="image/foo.png"/&gt;</code>.
+            </p>
+            <p>
+              If you include a CSS file in the <code>css</code>
+              directory, it will be automatically included in the
+              generated presentation and linked into
+              the <code>&lt;head/&gt;</code> of the final index.html.
+            </p>
+            <p>
+              Files in the <code>media</code> directory will be copied
+              into the presentation. For example, mp3s can be
+              referenced by <code>&lt;audio/&gt;</code> tags.
+            </p>
+            <p>
+              Files in the <code>templates</code> directory aren't
+              copied into the presentation, but, they can be
+              referenced via the <code>slide</code> DSL method when
+              working with a <code>slides.rb</code>.
             </p>
           </section>
           <section id="filters">
             <h2>Filters</h2>
             <p>
-              Coming Soon!
+              The last step in the creation of your presentation
+              involves running filters over your the html content in
+              your presentation.
+            </p>
+            <p>
+              The <a href="https://github.com/jch/html-pipeline">html-pipeline</a>
+              framework is used to support filtering. :emoji: is
+              replaced, links are auto-linked, and @mentions are
+              transformed into github user URLs. Some of these filters
+              are configurable.
             </p>
           </section>
           <section id="web-server">
             <h2>Web Server</h2>
             <p>
-              Coming Soon!
+              You can show your slides by opening the generated
+              index.html in a browser. However, presentation mode will
+              not work unless they are served up via http.
+            </p>
+            <p>
+              You can type <code>reveal-ck serve</code> and an http
+              server will startup on port 10000 serving up the content
+              of your slides directory.
+            </p>
+            <p>
+              Just browse
+              to
+              <a href="http://localhost:10000">
+                http://localhost:10000
+              </a>.
             </p>
           </section>
         </div>
