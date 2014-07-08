@@ -104,7 +104,7 @@ With reveal-ck installed and these two files (`slides.md` and
 Your presentation will be updated in the `slides/` directory, and
 [here's what you would have][tutorial-slides-2].
 
-Remember to see presentation mode by pressing 's' while you're viewing
+Remember to see presentation mode by pressing `s` while you're viewing
 the slides!
 
 [tutorial-slides-2]: ./slides/index-with-theme.html
