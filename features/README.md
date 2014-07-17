@@ -4,7 +4,7 @@ presentations with popular markup and templating languages.
 
 You write in Markdown, Textile, Haml, Slim or Ruby itself.
 
-version: reveal-ck 0.3.0.
+version: reveal-ck 0.4.0.
 
 ## relishapp?
 
