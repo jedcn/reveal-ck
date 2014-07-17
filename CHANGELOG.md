@@ -1,4 +1,14 @@
-### 0.4.0 / 2014-06-??
+### 0.4.1 / 2014-07-16
+
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.4.0...v0.4.1)
+
+#### Fix Issue #13
+
+reveal-ck 0.4.0 was locked on html-pipeline 1.8, and this stopped
+working when 1.9 came out. And so, this change locks us onto
+1.9. We'll see how often this happens..
+
+### 0.4.0 / 2014-06-21
 
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.3.0...v0.4.0)
 

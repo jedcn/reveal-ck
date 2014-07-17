@@ -50,7 +50,7 @@ Gem::Specification.new do |s|
   s.executables   = ['reveal-ck']
   s.require_paths = ['lib']
 
-  s.date = '2014-06-21'
+  s.date = '2014-07-16'
   s.extra_rdoc_files = [
     'LICENSE',
     'README.md'
