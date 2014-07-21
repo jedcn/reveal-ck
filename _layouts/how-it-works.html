@@ -47,9 +47,9 @@
               <code>reveal-ck generate</code>.
             </p>
             <p>
-              The <code>generate</code> process takes a file
-              containing your slides and creates a presentation in a
-              new directory named <code>slides</code>.
+              The generate process takes a file containing your slides
+              and creates a presentation in a new directory
+              named <code>slides</code>.
             </p>
             <h2>What happens during this process?</h2>
             <p>
@@ -58,16 +58,14 @@
             <p>
               If you author slide content in Markdown, your <em>slides
               file</em> will be named <code>slides.md</code>. If you
-              write in html it's <code>slides.html</code>. If you
-              write in erb it will
-              be <code>slides.html.erb</code>. The same pattern holds
-              true for <code>slides.haml</code>, <code>slides.textile</code>,
-              <code>slides.slim</code>, and <code>slides.rb</code>.
+              write in html it's slides.html. If you write in erb it
+              will be slides.html.erb. The same pattern holds true for
+              slides.haml, slides.textile, slides.slim, and slides.rb.
             </p>
             <p>
               Regardless of authoring technology, you put your slide
-              content into the <em>slides files</em> and
-              run <code>reveal-ck generate</code>.
+              content into the <em>slides files</em> and run reveal-ck
+              generate.
             </p>
             <h2>And then what happens?</h2>
             <ol>
@@ -77,31 +75,28 @@
               </li>
               <li>
                 The reveal-ck gem contains a recent copy of reveal.js
-                within it. This copy is unpacked into
-                the <code>slides/</code> directory.
+                within it. This copy is unpacked into the slides/
+                directory.
               </li>
               <li>
-                If you have supporting files in directories
-                named <code>images/</code>,
-                <code>css/</code>, <code>js/</code>,
-                or <code>media/</code>, these files are copied into
-                the <code>slides/</code> directory.
+                If you have supporting files in directories named
+                images/, css/, js/, or media/, these files are copied
+                into the slides/ directory.
               </li>
               <li>
                 Your <em>slides file</em> is transformed into html and
                 stored at <code>slides/slides.html</code>.
               </li>
               <li>
-                Pieces of a reveal.js's <code>index.html</code> (which
-                serves as the demo) are also stored within the
-                reveal-ck gem. These pieces are merged together with
-                the content in <code>slides/slides.html</code>. The
-                result is a stored at <code>slides/index.html</code>.
+                Pieces of a reveal.js's index.html (which serves as
+                the demo) are also stored within the reveal-ck
+                gem. These pieces are merged together with the content
+                in slides/slides.html. The result is a stored
+                at <code>slides/index.html</code>.
               </li>
               <li>
-                The body of <code>slides/index.html</code> is run
-                through a series of filters. These filters provide
-                support for
+                The body of slides/index.html is run through a series
+                of filters. These filters provide support for
                 <a href="https://www.relishapp.com/jedcn/reveal-ck/docs/using-emoji-in-your-slides">
                   emoji
                 </a>
@@ -145,6 +140,7 @@
                 <li>shared data accessible at render time</li>
               </ul>
             </p>
+            See <a href="../config">configuration details.</a>
           </section>
           <section id="supporting-files">
             <h2>Supporting Files</h2>
@@ -155,27 +151,28 @@
               files are placed into directories.
             </p>
             <p>
-              Any images included in the <code>images</code> directory
-              will be copied into the presentation. This mean they can
-              be referenced relatively: <code>&lt;img
+              Any images included in the images directory will be
+              copied into the presentation. This mean they can be
+              referenced relatively: <code>&lt;img
               src="image/foo.png"/&gt;</code>.
             </p>
             <p>
-              If you include a CSS file in the <code>css</code>
-              directory, it will be automatically included in the
-              generated presentation and linked into
-              the <code>&lt;head/&gt;</code> of the final index.html.
+              If you include a CSS file in the css directory, it will
+              be automatically included in the generated presentation
+              and linked into the <code>&lt;head/&gt;</code> of the
+              final index.html.
             </p>
             <p>
-              Files in the <code>media</code> directory will be copied
-              into the presentation. For example, mp3s can be
-              referenced by <code>&lt;audio/&gt;</code> tags.
+              Files in the media directory will be copied into the
+              presentation. For example, mp3s can be referenced
+              by <code>&lt;audio/&gt;</code> tags.
             </p>
             <p>
               Files in the <code>templates</code> directory aren't
               copied into the presentation, but, they can be
               referenced via the <code>slide</code> DSL method when
-              working with a <code>slides.rb</code>.
+              working with a <code>slides.rb</code>. This only matters
+              if you're <a href="../ruby">working in Ruby</a>.
             </p>
           </section>
           <section id="filters">
