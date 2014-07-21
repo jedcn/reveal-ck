@@ -82,7 +82,6 @@ contained:
 &lt;section&gt;
   &lt;h1&gt;Slide &lt;%= config.data['arbitrary_value'] %&gt;&lt;/h1&gt;
 &lt;/section&gt;
-  </h1>
   </code>
 </pre>
 
