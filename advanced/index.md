@@ -70,7 +70,7 @@ For example, imagine your `config.yml` contained:
 <pre>
   <code class="yaml">
 data:
-  arbitrary_number: 42
+  arbitrary_value: 42
   </code>
 </pre>
 
