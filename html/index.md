@@ -39,6 +39,27 @@ Here are two slides:
   </code>
 </pre>
 
+## Vertical Sldies
+
+Vertical Slides are created by wrapping `<section/>`s within a parent
+`<section/>`:
+
+Here are two vertical slides:
+
+<pre>
+  <code class="markdown">
+&lt;section&gt;
+  &lt;section&gt;
+    &lt;h1&gt;Slide 1&lt;/h1&gt;
+  &lt;/section&gt;
+
+  &lt;section&gt;
+    &lt;h1&gt;Slide 2&lt;/h1&gt;
+  &lt;/section&gt;
+&lt;/section&gt;
+  </code>
+</pre>
+
 ## Speaker Notes
 
 Speaker notes are visible only to you, and they are added with an
