@@ -13,6 +13,10 @@ Feature: Getting Command Line Help
      * help          * - Shows a list of commands or help for one command
      * serve, server * - Start webserver so slides are available via http
     """
+    And the output should match:
+    """
+    A reveal.js construction kit
+    """
 
   Scenario: Show general help if reveal-ck is run with --help
     When I run `reveal-ck --help`
@@ -23,6 +27,14 @@ Feature: Getting Command Line Help
      * generate      * - Generate reveal.js slides
      * help          * - Shows a list of commands or help for one command
      * serve, server * - Start webserver so slides are available via http
+    """
+
+  Scenario: Show the version of reveal-ck if reveal-ck is run with --version
+    When I run `reveal-ck --version`
+    Then the exit status should be 0
+    And the output should match:
+    """
+    reveal-ck version 0.4.1
     """
 
   Scenario: You need a slides file to get going
