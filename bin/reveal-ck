@@ -2,13 +2,13 @@
 require 'gli'
 require 'reveal-ck'
 
-include GLI::App
-
-program_desc 'A reveal.js construction kit'
-
-version RevealCK::VERSION
-
 class RevealCKExecutable
+  extend GLI::App
+
+  program_desc 'A reveal.js construction kit'
+
+  version RevealCK::VERSION
+
   desc 'Generate reveal.js slides'
   command :generate do |c|
 
