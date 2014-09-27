@@ -34,7 +34,7 @@ Feature: Getting Command Line Help
     Then the exit status should be 0
     And the output should match:
     """
-    reveal-ck version 0.4.1
+    reveal-ck version \d.\d.\d
     """
 
   Scenario: You need a slides file to get going
