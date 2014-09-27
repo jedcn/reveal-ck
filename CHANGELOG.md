@@ -1,3 +1,15 @@
+### 0.4.2 / ???
+
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.4.1...v0.4.2)
+
+#### Fix Issue #16
+
+You can now create "vertically tight" slide content.
+
+#### Fix Issue #14
+
+The description and version are now back if you type reveal-ck --help
+
 ### 0.4.1 / 2014-07-16
 
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.4.0...v0.4.1)
