@@ -1,5 +1,4 @@
 require 'ostruct'
-require 'json'
 
 module RevealCK
   # A Config represents core configuration options within
