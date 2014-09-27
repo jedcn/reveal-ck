@@ -66,6 +66,17 @@ eos
         expect(output).to include "<aside class='notes'"
         expect(output).to include 'This is a note'
       end
+
+      it 'works when there is no space surrounding the ---' do
+        output = render_markdown <<-eos
+# Your headline
+* Bullet 1
+* Bullet 2
+---
+# Next Slide
+eos
+        expect(output).to include "</section>\n<section>"
+      end
     end
   end
 end
