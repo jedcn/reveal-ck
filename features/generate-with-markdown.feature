@@ -8,8 +8,8 @@ Feature: Slides with markdown
   The '---' is used to separate slides rather than represent a
   `<hr/>`, and so it's not exactly markdown, but it's close.
 
-  Further- you can also used the triple-fence block to quickly speaker
-  notes. See the example below.
+  Further- you can also used the triple-fence block to quickly create
+  speaker notes. See the example below.
 
   If you'd like to see the intermediate file where your `slides.md` is
   transformed into `.html` you can visit `slides/slides.html`
@@ -44,7 +44,7 @@ Feature: Slides with markdown
     | //section/h1[text()="THE END"]                                   | the closing h1           |
     | //section/p/a[@href='http://hakim.se'][text()="Hakim El Hattab"] | the link to hakim's site |
 
-  Scenario: Supplying Speaker Notes with Markdown
+  Scenario: Authoring Speaker Notes with Markdown
     Given a file named "slides.md" with:
     """
     # Reveal.js
