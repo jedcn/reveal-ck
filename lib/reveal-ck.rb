@@ -1,3 +1,8 @@
+# The following require adds "#to_json" to Hash. This is needed in
+# script.js.erb. We do it here to provide as much clarity as is
+# possible.
+require 'json'
+
 require_relative 'reveal-ck/version'
 require_relative 'reveal-ck/config'
 require_relative 'reveal-ck/retrieve'
