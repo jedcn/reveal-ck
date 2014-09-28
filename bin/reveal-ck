@@ -64,9 +64,12 @@ class RevealCKExecutable
       dir = options[:dir]
       port = options[:port]
 
-      require 'webrick'
-      server = WEBrick::HTTPServer.new Port: port, DocumentRoot: dir
-      trap('INT') { server.shutdown }
+      require 'rack'
+      app = Rack::Builder.new do
+        use Rack::Static, index: "#{dir}/index.html"
+        run Rack::Directory.new(dir)
+      end
+      server = Rack::Server.new(app: app, Port: port)
 
       puts
       puts
