@@ -54,6 +54,12 @@ class RevealCKExecutable
   desc 'Start webserver so slides are available via http'
   command :serve, :server do |c|
 
+    slide_files = FileList['slides.*']
+    default_file = slide_files.empty? ? nil : slide_files.first
+
+    c.desc 'The file containing your slide content'
+    c.flag [:f, :file], default_value: default_file
+
     c.desc 'The directory to serve up'
     c.flag [:d, :dir], default_value: 'slides'
 
@@ -63,6 +69,29 @@ class RevealCKExecutable
     c.action do |_, options, _|
       dir = options[:dir]
       port = options[:port]
+
+      # TODO: Should include css/*.css, and config.yml
+      LISTEN_REGEX = /^slides\..+$/
+      require 'listen'
+      listener = ::Listen.to('.', only: LISTEN_REGEX) do |m, a, r|
+        puts "modified absolute path: #{m}"
+        puts "added absolute path: #{a}"
+        puts "removed absolute path: #{r}"
+        puts "----------------------------------------"
+        slides_file = options[:file]
+        puts "Generating slides for '#{slides_file}'.."
+        builder_args = {
+          user_dir: Dir.pwd,
+          gem_dir: RevealCK.path,
+          output_dir: options[:dir],
+          slides_file: options[:file]
+        }
+        slides_builder =
+          RevealCK::Builders::SlidesBuilder.new(builder_args)
+        slides_builder.prepare
+        slides_builder.build
+      end
+      listener.start
 
       require 'rack'
       require 'rack/livereload'

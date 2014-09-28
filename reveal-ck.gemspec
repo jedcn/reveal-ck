@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'gli',             '~> 2.7'
   s.add_dependency 'haml',            '~> 4.0'
   s.add_dependency 'html-pipeline',   '~> 1.9'
+  s.add_dependency 'listen',          '~> 2.0'
   s.add_dependency 'rack',            '~> 1.5'
   s.add_dependency 'rack-livereload', '~> 0.3'
   s.add_dependency 'rake',            '~> 10.1'
