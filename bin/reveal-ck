@@ -65,7 +65,9 @@ class RevealCKExecutable
       port = options[:port]
 
       require 'rack'
+      require 'rack/livereload'
       app = Rack::Builder.new do
+        use Rack::LiveReload
         use Rack::Static, index: "#{dir}/index.html"
         run Rack::Directory.new(dir)
       end
