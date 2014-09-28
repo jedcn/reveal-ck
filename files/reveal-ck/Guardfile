@@ -1,0 +1,6 @@
+guard 'livereload' do
+  # Watch.. whenever slides/css changes?
+  # Watch.. whenever slides/images changes?
+  # Watch.. whenever slides/slides.html changes?
+  watch(%r{slides/index.html$})
+end

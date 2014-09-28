@@ -77,7 +77,6 @@ class RevealCKExecutable
         puts "modified absolute path: #{m}"
         puts "added absolute path: #{a}"
         puts "removed absolute path: #{r}"
-        puts "----------------------------------------"
         slides_file = options[:file]
         puts "Generating slides for '#{slides_file}'.."
         builder_args = {
@@ -92,6 +91,11 @@ class RevealCKExecutable
         slides_builder.build
       end
       listener.start
+
+      require 'guard'
+
+      guardfile = RevealCK.path('files/reveal-ck/Guardfile')
+      Guard.start guardfile: guardfile
 
       require 'rack'
       require 'rack/livereload'
