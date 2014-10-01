@@ -37,17 +37,13 @@ class RevealCKExecutable
         msg = 'Create a file matching slides.* to proceed, such as slides.md.'
         exit_now!(msg)
       end
-      puts "Generating slides for '#{slides_file}'.."
-      builder_args = {
+      generate_args = {
         user_dir: Dir.pwd,
         gem_dir: RevealCK.path,
         output_dir: options[:dir],
         slides_file: options[:file]
       }
-      slides_builder =
-        RevealCK::Builders::SlidesBuilder.new(builder_args)
-      slides_builder.prepare
-      slides_builder.build
+      RevealCK::Commands::Generate.new(generate_args).run
     end
   end
 
@@ -67,55 +63,15 @@ class RevealCKExecutable
     c.flag [:p, :port], default_value: 10_000
 
     c.action do |_, options, _|
-      dir = options[:dir]
-      port = options[:port]
-
-      # TODO: Should include css/*.css, and config.yml
-      LISTEN_REGEX = /^slides\..+$/
-      require 'listen'
-      listener = ::Listen.to('.', only: LISTEN_REGEX) do |m, a, r|
-        puts "modified absolute path: #{m}"
-        puts "added absolute path: #{a}"
-        puts "removed absolute path: #{r}"
-        slides_file = options[:file]
-        puts "Generating slides for '#{slides_file}'.."
-        builder_args = {
-          user_dir: Dir.pwd,
-          gem_dir: RevealCK.path,
-          output_dir: options[:dir],
-          slides_file: options[:file]
-        }
-        slides_builder =
-          RevealCK::Builders::SlidesBuilder.new(builder_args)
-        slides_builder.prepare
-        slides_builder.build
-      end
-      listener.start
-
-      require 'guard'
-
-      guardfile = RevealCK.path('files/reveal-ck/Guardfile')
-      Guard.start guardfile: guardfile
-
-      require 'rack'
-      require 'rack/livereload'
-      app = Rack::Builder.new do
-        use Rack::LiveReload
-        use Rack::Static, index: "#{dir}/index.html"
-        run Rack::Directory.new(dir)
-      end
-      server = Rack::Server.new(app: app, Port: port)
-
-      puts
-      puts
-      puts "\tServing up slide content in '#{dir}/'."
-      puts
-      puts "\tOpen your browser to 'http://localhost:#{port}'."
-      puts
-      puts "\tPress CTRL-C to stop serving slides."
-      puts
-      puts
-      server.start
+      serve_args = {
+        dir: options[:dir],
+        gem_dir: RevealCK.path,
+        output_dir: options[:dir],
+        port: options[:port],
+        slides_file: options[:file],
+        user_dir: Dir.pwd
+      }
+      RevealCK::Commands::Serve.new(serve_args).run
     end
   end
   exit run(ARGV)

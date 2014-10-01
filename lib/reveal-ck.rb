@@ -15,6 +15,7 @@ require_relative 'reveal-ck/templates'
 require_relative 'reveal-ck/builders'
 require_relative 'reveal-ck/markdown'
 require_relative 'reveal-ck/tilt/config'
+require_relative 'reveal-ck/commands'
 
 # RevealCK::path provides the path where files within the reveal-ck
 # gem are located on your system.
