@@ -65,15 +65,25 @@ module RevealCK
 
       def start_webserver
         require 'rack'
+        require 'webrick'
+        server_logger = WEBrick::BasicLog.new('reveal-ck-serve.log')
+        access_log_file = File.open('reveal-ck-access.log', 'w')
+        access_log = [[access_log_file, WEBrick::AccessLog::COMMON_LOG_FORMAT]]
+        server = Rack::Server.new(app: build_rack_app,
+                                  Port: port,
+                                  Logger: server_logger,
+                                  AccessLog: access_log)
+        server.start
+      end
+
+      def build_rack_app
         require 'rack/livereload'
         doc_root = dir
-        app = Rack::Builder.new do
+        Rack::Builder.new do
           use Rack::LiveReload
           use Rack::Static, index: "#{doc_root}/index.html"
           run Rack::Directory.new(doc_root)
         end
-        server = Rack::Server.new(app: app, Port: port)
-        server.start
       end
     end
   end
