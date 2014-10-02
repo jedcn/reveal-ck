@@ -35,11 +35,11 @@ module RevealCK
           expect(listen_to_reload_browser)
             .to(receive(:run))
 
-          web_server = double
-          expect(WebServer)
+          start_web_server = double
+          expect(StartWebServer)
             .to(receive(:new))
-            .and_return(web_server)
-          expect(web_server)
+            .and_return(start_web_server)
+          expect(start_web_server)
             .to(receive(:run))
 
           serve.run
