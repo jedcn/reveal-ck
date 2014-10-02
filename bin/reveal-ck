@@ -64,7 +64,7 @@ class RevealCKExecutable
 
     c.action do |_, options, _|
       serve_args = {
-        dir: options[:dir],
+        doc_root: options[:dir],
         gem_dir: RevealCK.path,
         output_dir: options[:dir],
         port: options[:port],

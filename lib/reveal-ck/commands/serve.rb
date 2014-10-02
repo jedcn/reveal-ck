@@ -6,84 +6,102 @@ module RevealCK
     # This includes taking an action and managing stdout
     class Serve
       include Retrieve
-      attr_reader :generate_args, :slides_file, :dir, :port
+      attr_reader :doc_root, :port
+      attr_reader :slides_file, :user_dir, :gem_dir, :output_dir
       def initialize(args)
-        @dir = retrieve(:dir, args)
-        @port = retrieve(:port, args)
+        @doc_root    = retrieve(:doc_root, args)
+        @port        = retrieve(:port, args)
         @slides_file = retrieve(:slides_file, args)
-        @generate_args = {
-          gem_dir: retrieve(:gem_dir, args),
-          output_dir: retrieve(:output_dir, args),
-          slides_file: slides_file,
-          user_dir: retrieve(:user_dir, args)
-        }
+        @gem_dir     = retrieve(:gem_dir, args)
+        @output_dir  = retrieve(:output_dir, args)
+        @user_dir    = retrieve(:user_dir, args)
       end
 
       def run
-        print_helpful_banner
-        listen_to_rebuild_slides
-        listen_to_reload_browser
-        start_webserver
+        PrintBanner.new(doc_root, port, slides_file).run
+        rebuild_options = {
+          slides_file: slides_file,
+          gem_dir: gem_dir,
+          output_dir: output_dir,
+          user_dir: user_dir
+        }
+        ListenToRebuildSlides.new(rebuild_options).run
+        ListenToReloadBrowser.new.run
+        WebServer.new(doc_root, port).run
       end
+    end
 
-      private
-
-      def print_helpful_banner
+    class PrintBanner
+      attr_reader :doc_root, :port, :slides_file
+      def initialize(doc_root, port, slides_file)
+        @doc_root, @port, @slides_file = doc_root, port, slides_file
+      end
+      def run
         puts
-        puts "\tServing up slide content in '#{dir}/'."
+        puts "\tServing up slide content in '#{doc_root}/'."
         puts
         puts "\tOpen your browser to 'http://localhost:#{port}'."
-        puts
-        puts "\tChanges to #{slides_file} should automatically reload."
         puts
         puts "\tPress CTRL-C to stop."
         puts
       end
+    end
 
-      def listen_to_rebuild_slides
+    class ListenToRebuildSlides
+      require 'listen'
+
+      def initialize(options)
         # TODO: Should include css/*.css, and config.yml
         listen_regex = /^slides\..+$/
-        require 'listen'
-        listener = ::Listen.to('.', only: listen_regex) do |m, a, r|
+        @listener = ::Listen.to('.', only: listen_regex) do |m, a, r|
           puts "modified absolute path: #{m}"
           puts "added absolute path: #{a}"
           puts "removed absolute path: #{r}"
-          rebuild_slides
+          RevealCK::Commands::Generate.new(options).run
         end
-        listener.start
       end
 
       def rebuild_slides
-        RevealCK::Commands::Generate.new(generate_args).run
+
       end
 
-      def listen_to_reload_browser
-        require 'guard'
+      def run
+        @listener.start
+      end
+    end
+    class ListenToReloadBrowser
+      require 'guard'
+      def run
         guardfile = RevealCK.path('files/reveal-ck/Guardfile')
         Guard.start guardfile: guardfile
       end
+    end
 
-      def start_webserver
-        require 'rack'
-        require 'webrick'
+    class WebServer
+      require 'rack'
+      require 'webrick'
+      require 'rack/livereload'
+      attr_reader :server
+      def initialize(doc_root, port)
         server_logger = WEBrick::BasicLog.new('reveal-ck-serve.log')
         access_log_file = File.open('reveal-ck-access.log', 'w')
         access_log = [[access_log_file, WEBrick::AccessLog::COMMON_LOG_FORMAT]]
-        server = Rack::Server.new(app: build_rack_app,
+        @server = Rack::Server.new(app: build_rack_app(doc_root),
                                   Port: port,
                                   Logger: server_logger,
                                   AccessLog: access_log)
-        server.start
       end
 
-      def build_rack_app
-        require 'rack/livereload'
-        doc_root = dir
+      def build_rack_app(doc_root)
         Rack::Builder.new do
           use Rack::LiveReload
           use Rack::Static, index: "#{doc_root}/index.html"
           run Rack::Directory.new(doc_root)
         end
+      end
+
+      def run
+        server.start
       end
     end
   end
