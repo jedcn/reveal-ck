@@ -11,11 +11,13 @@ module RevealCK
 
       def run
         puts
-        puts "\tServing up slide content in '#{doc_root}/'."
         puts
-        puts "\tOpen your browser to 'http://localhost:#{port}'."
+        puts "Serving up slide content in '#{doc_root}/'."
         puts
-        puts "\tPress CTRL-C to stop."
+        puts "Open your browser to 'http://localhost:#{port}'."
+        puts
+        puts 'Press CTRL-C to stop.'
+        puts
         puts
       end
     end
