@@ -2,15 +2,14 @@ module RevealCK
   module Commands
     # This Command is responsible for implementing the idea behind
     # "reveal-ck generate."
-    #
-    # This includes taking an action and managing stdout
     class Generate
       include Retrieve
-      attr_reader :slides_builder, :slides_file
+      attr_reader :slides_builder, :slides_file, :stdout_prefix
       def initialize(args)
         user_dir = retrieve(:user_dir, args)
         gem_dir = retrieve(:gem_dir, args)
         output_dir = retrieve(:output_dir, args)
+        @stdout_prefix = args[:stdout_prefix] || ''
         @slides_file = retrieve(:slides_file, args)
         @slides_builder =
           RevealCK::Builders::SlidesBuilder.new(user_dir: user_dir,
@@ -20,7 +19,9 @@ module RevealCK
       end
 
       def run
-        puts "Generating slides for '#{slides_file}'.."
+        msg = "Generating slides for '#{slides_file}'.."
+        msg = "#{stdout_prefix} #{msg}" unless stdout_prefix.empty?
+        puts msg
         slides_builder.prepare
         slides_builder.build
       end

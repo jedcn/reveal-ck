@@ -18,6 +18,10 @@ module RevealCK
                          gem_dir: 'gem_dir',
                          output_dir: 'output_dir',
                          slides_file: 'slides_file')
+
+          expect(generate)
+            .to receive(:puts)
+            .with("Generating slides for 'slides_file'..")
           generate.run
         end
       end
