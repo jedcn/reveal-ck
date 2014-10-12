@@ -62,6 +62,9 @@ class RevealCKExecutable
     c.desc 'The port to serve on'
     c.flag [:p, :port], default_value: 10_000
 
+    c.desc 'Exit after starting + n seconds (for testing only)'
+    c.flag ['test-quit-after-starting'], type: Integer
+
     c.action do |_, options, _|
       serve_args = {
         doc_root: options[:dir],
@@ -71,6 +74,12 @@ class RevealCKExecutable
         slides_file: options[:file],
         user_dir: Dir.pwd
       }
+      if options['test-quit-after-starting']
+        Thread.new do
+          sleep options['test-quit-after-starting']
+          exit
+        end
+      end
       RevealCK::Commands::Serve.new(serve_args).run
     end
   end
