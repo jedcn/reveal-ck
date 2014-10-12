@@ -17,6 +17,7 @@ Feature: Using 'reveal-ck serve'
   where it starts up and shuts down after a few moments. This allows
   us to quickly verify that things are looking good.
 
+  @slow
   Scenario: Starting up `reveal-ck serve`
     Given a file named "slides.md" with:
     """
