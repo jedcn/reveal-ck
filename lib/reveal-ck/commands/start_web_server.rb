@@ -6,16 +6,19 @@ module RevealCK
   module Commands
     # The idea of starting up a webserver to display slides locally.
     class StartWebServer
-      attr_reader :server
+      attr_reader :doc_root, :port
       def initialize(doc_root, port)
-        server_logger = WEBrick::BasicLog.new('reveal-ck-serve.log')
-        access_log_file = File.open('reveal-ck-access.log', 'w')
-        access_log = [[access_log_file, WEBrick::AccessLog::COMMON_LOG_FORMAT]]
-        @server = Rack::Server.new(app: build_rack_app(doc_root),
-                                   Port: port,
-                                   Logger: server_logger,
-                                   AccessLog: access_log)
+        @doc_root, @port = doc_root, port
       end
+
+      def run
+        Rack::Server.new(app: build_rack_app(doc_root),
+                         Port: port,
+                         Logger: server_log,
+                         AccessLog: access_log).start
+      end
+
+      private
 
       def build_rack_app(doc_root)
         Rack::Builder.new do
@@ -25,8 +28,19 @@ module RevealCK
         end
       end
 
-      def run
-        server.start
+      def server_log
+        WEBrick::BasicLog.new(temp_log('reveal-ck-server'))
+      end
+
+      def access_log
+        access_log_file = File.open(temp_log('reveal-ck-access'), 'w')
+        [[access_log_file, WEBrick::AccessLog::COMMON_LOG_FORMAT]]
+      end
+
+      def temp_log(name)
+        require 'tempfile'
+        file = Tempfile.new(["#{name}-", '.log'])
+        file.path
       end
     end
   end
