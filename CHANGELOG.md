@@ -1,3 +1,24 @@
+### 0.5.0 / 2014-10-12
+
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.4.2...v0.5.0)
+
+#### LiveReload!
+
+Running the `reveal-ck serve` command used to *just* run a
+webserver. It now also provides two more pieces of functionality:
+
+1. It listens for file system changes, and if it sees them, it
+   rebuilds your slides.
+2. When your slides are rebuilt, it reloads your browser.
+
+No browser plugins required!
+
+This is *only* possible due to:
+
+* [guard-livereload][https://github.com/guard/guard-livereload/]
+* [rack-livereload][https://github.com/johnbintz/rack-livereload/]
+* [listen][https://github.com/guard/listen]
+
 ### 0.4.2 / 2014-09-27
 
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.4.1...v0.4.2)

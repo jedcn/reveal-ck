@@ -37,22 +37,24 @@ class RevealCKExecutable
         msg = 'Create a file matching slides.* to proceed, such as slides.md.'
         exit_now!(msg)
       end
-      puts "Generating slides for '#{slides_file}'.."
-      builder_args = {
+      generate_args = {
         user_dir: Dir.pwd,
         gem_dir: RevealCK.path,
         output_dir: options[:dir],
         slides_file: options[:file]
       }
-      slides_builder =
-        RevealCK::Builders::SlidesBuilder.new(builder_args)
-      slides_builder.prepare
-      slides_builder.build
+      RevealCK::Commands::Generate.new(generate_args).run
     end
   end
 
   desc 'Start webserver so slides are available via http'
   command :serve, :server do |c|
+
+    slide_files = FileList['slides.*']
+    default_file = slide_files.empty? ? nil : slide_files.first
+
+    c.desc 'The file containing your slide content'
+    c.flag [:f, :file], default_value: default_file
 
     c.desc 'The directory to serve up'
     c.flag [:d, :dir], default_value: 'slides'
@@ -60,24 +62,25 @@ class RevealCKExecutable
     c.desc 'The port to serve on'
     c.flag [:p, :port], default_value: 10_000
 
+    c.desc 'Exit after starting + n seconds (for testing only)'
+    c.flag ['test-quit-after-starting'], type: Integer
+
     c.action do |_, options, _|
-      dir = options[:dir]
-      port = options[:port]
-
-      require 'webrick'
-      server = WEBrick::HTTPServer.new Port: port, DocumentRoot: dir
-      trap('INT') { server.shutdown }
-
-      puts
-      puts
-      puts "\tServing up slide content in '#{dir}/'."
-      puts
-      puts "\tOpen your browser to 'http://localhost:#{port}'."
-      puts
-      puts "\tPress CTRL-C to stop serving slides."
-      puts
-      puts
-      server.start
+      serve_args = {
+        doc_root: options[:dir],
+        gem_dir: RevealCK.path,
+        output_dir: options[:dir],
+        port: options[:port],
+        slides_file: options[:file],
+        user_dir: Dir.pwd
+      }
+      if options['test-quit-after-starting']
+        Thread.new do
+          sleep options['test-quit-after-starting']
+          exit
+        end
+      end
+      RevealCK::Commands::Serve.new(serve_args).run
     end
   end
   exit run(ARGV)

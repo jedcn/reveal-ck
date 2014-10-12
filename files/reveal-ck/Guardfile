@@ -1,0 +1,5 @@
+notification :off
+
+guard 'livereload' do
+  watch(/^slides\/index.html$/)
+end
