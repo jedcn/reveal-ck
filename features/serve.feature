@@ -22,11 +22,11 @@ Feature: Using 'reveal-ck serve'
     """
     # reveal-ck serve
     """
-    When I run `reveal-ck serve --test-quit-after-starting 2`
+    When I temporarily start reveal-ck serve
     Then the exit status should be 1
     # The banner prints..
     And the output should contain "[ reveal-ck ] Serving up slide content in 'slides/'."
-    And the output should contain "[ reveal-ck ] Open your browser to 'http://localhost:10000'."
+    And the output should contain "[ reveal-ck ] Open your browser to 'http://localhost"
     And the output should contain "[ reveal-ck ] Press CTRL-C to stop."
     # We're ready to rebuild
     And the output should contain "[ reveal-ck ] Getting Ready to Rebuild Slides."
