@@ -5,19 +5,34 @@ module RevealCK
     # The idea of listening for file system changes and then
     # rebuilding slides.
     class ListenToRebuildSlides
-      def initialize(options)
-        # TODO: Should include css/*.css, and config.yml
-        listen_regex = /^slides\..+$/
-        @listener = ::Listen.to('.', only: listen_regex) do |m, a, r|
-          puts "modified absolute path: #{m}"
-          puts "added absolute path: #{a}"
-          puts "removed absolute path: #{r}"
-          RevealCK::Commands::Generate.new(options).run
-        end
+      attr_reader :ui, :rebuild_method
+      def initialize(ui, &block)
+        @ui, @rebuild_method = ui, block
       end
 
       def run
-        @listener.start
+        ::Listen.to('.', ignore: ignored_files_regex) do |mod, add, del|
+          message_and_rebuild(mod, add, del)
+        end.start
+      end
+
+      private
+
+      def message_about_files(files, message)
+        return if files.empty?
+        file_names = files.join(', ')
+        ui.message("#{message}: #{file_names}", :rebuild)
+      end
+
+      def ignored_files_regex
+        /^slides\/.+$/
+      end
+
+      def message_and_rebuild(mod, add, del)
+        message_about_files(mod, 'Modified')
+        message_about_files(add, 'Added')
+        message_about_files(del, 'Deleted')
+        rebuild_method.call
       end
     end
   end
