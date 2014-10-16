@@ -55,6 +55,17 @@ image slides:
 </code>
 </pre>
 
+### Please Note!
+
+These images were created by Why the Lucky Stiff and are part of his
+Poignant Guide to Ruby. The guide is available here:
+[http://poignant.guide/][poignant-guide], and special thanks are in
+order to [@mislav][mislav-poignant-guide] for taking care of this
+resource.
+
+[poignant-guide]: http://poignant.guide
+[mislav-poignant-guide]: https://github.com/mislav/poignant-guide
+
 ## Generate a Presentation
 
 Run the command `reveal-ck generate`.
