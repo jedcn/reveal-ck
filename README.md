@@ -83,6 +83,25 @@ And your slides will take on the night theme from reveal.js.
 
 ---
 
+## What is it like?
+
+Here's a quick example of what it's like to work with reveal-ck:
+
+* Normally you'd use a text editor, but for brevity, this example
+  creates a file named `slides.md` with the `echo` command.
+* A presentation is then generated with `reveal-ck generate`.
+* That presentation is viewed with `open slides/index.html`. You'd
+  normally run a `reveal-ck serve` and then view
+  [https://localhost:10000][localhost]
+* Next, a theme is introduced by supplying a `config.yml` file.
+* That theme comes into play when the same presentation is generated
+  again.
+* Finally, the presentation is viewed again with `open slides/index.html`
+
+![Fast Introduction](https://jedcn.github.io/reveal-ck/images/reveal-ck-fast-intro.gif)
+
+---
+
 ## Where does this leave us?
 
 * reveal-ck helps you build reveal.js presentations
