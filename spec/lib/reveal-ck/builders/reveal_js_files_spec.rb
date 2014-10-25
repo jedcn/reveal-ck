@@ -15,7 +15,7 @@ module RevealCK
         describe '#files' do
           it 'it names all of the needed reveal.js files' do
             reveal_css = reveal_js_files.files.select do |file|
-              file.include?('css/reveal.min.css')
+              file.include?('css/reveal.css')
             end
             expect(reveal_css.size).to eq 1
           end
