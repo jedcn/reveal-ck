@@ -15,7 +15,7 @@ module RevealCK
         describe '#files' do
           it 'it names the files that will be copied into a presentation' do
             user_css = user_files.files.select do |file|
-              file.include?('css/reveal.min.css')
+              file.include?('css/reveal.css')
             end
             expect(user_css.size).to eq 1
           end

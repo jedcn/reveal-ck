@@ -52,7 +52,7 @@ module RevealCK
             expect(index_html_content).to include 'Configured Author'
 
             # reveal.js files were copied into the presentation
-            reveal_js_css = File.join('presentation', 'css', 'reveal.min.css')
+            reveal_js_css = File.join('presentation', 'css', 'reveal.css')
             expect(File.exist?(reveal_js_css)).to be true
 
             # The user's files were copied into the presentation
