@@ -2,7 +2,8 @@ module RevealCK
   # This module defines how reveal-ck works with redcarpet to produce
   # slides from markdown.
   module Markdown
-    REVEALCK_SYMBOL_FOR_DIVIDER = '<div>DIVIDER</div>'
+    REVEALCK_SYMBOL_FOR_DIVIDER  = '<div>DIVIDER</div>'
+    REVEALCK_SYMBOL_FOR_VERTICAL = '<div>VERTICAL</div>'
   end
 end
 

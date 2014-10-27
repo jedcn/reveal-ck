@@ -67,40 +67,72 @@ eos
       end
 
       describe '#preprocess' do
+        context 'without vertical slides' do
+          it 'wraps a document with <div>DIVIDER</div>s' do
+            output = slide_markdown.preprocess 'First'
+            expect(output).to eq preprocess_standard_result
+          end
 
-        it 'wraps a document with <div>DIVIDER</div>s' do
-          output = slide_markdown.preprocess 'First'
-          expect(output).to eq preprocess_standard_result
-        end
-
-        it 'is consistent when starting+ending separators are used' do
-          output = slide_markdown.preprocess <<-eos
+          it 'is consistent when starting+ending separators are used' do
+            output = slide_markdown.preprocess <<-eos
 ---
 First
 ---
 eos
-          expect(output).to eq preprocess_standard_result
-        end
+            expect(output).to eq preprocess_standard_result
+          end
 
-        it 'is consistent when only starting separators are used' do
-          output = slide_markdown.preprocess <<-eos
+          it 'is consistent when only starting separators are used' do
+            output = slide_markdown.preprocess <<-eos
 ---
 First
 eos
-          expect(output).to eq preprocess_standard_result
-        end
+            expect(output).to eq preprocess_standard_result
+          end
 
-        it 'is consistent when only ending separators are used' do
-          output = slide_markdown.preprocess <<-eos
+          it 'is consistent when only ending separators are used' do
+            output = slide_markdown.preprocess <<-eos
 First
 ---
 eos
-          expect(output).to eq preprocess_standard_result
+            expect(output).to eq preprocess_standard_result
+          end
+
+          it 'can handle three slides' do
+            output = slide_markdown.preprocess three_slides_in_markdown
+            expect(output).to eq three_slides_after_preprocess
+          end
         end
 
-        it 'can handle three slides' do
-          output = slide_markdown.preprocess three_slides_in_markdown
-          expect(output).to eq three_slides_after_preprocess
+        context 'with vertical slides' do
+
+          it 'can handle initially vertical slides' do
+            initially_vertical_markdown = <<-eos
+***
+First
+---
+Second
+---
+Third
+eos
+
+            output = slide_markdown.preprocess initially_vertical_markdown
+            expect(output).to eq <<-eos
+<div>VERTICAL</div>
+
+First
+
+<div>DIVIDER</div>
+
+Second
+
+<div>DIVIDER</div>
+
+Third
+
+<div>VERTICAL</div>
+eos
+          end
         end
       end
 

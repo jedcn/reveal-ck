@@ -10,47 +10,73 @@ module RevealCK
       end
 
       def process
-        remove_first_divider_symbol
-        remove_last_divider_symbol
-        transform_divider_symbols_to_sections
-        wrap_in_sections
+        handle_start
+        handle_end
+        transform_symbols_to_sections
       end
 
       private
 
-      def remove_first_divider_symbol
-        @doc =
-          doc["#{divider_symbol}\n".size, doc.size - 1]
+      def handle_start
+        if doc.start_with? vertical_symbol
+          @doc =
+            doc["#{vertical_symbol}\n".size, doc.size - 1]
+          @doc = "#{vertical_start}\n#{doc}"
+        else
+          @doc =
+            doc["#{divider_symbol}\n".size, doc.size - 1]
+          @doc = "#{divider_start}\n#{doc}"
+        end
       end
 
-      def remove_last_divider_symbol
-        @doc =
-          doc[0, doc.size - 1 - "\n#{divider_symbol}".size]
+      def handle_end
+        if doc.end_with? vertical_symbol
+          @doc =
+            doc[0, doc.size - 1 - "\n#{vertical_symbol}".size]
+          @doc = "#{doc}\n#{vertical_end}\n"
+        else
+          @doc =
+            doc[0, doc.size - 1 - "\n#{divider_symbol}".size]
+          @doc = "#{doc}\n#{divider_end}\n"
+        end
       end
 
-      def transform_divider_symbols_to_sections
+      def transform_symbols_to_sections
         @doc =
           doc.gsub(divider_symbol, section_divider)
+        count = 0
+        @doc = doc.gsub(vertical_symbol) do
+          count += 1
+          count.odd? ? vertical_start : vertical_end
+        end
       end
 
-      def wrap_in_sections
-        "#{section_start}\n#{doc}\n#{section_end}\n"
-      end
-
-      def section_start
+      def divider_start
         '<section>'
       end
 
-      def section_end
+      def divider_end
         '</section>'
       end
 
+      def vertical_start
+        "</section>\n<section>\n<section>"
+      end
+
+      def vertical_end
+        "</section>\n</section>\n<section>"
+      end
+
       def section_divider
-        "#{section_end}\n#{section_start}"
+        "#{divider_end}\n#{divider_start}"
       end
 
       def divider_symbol
         RevealCK::Markdown::REVEALCK_SYMBOL_FOR_DIVIDER
+      end
+
+      def vertical_symbol
+        RevealCK::Markdown::REVEALCK_SYMBOL_FOR_VERTICAL
       end
     end
   end
