@@ -1,0 +1,406 @@
+
+
+* Support Vertical Slides in Markdown
+
+** Main Idea
+
+   1. Users can start vertical slides with =***=
+   2. Once started, users can stop vertical slides with =***=
+   3. If users forget to stop vertical slides with =***=, and we reach
+      the end of the document, we'll auto-stop them.
+   4. Combining rules 1 + 3 means that if you can create a entirely
+      vertical slide deck by starting with three stars. You can also
+      "end with a long vertical slide" by dropping three stars and
+      forgetting about it.
+   5. If you want to do back to back vertical columns, you do this:
+      #+BEGIN_SRC markdown
+        ,***
+        ,***
+      #+END_SRC
+
+
+*** Possible Implementation?
+
+    1. If beginning a document with =***=, just add this:
+
+       #+BEGIN_SRC html
+         <section>
+       #+END_SRC
+
+       (because we already start all markdown with <section>)
+
+    2. If you're the last thing in a document, add this:
+
+       #+BEGIN_SRC html
+         </section>
+       #+END_SRC
+
+       (because we already end all markdown with </section>)
+
+    3. If you're the =***\n****= (two in a row), add this:
+
+       #+BEGIN_SRC html
+           </section>
+         </section>
+         <section>
+           <section>
+       #+END_SRC
+
+       (close off the last slide + the vertical prior to you and
+       start up the next vertical)
+
+    4. Otherwise, so long as you're not ending a document, add this:
+
+       #+BEGIN_SRC html
+         </section>
+         <section>
+           <section>
+       #+END_SRC
+
+       (close off the last slide (which wasn't a vertical) prior to
+       you, and start up the next vertical)
+
+** Formations
+
+   If we support the following formations, they should be able to be
+   combined into whatever people can dream up.
+
+   So-- let's make sure this "feels right"
+
+*** TODO Single Column of Slides
+
+#+BEGIN_SRC text
+  [ ]
+  [ ]
+  [ ]
+#+END_SRC
+
+Here's one way to do it:
+
+#+BEGIN_SRC markdown
+  ***
+  # Vertical Slide 1
+  ---
+  # Vertical Slide 2
+  ---
+  # Vertical Slide 3
+  ***
+#+END_SRC
+
+And another (leave off the last)
+
+#+BEGIN_SRC markdown
+  ***
+  # Vertical Slide 1
+  ---
+  # Vertical Slide 2
+  ---
+  # Vertical Slide 3
+#+END_SRC
+
+Either way, it should become:
+
+#+BEGIN_SRC html
+  <section>
+    <section>
+      <h1>Vertical Slide 1</h1>
+    </section>
+    <section>
+      <h1>Vertical Slide 2</h1>
+    </section>
+    <section>
+      <h1>Vertical Slide 3</h1>
+    </section>
+  </section>
+#+END_SRC
+
+*** TODO Surrounded Column
+
+#+BEGIN_SRC text
+  [ ] [ ] [ ]
+      [ ]
+      [ ]
+#+END_SRC
+
+Here's one way to do it:
+
+#+BEGIN_SRC markdown
+  Regular Slide 1
+  ***
+  # Vertical Slide 1
+  ---
+  # Vertical Slide 2
+  ---
+  # Vertical Slide 3
+  ***
+  Regular Slide 2
+#+END_SRC
+
+And this should become:
+
+#+BEGIN_SRC html
+  <section>
+    Regular Slide 1
+  </section>
+
+  <section>
+    <section>
+      <h1>Vertical Slide 1</h1>
+    </section>
+    <section>
+      <h1>Vertical Slide 2</h1>
+    </section>
+    <section>
+      <h1>Vertical Slide 3</h1>
+    </section>
+  </section>
+
+  <section>
+    Regular Slide 2
+  </section>
+#+END_SRC
+
+*** TODO Surrounded Back To Back Columns
+
+#+BEGIN_SRC text
+  [ ] [ ] [ ] [ ]
+      [ ] [ ]
+      [ ] [ ]
+#+END_SRC
+
+Here's one way to do it:
+
+#+BEGIN_SRC markdown
+  Regular Slide 1
+  ***
+  Column 1, Slide 1
+  ---
+  Column 1, Slide 2
+  ---
+  Column 1, Slide 3
+  ***
+  ***
+  Column 2, Slide 1
+  ---
+  Column 2, Slide 2
+  ---
+  Column 2, Slide 3
+  ***
+  Regular Slide 2
+#+END_SRC
+
+And this should become:
+
+#+BEGIN_SRC html
+  <section>
+    Regular Slide 1
+  </section>
+
+  <section>
+    <section>
+      <h1>Column 1, Slide 1</h1>
+    </section>
+    <section>
+      <h1>Column 1, Slide 2</h1>
+    </section>
+    <section>
+      <h1>Column 1, Slide 3</h1>
+    </section>
+  </section>
+
+  <section>
+    <section>
+      <h1>Column 2, Slide 1</h1>
+    </section>
+    <section>
+      <h1>Column 2, Slide 2</h1>
+    </section>
+    <section>
+      <h1>Column 2, Slide 3</h1>
+    </section>
+  </section>
+
+  <section>
+    Regular Slide 2
+  </section>
+#+END_SRC
+
+*** TODO Separated Columns
+
+#+BEGIN_SRC text
+  [ ] [ ] [ ] [ ] [ ]
+      [ ]     [ ]
+      [ ]     [ ]
+#+END_SRC
+
+Here's one way to do it:
+
+#+BEGIN_SRC markdown
+  Left Slide
+  ***
+  Column 1, Slide 1
+  ---
+  Column 1, Slide 2
+  ---
+  Column 1, Slide 3
+  ***
+  Middle Slide
+  ***
+  Column 2, Slide 1
+  ---
+  Column 2, Slide 2
+  ---
+  Column 2, Slide 3
+  ***
+  Right Slide
+#+END_SRC
+
+And this is what it is in HTML:
+
+#+BEGIN_SRC html
+  <section>
+    Left Slide
+  </section>
+
+  <section>
+    <section>
+      Column 1, Slide 1
+    </section>
+    <section>
+      Column 1, Slide 2
+    </section>
+    <section>
+      Column 1, Slide 3
+    </section>
+  </section>
+
+  <section>
+    Middle Slide
+  </section>
+
+  <section>
+    <section>
+      Column 2, Slide 1
+    </section>
+    <section>
+      Column 2, Slide 2
+    </section>
+    <section>
+      Column 2, Slide 3
+    </section>
+  </section>
+
+  <section>
+    Right Slide
+  </section>
+#+END_SRC
+*** All Vertical All The Time
+
+#+BEGIN_SRC text
+  [ ] [ ] [ ]
+  [ ] [ ] [ ]
+  [ ] [ ] [ ]
+#+END_SRC
+
+
+Here's one way to do it:
+
+#+BEGIN_SRC markdown
+  ***
+  # Column 1, Slide 1
+  ---
+  # Column 1, Slide 2
+  ---
+  # Column 1, Slide 3
+  ***
+  ***
+  # Column 2, Slide 1
+  ---
+  # Column 2, Slide 2
+  ---
+  # Column 2, Slide 3
+  ***
+  ***
+  # Column 3, Slide 1
+  ---
+  # Column 3, Slide 2
+  ---
+  # Column 3, Slide 3
+  ***
+#+END_SRC
+
+And another (leave off the last)
+
+#+BEGIN_SRC markdown
+  ***
+  # Column 1, Slide 1
+  ---
+  # Column 1, Slide 2
+  ---
+  # Column 1, Slide 3
+  ***
+  ***
+  # Column 2, Slide 1
+  ---
+  # Column 2, Slide 2
+  ---
+  # Column 2, Slide 3
+  ***
+  ***
+  # Column 3, Slide 1
+  ---
+  # Column 3, Slide 2
+  ---
+  # Column 3, Slide 3
+#+END_SRC
+
+And here's the HTML:
+
+#+BEGIN_SRC html
+  <section>
+    <section>
+      Column 1, Slide 1
+    </section>
+    <section>
+      Column 1, Slide 2
+    </section>
+    <section>
+      Column 1, Slide 3
+    </section>
+  </section>
+
+  <section>
+    <section>
+      Column 2, Slide 1
+    </section>
+    <section>
+      Column 2, Slide 2
+    </section>
+    <section>
+      Column 2, Slide 3
+    </section>
+  </section>
+
+  <section>
+    <section>
+      Column 3, Slide 1
+    </section>
+    <section>
+      Column 3, Slide 2
+    </section>
+    <section>
+      Column 3, Slide 3
+    </section>
+  </section>
+#+END_SRC
+** Next Steps
+
+   Write out all of the assumed formulations as html and save it as a
+   "slides.html," then generate a presentation and see that it works.
+
+   If that's true.. then write up feature specs for these
+
+   And once that's done.. start doing the implementation via features.
+
+   If the features look good, then write out meaningful specs for the
+   parser.

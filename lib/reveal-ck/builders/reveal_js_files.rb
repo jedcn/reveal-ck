@@ -26,13 +26,13 @@ module RevealCK
       private
 
       def css
-        FileList["#{dir}/css/reveal.min.css",
+        FileList["#{dir}/css/reveal.css",
                  "#{dir}/css/print/*",
                  "#{dir}/css/theme/*.css"]
       end
 
       def js
-        FileList["#{dir}/js/reveal.min.js"]
+        FileList["#{dir}/js/reveal.js"]
       end
 
       def lib
