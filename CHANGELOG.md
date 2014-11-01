@@ -1,3 +1,31 @@
+### 0.6.0 / 2014-11-01
+
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.5.1...v0.6.0)
+
+#### Feature: Support GFM Markdown for Tables
+
+This is a fix for Issue #21.
+
+In short, you can now write something like this:
+
+```markdown
+Item          | Value         | Quantity
+------------- | ------------- | ---------
+Apples        | $1            |       18
+Lemonade      | $2            |       20
+Bread         | $3.50         |        2
+```
+
+And reveal-ck should turn it into a table and apply the latest
+reveal.js styling to it.
+
+#### Feature: Provide Markdown notation for Vertical Slides
+
+People have long asked for a notation within Markdown that supports
+vertical slides.
+
+This is now possible, and an `***` gets things going.
+
 ### 0.5.1 / 2014-11-01
 
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.5.0...v0.5.1)
