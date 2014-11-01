@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'docile',           '~> 1.1'
   s.add_dependency 'gemoji',           '~> 1.5'
   s.add_dependency 'gli',              '~> 2.7'
+  s.add_dependency 'guard',            '~> 2.6.1'
   s.add_dependency 'guard-livereload', '~> 2.3'
   s.add_dependency 'haml',             '~> 4.0'
   s.add_dependency 'html-pipeline',    '~> 1.9'
@@ -54,7 +55,7 @@ Gem::Specification.new do |s|
   s.executables   = ['reveal-ck']
   s.require_paths = ['lib']
 
-  s.date = '2014-10-12'
+  s.date = '2014-11-01'
   s.extra_rdoc_files = [
     'LICENSE',
     'README.md'

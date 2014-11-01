@@ -1,3 +1,13 @@
+### 0.5.1 / 2014-11-01
+
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.5.0...v0.5.1)
+
+#### Bug: Fix a Hanging Issue
+
+The latest version of a dependent library switched an api invocation
+from asynchronous to asynchronous, and so `reveal-ck serve` started
+hanging.
+
 ### 0.5.0 / 2014-10-12
 
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.4.2...v0.5.0)
