@@ -61,8 +61,10 @@ eos
 
       context 'with vertical slides' do
 
-        let :single_vertical_input do
-          <<-eos
+        context 'single vertical slide' do
+
+          let :single_vertical_input do
+            <<-eos
 <div>VERTICAL_START</div>
 
 First
@@ -77,10 +79,10 @@ Third
 
 <div>VERTICAL_END</div>
 eos
-        end
+          end
 
-        let :single_vertical_output do
-          <<-eos
+          let :single_vertical_output do
+            <<-eos
 <section>
 <section>
 
@@ -99,21 +101,103 @@ Third
 </section>
 </section>
 eos
+          end
+
+          it 'starts the output with two <section>s' do
+            output = PostProcessor.new(single_vertical_input).process
+            expect(output).to start_with "<section>\n"
+          end
+
+          it 'ends the output a newline, two </section>s, and a newline' do
+            output = PostProcessor.new(single_vertical_input).process
+            expect(output).to end_with "\n</section>\n</section>\n"
+          end
+
+          it 'separates the "internal" slides correctly' do
+            output = PostProcessor.new(single_vertical_input).process
+            expect(output).to eq single_vertical_output
+          end
         end
 
-        it 'starts the output with two <section>s' do
-          output = PostProcessor.new(single_vertical_input).process
-          expect(output).to start_with "<section>\n"
-        end
+        context 'back-to-back vertical slides' do
 
-        it 'ends the output a newline, two </section>s, and a newline' do
-          output = PostProcessor.new(single_vertical_input).process
-          expect(output).to end_with "\n</section>\n</section>\n"
-        end
+          let :double_vertical_input do
+            <<-eos
+<div>VERTICAL_START</div>
 
-        it 'separates the "internal" slides correctly' do
-          output = PostProcessor.new(single_vertical_input).process
-          expect(output).to eq single_vertical_output
+Vertical A1
+
+<div>DIVIDER</div>
+
+Vertical A2
+
+<div>DIVIDER</div>
+
+Vertical A3
+
+<div>VERTICAL_END</div>
+
+
+<div>VERTICAL_START</div>
+
+Vertical B1
+
+<div>DIVIDER</div>
+
+Vertical B2
+
+<div>DIVIDER</div>
+
+Vertical B3
+
+<div>VERTICAL_END</div>
+eos
+          end
+
+          let :double_vertical_output do
+            <<-eos
+<section>
+<section>
+
+Vertical A1
+
+</section>
+<section>
+
+Vertical A2
+
+</section>
+<section>
+
+Vertical A3
+
+</section>
+</section>
+
+<section>
+<section>
+
+Vertical B1
+
+</section>
+<section>
+
+Vertical B2
+
+</section>
+<section>
+
+Vertical B3
+
+</section>
+</section>
+eos
+          end
+
+          it 'creates two columns of sections' do
+            output = PostProcessor.new(double_vertical_input).process
+            expect(output).to eq double_vertical_output
+          end
         end
       end
     end

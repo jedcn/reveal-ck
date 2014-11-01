@@ -46,9 +46,14 @@ module RevealCK
       end
 
       def transform_symbols_to_sections
-        @doc = doc.gsub(divider_symbol, section_divider)
-        @doc = doc.gsub(vertical_start_symbol, vertical_start)
-        @doc = doc.gsub(vertical_end_symbol, vertical_end)
+        replace(divider_symbol, section_divider)
+        replace(back_to_back_vertical_symbols_regex, vertical_end_start)
+        replace(vertical_start_symbol, vertical_start)
+        replace(vertical_end_symbol, vertical_end)
+      end
+
+      def replace(old, new)
+        @doc = doc.gsub(old, new)
       end
 
       def divider_start
@@ -89,6 +94,16 @@ module RevealCK
 
       def vertical_end_symbol
         RevealCK::Markdown::REVEALCK_SYMBOL_FOR_VERTICAL_END
+      end
+
+      def back_to_back_vertical_symbols_regex
+        vertical_end = Regexp.escape(vertical_end_symbol)
+        vertical_start = Regexp.escape(vertical_start_symbol)
+        /#{vertical_end}\s*#{vertical_start}/
+      end
+
+      def vertical_end_start
+        "</section>\n</section>\n\n<section>\n<section>"
       end
     end
   end
