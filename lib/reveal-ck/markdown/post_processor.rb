@@ -10,6 +10,7 @@ module RevealCK
       end
 
       def process
+        strip_whitespace
         handle_start
         handle_end
         transform_symbols_to_sections
@@ -17,38 +18,37 @@ module RevealCK
 
       private
 
+      def strip_whitespace
+        @doc = doc.strip
+      end
+
       def handle_start
-        if doc.start_with? vertical_symbol
-          @doc =
-            doc["#{vertical_symbol}\n".size, doc.size - 1]
-          @doc = "#{vertical_start}\n#{doc}"
-        else
-          @doc =
-            doc["#{divider_symbol}\n".size, doc.size - 1]
-          @doc = "#{divider_start}\n#{doc}"
-        end
+        replace_if_start_with(vertical_start_symbol, vertical_start_doc)
+        replace_if_start_with(divider_symbol, divider_start)
       end
 
       def handle_end
-        if doc.end_with? vertical_symbol
-          @doc =
-            doc[0, doc.size - 1 - "\n#{vertical_symbol}".size]
-          @doc = "#{doc}\n#{vertical_end}\n"
-        else
-          @doc =
-            doc[0, doc.size - 1 - "\n#{divider_symbol}".size]
-          @doc = "#{doc}\n#{divider_end}\n"
-        end
+        replace_if_end_with(vertical_end_symbol, vertical_end_doc)
+        replace_if_end_with(divider_symbol, divider_end)
+      end
+
+      def replace_if_start_with(old, new)
+        old = "#{old}\n"
+        return unless doc.start_with?(old)
+        @doc = doc[old.size, doc.size - 1]
+        @doc = "#{new}\n#{doc}"
+      end
+
+      def replace_if_end_with(old, new)
+        return unless doc.end_with? old
+        @doc = doc[0, doc.size - 1 - old.size]
+        @doc = "#{doc}\n#{new}\n"
       end
 
       def transform_symbols_to_sections
-        @doc =
-          doc.gsub(divider_symbol, section_divider)
-        count = 0
-        @doc = doc.gsub(vertical_symbol) do
-          count += 1
-          count.odd? ? vertical_start : vertical_end
-        end
+        @doc = doc.gsub(divider_symbol, section_divider)
+        @doc = doc.gsub(vertical_start_symbol, vertical_start)
+        @doc = doc.gsub(vertical_end_symbol, vertical_end)
       end
 
       def divider_start
@@ -57,6 +57,14 @@ module RevealCK
 
       def divider_end
         '</section>'
+      end
+
+      def vertical_start_doc
+        "<section>\n<section>"
+      end
+
+      def vertical_end_doc
+        "</section>\n</section>"
       end
 
       def vertical_start
@@ -75,8 +83,12 @@ module RevealCK
         RevealCK::Markdown::REVEALCK_SYMBOL_FOR_DIVIDER
       end
 
-      def vertical_symbol
-        RevealCK::Markdown::REVEALCK_SYMBOL_FOR_VERTICAL
+      def vertical_start_symbol
+        RevealCK::Markdown::REVEALCK_SYMBOL_FOR_VERTICAL_START
+      end
+
+      def vertical_end_symbol
+        RevealCK::Markdown::REVEALCK_SYMBOL_FOR_VERTICAL_END
       end
     end
   end

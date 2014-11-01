@@ -58,6 +58,64 @@ eos
           expect(output).to eq three_slides_output
         end
       end
+
+      context 'with vertical slides' do
+
+        let :single_vertical_input do
+          <<-eos
+<div>VERTICAL_START</div>
+
+First
+
+<div>DIVIDER</div>
+
+Second
+
+<div>DIVIDER</div>
+
+Third
+
+<div>VERTICAL_END</div>
+eos
+        end
+
+        let :single_vertical_output do
+          <<-eos
+<section>
+<section>
+
+First
+
+</section>
+<section>
+
+Second
+
+</section>
+<section>
+
+Third
+
+</section>
+</section>
+eos
+        end
+
+        it 'starts the output with two <section>s' do
+          output = PostProcessor.new(single_vertical_input).process
+          expect(output).to start_with "<section>\n"
+        end
+
+        it 'ends the output a newline, two </section>s, and a newline' do
+          output = PostProcessor.new(single_vertical_input).process
+          expect(output).to end_with "\n</section>\n</section>\n"
+        end
+
+        it 'separates the "internal" slides correctly' do
+          output = PostProcessor.new(single_vertical_input).process
+          expect(output).to eq single_vertical_output
+        end
+      end
     end
   end
 end
