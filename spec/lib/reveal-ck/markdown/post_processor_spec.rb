@@ -199,6 +199,112 @@ eos
             expect(output).to eq double_vertical_output
           end
         end
+
+        context 'horizontal and vertical combinations' do
+
+          let :verticals_surrounded_by_horizontals_input do
+            <<-eos
+<div>DIVIDER</div>
+
+First
+
+<div>VERTICAL_START</div>
+
+Vertical A1
+
+<div>DIVIDER</div>
+
+Vertical A2
+
+<div>DIVIDER</div>
+
+Vertical A3
+
+<div>VERTICAL_END</div>
+
+Middle
+
+<div>VERTICAL_START</div>
+
+Vertical B1
+
+<div>DIVIDER</div>
+
+Vertical B2
+
+<div>DIVIDER</div>
+
+Vertical B3
+
+<div>VERTICAL_END</div>
+
+Last
+
+<div>DIVIDER</div>
+eos
+          end
+
+          let :verticals_surrounded_by_horizontals_output do
+            <<-eos
+<section>
+
+First
+
+</section>
+<section>
+<section>
+
+Vertical A1
+
+</section>
+<section>
+
+Vertical A2
+
+</section>
+<section>
+
+Vertical A3
+
+</section>
+</section>
+<section>
+
+Middle
+
+</section>
+<section>
+<section>
+
+Vertical B1
+
+</section>
+<section>
+
+Vertical B2
+
+</section>
+<section>
+
+Vertical B3
+
+</section>
+</section>
+<section>
+
+Last
+
+</section>
+eos
+          end
+
+          it 'creates a slide, a column, a slide, a column, and a slide' do
+            processor =
+              PostProcessor.new(verticals_surrounded_by_horizontals_input)
+            output = processor.process
+            expect(output).to eq verticals_surrounded_by_horizontals_output
+          end
+        end
       end
     end
   end
