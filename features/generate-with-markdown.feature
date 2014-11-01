@@ -297,3 +297,69 @@ Feature: Slides with markdown
     | //section[2]/section[2]/h1[text()="Column 1, Slide 2"] | Column 1, Slide 2 |
     | //section[2]/section[3]/h1[text()="Column 1, Slide 3"] | Column 1, Slide 3 |
     | //section[3]/h1[text()="Last"]                         | Last Slide        |
+
+  Scenario: Creating a slide, two columns of vertical slides, and final slide
+    Given a file named "slides.md" with:
+    """
+    # First
+    ***
+    # Column 1, Slide 1
+    ---
+    # Column 1, Slide 2
+    ---
+    # Column 1, Slide 3
+    ***
+    ***
+    # Column 2, Slide 1
+    ---
+    # Column 2, Slide 2
+    ---
+    # Column 2, Slide 3
+    ***
+    # Last
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the file "slides/index.html" should have html matching the xpath:
+    | //section[1]/h1[text()="First"]                        | First slide       |
+    | //section[2]/section[1]/h1[text()="Column 1, Slide 1"] | Column 1, Slide 1 |
+    | //section[2]/section[2]/h1[text()="Column 1, Slide 2"] | Column 1, Slide 2 |
+    | //section[2]/section[3]/h1[text()="Column 1, Slide 3"] | Column 1, Slide 3 |
+    | //section[3]/section[1]/h1[text()="Column 2, Slide 1"] | Column 2, Slide 1 |
+    | //section[3]/section[2]/h1[text()="Column 2, Slide 2"] | Column 2, Slide 2 |
+    | //section[3]/section[3]/h1[text()="Column 2, Slide 3"] | Column 2, Slide 3 |
+    | //section[4]/h1[text()="Last"]                         | Last Slide        |
+
+  Scenario: Creating a slide, a column, a slide, a column, and a final slide
+    Given a file named "slides.md" with:
+    """
+    # First
+    ***
+    # Column 1, Slide 1
+    ---
+    # Column 1, Slide 2
+    ---
+    # Column 1, Slide 3
+    ***
+    # Middle
+    ***
+    # Column 2, Slide 1
+    ---
+    # Column 2, Slide 2
+    ---
+    # Column 2, Slide 3
+    ***
+    # Last
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the file "slides/index.html" should have html matching the xpath:
+    | //section[1]/h1[text()="First"]                        | First slide       |
+    | //section[2]/section[1]/h1[text()="Column 1, Slide 1"] | Column 1, Slide 1 |
+    | //section[2]/section[2]/h1[text()="Column 1, Slide 2"] | Column 1, Slide 2 |
+    | //section[2]/section[3]/h1[text()="Column 1, Slide 3"] | Column 1, Slide 3 |
+    | //section[3]/h1[text()="Middle"]                       | Middle slide      |
+    | //section[4]/section[1]/h1[text()="Column 2, Slide 1"] | Column 2, Slide 1 |
+    | //section[4]/section[2]/h1[text()="Column 2, Slide 2"] | Column 2, Slide 2 |
+    | //section[4]/section[3]/h1[text()="Column 2, Slide 3"] | Column 2, Slide 3 |
+    | //section[5]/h1[text()="Last"]                         | Last Slide        |
