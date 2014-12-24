@@ -2,7 +2,6 @@ require 'spec_helper'
 
 module RevealCK
   describe PresentationDSL do
-
     let :config do
       Config.new
     end
@@ -23,7 +22,6 @@ module RevealCK
     end
 
     describe 'A Presentation loaded from a dsl' do
-
       let :html do
         presentation.html
       end

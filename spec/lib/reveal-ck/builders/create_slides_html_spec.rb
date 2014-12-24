@@ -8,7 +8,6 @@ module RevealCK
       it 'creates a transformed slides file' do
         Dir.mktmpdir do |dir|
           Dir.chdir(dir) do
-
             slides_file_initial = 'slides-initial.md'
             File.open(slides_file_initial, 'w') do |file|
               file.puts('# Slides')
@@ -34,7 +33,6 @@ module RevealCK
       it 'can transform emoji' do
         Dir.mktmpdir do |dir|
           Dir.chdir(dir) do
-
             slides_file_initial = 'slides-initial.md'
             File.open(slides_file_initial, 'w') do |file|
               file.puts('# I :heart: Slides')

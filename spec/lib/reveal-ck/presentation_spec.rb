@@ -2,7 +2,6 @@ require 'spec_helper'
 
 module RevealCK
   describe Presentation do
-
     let :config do
       Config.new
     end
@@ -79,6 +78,5 @@ module RevealCK
         expect(html).to start_with '<section>'
       end
     end
-
   end
 end

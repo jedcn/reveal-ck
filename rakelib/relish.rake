@@ -1,6 +1,5 @@
 
 namespace :relish do
-
   def run(cmd)
     require 'open3'
     puts "Running '#{cmd}'"

@@ -4,7 +4,6 @@ module RevealCK
   module Markdown
     describe PostProcessor do
       context 'without vertical slides' do
-
         let :three_slide_input do
           <<-eos
 <div>DIVIDER</div>
@@ -60,9 +59,7 @@ eos
       end
 
       context 'with vertical slides' do
-
         context 'single vertical slide' do
-
           let :single_vertical_input do
             <<-eos
 <div>VERTICAL_START</div>
@@ -120,7 +117,6 @@ eos
         end
 
         context 'back-to-back vertical slides' do
-
           let :double_vertical_input do
             <<-eos
 <div>VERTICAL_START</div>
@@ -201,7 +197,6 @@ eos
         end
 
         context 'horizontal and vertical combinations' do
-
           let :verticals_surrounded_by_horizontals_input do
             <<-eos
 <div>DIVIDER</div>

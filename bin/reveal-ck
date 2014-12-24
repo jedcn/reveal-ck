@@ -11,7 +11,6 @@ class RevealCKExecutable
 
   desc 'Generate reveal.js slides'
   command :generate do |c|
-
     slide_files = FileList['slides.*']
     default_file = slide_files.empty? ? nil : slide_files.first
 
@@ -49,7 +48,6 @@ class RevealCKExecutable
 
   desc 'Start webserver so slides are available via http'
   command :serve, :server do |c|
-
     slide_files = FileList['slides.*']
     default_file = slide_files.empty? ? nil : slide_files.first
 

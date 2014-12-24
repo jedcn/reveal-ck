@@ -7,7 +7,6 @@ module RevealCK
       it 'creates a reveal.js presentation' do
         Dir.mktmpdir do |dir|
           Dir.chdir(dir) do
-
             slides_file = 'slides.md'
             File.open(slides_file, 'w') do |file|
               file.puts('# Slides')

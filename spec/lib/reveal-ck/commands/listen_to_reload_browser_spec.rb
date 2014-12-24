@@ -6,7 +6,6 @@ module RevealCK
     describe ListenToReloadBrowser do
       describe '#run' do
         it 'works with Guard to setup livereload' do
-
           serve_ui = double
 
           expect(serve_ui)

@@ -17,7 +17,6 @@ module RevealCK
     end
 
     describe CreationTask do
-
       describe '#name' do
         it 'underscores the name of the Class' do
           application = double
@@ -37,9 +36,7 @@ module RevealCK
       end
 
       describe 'a subclass with a complete implementation' do
-
         describe '#prepare' do
-
           it 'invokes setup' do
             application = double
             expect(application).to receive(:define_task)

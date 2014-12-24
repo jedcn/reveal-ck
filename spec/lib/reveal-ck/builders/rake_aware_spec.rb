@@ -12,9 +12,7 @@ module RevealCK
     end
 
     describe RakeAware do
-
       describe 'when included into a class with a rake application' do
-
         let :example do
           RakeAwareTestingClass.new
         end
