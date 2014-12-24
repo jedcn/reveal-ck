@@ -136,7 +136,11 @@ via inline rubocop settings or a directory specific `.rubocop.yml`.
 
 ### Acceptance Tests
 
-Acceptance tests are based on cucumber and aruba.
+Acceptance tests are based on [cucumber/cucumber][cucumber-cucumber]
+and [cucumber/aruba][cucumber-aruba].
+
+[cucumber-cucumber]: https://github.com/cucumber/cucumber
+[cucumber-aruba]: https://github.com/cucumber/aruba
 
 In case you're not familiar, Aruba is a framework for testing command
 line applications. Whenever it verifies a Scenario within a Feature
