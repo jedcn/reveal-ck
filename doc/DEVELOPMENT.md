@@ -1,6 +1,64 @@
 # Development
 
-## Local
+This document is meant to describe the Overall Design behind reveal-ck
+as well as describe which tools are used for local development and
+cloud support.
+
+## Overall Design
+
+reveal.js is a very popular HTML presentation framework, and there are
+dozens of tools for creating reveal.js presentations. Why did I create
+reveal-ck? Why should you use reveal-ck?
+
+There are two fundamental ideas at play:
+
+* The RubyGems format allows us to combine all of the files that make
+  up a reveal.js presentation into a nice, easily downloaded package.
+* Users supply a minimal file that represents their custom
+  presentation content.
+
+Putting these two together, reveal-ck can transform this into HTML and
+splice it into the reveal.js presentation.
+
+This means that users of reveal-ck can allow reveal-ck to encapsulate
+the details of what is in a reveal.js presentation and solely focus on
+their talk.
+
+### Ruby + :heart: = HTML
+
+Ruby is good at creating HTML, and reveal-ck aims to re-use as much
+common, ruby-based, html producing infrastructure as possible.
+
+reveal-ck isn't about original work so much as it is about plugging
+together existing tools to conveniently produce a presentation.
+
+Some examples:
+
+* reveal-ck uses a library named [rtomayko/tilt][github-tilt] and this
+  makes it easy to support formats like markdown, html, erb, haml,
+  slim. This is the same library behind the Rails asset pipeline.
+* reveal-ck uses an html filtering framework named
+  [jch/html-pipeline][github-html-pipeline] to get automatically get
+  support for things like GFM Tables, Emoji, autolinking, and
+  @mentions. This is the same library that's used on
+  https://github.com when you are writing comments.
+
+And so, by using these famous libraries, reveal-ck can get a bunch
+done without re-inventing the wheel.
+
+[github-tilt]: https://github.com/rtomayko/tilt
+[github-html-pipeline]: https://github.com/jch/html-pipeline
+
+### What does this mean if you're looking to do development?
+
+If you've got something you'd like to add, or something you'd like to
+fix, I recommend that you start by opening up an Issue.
+
+However-- your frame of mind *should likely* be based on re-using or
+customizing a popular ruby library rather than brute-forcing the
+creation of something new.
+
+## Local Setup and Support
 
 ### Pre-requisites
 
