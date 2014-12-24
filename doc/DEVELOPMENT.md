@@ -53,7 +53,7 @@ They can be executed in the following ways:
 reveal-ck tracks coverage with simplecov, and coverage will be
 available after specs run at `coverage/index.html`.
 
-reveal-ck aims for 100% coverage, **but does not fail builds** if it
+reveal-ck aims for 100% coverage, but **does not** fail builds if it
 doesn't get it.
 
 ### Style, Code Complexity, Conformance
@@ -66,8 +66,8 @@ They can be executed in the following ways:
 2. `rubocop`
 3. `bundle exec rubocop`
 
-reveal-ck aims for explicit adherence to these guidelines, **and does
-fail builds** if it doesn't get it.
+reveal-ck aims for explicit adherence to these guidelines, and
+**does** fail builds if it doesn't get it.
 
 reveal-ck presumes that rubocop represents the will of the ruby
 community, and so, reveal-ck code adapts to rubocop's defaults.
@@ -80,7 +80,15 @@ via inline rubocop settings or a directory specific `.rubocop.yml`.
 
 Acceptance tests are based on cucumber and aruba.
 
-They can be executed in the following ways:
+In case you're not familiar, Aruba is a framework for testing command
+line applications. Whenever it verifies a Scenario within a Feature
+Aruba creates some space at `./tmp/aruba` and then runs
+reveal-ck. Once reveal-ck completes, aruba provides a number of Step
+Definitions that aid in verifying contents on the file system or
+within a file.
+
+Aruba works within Cucumber, and all of the Acceptance Tests can be
+executed in the following ways:
 
 1. `rake cucumber`
 2. `cucumber`
