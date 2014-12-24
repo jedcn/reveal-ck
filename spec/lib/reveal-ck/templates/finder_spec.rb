@@ -5,13 +5,11 @@ require 'fileutils'
 module RevealCK
   module Templates
     describe Finder do
-
       let :reveal_ck_dir do
         Dir.pwd
       end
 
       describe '#paths' do
-
         it 'defaults to Dir.pwd/templates and reveal-ck\'s slide templates' do
           Dir.mktmpdir do |dir|
             Dir.chdir(dir) do
@@ -33,11 +31,9 @@ module RevealCK
             expect(finder.paths.size).to eq 2
           end
         end
-
       end
 
       describe '#find' do
-
         let :project_templates do
           spec_data 'templates', 'finder', 'templates'
         end

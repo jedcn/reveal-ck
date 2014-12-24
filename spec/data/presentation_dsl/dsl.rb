@@ -1,5 +1,4 @@
 presentation do
-
   title 'Presentation Title'
   author 'Presentation Author'
   theme 'night'
@@ -14,5 +13,4 @@ presentation do
 
   slide 'text',
         content: 'Thanks!'
-
 end

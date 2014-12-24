@@ -3,7 +3,6 @@ require 'spec_helper'
 module RevealCK
   module Commands
     describe ServeUI do
-
       let :serve_ui do
         ServeUI.new
       end

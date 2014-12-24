@@ -42,7 +42,6 @@ module RevealCK
       end
 
       it 'creates the directory from the file_listing' do
-
         task = CopyFilesTask.new(application: Rake::Application.new,
                                  file_listing: file_listing,
                                  output_dir: destination_directory)

@@ -2,13 +2,11 @@ require 'spec_helper'
 
 module RevealCK
   describe Config do
-
     let :config do
       Config.new
     end
 
     describe 'core attributes' do
-
       it 'supplies a default theme' do
         expect(config.theme).to eq 'default'
       end

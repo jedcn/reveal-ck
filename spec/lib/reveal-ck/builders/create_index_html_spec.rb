@@ -8,7 +8,6 @@ module RevealCK
       it 'creates a reveal.js index.html' do
         Dir.mktmpdir do |dir|
           Dir.chdir(dir) do
-
             slides_html = 'slides.html'
             File.open(slides_html, 'w') do |file|
               file.puts('<section>')

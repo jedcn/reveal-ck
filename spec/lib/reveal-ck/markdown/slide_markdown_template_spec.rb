@@ -4,7 +4,6 @@ require 'tempfile'
 module RevealCK
   module Markdown
     describe SlideMarkdownTemplate do
-
       def render_markdown(markdown)
         tmp_file = Tempfile.new(['test', '.md'])
         File.open(tmp_file, 'w') do |test_md|

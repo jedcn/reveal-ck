@@ -2,7 +2,6 @@ require 'spec_helper'
 
 module RevealCK
   describe Slide do
-
     let :intro_slide do
       Slide.new template: 'intro',
                 title: 'Reveal.js',
@@ -18,6 +17,5 @@ module RevealCK
         expect(output).to include 'Reveal.js'
       end
     end
-
   end
 end

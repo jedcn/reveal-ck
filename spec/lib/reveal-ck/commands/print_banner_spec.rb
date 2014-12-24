@@ -5,7 +5,6 @@ module RevealCK
     describe PrintBanner do
       describe '#run' do
         it 'sends #messages and #separators to the ui' do
-
           serve_ui = double
 
           expect(serve_ui)

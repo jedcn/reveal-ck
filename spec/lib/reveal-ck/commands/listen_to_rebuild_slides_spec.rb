@@ -5,7 +5,6 @@ module RevealCK
   module Commands
     describe ListenToRebuildSlides do
       describe '#run' do
-
         let :current_directory do
           '.'
         end

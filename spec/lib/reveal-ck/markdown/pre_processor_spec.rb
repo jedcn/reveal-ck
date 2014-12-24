@@ -3,7 +3,6 @@ require 'spec_helper'
 module RevealCK
   module Markdown
     describe PreProcessor do
-
       let :standard_result do
         <<-eos
 <div>DIVIDER</div>
@@ -85,7 +84,6 @@ eos
       end
 
       context 'with vertical slides' do
-
         let :single_vertical_output do
           <<-eos
 <div>VERTICAL_START</div>

@@ -3,7 +3,6 @@ require 'spec_helper'
 module RevealCK
   module Templates
     describe Processor do
-
       let :config do
         Config.new
       end
@@ -29,7 +28,6 @@ module RevealCK
         processor = Processor.open file: haml_file, config: config
         expect(processor.output).to match pretty_printed_basic
       end
-
     end
   end
 end

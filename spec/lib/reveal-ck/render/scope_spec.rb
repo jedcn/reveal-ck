@@ -3,7 +3,6 @@ require 'spec_helper'
 module RevealCK
   module Render
     describe Scope do
-
       describe '#contents_of' do
         let :quote_file do
           spec_data 'render', 'scope', 'quote'
