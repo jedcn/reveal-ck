@@ -3,6 +3,20 @@ require 'spec_helper'
 module RevealCK
   module Markdown
     describe PostProcessor do
+      it 'unprotects emojis' do
+        input = ':moneyEUwithEUwings:'
+        output = PostProcessor.new(input).process
+        expect(output).to include ':money_with_wings:'
+
+        input = ':blueEUheart:'
+        output = PostProcessor.new(input).process
+        expect(output).to include ':blue_heart:'
+
+        input = ':non-potableEUwater:'
+        output = PostProcessor.new(input).process
+        expect(output).to include ':non-potable_water:'
+      end
+
       context 'without vertical slides' do
         let :three_slide_input do
           <<-eos

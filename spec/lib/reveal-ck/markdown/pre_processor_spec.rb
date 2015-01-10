@@ -3,6 +3,20 @@ require 'spec_helper'
 module RevealCK
   module Markdown
     describe PreProcessor do
+      it 'protects _s within emoji by turning them into a temporary token' do
+        input = ':money_with_wings:'
+        output = PreProcessor.new(input).process
+        expect(output).to include ':moneyEUwithEUwings:'
+
+        input = ':blue_heart:'
+        output = PreProcessor.new(input).process
+        expect(output).to include ':blueEUheart:'
+
+        input = ':non-potable_water:'
+        output = PreProcessor.new(input).process
+        expect(output).to include ':non-potableEUwater:'
+      end
+
       let :standard_result do
         <<-eos
 <div>DIVIDER</div>

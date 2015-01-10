@@ -11,6 +11,7 @@ module RevealCK
 
       def process
         strip_whitespace
+        unprotect_emojis
         handle_start
         handle_end
         transform_symbols_to_sections
@@ -20,6 +21,12 @@ module RevealCK
 
       def strip_whitespace
         @doc = doc.strip
+      end
+
+      def unprotect_emojis
+        @doc = doc.gsub(protected_emoji_regex) do |protected_emoji|
+          protected_emoji.gsub(emoji_underscore_symbol, '_')
+        end
       end
 
       def handle_start
@@ -84,6 +91,10 @@ module RevealCK
         "#{divider_end}\n#{divider_start}"
       end
 
+      def emoji_underscore_symbol
+        RevealCK::Markdown::REVEALCK_SYMBOL_FOR_EMOJI_UNDERSCORE
+      end
+
       def divider_symbol
         RevealCK::Markdown::REVEALCK_SYMBOL_FOR_DIVIDER
       end
@@ -94,6 +105,10 @@ module RevealCK
 
       def vertical_end_symbol
         RevealCK::Markdown::REVEALCK_SYMBOL_FOR_VERTICAL_END
+      end
+
+      def protected_emoji_regex
+        /:[a-z\d_\-\+EU]*:/
       end
 
       def back_to_back_vertical_symbols_regex
