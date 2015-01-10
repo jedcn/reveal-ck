@@ -1,3 +1,13 @@
+### 0.6.1 / 2015-01-09
+
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.6.0...v0.6.1)
+
+#### Bug Fix: Support emoji like :money_with_wings:
+
+When using markdown, emoji with two underscores wasn't being handled
+correctly. Same issue impacted two emoji, each with a signle
+underscore, on the same line.
+
 ### 0.6.0 / 2014-11-01
 
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.5.1...v0.6.0)
