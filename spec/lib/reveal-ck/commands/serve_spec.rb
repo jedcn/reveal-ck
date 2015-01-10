@@ -116,7 +116,7 @@ module RevealCK
               # Creating the file will trigger the call back. But need
               # to wait else the expecation of :rebuild_slides will
               # fail-- it's not instantaneous
-              sleep 0.25
+              sleep 0.5
             end
           end
         end
