@@ -11,6 +11,7 @@ module RevealCK
 
       def process
         strip_whitespace
+        protect_emojis
         add_first_slide_divider_if_needed
         add_last_slide_vertical_if_needed
         add_last_slide_divider_if_needed
@@ -23,6 +24,12 @@ module RevealCK
 
       def strip_whitespace
         @doc = doc.strip
+      end
+
+      def protect_emojis
+        @doc = doc.gsub(emoji_regex) do |emoji|
+          emoji.gsub(/_/, emoji_underscore_symbol)
+        end
       end
 
       def add_first_slide_divider_if_needed
@@ -60,6 +67,10 @@ module RevealCK
         append(slide_vertical)
       end
 
+      def emoji_regex
+        /:[a-z\d_\-\+]*:/
+      end
+
       def slide_divider
         '---'
       end
@@ -86,6 +97,10 @@ module RevealCK
 
       def newline_wrapped(s)
         "\n#{s}\n"
+      end
+
+      def emoji_underscore_symbol
+        RevealCK::Markdown::REVEALCK_SYMBOL_FOR_EMOJI_UNDERSCORE
       end
 
       def divider_symbol

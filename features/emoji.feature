@@ -61,6 +61,22 @@ Feature: Using Emoji in your Slides
     | //link[@rel="stylesheet"][@href="css/reveal-ck.css"]                               | the default reveal-ck.css     |
     And a file named "slides/css/reveal-ck.css" should exist
 
+  Scenario: Including :money_with_wings: a markdown slides file
+    Given a file named "slides.md" with:
+    """
+    # Emoji
+
+    :money_with_wings:
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the file "slides/slides.html" should have html matching the xpath:
+    | //section/p/img[@class="emoji"]                         | an img with class emoji               |
+    | //section/p/img[@title=":money_with_wings:"]            | an img with title=":money_with_wings" |
+    | //section/p/img[@alt=":money_with_wings:"]              | an img with alt=":money_with_wings"   |
+    | //section/p/img[contains(@src, "money_with_wings.png")] | an img with src on github cdn         |
+    And a file named "slides/css/reveal-ck.css" should exist
+
   Scenario: Including Emoji hosted at a specific location
     Given a file named "slides.md" with:
     """
