@@ -13,6 +13,20 @@ module RevealCK
         template.render
       end
 
+      it 'does not turn _s within a single emoji into <em>s' do
+        output = render_markdown <<-eos
+:money_with_wings:
+eos
+        expect(output).to include ':money_with_wings:'
+      end
+
+      it 'does not turn _s between two emojis into <em>s' do
+        output = render_markdown <<-eos
+:blue_heart: :blue_heart:
+eos
+        expect(output).to include ':blue_heart: :blue_heart:'
+      end
+
       it 'uses "---" to create "<section>"s' do
         output = render_markdown <<-eos
 # h1 Slide
