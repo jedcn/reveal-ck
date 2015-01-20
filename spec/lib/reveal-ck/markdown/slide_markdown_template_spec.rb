@@ -49,6 +49,17 @@ eos
         expect(output).to include 'a + b'
       end
 
+      it 'converts special characters in ``` block to entity references' do
+        output = render_markdown <<-eos
+```
+<p>"&"</p>
+```
+eos
+        expect(output).to include '<pre><code>'
+        expect(output).to include '</code></pre>'
+        expect(output).to include '&lt;p&gt;&quot;&amp;&quot;&lt;/p&gt;'
+      end
+
       it 'wraps ```ruby code in a <pre> and <code class="ruby">' do
         output = render_markdown <<-eos
 ```ruby

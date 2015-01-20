@@ -363,3 +363,25 @@ Feature: Slides with markdown
     | //section[4]/section[2]/h1[text()="Column 2, Slide 2"] | Column 2, Slide 2 |
     | //section[4]/section[3]/h1[text()="Column 2, Slide 3"] | Column 2, Slide 3 |
     | //section[5]/h1[text()="Last"]                         | Last Slide        |
+
+  Scenario: Creating a slide with HTML special characters
+    Given a file named "slides.md" with:
+    """
+    ```
+    user=> (atom 10)
+    #<Atom@6cbda790: 10>
+    ```
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the file "slides/index.html" should have html matching the xpath:
+    | //section/pre/code[contains(., 'user=>')]               | first line of escaped code  |
+    | //section/pre/code[contains(., "#<Atom@6cbda790: 10>")] | second line of escaped code |
+    And the file "slides/index.html" should contain:
+    """
+    user=&gt; (atom 10)
+    """
+    And the file "slides/index.html" should contain:
+    """
+    #&lt;Atom@6cbda790: 10&gt;
+    """

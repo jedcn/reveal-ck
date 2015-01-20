@@ -1,3 +1,17 @@
+### 0.6.2 / 2015-01-19
+
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v0.6.1...v0.6.2)
+
+#### Bug Fix: Escape HTML characters in Markdown code snippets
+
+This is a fix for Issue #32.
+
+reveal-ck now escapes HTML characters in markdown code snippets.
+
+Thanks to [@skirino][skirino] for both reporting the issue and fixing it!
+
+[skirino]: https://github.com/skirino
+
 ### 0.6.1 / 2015-01-09
 
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.6.0...v0.6.1)
