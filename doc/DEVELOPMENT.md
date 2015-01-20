@@ -38,10 +38,10 @@ Some examples:
   makes it easy to support formats like markdown, html, erb, haml,
   slim. This is the same library behind the Rails asset pipeline.
 * reveal-ck uses an html filtering framework named
-  [jch/html-pipeline][github-html-pipeline] to get automatically get
-  support for things like GFM Tables, Emoji, autolinking, and
-  @mentions. This is the same library that's used on
-  https://github.com when you are writing comments.
+  [jch/html-pipeline][github-html-pipeline] to readily support things
+  like GFM Tables, Emoji, autolinking, and @mentions. This is the same
+  library that's used on https://github.com when you are writing
+  comments.
 
 And so, by using these famous libraries, reveal-ck can get a bunch
 done without re-inventing the wheel.
