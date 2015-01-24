@@ -7,8 +7,8 @@ module RevealCK
     end
 
     describe 'core attributes' do
-      it 'supplies a default theme' do
-        expect(config.theme).to eq 'default'
+      it 'supplies a default theme (black)' do
+        expect(config.theme).to eq 'black'
       end
 
       it 'supplies an #theme, and #theme=' do

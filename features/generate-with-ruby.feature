@@ -32,10 +32,10 @@ Feature: Slides with ruby
     And the file "slides/slides.html" should have html matching the xpath:
     | //section/p[contains(., "Slides with Ruby")] | the p |
     And the file "slides/index.html" should have html matching the xpath:
-    | //section/p[contains(., "Slides with Ruby")]             | the p                 |
-    | /html/head/title[contains(., "Slides")]                  | the title             |
-    | //meta[@name="author"][@content=""]                      | the empty author meta |
-    | //link[@rel="stylesheet"][@href="css/theme/default.css"] | the theme css         |
+    | //section/p[contains(., "Slides with Ruby")]           | the p                 |
+    | /html/head/title[contains(., "Slides")]                | the title             |
+    | //meta[@name="author"][@content=""]                    | the empty author meta |
+    | //link[@rel="stylesheet"][@href="css/theme/black.css"] | the theme css         |
     And the file "slides/index.html" should contain:
     """
     transition: 'default'

@@ -24,7 +24,7 @@ module RevealCK
       {
         'title'      => 'Slides',
         'author'     => '',
-        'theme'      => 'default',
+        'theme'      => 'black',
         'transition' => 'default',
         'data' => {
 
