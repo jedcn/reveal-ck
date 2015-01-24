@@ -4,6 +4,15 @@
 
 reveal-ck helps you author [reveal.js][reveal.js] presentations.
 
+You can create slides in numerous languages, but the most popular is
+Markdown. And not just any markdown-- it's markdown like you write on
+https://github.com, so it supports:
+
+* emoji (:money_with_wings:)
+* automatic links (https://github.com)
+* @mentions (@jedcn)
+* GFM tables
+
 ## How do I get started?
 
 * Install [the reveal-ck gem][reveal-ck-gem]
@@ -50,6 +59,8 @@ a fan of Markdown you can also use
 ## See also:
 http://jedcn.github.io/reveal-ck/
 ---
+## Might be helpful:
+https://relishapp.com/jedcn/reveal-ck/
 ## Questions? Problems?
 Let me know, @jedcn
 ---
