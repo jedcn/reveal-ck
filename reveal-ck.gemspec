@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = RevealCK::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Jed Northridge']
-  s.email       = ['northridge@gmail.com']
+  s.email       = ['reveal-ck@jedcn.com']
   s.homepage    = 'https://github.com/jedcn/reveal-ck'
   s.description = 'A reveal.js construction kit'
   s.summary     = 'A toolkit that takes a minimal description of slides and builds a reveal.js presentation'
