@@ -13,12 +13,12 @@ module RevealCK
 
       def evaluate(*)
         markdown = Redcarpet::Markdown.new(
-                                           SlideMarkdown,
-                                           fenced_code_blocks: true,
-                                           tables: true,
-                                           strikethrough: true,
-                                           highlight: true
-                                          )
+          SlideMarkdown,
+          fenced_code_blocks: true,
+          tables: true,
+          strikethrough: true,
+          highlight: true
+        )
         @output = markdown.render(data)
       end
     end
