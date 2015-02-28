@@ -11,8 +11,19 @@ Gem::Specification.new do |s|
   s.authors     = ['Jed Northridge']
   s.email       = ['reveal-ck@jedcn.com']
   s.homepage    = 'https://github.com/jedcn/reveal-ck'
-  s.description = 'A reveal.js construction kit'
-  s.summary     = 'A toolkit that takes a minimal description of slides and builds a reveal.js presentation'
+  s.summary     = 'Create reveal.js presentations with Markdown.'
+  s.description =
+    'A command line interface for generating reveal.js presentations.
+
+You have something important to say, and you are a busy person. Why not write your next presentation in (github flavored) markdown?
+
+reveal-ck has been used by students, teachers, trainers, and conference presenters. It just "works." It lets you stay focused on your content-- not the tools that you are using to make your content.
+
+It produces reveal.js presentations, which are beautiful and world-class. If you are already familiar with reveal.js, great! You will now be able to use html, html+erb, haml, or slim to most efficiently write out your presentation markup. You can provide your own CSS tweaks without intermingling "your" presentation code with reveal.js\'s base CSS.
+
+You can write slides with a Ruby DSL! You can generate slide content with database and network calls.. but that\'s another story.
+
+Finally-- livereload is built in-- so it supports a nice flow where you keep a browser open on your slides, and save with your editor, the browser updates with your latest work.'
 
   #
   # Runtime Dependencies
