@@ -36,6 +36,7 @@ Gem::Specification.new do |s|
   #
   # Development Dependencies
   s.add_development_dependency 'aruba',     '~> 0.5'
+  s.add_development_dependency 'codeclimate-test-reporter', '~> 0.4'
   s.add_development_dependency 'cucumber',  '~> 1.3'
   s.add_development_dependency 'nokogiri',  '~> 1.6'
   s.add_development_dependency 'relish',    '~> 0.7'
