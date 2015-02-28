@@ -1,6 +1,9 @@
 # Create Slides with Markdown
 
 [![Gem Version](https://badge.fury.io/rb/reveal-ck.svg)](http://badge.fury.io/rb/reveal-ck)
+[![Build Status](https://travis-ci.org/jedcn/reveal-ck.svg)](https://travis-ci.org/jedcn/reveal-ck)
+[![Code Climate](https://codeclimate.com/github/jedcn/reveal-ck.png)](https://codeclimate.com/github/jedcn/reveal-ck)
+[![Test Coverage](https://codeclimate.com/github/jedcn/reveal-ck/badges/coverage.svg)](https://codeclimate.com/github/jedcn/reveal-ck)
 
 reveal-ck helps you author [reveal.js][reveal.js] presentations.
 
@@ -154,9 +157,6 @@ development, please see [CONTRIBUTING.md](CONTRIBUTING.md).
 If you have questions, find me on github ([@jedcn][github-jedcn]) or
 twitter ([@jedcn][twitter-jedcn]), open an issue, or email me at
 revealck@jedcn.com.
-
-[![Build Status](https://travis-ci.org/jedcn/reveal-ck.svg)](https://travis-ci.org/jedcn/reveal-ck)
-[![Code Climate](https://codeclimate.com/github/jedcn/reveal-ck.png)](https://codeclimate.com/github/jedcn/reveal-ck)
 
 [reveal.js]:     http://lab.hakim.se/reveal-js
 [github-jedcn]:  https://github.com/jedcn
