@@ -6,7 +6,5 @@ Tilt.register RevealCK::Markdown::SlideMarkdownTemplate, 'md'
 # WARN: tilt autoloading 'tilt/erb' in a non thread-safe way; explicit
 # require 'tilt/erb' suggested.
 #
-# The same goes for tilt/haml, tilt/redcloth
-# require 'tilt/erb'
+# The same goes for tilt/haml
 # require 'tilt/haml'
-# require 'tilt/redcloth'
