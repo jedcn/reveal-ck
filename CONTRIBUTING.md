@@ -62,4 +62,4 @@ a great way to start off.
 
 If you'd like to track something down yourself, you can find
 instructions for getting started with local development in
-[DEVELOPMENT.md](DEVELOPMENT.md).
+[doc/DEVELOPMENT.md](doc/DEVELOPMENT.md).

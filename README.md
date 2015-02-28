@@ -147,7 +147,7 @@ http://jedcn.github.io/reveal-ck/.
 ## Contributing
 
 If you'd like to log a bug, propose an issue, or get going with local
-development, please see [doc/CONTRIBUTING.md](doc/CONTRIBUTING.md).
+development, please see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Questions?
 
