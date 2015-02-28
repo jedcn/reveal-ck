@@ -109,7 +109,8 @@ They can be executed in the following ways:
 3. `bundle exec rspec`
 
 reveal-ck tracks coverage with simplecov, and coverage will be
-available after specs run at `coverage/index.html`.
+available after specs run at `coverage/index.html`. It also enlists
+the aid of codeclimate and travis-ci to track coverage over time.
 
 reveal-ck aims for 100% coverage, but **does not** fail builds if it
 doesn't get it.
