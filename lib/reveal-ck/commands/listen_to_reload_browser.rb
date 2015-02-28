@@ -10,10 +10,12 @@ module RevealCK
       end
 
       def run
-        require 'guard'
-        guardfile = RevealCK.path('files/reveal-ck/Guardfile')
+        require 'guard/cli'
         Guard::UI.options[:template] = "#{prefix} :message"
-        Guard.start guardfile: guardfile, no_interactions: true
+        guardfile = RevealCK.path('files/reveal-ck/Guardfile')
+        Thread.new do
+          Guard.start(guardfile: guardfile)
+        end
       end
     end
   end
