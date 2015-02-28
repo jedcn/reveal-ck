@@ -2,7 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/reveal-ck.svg)](http://badge.fury.io/rb/reveal-ck)
 [![Build Status](https://travis-ci.org/jedcn/reveal-ck.svg)](https://travis-ci.org/jedcn/reveal-ck)
-[![Code Climate](https://codeclimate.com/github/jedcn/reveal-ck.png)](https://codeclimate.com/github/jedcn/reveal-ck)
+[![Code Climate](https://codeclimate.com/github/jedcn/reveal-ck/badges/gpa.svg)](https://codeclimate.com/github/jedcn/reveal-ck)
 [![Test Coverage](https://codeclimate.com/github/jedcn/reveal-ck/badges/coverage.svg)](https://codeclimate.com/github/jedcn/reveal-ck)
 
 reveal-ck helps you author [reveal.js][reveal.js] presentations.
