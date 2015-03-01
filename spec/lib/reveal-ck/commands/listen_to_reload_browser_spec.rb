@@ -17,7 +17,8 @@ module RevealCK
             .once
 
           listen_to_reload_browser = ListenToReloadBrowser.new(serve_ui)
-          listen_to_reload_browser.run
+          thread = listen_to_reload_browser.run
+          thread.join
 
           expect(Guard::UI.options[:template]).to eq '[prefix] :message'
         end

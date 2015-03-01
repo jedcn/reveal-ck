@@ -12,6 +12,7 @@ module RevealCK
       def run
         sleeping_guard = setup_and_run_guard
         regularly_wakeup sleeping_guard
+        sleeping_guard
       end
 
       private
