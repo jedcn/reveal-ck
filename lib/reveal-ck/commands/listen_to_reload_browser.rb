@@ -10,10 +10,20 @@ module RevealCK
       end
 
       def run
-        require 'guard'
-        guardfile = RevealCK.path('files/reveal-ck/Guardfile')
+        sleeping_guard = setup_and_run_guard
+        ThreadWaker.new(sleeping_guard).run
+        sleeping_guard
+      end
+
+      private
+
+      def setup_and_run_guard
+        require 'guard/cli'
         Guard::UI.options[:template] = "#{prefix} :message"
-        Guard.start guardfile: guardfile, no_interactions: true
+        guardfile = RevealCK.path('files/reveal-ck/Guardfile')
+        Thread.new do
+          Guard.start(guardfile: guardfile, no_interactions: true)
+        end
       end
     end
   end

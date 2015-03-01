@@ -50,7 +50,7 @@ module RevealCK
             slides_html.prepare
             application['create_slides_html'].invoke
             content = File.open('slides.html', 'r').read
-            expect(content).to include 'emoji/heart.png'
+            expect(content).to include 'emoji/unicode/2764.png'
           end
         end
       end

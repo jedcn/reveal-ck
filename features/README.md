@@ -2,7 +2,7 @@
 [reveal-ck][reveal-ck] lets you author [reveal.js][reveal.js]
 presentations with popular markup and templating languages.
 
-You write in Markdown, Textile, Haml, Slim or Ruby itself.
+You write in Markdown, HTML, ERB, Haml, Slim or Ruby itself.
 
 ## relishapp?
 
