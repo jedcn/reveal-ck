@@ -3,8 +3,9 @@ $:.push File.expand_path('../lib', __FILE__)
 require File.join([File.dirname(__FILE__),'lib','reveal-ck','version.rb'])
 
 Gem::Specification.new do |s|
+  # DON'T FORGET TO CHANGE ME!
+  s.date = '2015-03-01'
   s.required_ruby_version = '>= 2.0.0'
-
   s.name        = 'reveal-ck'
   s.version     = RevealCK::VERSION
   s.platform    = Gem::Platform::RUBY
@@ -65,13 +66,10 @@ Finally-- livereload is built in-- so it supports a nice flow where you keep a b
   s.test_files    = `git ls-files -- {spec,features}/**/*`.split("\n")
   s.executables   = ['reveal-ck']
   s.require_paths = ['lib']
-
-  s.date = '2015-01-23'
   s.extra_rdoc_files = [
     'LICENSE',
     'README.md'
   ]
-
   s.licenses = ['MIT']
   s.require_paths = ['lib']
 end

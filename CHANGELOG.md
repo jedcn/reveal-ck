@@ -1,3 +1,24 @@
+### 3.0.1 / 2015-03-01
+
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v3.0.0...v3.0.1)
+
+This release upgraded all dependencies to their latest, locked them at
+that version, and made slight tweaks to ensure that reveal-ck worked
+with them.
+
+The version locking is based on the idea that bugs were coming up that
+were likely do to the range of libraries reveal-ck "could probably"
+work with (but it couldn't quite work with them), and the fact that
+there wasn't much benefit from trying to work with more than what we
+needed.
+
+Guard was the "most difficult" upgrade because of how its API changed,
+so there may be some lurking issues.
+
+It also dropped support for textile. This came in over 2 years ago,
+but, I've never heard of anyone using it (or being psyched know it was
+an option).
+
 ### 3.0.0 / 2015-01-23
 
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v0.6.2...v3.0.0)
