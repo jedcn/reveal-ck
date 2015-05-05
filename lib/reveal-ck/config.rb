@@ -22,10 +22,11 @@ module RevealCK
 
     def core_defaults
       {
-        'title'      => 'Slides',
-        'author'     => '',
-        'theme'      => 'black',
-        'transition' => 'default',
+        'title'       => 'Slides',
+        'description' => '',
+        'author'      => '',
+        'theme'       => 'black',
+        'transition'  => 'default',
         'data' => {
 
         }

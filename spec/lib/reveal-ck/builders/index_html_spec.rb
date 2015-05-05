@@ -15,6 +15,7 @@ module RevealCK
       let :config do
         config = Config.new
         config.title = 'Sample Title'
+        config.description = 'Sample Description'
         config.author = 'Sample Author'
         config.theme = 'night'
         config.transition = 'page'
@@ -44,6 +45,11 @@ module RevealCK
       it 'supports replacing the configured title' do
         expect(rendered_content)
           .to include('<title>Sample Title</title>')
+      end
+
+      it 'support replacing the configured description' do
+        expect(rendered_content)
+          .to include('<meta name="description" content="Sample Description">')
       end
 
       it 'supports replacing the configured author' do
