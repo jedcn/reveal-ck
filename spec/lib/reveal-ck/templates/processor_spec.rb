@@ -16,7 +16,7 @@ module RevealCK
       end
 
       let :pretty_printed_basic do
-        /<p>\s+This is basic (Slim|Haml)\s+<\/p>/
+        %r{<p>\s+This is basic (Slim|Haml)\s+</p>}
       end
 
       it 'can process a slim template' do

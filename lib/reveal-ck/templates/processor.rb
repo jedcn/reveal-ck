@@ -15,7 +15,8 @@ module RevealCK
       attr_reader :config
 
       def initialize(args)
-        file, @config = retrieve(:file, args), retrieve(:config, args)
+        @config = retrieve(:config, args)
+        file = retrieve(:file, args)
         @template = Tilt.new file
       end
 
@@ -25,7 +26,8 @@ module RevealCK
       end
 
       def self.open(args)
-        file, config = retrieve(:file, args), retrieve(:config, args)
+        file = retrieve(:file, args)
+        config = retrieve(:config, args)
         Processor.new(file: file, config: config)
       end
     end

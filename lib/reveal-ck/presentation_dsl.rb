@@ -1,3 +1,4 @@
+
 module RevealCK
   #
   # Public: A PresentationDSL defines the DSL behind a
@@ -64,7 +65,8 @@ module RevealCK
     end
 
     def self.load(args)
-      file, config = retrieve(:file, args), retrieve(:config, args)
+      file = retrieve(:file, args)
+      config = retrieve(:config, args)
       builder = PresentationDSL.new config: config
       contents = File.open(file).read
       builder.instance_eval(contents)

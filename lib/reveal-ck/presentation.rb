@@ -28,7 +28,8 @@ module RevealCK
     end
 
     def self.from_template(args)
-      file, config = retrieve(:file, args), retrieve(:config, args)
+      file = retrieve(:file, args)
+      config = retrieve(:config, args)
       presentation = Presentation.new config: config
       template = Templates::Processor.open(file: file, config: config)
       presentation.html = template.output
@@ -36,12 +37,14 @@ module RevealCK
     end
 
     def self.from_dsl(args)
-      file, config = retrieve(:file, args), retrieve(:config, args)
+      file = retrieve(:file, args)
+      config = retrieve(:config, args)
       RevealCK::PresentationDSL.load file: file, config: config
     end
 
     def self.load(args)
-      file, config = retrieve(:file, args), retrieve(:config, args)
+      file = retrieve(:file, args)
+      config = retrieve(:config, args)
       if file.end_with? '.rb'
         Presentation.from_dsl file: file, config: config
       else
