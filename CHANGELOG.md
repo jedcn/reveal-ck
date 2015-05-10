@@ -1,3 +1,11 @@
+### 3.1.0 / 2015-05-09
+
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v3.0.1...v3.1.0)
+
+This release allows you to add a description to your configuration,
+and this description will appear in the generate slides as a <meta>
+tag.
+
 ### 3.0.1 / 2015-03-01
 
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v3.0.0...v3.0.1)
@@ -16,8 +24,8 @@ Guard was the "most difficult" upgrade because of how its API changed,
 so there may be some lurking issues.
 
 It also dropped support for textile. This came in over 2 years ago,
-but, I've never heard of anyone using it (or being psyched know it was
-an option).
+but, I've never heard of anyone using it (or being psyched to know it
+was an option).
 
 ### 3.0.0 / 2015-01-23
 
