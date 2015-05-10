@@ -16,10 +16,11 @@ Feature: The capabilities of config.yml
   Scenario: Generating slides with a template and config.yml
     Given a file named "config.yml" with:
     """
-    title:      "Awesome Title"
-    author:     "Awesome Author"
-    theme:      "night"
-    transition: "page"
+    title:       "Awesome Title"
+    author:      "Awesome Author"
+    theme:       "night"
+    transition:  "page"
+    description: "My beautiful slides"
     """
     Given a file named "slides.haml" with:
     """
@@ -39,6 +40,14 @@ Feature: The capabilities of config.yml
     And the file "slides/index.html" should contain:
     """
     <meta name="author" content="Awesome Author">
+    """
+    And the file "slides/index.html" should contain:
+    """
+    <meta name="description" content="My beautiful slides">
+    """
+    And the file "slides/index.html" should contain:
+    """
+    <meta name="generator" content="reveal-ck
     """
     And the file "slides/index.html" should contain:
     """
