@@ -10,7 +10,7 @@ module RevealCK
         end
 
         let :generated_slides do
-          /^slides\/.+$/
+          %r{^slides/.+$}
         end
 
         it 'sets up ::Listen to run when things change' do

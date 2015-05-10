@@ -6,7 +6,9 @@ module RevealCK
     class PrintBanner
       attr_reader :doc_root, :port, :slides_file, :ui
       def initialize(doc_root, port, slides_file, ui)
-        @doc_root, @port, @slides_file = doc_root, port, slides_file
+        @doc_root = doc_root
+        @port = port
+        @slides_file = slides_file
         @ui = ui
       end
 

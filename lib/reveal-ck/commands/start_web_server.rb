@@ -8,7 +8,8 @@ module RevealCK
     class StartWebServer
       attr_reader :doc_root, :port
       def initialize(doc_root, port)
-        @doc_root, @port = doc_root, port
+        @doc_root = doc_root
+        @port = port
       end
 
       def run
