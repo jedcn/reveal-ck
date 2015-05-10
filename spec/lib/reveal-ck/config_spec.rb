@@ -34,6 +34,15 @@ module RevealCK
         expect(config.title).to eq 'My Presentation'
       end
 
+      it 'supplies a default description' do
+        expect(config.description).to eq ''
+      end
+
+      it 'supplies a #description, and #description=' do
+        config.description = 'My beautiful slides'
+        expect(config.description).to eq 'My beautiful slides'
+      end
+
       it 'supplies a default transition' do
         expect(config.transition).to eq 'default'
       end
