@@ -1,10 +1,9 @@
 require 'spec_helper'
 
 module RevealCK
-  VERSION = '1.0'
-
   module Builders
     describe IndexHtml do
+      let(:version) { RevealCK::VERSION }
       let :index_html_erb do
         RevealCK.template_path('index.html',
                                'index.html.erb')
@@ -46,7 +45,7 @@ module RevealCK
 
       it 'prints the program name and version in the generator tag' do
         expect(rendered_content)
-          .to include('<meta name="generator" content="reveal-ck 1.0">')
+          .to include(%(<meta name="generator" content="reveal-ck #{version}">))
       end
 
       it 'supports replacing the configured title' do
