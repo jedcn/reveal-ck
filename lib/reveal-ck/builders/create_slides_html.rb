@@ -36,12 +36,17 @@ module RevealCK
       end
 
       def apply_filters_to(html)
+        load_dependencies(config.requires)
         filters = get_classes_from_array(config.filters)
         pipeline = HTML::Pipeline.new(filters)
         filtered_html_string = FilteredHtmlString.new(html: html,
                                                       config: config.to_h,
                                                       pipeline: pipeline)
         filtered_html_string.render
+      end
+
+      def load_dependencies(array_of_includes)
+        array_of_includes.each { |name| require name }
       end
 
       def get_classes_from_array(array_of_names)
