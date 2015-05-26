@@ -1,4 +1,5 @@
 require 'html/pipeline'
+require 'html/pipeline/reveal_ck_emoji_filter'
 
 module RevealCK
   module Builders

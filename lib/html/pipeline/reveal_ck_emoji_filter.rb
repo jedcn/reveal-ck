@@ -8,7 +8,7 @@ module HTML
 
         text.gsub(emoji_pattern) do
           name = Regexp.last_match[1]
-          result = "<img class='emoji' title=':#{name}:' alt=':#{name}:'"
+          result = "<img class='emoji' title=':#{name}:' alt=':#{name}:' "
           result + "src='#{emoji_url(name)}' align='absmiddle' />"
         end
       end
