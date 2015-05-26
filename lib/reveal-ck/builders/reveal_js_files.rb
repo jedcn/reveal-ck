@@ -37,7 +37,7 @@ module RevealCK
 
       def lib
         FileList["#{dir}/lib/**/*.css",
-                 "#{dir}/lib/font/*",
+                 "#{dir}/lib/font/**/*",
                  "#{dir}/lib/**/*.js"]
       end
 
