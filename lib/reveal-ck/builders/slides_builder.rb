@@ -17,7 +17,7 @@ module RevealCK
         @output_dir = retrieve(:output_dir, args)
         @slides_file = retrieve(:slides_file, args)
         @application = Rake::Application.new
-        @config = Config.new
+        @config = args[:config] || Config.new
         @things_to_create = Set.new
       end
 
