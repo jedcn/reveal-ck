@@ -1,4 +1,5 @@
 require 'html/pipeline'
+require 'html/pipeline/reveal_ck_emoji_filter'
 
 module RevealCK
   module Builders
@@ -46,24 +47,6 @@ module RevealCK
       def get_classes_from_array(array_of_names)
         array_of_names.map do |name|
           name.split('::').reduce(Object) { |a, e| a.const_get(e) }
-        end
-      end
-    end
-  end
-end
-
-module HTML
-  class Pipeline
-    # This class is very similar EmojiFilter. It removes the inline
-    # width/height attributes so that reveal-ck supplied CSS takes effect.
-    class RevealCKEmojiFilter < EmojiFilter
-      def emoji_image_filter(text)
-        return text unless text.include?(':')
-
-        text.gsub(emoji_pattern) do
-          name = Regexp.last_match[1]
-          result = "<img class='emoji' title=':#{name}:' alt=':#{name}:'"
-          result + "src='#{emoji_url(name)}' align='absmiddle' />"
         end
       end
     end
