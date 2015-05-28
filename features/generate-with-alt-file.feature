@@ -17,7 +17,7 @@ Feature: reveal-ck generate --file
       reveal-ck generate --file 'slides_for_google_talk.md'
 
   Scenario: Generating basic slides any file
-    Given a file named "hump-day.haml" with:
+    Given a file named "slides_for_google_talk.haml" with:
     """
     %section
       %h2
@@ -39,9 +39,9 @@ Feature: reveal-ck generate --file
       %h3
         Anybody?
     """
-    When I run `reveal-ck generate --file hump-day.haml`
+    When I run `reveal-ck generate --file slides_for_google_talk.haml`
     Then the exit status should be 0
-    And the output should contain exactly "Generating slides for 'hump-day.haml'..\n"
+    And the output should contain exactly "Generating slides for 'slides_for_google_talk.haml'..\n"
     And the following files should exist:
-    | slides/slides.html |
-    | slides/index.html  |
+    | slides_for_google_talk/slides.html |
+    | slides_for_google_talk/index.html  |
