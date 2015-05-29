@@ -94,6 +94,41 @@ Feature: The capabilities of config.yml
     transition: 'page'
     """
 
+  Scenario: Generating slides with custom filters and requires
+    Given a file named "config.yml" with:
+    """
+    filters:
+      - 'HTML::Pipeline::ItsFilter'
+    requires:
+      - './its_filter'
+    """
+    And a file named "its_filter.rb" with:
+    """
+    module HTML
+      class Pipeline
+        class ItsFilter < TextFilter
+          def call
+            # Certain people prefer to say "It is" rather than "It's"
+            @text.gsub(/It&#39;s/, 'It is')
+          end
+        end
+      end
+    end
+    """
+    And a file named "slides.md" with:
+    """
+    It's not professional.
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the output should contain exactly "Generating slides for 'slides.md'..\n"
+    And the following files should exist:
+    | slides/index.html  |
+    And the file "slides/index.html" should contain:
+    """
+    <p>It is not professional.</p>
+    """
+
   Scenario: Referencing config data with a templating language
     Given a file named "config.yml" with:
     """

@@ -50,7 +50,8 @@ module RevealCK
                       'HTML::Pipeline::MentionFilter',
                       'HTML::Pipeline::AutolinkFilter'],
         'asset_root' => 'https://assets-cdn.github.com/images/icons/',
-        'base_url' => 'https://github.com'
+        'base_url' => 'https://github.com',
+        'requires' => []
       }
     end
   end
