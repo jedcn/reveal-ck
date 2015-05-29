@@ -54,6 +54,31 @@ module RevealCK
           end
         end
       end
+
+      it 'requires the entries in config.filters' do
+        Dir.mktmpdir do |dir|
+          Dir.chdir(dir) do
+            slides_file_initial = 'slides-initial.md'
+            File.open(slides_file_initial, 'w') do |file|
+              file.puts('# Slides')
+            end
+
+            config = Config.new
+            config.requires = %w(json time)
+            application = Rake::Application.new
+            slides_html =
+              CreateSlidesHtml.new(slides_file: slides_file_initial,
+                                   output_dir: dir,
+                                   config: config,
+                                   application: application)
+
+            slides_html.prepare
+            expect(slides_html).to receive(:require).with('json')
+            expect(slides_html).to receive(:require).with('time')
+            application['create_slides_html'].invoke
+          end
+        end
+      end
     end
   end
 end
