@@ -1,3 +1,25 @@
+### 3.2.0 / 2015-05-29
+
+[full changelog](https://github.com/jedcn/reveal-ck/compare/v3.1.0...v3.2.0)
+
+This release allows you to supply a new configuration option in your
+`config.yml`: `requires`
+
+This configuration option is list of things that will be required in
+when creating a presentation. It has been most useful for pulling in
+`HTML::Pipeline::Filter`s that are configured via the `filters` in the
+same `config.yml`.
+
+It also supplies a bug fix for
+https://github.com/jedcn/reveal-ck/issues/45, in which font files were
+missing, and 404s were being returned.
+
+There was also a fix for some erroneous output when running specs.
+
+Big thanks to [@kbrock][kbrock]!
+
+[kbrock]: https://github.com/kbrock
+
 ### 3.1.0 / 2015-05-09
 
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v3.0.1...v3.1.0)
