@@ -1,16 +1,19 @@
 Feature: reveal-ck generate --dir
 
-  By default, `reveal-ck generate` creates slides in a directory named after the slide file.
+  By default, `reveal-ck generate` creates slides in a directory named
+  after the slide file.
 
-  And this is known as your 'slides directory.'
+  And this is known as your "slides directory."
 
-  The slide directory from a slide file named 'slides.md' or 'slides.textile' will be 'slides.'
+  The slide directory from a slide file named 'slides.md' or
+  'slides.haml' will be `slides/`
 
-  However, if you'd prefer, you can create an alternate directory
-  `slides_for_google_talk` and have reveal-ck use that instead. To
-  do this, you'd say:
+  However, if you'd prefer, you can indicator an alternate directory,
+  such as `slides_for_google_talk/` instead.
 
-      reveal-ck generate --directory 'slides_for_google_talk'
+  To do this, you'd say:
+
+      reveal-ck generate --directory slides_for_google_talk
 
   Scenario: Generating custom slide directory
     Given a file named "slides.haml" with:

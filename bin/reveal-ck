@@ -15,7 +15,7 @@ class RevealCKExecutable
     c.desc 'The file containing your slide content'
     c.flag [:f, :file], default_value: default_file
 
-    c.desc 'The directory for the generated slides. name based upon slide file'
+    c.desc 'The directory for generated slides. Default based on slide file.'
     c.flag [:d, :dir]
 
     c.action do |_, options, _|
@@ -52,7 +52,7 @@ class RevealCKExecutable
     c.desc 'The file containing your slide content'
     c.flag [:f, :file], default_value: default_file
 
-    c.desc 'The directory to serve up. name based upon slide file'
+    c.desc 'The directory to serve up. Default is based on slide file.'
     c.flag [:d, :dir]
 
     c.desc 'The port to serve on'
