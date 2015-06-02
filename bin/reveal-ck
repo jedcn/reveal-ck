@@ -4,6 +4,7 @@ require 'reveal-ck'
 
 class RevealCKExecutable
   extend GLI::App
+  extend RevealCK::Misc::RemoveExtension
 
   program_desc 'A reveal.js construction kit'
 
@@ -34,7 +35,7 @@ class RevealCKExecutable
         msg = 'Create a file matching slides.* to proceed, such as slides.md.'
         exit_now!(msg)
       end
-      slides_dir = options[:dir] || options[:file].sub(%r{\.[^/]*\z}, '')
+      slides_dir = options[:dir] || remove_extension(options[:file])
 
       generate_args = {
         user_dir: Dir.pwd,
@@ -62,7 +63,7 @@ class RevealCKExecutable
     c.flag ['test-quit-after-starting'], type: Integer
 
     c.action do |_, options, _|
-      slides_dir = options[:dir] || options[:file].sub(%r{\.[^/]*\z}, '')
+      slides_dir = options[:dir] || remove_extension(options[:file])
       serve_args = {
         doc_root: slides_dir,
         gem_dir: RevealCK.path,
