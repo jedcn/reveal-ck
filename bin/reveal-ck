@@ -4,6 +4,7 @@ require 'reveal-ck'
 
 class RevealCKExecutable
   extend GLI::App
+  extend RevealCK::Misc::RemoveExtension
 
   program_desc 'A reveal.js construction kit'
 
@@ -11,14 +12,12 @@ class RevealCKExecutable
 
   desc 'Generate reveal.js slides'
   command :generate do |c|
-    slide_files = FileList['slides.*']
-    default_file = slide_files.empty? ? nil : slide_files.first
-
+    default_file = FileList['slides.*'].first
     c.desc 'The file containing your slide content'
     c.flag [:f, :file], default_value: default_file
 
-    c.desc 'The directory to place your generated slides in'
-    c.flag [:d, :dir], default_value: 'slides'
+    c.desc 'The directory for generated slides. Default based on slide file.'
+    c.flag [:d, :dir]
 
     c.action do |_, options, _|
       slides_file = options[:file]
@@ -36,11 +35,13 @@ class RevealCKExecutable
         msg = 'Create a file matching slides.* to proceed, such as slides.md.'
         exit_now!(msg)
       end
+      slides_dir = options[:dir] || remove_extension(options[:file])
+
       generate_args = {
         user_dir: Dir.pwd,
         gem_dir: RevealCK.path,
-        output_dir: options[:dir],
-        slides_file: options[:file]
+        output_dir: slides_dir,
+        slides_file: slides_file
       }
       RevealCK::Commands::Generate.new(generate_args).run
     end
@@ -48,14 +49,12 @@ class RevealCKExecutable
 
   desc 'Start webserver so slides are available via http'
   command :serve, :server do |c|
-    slide_files = FileList['slides.*']
-    default_file = slide_files.empty? ? nil : slide_files.first
-
+    default_file = FileList['slides.*'].first
     c.desc 'The file containing your slide content'
     c.flag [:f, :file], default_value: default_file
 
-    c.desc 'The directory to serve up'
-    c.flag [:d, :dir], default_value: 'slides'
+    c.desc 'The directory to serve up. Default is based on slide file.'
+    c.flag [:d, :dir]
 
     c.desc 'The port to serve on'
     c.flag [:p, :port], default_value: 10_000
@@ -64,10 +63,11 @@ class RevealCKExecutable
     c.flag ['test-quit-after-starting'], type: Integer
 
     c.action do |_, options, _|
+      slides_dir = options[:dir] || remove_extension(options[:file])
       serve_args = {
-        doc_root: options[:dir],
+        doc_root: slides_dir,
         gem_dir: RevealCK.path,
-        output_dir: options[:dir],
+        output_dir: slides_dir,
         port: options[:port],
         slides_file: options[:file],
         user_dir: Dir.pwd
