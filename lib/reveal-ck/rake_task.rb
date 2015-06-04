@@ -3,32 +3,39 @@ require 'rake/tasklib'
 require 'reveal-ck'
 
 module RevealCK
-  # "generates a reveal presentation"
+  # Generate a reveal.js presentation
   class RakeTask < Rake::TaskLib
     include ::Rake::DSL if defined?(::Rake::DSL)
 
     # Name of task.
-    # Defauts to `:reveal`.
+    #
+    # default:
+    #   :reveal
     attr_accessor :name
 
-    # the file containing your slide content.
-    # Defaults to `'slides.md'`.
+    # File containing slide content.
+    #
+    # default:
+    #   'slides.*'
     attr_accessor :file
 
-    # the output directory
-    # Defaults to `'slides'`.
+    # Directory where slides are placed.
+    #
+    # default:
+    #   'slides'
     attr_accessor :dir
+
     attr_accessor :user_dir
     attr_accessor :gem_dir
     attr_accessor :config
 
     def initialize(*args, &task_block)
-      @name          = args.shift || :reveal
-      @file          = FileList['slides.*'].first
-      @dir           = 'slides'
-      @user_dir      = Dir.pwd
-      @gem_dir       = RevealCK.path
-      @config        = Config.new
+      @name     = args.shift || :reveal
+      @file     = FileList['slides.*'].first
+      @dir      = 'slides'
+      @user_dir = Dir.pwd
+      @gem_dir  = RevealCK.path
+      @config   = Config.new
       yield self if block_given?
       define(args, &task_block)
     end
@@ -49,7 +56,8 @@ module RevealCK
     end
 
     def define(args, &task_block)
-      desc 'Generate a reveal slideshow' unless ::Rake.application.last_comment
+      last_comment = ::Rake.application.last_comment
+      desc 'Generate a reveal.js presentation' unless last_comment
       task name, *args do |_, task_args|
         RakeFileUtils.__send__(:verbose, verbose) do
           if task_block
