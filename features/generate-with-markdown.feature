@@ -14,12 +14,18 @@ Feature: Slides with markdown
   If you like to put tables in your slides, you can use the tables
   from [Github Flavored Markdown][github-flavored-markdown].
 
-  Finally-- unlike many other slide frameworks, reveal.js supports
-  vertical slides. You can start a series of vertical slides with
-  `***`. If you want to stop "going vertical" you can use another
-  `***`. Once you you realize that vertical is an option, you can
-  choose to do columns back-to-back, columns separated by horizontal
-  slides, etc. Check out several examples below.
+  Unlike many other slide frameworks, reveal.js supports vertical
+  slides. You can start a series of vertical slides with `***`. If you
+  want to stop "going vertical" you can use another `***`. Once you
+  you realize that vertical is an option, you can choose to do columns
+  back-to-back, columns separated by horizontal slides, etc. Check out
+  several examples below.
+
+  You can spread your markdown slides out over multiple files. Your
+  single "slides file" can include other markdown files using
+  `contents_of file_name.md`. The result will be merged together into
+  `slides/combined.md`, and then this aggregated file will be
+  transformed.
 
   If you'd like to see the intermediate file where your `slides.md` is
   transformed into `.html` you can visit `slides/slides.html`
@@ -385,3 +391,51 @@ Feature: Slides with markdown
     """
     #&lt;Atom@6cbda790: 10&gt;
     """
+
+  Scenario: Using "contents_of" to include other markdown files
+    Given a file named "slides.md" with:
+    """
+    # Welcome
+
+    ---
+
+    contents_of first_topic.md
+
+    contents_of references.md
+
+    """
+    And a file named "first_topic.md" with:
+    """
+    # Behold! The Internet!
+    ---
+    [Wikipedia Main Page][wikipedia-main]
+    ---
+    [Duck Duck Go][duck-duck-go]
+    """
+    And a file named "references.md" with:
+    """
+    [wikipedia-main]: http://en.wikipedia.org/wiki/Main_Page
+    [duck-duck-go]: https://duckduckgo.com/
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    # And the file "slides/combined.md" should contain:
+    # """
+    # # Welcome
+
+    # ---
+
+    # # Behold! The Internet!
+    # ---
+    # [Wikipedia Main Page][wikipedia-main]
+    # ---
+    # [Duck Duck Go][duck-duck-go]
+
+    # [wikipedia-main]: http://en.wikipedia.org/wiki/Main_Page
+    # [duck-duck-go]: https://duckduckgo.com/
+    # """
+    And the file "slides/index.html" should have html matching the xpath:
+    | //section[1]/h1[text()="Welcome"]               | First slide                    |
+    | //section[2]/h1[text()="Behold! The Internet!"] | First Slide of first_topic.md  |
+    | //section[3]/p/a[text()="Wikipedia Main Page"]  | Second Slide of first_topic.md |
+    | //section[4]/p/a[text()="Duck Duck Go"]         | Third Slide of first_topic.md  |
