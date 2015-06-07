@@ -11,6 +11,7 @@ module RevealCK
 
       def process
         strip_whitespace
+        include_contents_of
         protect_emojis
         add_first_slide_divider_if_needed
         add_last_slide_vertical_if_needed
@@ -21,6 +22,13 @@ module RevealCK
       end
 
       private
+
+      def include_contents_of
+        @doc = doc.gsub(/^contents_of (.*)$/) do
+          file_name = Regexp.last_match(1)
+          File.open(file_name).read
+        end
+      end
 
       def strip_whitespace
         @doc = doc.strip
