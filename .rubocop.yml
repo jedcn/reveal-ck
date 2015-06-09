@@ -3,10 +3,11 @@ CyclomaticComplexity:
 
 AllCops:
   Include:
-    - Rakefile
+    - '**/Rakefile'
     - rakelib/*.rake
   Exclude:
     - tmp/**/*
+    - files/reveal.js/**/*
 
 Encoding:
   EnforcedStyle: when_needed
