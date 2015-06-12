@@ -1,3 +1,44 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+
+Starting with version 3, the major version of this project matches
+reveal.js's major version: 3.
+
+Similar to http://semver.org, the minor of this project will bump when
+features are added,
+
+Similar to http://semver.org, the patch of this project will bump when
+bugs are fixed.
+
+## [Unreleased][unreleased]
+
+[unreleased]: https://github.com/jedcn/reveal-ck/compare/v3.2.0...master
+
+### Added
+
+* This project now provides a RakeTask that you can use to generate
+  slides. See [features/rake_task.feature](features/rake_task.feature)
+  for usage.
+
+### Changed
+
+* Generated slides used to be put in `slides/` unless you supplied the
+  `--dir` option. Now, if you're using a `--file` option and your
+  slides are named `great_talk.md` your generated slides will be in a
+  directory of a similar name: `great_talk/`. See
+  [features/generate-with-alt-dir.feature](features/generate-with-alt-dir.feature)
+  for info.
+
+### Fixed
+
+* :emoji: are now properly aligned. Previously, they looked ok in an
+  <h1>, but looked progressively worse as line-height got smaller--
+  say, in a <p>. They were vertically "off." Thanks [@kbrock][kbrock]!
+
+* rubocop warnings and erroneous error messages regarding tilt were
+  eliminated. Thanks [@kbrock][kbrock]!
+
 ### 3.2.0 / 2015-05-29
 
 [full changelog](https://github.com/jedcn/reveal-ck/compare/v3.1.0...v3.2.0)
