@@ -14,9 +14,6 @@ module RevealCK
       @config = retrieve(:config, args)
     end
 
-    # Rubocop doesn't like trivial accessors, but docile breaks if
-    # trivial accessors are used.
-    # rubocop:disable TrivialAccessors
     def theme(theme)
       config.theme = theme
     end
@@ -32,7 +29,6 @@ module RevealCK
     def author(author)
       config.author = author
     end
-    # rubocop:enable TrivialAccessors
 
     def revealjs_config(key, value)
       config.revealjs_config[key] = value
