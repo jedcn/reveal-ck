@@ -33,8 +33,9 @@ bugs are fixed.
 ### Fixed
 
 * :emoji: are now properly aligned. Previously, they looked ok in an
-  <h1>, but looked progressively worse as line-height got smaller--
-  say, in a <p>. They were vertically "off." Thanks [@kbrock][kbrock]!
+  `h1`, but looked progressively worse as line-height got smaller--
+  say, in a `<p>`. They were vertically "off." Thanks
+  [@kbrock][kbrock]!
 
 * rubocop warnings and erroneous error messages regarding tilt were
   eliminated. Thanks [@kbrock][kbrock]!
