@@ -7,6 +7,10 @@ SimpleCov.start do
   ]
 end
 
+# silence tilt autoload warnings
+require 'tilt/erb'
+require 'tilt/haml'
+
 require_relative '../lib/reveal-ck'
 
 RSpec.configure do |config|
