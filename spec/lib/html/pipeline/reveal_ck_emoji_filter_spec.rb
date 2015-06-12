@@ -14,7 +14,7 @@ module HTML
       it 'works with defined emoji' do
         expected = "I <img class='emoji' "
         expected += "alt=':heart:' src='asset_root/emoji/unicode/2764.png' "
-        expected += "/> emoji"
+        expected += '/> emoji'
         result = emoji_filter.emoji_image_filter('I :heart: emoji')
         expect(result).to eq(expected)
       end
