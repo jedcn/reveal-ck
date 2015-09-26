@@ -76,7 +76,7 @@ module RevealCK
         end
 
         it 'raises if it cannot find what you asked for' do
-          expect { finder.find 'unknown' }.to raise_error
+          expect { finder.find 'unknown' }.to raise_error(RuntimeError, /Unable to find unknown/)
         end
       end
     end
