@@ -23,6 +23,20 @@ bugs are fixed.
 
 ### Changed
 
+* The travis build infrastructure now contains 2.0.0, 2.1.x, and
+  2.2.x.
+
+* Upgrading the listen gem should eliminate #58.
+
+* Upgrading the html-pipeline gem should change the nokogiri gem,
+  which should eliminate #33.
+
+* The gems that reveal-ck requires have been upgraded to the latest
+  ones available as of September 2015. Gems needed as runtime
+  dependencies have been locked, and Gems needed for development
+  dependencies have been constrained to supply a modern development
+  environment.
+
 * Generated slides used to be put in `slides/` unless you supplied the
   `--dir` option. Now, if you're using a `--file` option and your
   slides are named `great_talk.md` your generated slides will be in a
