@@ -1,12 +1,10 @@
 require 'nokogiri'
 
 def check_html_matches(file, selector_list, selector_type)
-  prep_for_fs_check do
-    content = IO.read(file)
-    doc = Nokogiri::HTML(content)
-    selector_list.each do |selector, description|
-      check_doc_matches(doc, selector, description, selector_type)
-    end
+  content = IO.read(expand_path(file))
+  doc = Nokogiri::HTML(content)
+  selector_list.each do |selector, description|
+    check_doc_matches(doc, selector, description, selector_type)
   end
 end
 

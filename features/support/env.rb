@@ -1,6 +1,9 @@
 require 'aruba/cucumber'
 
+Aruba.configure do |config|
+  config.exit_timeout = 10
+end
+
 Before do
-  @aruba_io_wait_seconds = 10
-  @aruba_timeout_seconds = 10
+  aruba.config.io_wait_timeout = 10
 end
