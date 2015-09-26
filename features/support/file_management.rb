@@ -8,7 +8,7 @@ end
 # at reveal-ck/features/data.
 def copy_file_under_features(rel_features_file, dest_file)
   abs_features_file = File.join features_dir, rel_features_file
-  in_current_dir do
+  cd '.' do
     dest_dir = File.dirname dest_file
     FileUtils.mkdir_p(dest_dir) unless File.directory?(dest_dir)
     FileUtils.cp abs_features_file, dest_dir
