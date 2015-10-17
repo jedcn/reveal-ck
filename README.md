@@ -1,10 +1,5 @@
 # Create Slides with Markdown
 
-[![Gem Version](https://badge.fury.io/rb/reveal-ck.svg)](http://badge.fury.io/rb/reveal-ck)
-[![Build Status](https://travis-ci.org/jedcn/reveal-ck.svg)](https://travis-ci.org/jedcn/reveal-ck)
-[![Code Climate](https://codeclimate.com/github/jedcn/reveal-ck/badges/gpa.svg)](https://codeclimate.com/github/jedcn/reveal-ck)
-[![Test Coverage](https://codeclimate.com/github/jedcn/reveal-ck/badges/coverage.svg)](https://codeclimate.com/github/jedcn/reveal-ck)
-
 ## Overview
 
 reveal-ck is a command line tool that helps you author
@@ -58,6 +53,11 @@ Here's a long, but not exhaustive, list of things you can do:
 * Manage configuration of themes and plugins in a single config file.
 
 ## Contributing
+
+[![Gem Version](https://badge.fury.io/rb/reveal-ck.svg)](http://badge.fury.io/rb/reveal-ck)
+[![Build Status](https://travis-ci.org/jedcn/reveal-ck.svg)](https://travis-ci.org/jedcn/reveal-ck)
+[![Code Climate](https://codeclimate.com/github/jedcn/reveal-ck/badges/gpa.svg)](https://codeclimate.com/github/jedcn/reveal-ck)
+[![Test Coverage](https://codeclimate.com/github/jedcn/reveal-ck/badges/coverage.svg)](https://codeclimate.com/github/jedcn/reveal-ck)
 
 If you're a ruby developer and you want to get going with local
 development, please see [CONTRIBUTING.md](CONTRIBUTING.md).
