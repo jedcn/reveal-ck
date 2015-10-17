@@ -26,7 +26,7 @@ reveal-ck by typing `reveal-ck --version`.
 Here's a [quick example][quick-example] so you can see what using
 reveal-ck is like.
 
-[quick-example]: doc/QUICK-EXAMPLE.md
+[quick-example]: docs/QUICK-EXAMPLE.md
 
 ## Question?
 
