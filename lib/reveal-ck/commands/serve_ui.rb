@@ -8,7 +8,7 @@ module RevealCK
         problem: '[  problem  ]',
         rebuild: '[  rebuild  ]',
         reload:  '[   reload  ]'
-      }
+      }.freeze
 
       def problem(general_problem, specific_error)
         blank :problem

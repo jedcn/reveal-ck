@@ -2,7 +2,7 @@ require 'cucumber'
 require 'cucumber/rake/task'
 require 'rake/clean'
 
-CUKE_RESULTS = 'cucumber_results.html'
+CUKE_RESULTS = 'cucumber_results.html'.freeze
 
 CLEAN << CUKE_RESULTS
 
