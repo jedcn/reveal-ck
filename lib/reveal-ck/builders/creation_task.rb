@@ -13,7 +13,7 @@ module RevealCK
       end
 
       def setup
-        fail('setup must be implemented by subclasses')
+        raise('setup must be implemented by subclasses')
       end
 
       def name
