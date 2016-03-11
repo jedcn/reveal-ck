@@ -13,7 +13,7 @@ of the details of building a reveal.js presentation.
 You write your presentation in markdown, in a single file, and
 reveal-ck generates everything else.
 
-## Basic Usage
+## Get Started Now
 
 Here's a [quick example][quick-example] so you can see what using
 reveal-ck is like.
@@ -26,10 +26,11 @@ There are many, many things you can do to customize your slides!
 
 Here's a long, but not exhaustive, list of things you can do:
 
-* Get fast feedback between text editor and browser using LiveReload
-* Take advantage of reveal.js' vertical slides
+* Get fast feedback with LiveReload. Save your slides and instantly
+  see the result.
 * Host your slides up on Github Pages.
 * Use any emoji available on github, such as `:money_with_wings:`
+* Take advantage of reveal.js' vertical slides
 * Use Github Flavored Markdown Tables
 * Write your slides in HTML or popular Ruby templating languages, like
   ERB and Haml, and Slim.
@@ -41,10 +42,14 @@ Here's a long, but not exhaustive, list of things you can do:
 ## Installation
 
 `reveal-ck` is delivered as a RubyGem, and so, you need Ruby 2.0+ and
-then installing should be as easy as `gem install reveal-ck`.
+then installing should be as easy as:
+
+    gem install reveal-ck
 
 Verify that things are functional and you have the latest version of
-reveal-ck by typing `reveal-ck --version`.
+reveal-ck by typing:
+
+    reveal-ck --version
 
 ## Questions?
 
