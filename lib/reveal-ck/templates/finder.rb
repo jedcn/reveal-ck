@@ -27,7 +27,7 @@ module RevealCK
             return match unless File.directory? match
           end
         end
-        fail "Unable to find #{template_name} in #{paths}"
+        raise "Unable to find #{template_name} in #{paths}"
       end
     end
   end

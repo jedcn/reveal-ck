@@ -13,7 +13,7 @@ def check_doc_matches(doc, selector, description, type)
   return unless search_result.empty?
   message = "Could not find #{description}. "
   message += "No match for #{type} '#{selector}'"
-  fail message
+  raise message
 end
 
 Then(/^the file "(.*?)" should have html matching the css:$/) do |file, table|

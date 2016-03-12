@@ -28,15 +28,15 @@ module RevealCK
 
       describe '#problem' do
         it 'prints several messages to standard out' do
-          expect(serve_ui).to receive(:puts).with("#{problem_prefix}")
+          expect(serve_ui).to receive(:puts).with(problem_prefix.to_s)
           expect(serve_ui)
             .to receive(:puts)
             .with("#{problem_prefix} Compilation Problem")
-          expect(serve_ui).to receive(:puts).with("#{problem_prefix}")
+          expect(serve_ui).to receive(:puts).with(problem_prefix.to_s)
           expect(serve_ui)
             .to receive(:puts)
             .with("#{problem_prefix} on line 12")
-          expect(serve_ui).to receive(:puts).with("#{problem_prefix}")
+          expect(serve_ui).to receive(:puts).with(problem_prefix.to_s)
           serve_ui.problem('Compilation Problem', 'on line 12')
         end
       end

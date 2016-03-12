@@ -8,7 +8,7 @@ module RevealCK
         problem: '[  problem  ]',
         rebuild: '[  rebuild  ]',
         reload:  '[   reload  ]'
-      }
+      }.freeze
 
       def problem(general_problem, specific_error)
         blank :problem
@@ -29,7 +29,7 @@ module RevealCK
 
       def blank(type = nil)
         prefix = PREFIXES[type] || ''
-        puts "#{prefix}"
+        puts prefix.to_s
       end
 
       def separator

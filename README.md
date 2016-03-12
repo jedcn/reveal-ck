@@ -1,166 +1,69 @@
 # Create Slides with Markdown
 
+## reveal-ck is..
+
+a command line tool that helps you author [reveal.js][reveal.js]
+presentations.
+
+[reveal.js]: http://lab.hakim.se/reveal-js
+
+It lets you focus on the content of your presentation by taking care
+of the details of building a reveal.js presentation.
+
+You write your presentation in markdown, in a single file, and
+reveal-ck generates everything else.
+
+## Get Started Now
+
+Here's a [quick example][quick-example] so you can see what using
+reveal-ck is like.
+
+[quick-example]: docs/QUICK-EXAMPLE.md
+
+## Learning More
+
+There are many, many things you can do to customize your slides!
+
+Here's a long, but not exhaustive, list of things you can do:
+
+* Get fast feedback with LiveReload. Save your slides and instantly
+  see the result.
+* Host your slides up on Github Pages.
+* Use any emoji available on github, such as `:money_with_wings:`
+* Take advantage of reveal.js' vertical slides
+* Use Github Flavored Markdown Tables
+* Write your slides in HTML or popular Ruby templating languages, like
+  ERB and Haml, and Slim.
+* Easily support CSS tweaks.
+* Use `@mentions`, such as, @jedcn.
+* Manage configuration of themes and plugins in a single config file.
+* Integrate with `rake` (ie: create rake tasks that build slides)
+
+## Installation
+
+`reveal-ck` is delivered as a RubyGem, and so, you need Ruby 2.0+ and
+then installing should be as easy as:
+
+    gem install reveal-ck
+
+Verify that things are functional and you have the latest version of
+reveal-ck by typing:
+
+    reveal-ck --version
+
+## Questions?
+
+Not everything is documented, and nothing is perfect, so-- if you'd
+like to [ask a question or log a bug please do so][new-issue]!
+
+[new-issue]: https://github.com/jedcn/reveal-ck/issues/new
+
+## Contributing
+
 [![Gem Version](https://badge.fury.io/rb/reveal-ck.svg)](http://badge.fury.io/rb/reveal-ck)
 [![Build Status](https://travis-ci.org/jedcn/reveal-ck.svg)](https://travis-ci.org/jedcn/reveal-ck)
 [![Code Climate](https://codeclimate.com/github/jedcn/reveal-ck/badges/gpa.svg)](https://codeclimate.com/github/jedcn/reveal-ck)
 [![Test Coverage](https://codeclimate.com/github/jedcn/reveal-ck/badges/coverage.svg)](https://codeclimate.com/github/jedcn/reveal-ck)
 
-reveal-ck helps you author [reveal.js][reveal.js] presentations.
-
-You can create slides in numerous languages, but the most popular is
-Markdown. And not just any markdown-- it's markdown like you write on
-https://github.com, so it supports:
-
-* emoji (:money_with_wings:)
-* automatic links (https://github.com)
-* @mentions (@jedcn)
-* GFM tables
-
-## How do I get started?
-
-* Install [the reveal-ck gem][reveal-ck-gem]
-* Copy and paste the following, and save it in a file named
-  `slides.md`:
-```
-## i :heart: reveal.js
----
-## This is your
-* presentation
-* content
-* in a single file
----
-## Slides are Separated with `---`
----
-## Vertical Sections..
-Start and End with `***`
-***
-These
----
-Slides
----
-Are
----
-Vertical!!
-***
-## :zap: LiveReload is builtin :zap:
-with `reveal-ck serve`
----
-## :metal: emoji comes standard :money_with_wings:
----
-## What's up with the "-ck"?
-It stands for construction kit.
----
-# So, if you're not
-a fan of Markdown you can also use
-
-1. html
-2. erb
-3. haml
-4. slim
-5. ruby (DSL)
----
-## See also:
-http://jedcn.github.io/reveal-ck/
----
-## Might be helpful:
-https://relishapp.com/jedcn/reveal-ck/
-## Questions? Problems?
-Let me know, @jedcn
----
-# Thanks!
-```
-* Open a terminal and change to the directory with your new
-  `slides.md`
-* Run `reveal-ck generate` followed by `reveal-ck serve`. You should
-  see:
-```
-$ reveal-ck generate
-Generating slides for 'slides.md'..
-$ reveal-ck serve
-------------------------------------------------------------
-[ reveal-ck ] Serving up slide content in 'slides/'.
-[ reveal-ck ] Open your browser to 'http://localhost:10000'.
-[ reveal-ck ] Press CTRL-C to stop.
-------------------------------------------------------------
-[ reveal-ck ] Getting Ready to Reload Browsers.
-[   reload  ] Using Guardfile at ...
-[   reload  ] LiveReload is waiting for a browser to connect.
-[   reload  ] Guard is now watching at 'whereever'
-[ reveal-ck ] Getting Ready to Rebuild Slides.
-[ reveal-ck ] Starting Webserver.
-```
-
-Now view the slide deck generated from this single file by opening
-your browser to [http://localhost:10000][localhost].
-
-Check back at the terminal where the serve command is running and see
-that reveal-ck is aware that you're viewing your slides:
-
-```
-[   reload  ] Browser connected.
-```
-
-## And then?
-
-Use your editor and make a change to the `slides.md` file.
-
-reveal-ck will see the change, rebuild your slides, and reload your
-browser for you.
-
-As a final step *for now*, create a file named `config.yml` alongside
-the `slides.md` and add a single line:
-
-```
-theme: night
-```
-
-And your slides will take on the night theme from reveal.js.
-
----
-
-## What is it like?
-
-Here's a quick example of what it's like to work with reveal-ck:
-
-* Normally you'd use a text editor, but for brevity, this example
-  creates a file named `slides.md` with the `echo` command.
-* A presentation is then generated with `reveal-ck generate`.
-* That presentation is viewed with `open slides/index.html`. You'd
-  normally run a `reveal-ck serve` and then view
-  [https://localhost:10000][localhost]
-* Next, a theme is introduced by supplying a `config.yml` file.
-* That theme comes into play when the same presentation is generated
-  again.
-* Finally, the presentation is viewed again with `open slides/index.html`
-
-![Fast Introduction](https://jedcn.github.io/reveal-ck/images/reveal-ck-fast-intro.gif)
-
----
-
-## Where does this leave us?
-
-* reveal-ck helps you build reveal.js presentations
-* your content is stored in a single file so you can easily track it
-  (**with git**) and review it (**with your brain**)
-* write in markdown or the html-ish language of your choice
-
-If find these ideas intriguing, you can learn more at
-http://jedcn.github.io/reveal-ck/.
-
-## Contributing
-
-If you'd like to log a bug, propose an issue, or get going with local
+If you're a ruby developer and you want to get going with local
 development, please see [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## Questions?
-
-If you have questions, find me on github ([@jedcn][github-jedcn]) or
-twitter ([@jedcn][twitter-jedcn]), open an issue, or email me at
-revealck@jedcn.com.
-
-[reveal.js]:     http://lab.hakim.se/reveal-js
-[github-jedcn]:  https://github.com/jedcn
-[twitter-jedcn]: https://twitter.com/jedcn
-[reveal-ck-gem]: https://rubygems.org/gems/reveal-ck
-[localhost]:     http://localhost:10000
-[github-pages]:  https://pages.github.com/
