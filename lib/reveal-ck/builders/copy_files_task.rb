@@ -17,7 +17,8 @@ module RevealCK
       end
 
       def analyze_file(file)
-        dest = file.pathmap("%{^#{file_listing.dir}/,#{output_dir}/}p")
+        src_dir = Regexp.escape(file_listing.dir)
+        dest = file.pathmap("%{^#{src_dir}/,#{output_dir}/}p")
         copy_file(file, dest)
         dest_dir = dest.pathmap('%d')
         create_directory(dest_dir)
