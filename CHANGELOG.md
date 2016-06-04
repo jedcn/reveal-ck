@@ -13,7 +13,7 @@ bugs are fixed.
 
 ## [Unreleased][unreleased]
 
-[unreleased]: https://github.com/jedcn/reveal-ck/compare/v3.3.0...master
+[unreleased]: https://github.com/jedcn/reveal-ck/compare/v3.3.1...master
 
 ### Added
 
@@ -26,6 +26,23 @@ bugs are fixed.
 ### Fixed
 
 * Nothing.
+
+## 3.3.1 / 2015-09-26
+
+[Detailed Changes](https://github.com/jedcn/reveal-ck/compare/v3.3.0...v3.3.1)
+
+### Added
+
+* Nothing.
+
+### Changed
+
+* Slight tweaks to please Rubocop.
+
+### Fixed
+
+* Previously, you could not generate files into a directory with a
+  character such as `+`. Now you can.
 
 ### 3.3.0 / 2015-09-26
 
