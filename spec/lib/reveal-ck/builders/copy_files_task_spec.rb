@@ -68,6 +68,28 @@ module RevealCK
 
         task.prepare
       end
+
+      context 'with a funky directory name' do
+        let :source_dir do
+          'fun+trouble'
+        end
+
+        it 'creates the files from the file_listing' do
+          task = CopyFilesTask.new(application: Rake::Application.new,
+                                   file_listing: file_listing,
+                                   output_dir: destination_directory)
+
+          expect(task)
+            .to receive(:copy_file)
+            .with(file_a_source, file_a_destination)
+
+          expect(task)
+            .to receive(:copy_file)
+            .with(file_b_source, file_b_destination)
+
+          task.prepare
+        end
+      end
     end
   end
 end
