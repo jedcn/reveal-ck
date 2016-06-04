@@ -27,7 +27,7 @@ bugs are fixed.
 
 * Nothing.
 
-## 3.3.1 / 2015-09-26
+## 3.3.1 / 2016-06-04
 
 [Detailed Changes](https://github.com/jedcn/reveal-ck/compare/v3.3.0...v3.3.1)
 
@@ -38,6 +38,7 @@ bugs are fixed.
 ### Changed
 
 * Slight tweaks to please Rubocop.
+* Using new version of html-pipeline
 
 ### Fixed
 
