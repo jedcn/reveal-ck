@@ -15,3 +15,8 @@ Encoding:
 FileName:
   Exclude:
     - lib/reveal-ck.rb
+
+Metrics/BlockLength:
+  Exclude:
+    - bin/reveal-ck
+    - spec/**/*.rb
