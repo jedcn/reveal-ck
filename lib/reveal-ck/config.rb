@@ -17,7 +17,7 @@ module RevealCK
     def defaults
       [core_defaults,
        revealjs_config_defaults,
-       filter_defaults].reduce({}) { |a, e| a.merge(e) }
+       filter_defaults].reduce({}) { |acc, elem| acc.merge(elem) }
     end
 
     def core_defaults
