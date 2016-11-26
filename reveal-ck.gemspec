@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rinku', '1.7.3'
   s.add_dependency 'slim', '3.0.6'
   s.add_dependency 'tilt', '2.0.1'
+  s.add_dependency 'thor', '0.19.1'
 
   #
   # Development Dependencies
