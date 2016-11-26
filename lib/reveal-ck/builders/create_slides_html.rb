@@ -51,7 +51,7 @@ module RevealCK
 
       def get_classes_from_array(array_of_names)
         array_of_names.map do |name|
-          name.split('::').reduce(Object) { |a, e| a.const_get(e) }
+          name.split('::').reduce(Object) { |acc, elem| acc.const_get(elem) }
         end
       end
     end
