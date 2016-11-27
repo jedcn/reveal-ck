@@ -86,6 +86,18 @@ Here's an example of putting markdown into a `%section` in a
     * Point 2
 ```
 
+## Servers
+
+### Can I use an alternative to WEBrick?
+
+Yes. reveal-ck uses Rack which provides a level of indirection around
+which webserver is used.
+
+If you'd like to use Puma, for example, you could create a `Gemfile`
+and run reveal-ck as described [here][using-puma].
+
+[using-puma]: https://github.com/jedcn/reveal-ck/issues/70#issuecomment-226913789
+
 ## Videos
 
 There are several videos that also **show** what's going on if you'd
