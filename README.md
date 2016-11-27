@@ -66,4 +66,6 @@ like to [ask a question or log a bug please do so][new-issue]!
 [![Test Coverage](https://codeclimate.com/github/jedcn/reveal-ck/badges/coverage.svg)](https://codeclimate.com/github/jedcn/reveal-ck)
 
 If you're a ruby developer and you want to get going with local
-development, please see [CONTRIBUTING.md](CONTRIBUTING.md).
+development, please see [.github/CONTRIBUTING.md][CONTRIBUTING.md].
+
+[CONTRIBUTING.md]: .github/CONTRIBUTING.md
