@@ -16,6 +16,7 @@ module RevealCK
         Rack::Server.new(app: build_rack_app(doc_root),
                          Port: port,
                          Logger: server_log,
+                         DoNotReverseLookup: true,
                          AccessLog: access_log).start
       end
 
