@@ -21,7 +21,8 @@ bugs are fixed.
 
 ### Changed
 
-* Nothing.
+* WEBrick is now started with the "DoNotReverseLookup" flag. See
+  https://github.com/jedcn/reveal-ck/issues/70 for details.
 
 ### Fixed
 
