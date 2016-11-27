@@ -385,3 +385,18 @@ Feature: Slides with markdown
     """
     #&lt;Atom@6cbda790: 10&gt;
     """
+
+  Scenario: Creating a slide with notes that contain markdown
+    Given a file named "slides.md" with:
+    """
+    # Hello There!
+
+    ```notes
+    Remember to *smile*
+    ```
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the file "slides/index.html" should have html matching the xpath:
+    | //section/aside[contains(., "Remember to smile")] | the note to remember |
+    | //section/aside/p/em[contains(., "smile")]        | smile is in <em>s    |

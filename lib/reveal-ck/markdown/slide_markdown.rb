@@ -18,7 +18,9 @@ module RevealCK
         if language.nil?
           "<pre><code>#{escaped}</code></pre>"
         elsif language == 'notes' || language == 'note'
-          "<aside class='notes'>#{escaped}</aside>"
+          markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+          notes = markdown.render(escaped)
+          "<aside class='notes'>#{notes}</aside>"
         else
           "<pre><code class=\"#{language}\">#{escaped}</code></pre>"
         end

@@ -17,7 +17,7 @@ bugs are fixed.
 
 ### Added
 
-* Nothing.
+* You can now use Markdown in slide notes.
 
 ### Changed
 
