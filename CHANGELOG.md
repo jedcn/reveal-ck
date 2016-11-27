@@ -17,7 +17,8 @@ bugs are fixed.
 
 ### Added
 
-* You can now use Markdown in slide notes.
+* You can now use Markdown in slide notes. See
+  https://github.com/jedcn/reveal-ck/issues/68 for details.
 
 ### Changed
 
