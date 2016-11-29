@@ -1,5 +1,7 @@
 # Direct Tilt to use SlideMarkdownTemplate for "md" files
-Tilt.register RevealCK::Markdown::SlideMarkdownTemplate, 'md'
+Tilt.register Tilt::KramdownTemplate, 'kramdown'
+
+Tilt.register RevealCK::Markdown::SlideMarkdownTemplate, 'md', 'markdown'
 
 # The following requires are present to avoid warnings such as:
 #
