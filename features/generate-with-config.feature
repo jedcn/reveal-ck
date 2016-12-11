@@ -108,8 +108,8 @@ Feature: The capabilities of config.yml
       class Pipeline
         class ItsFilter < TextFilter
           def call
-            # Certain people prefer to say "It is" rather than "It's"
-            @text.gsub(/It&#39;s/, 'It is')
+            # Certain people prefer to say "It is" rather than "It’s"
+            @text.gsub(/It’s/, 'It is')
           end
         end
       end

@@ -15,6 +15,7 @@ module RevealCK
         handle_start
         handle_end
         transform_symbols_to_sections
+        transform_notes_symbols_to_asides
       end
 
       private
@@ -57,6 +58,12 @@ module RevealCK
         replace(back_to_back_vertical_symbols_regex, vertical_end_start)
         replace(vertical_start_symbol, vertical_start)
         replace(vertical_end_symbol, vertical_end)
+      end
+
+      def transform_notes_symbols_to_asides
+        replace(RevealCK::Markdown::REVEALCK_SYMBOL_FOR_NOTES_OPEN,
+                '<aside class="notes">')
+        replace(RevealCK::Markdown::REVEALCK_SYMBOL_FOR_NOTES_CLOSE, '</aside>')
       end
 
       def replace(old, new)

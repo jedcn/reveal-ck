@@ -57,38 +57,18 @@ eos
 eos
         expect(output).to include '<pre><code>'
         expect(output).to include '</code></pre>'
-        expect(output).to include '&lt;p&gt;&quot;&amp;&quot;&lt;/p&gt;'
+        expect(output).to include '&lt;p&gt;"&amp;"&lt;/p&gt;'
       end
 
-      it 'wraps ```ruby code in a <pre> and <code class="ruby">' do
+      it 'wraps ```ruby code in a <pre> and <code class="language-ruby">' do
         output = render_markdown <<-eos
 ```ruby
 def adder(a, b); a + b; end
 ```
 eos
-        expect(output).to include '<pre><code class="ruby">'
+        expect(output).to include '<pre><code class="language-ruby">'
         expect(output).to include '</code></pre>'
         expect(output).to include 'a + b'
-      end
-
-      it 'creates an <aside class="notes"> when it sees a ```notes' do
-        output = render_markdown <<-eos
-```notes
-This is a note
-```
-eos
-        expect(output).to include "<aside class='notes'"
-        expect(output).to include 'This is a note'
-      end
-
-      it 'creates an <aside class="notes"> when it sees a ```note' do
-        output = render_markdown <<-eos
-```note
-This is a note
-```
-eos
-        expect(output).to include "<aside class='notes'"
-        expect(output).to include 'This is a note'
       end
 
       it 'works when there is no space surrounding the ---' do

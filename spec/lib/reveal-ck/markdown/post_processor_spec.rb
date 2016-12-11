@@ -17,6 +17,34 @@ module RevealCK
         expect(output).to include ':non-potable_water:'
       end
 
+      context 'handling notes' do
+        let :transformed_notes do
+          <<-eos
+<div>DIVIDER</div>
+
+
+<div>NOTES_OPEN</div>
+
+This is a note
+
+<div>NOTES_CLOSE</div>
+
+
+<div>DIVIDER</div>
+eos
+        end
+
+        it 'translates <div>NOTES_OPEN</div> into <aside class="notes">' do
+          output = PostProcessor.new(transformed_notes).process
+          expect(output).to include "\n<aside class=\"notes\">\n"
+        end
+
+        it 'translates <div>NOTES_CLOSE</div> into </aside>' do
+          output = PostProcessor.new(transformed_notes).process
+          expect(output).to include "\n</aside>\n"
+        end
+      end
+
       context 'without vertical slides' do
         let :three_slide_input do
           <<-eos
