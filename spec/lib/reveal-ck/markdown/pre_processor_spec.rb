@@ -3,6 +3,60 @@ require 'spec_helper'
 module RevealCK
   module Markdown
     describe PreProcessor do
+      describe 'handling ```notes' do
+        let :notes_input do
+          <<-eos
+```notes
+This is a note
+```
+eos
+        end
+
+        let :note_input do
+          <<-eos
+```note
+This is a note
+```
+eos
+        end
+
+        let :transformed_notes do
+          <<-eos
+<div>DIVIDER</div>
+
+
+<div>NOTES_OPEN</div>
+
+This is a note
+
+<div>NOTES_CLOSE</div>
+
+
+<div>DIVIDER</div>
+eos
+        end
+
+        it 'transforms ```notes into <div>NOTES_OPEN</div>' do
+          output = PreProcessor.new(notes_input).process
+          expect(output).to include '<div>NOTES_OPEN</div>'
+        end
+
+        it 'transforms ```note into <div>NOTES_OPEN</div>' do
+          output = PreProcessor.new(note_input).process
+          expect(output).to include '<div>NOTES_OPEN</div>'
+        end
+
+        it 'transforms the trailing ``` into <div>NOTES_CLOSE</div>' do
+          output = PreProcessor.new(note_input).process
+          expect(output).to include '<div>NOTES_CLOSE</div>'
+        end
+
+        it 'transforms both open and close and adds some newlines' do
+          output = PreProcessor.new(notes_input).process
+          expect(output).to eq transformed_notes
+        end
+      end
+
       it 'protects _s within emoji by turning them into a temporary token' do
         input = ':money_with_wings:'
         output = PreProcessor.new(input).process

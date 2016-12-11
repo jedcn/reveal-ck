@@ -9,10 +9,11 @@ Feature: Using the :markdown filter within haml
     %section
       :markdown
         # Things That Go
-        ### ...Bump In The Night
+
+        ### Bump In The Night
     """
     When I run `reveal-ck generate`
     Then the exit status should be 0
     And the file "slides/index.html" should have html matching the xpath:
-    | //section/h1[text()="Things That Go"]       | the h1 |
-    | //section/h3[text()="...Bump In The Night"] | the h3 |
+    | //section/h1[text()="Things That Go"]    | the h1 |
+    | //section/h3[text()="Bump In The Night"] | the h3 |

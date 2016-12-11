@@ -20,6 +20,12 @@ bugs are fixed.
 * You can now use Markdown in slide notes. See
   https://github.com/jedcn/reveal-ck/issues/68 for details.
 
+* kramdown is the new markdown rendering engine. It replaces
+  redcarpet. The primary rationale is to provide an extension within
+  markdown that supports specifying classes to rendered HTML
+  elements. See https://github.com/jedcn/reveal-ck/issues/71 for
+  details.
+
 ### Changed
 
 * WEBrick is now started with the "DoNotReverseLookup" flag. See

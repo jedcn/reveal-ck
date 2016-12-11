@@ -1,6 +1,6 @@
 Feature: Slides with markdown
 
-  reveal-ck can create a presentation using [markdown][redcarpet].
+  reveal-ck can create a presentation using [markdown][kramdown].
 
   You should create a file named `slides.md` where each slide is
   separated by '---'. Then run `reveal-ck generate`.
@@ -24,7 +24,7 @@ Feature: Slides with markdown
   If you'd like to see the intermediate file where your `slides.md` is
   transformed into `.html` you can visit `slides/slides.html`
 
-  [redcarpet]: https://github.com/vmg/redcarpet
+  [kramdown]: https://github.com/gettalong/kramdown
   [github-flavored-markdown]: https://help.github.com/articles/github-flavored-markdown/
 
   Scenario: Generating basic slides with slides.md
@@ -104,6 +104,7 @@ Feature: Slides with markdown
     # Welcome
     ---
     ## Superb Tables
+
     Item          | Value         | Quantity
     ------------- | ------------- | ---------
     Apples        | $1            |       18
@@ -134,6 +135,7 @@ Feature: Slides with markdown
     # Welcome
     ---
     ## Superb Tables
+
     | Item          | Value         | Quantity  |
     | ------------- | ------------- | --------- |
     | Apples        | $1            |       18  |
@@ -164,6 +166,7 @@ Feature: Slides with markdown
     # Welcome
     ---
     ## Superb Tables
+
     | Item | Value | Quantity |
     | -------- | ------------- | --------- |
     | Apples  | $1 |      18  |
@@ -194,11 +197,12 @@ Feature: Slides with markdown
     # Welcome
     ---
     ## Superb Tables
+
     Item          | Value         | Quantity
-    ------------- | ------------- | ---------
-    ~~Apples~~    | $1            |    ==18==
-    Lemonade      | $2            |        20
-    _Bread_       | **$3.50**     |         2
+    ------------- | ------------- | ---------------
+    ~~Apples~~    | $1            | <mark>18</mark>
+    Lemonade      | $2            | 20
+    _Bread_       | **$3.50**     | 2
     ---
     # Thank You
     """
@@ -223,6 +227,7 @@ Feature: Slides with markdown
     # Welcome
     ---
     ## Superb Tables
+
     Item           | Value           | Quantity
     :------------- | :-------------: | ---------:
     Apples         | $1              |       18
@@ -400,3 +405,77 @@ Feature: Slides with markdown
     And the file "slides/index.html" should have html matching the xpath:
     | //section/aside[contains(., "Remember to smile")] | the note to remember |
     | //section/aside/p/em[contains(., "smile")]        | smile is in <em>s    |
+
+  Scenario: Creating a slide that has heading that becomes visible
+    Given a file named "slides.md" with:
+    """
+    {:.fragment}
+    # Hello There!
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the file "slides/index.html" should have html matching the xpath:
+      | //section//h1[contains(@class, 'fragment') and text() = 'Hello There!'] | an h1 with a class of fragment |
+
+  Scenario: Creating a slide that has bullet points that become visible
+    Given a file named "slides.md" with:
+    """
+    * This is..
+    * {:.fragment} pretty neat!
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the file "slides/index.html" should have html matching the xpath:
+      | //section//li[contains(@class, 'fragment') and text() = 'pretty neat!'] | an li with a class of fragment |
+
+  Scenario: Creating a slide that has code that become visible
+    Given a file named "slides.md" with:
+    """
+    {:.fragment}
+    ```
+      def hello_world
+        puts 'Hello World!'
+      end
+    ```
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the file "slides/index.html" should have html matching the xpath:
+      | //section//pre[contains(@class, 'fragment')] | the pre surrounding the code with a class of fragment |
+
+
+  Scenario: Creating a slide that has code that become visible
+    Given a file named "slides.md" with:
+    """
+    {:.fragment}
+    Be Kind;
+
+    {:.fragment}
+    Everyone You Meet
+
+    {:.fragment}
+    is Fighting a Hard Battle
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the file "slides/index.html" should have html matching the xpath:
+      | //section//p[contains(@class, 'fragment') and text() = 'Be Kind;' ]          | the first paragraph with a class of fragment  |
+      | //section//p[contains(@class, 'fragment') and text() = 'Everyone You Meet' ] | the second paragraph with a class of fragment |
+
+  Scenario: Creating a slide that has paragraphs which become visible in a specified order
+    Given a file named "slides.md" with:
+    """
+    {:.fragment data-fragment-index="2"}
+    Be Kind:
+
+    Everyone You Meet
+
+    {:.fragment data-fragment-index="1"}
+    is Fighting a Hard Battle
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the file "slides/index.html" should have html matching the xpath:
+      | //section//p[text() = 'Everyone You Meet' ]                                                                       | revealed first even though comes second |
+      | //section//p[contains(@class, 'fragment') and @data-fragment-index="1" and text() = 'is Fighting a Hard Battle' ] | revealed first even though comes second |
+      | //section//p[contains(@class, 'fragment') and @data-fragment-index="2" and text() = 'Be Kind:' ]                  | revealed second even though comes first |
