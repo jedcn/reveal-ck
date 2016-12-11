@@ -13,7 +13,21 @@ bugs are fixed.
 
 ## [Unreleased][unreleased]
 
-[unreleased]: https://github.com/jedcn/reveal-ck/compare/v3.3.1...master
+[unreleased]: https://github.com/jedcn/reveal-ck/compare/v3.4.0...master
+
+### Added
+
+* Nothing
+
+### Changed
+
+* Nothing
+
+### Fixed
+
+* Nothing.
+
+## 3.4.1 / 2016-12-11
 
 ### Added
 
