@@ -36,13 +36,13 @@ Gem::Specification.new do |s|
 
   #
   # Development Dependencies
-  s.add_development_dependency 'aruba', '~> 0.9'
+  s.add_development_dependency 'aruba'
   s.add_development_dependency 'codeclimate-test-reporter'
-  s.add_development_dependency 'cucumber', '~> 2.1'
+  s.add_development_dependency 'cucumber'
   s.add_development_dependency 'nokogiri'
   s.add_development_dependency 'relish'
-  s.add_development_dependency 'rspec', '~> 3.3'
-  s.add_development_dependency 'rubocop', '~> 0.34'
+  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'rubocop'
   s.add_development_dependency 'simplecov'
 
   files = {
