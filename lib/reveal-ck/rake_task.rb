@@ -56,8 +56,8 @@ module RevealCK
     end
 
     def define(args, &task_block)
-      last_comment = ::Rake.application.last_comment
-      desc 'Generate a reveal.js presentation' unless last_comment
+      last_description = ::Rake.application.last_description
+      desc 'Generate a reveal.js presentation' unless last_description
       task name, *args do |_, task_args|
         RakeFileUtils.__send__(:verbose, verbose) do
           yield(*[self, task_args].slice(0, task_block.arity)) if task_block
