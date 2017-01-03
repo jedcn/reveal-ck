@@ -7,7 +7,7 @@ module RevealCK
       describe '#run' do
         it 'works with Rack to start an application' do
           start_web_server =
-            StartWebServer.new('doc_root', 'port')
+            StartWebServer.new('doc_root', 'port', 'host')
           rack_server = double
           expect(::Rack::Server)
             .to(receive(:new))

@@ -6,12 +6,13 @@ module RevealCK
     # This includes taking an action and managing stdout
     class Serve
       include Retrieve
-      attr_reader :doc_root, :port
+      attr_reader :doc_root, :port, :host
       attr_reader :slides_file, :user_dir, :gem_dir, :output_dir
       attr_reader :ui
       def initialize(args)
         @doc_root    = retrieve(:doc_root, args)
         @port        = retrieve(:port, args)
+        @host        = retrieve(:host, args)
         @slides_file = retrieve(:slides_file, args)
         @gem_dir     = retrieve(:gem_dir, args)
         @output_dir  = retrieve(:output_dir, args)
@@ -35,7 +36,7 @@ module RevealCK
       private
 
       def print_banner
-        PrintBanner.new(doc_root, port, slides_file, ui).run
+        PrintBanner.new(doc_root, port, host, slides_file, ui).run
       end
 
       def listen_to_reload
@@ -52,7 +53,7 @@ module RevealCK
 
       def start_web_server
         ui.message('Starting Webserver.')
-        StartWebServer.new(doc_root, port).run
+        StartWebServer.new(doc_root, port, host).run
       end
 
       def rebuild_options
