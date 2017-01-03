@@ -10,9 +10,9 @@ module RevealCK
       attr_reader :slides_file, :user_dir, :gem_dir, :output_dir
       attr_reader :ui
       def initialize(args)
-        @host	     = retrieve(:host, args)
         @doc_root    = retrieve(:doc_root, args)
         @port        = retrieve(:port, args)
+        @host        = retrieve(:host, args)
         @slides_file = retrieve(:slides_file, args)
         @gem_dir     = retrieve(:gem_dir, args)
         @output_dir  = retrieve(:output_dir, args)
