@@ -5,6 +5,7 @@ def build_serve
   RevealCK::Commands::Serve
     .new(doc_root: 'doc_root',
          port: 'port',
+         host: 'host',
          user_dir: 'user_dir',
          gem_dir: 'gem_dir',
          output_dir: 'output_dir',
@@ -74,7 +75,7 @@ module RevealCK
           print_banner = double
           expect(PrintBanner)
             .to(receive(:new))
-            .with('doc_root', 'port', 'slides_file', serve_ui)
+            .with('doc_root', 'port', 'host', 'slides_file', serve_ui)
             .and_return(print_banner)
           expect(print_banner)
             .to(receive(:run))
