@@ -59,6 +59,9 @@ class RevealCKExecutable
     c.desc 'The port to serve on'
     c.flag [:p, :port], default_value: 10_000
 
+    c.desc 'The host to serve on'
+    c.flag [:h, :host], default_value: 'localhost'
+
     c.desc 'Exit after starting + n seconds (for testing only)'
     c.flag ['test-quit-after-starting'], type: Integer
 
@@ -69,6 +72,7 @@ class RevealCKExecutable
         gem_dir: RevealCK.path,
         output_dir: slides_dir,
         port: options[:port],
+        host: options[:host],
         slides_file: options[:file],
         user_dir: Dir.pwd
       }
