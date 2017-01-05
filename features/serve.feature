@@ -22,7 +22,7 @@ Feature: Using 'reveal-ck serve'
     """
     # reveal-ck serve
     """
-    When I temporarily start reveal-ck serve
+    When I temporarily start reveal-ck serve with host "localhost"
     Then the exit status should be 1
     # The banner prints..
     And the output should contain "[ reveal-ck ] Serving up slide content in 'slides/'."
@@ -34,3 +34,13 @@ Feature: Using 'reveal-ck serve'
     And the output should contain "[ reveal-ck ] Starting Webserver."
     # We're ready to reload
     And the output should contain "[   reload  ] Guard is now watching"
+
+  Scenario: Starting up `reveal-ck serve` and specifying a host
+    Given a file named "slides.md" with:
+    """
+    # reveal-ck serve
+    """
+    When I temporarily start reveal-ck serve with host "0.0.0.0"
+    Then the exit status should be 1
+    # The banner prints..
+    And the output should contain "[ reveal-ck ] Open your browser to 'http://0.0.0.0"

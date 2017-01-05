@@ -15,7 +15,8 @@ module RevealCK
             .to(receive(:message))
             .at_least :once
 
-          banner = PrintBanner.new('doc_root', 'port', 'host', 'slides_file', serve_ui)
+          banner = PrintBanner.new('doc_root', 'port', 'host', 'slides_file',
+                                   serve_ui)
           banner.run
         end
       end
