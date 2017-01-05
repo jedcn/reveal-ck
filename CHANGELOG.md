@@ -17,7 +17,10 @@ bugs are fixed.
 
 ### Added
 
-* Nothing
+* When running `reveal-ck serve`, you can now specify the host you'd
+  like to use. `reveal-ck` still defaults to localhost, but you can
+  supply values like 0.0.0.0. See
+  https://github.com/jedcn/reveal-ck/pull/79 for details.
 
 ### Changed
 
