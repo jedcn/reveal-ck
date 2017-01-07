@@ -4,10 +4,11 @@ module RevealCK
     # sent explain everything to do with the serve command (listening,
     # reloading, and webserving)
     class PrintBanner
-      attr_reader :doc_root, :port, :slides_file, :ui
-      def initialize(doc_root, port, slides_file, ui)
+      attr_reader :doc_root, :port, :host, :slides_file, :ui
+      def initialize(doc_root, port, host, slides_file, ui)
         @doc_root = doc_root
         @port = port
+        @host = host
         @slides_file = slides_file
         @ui = ui
       end
@@ -15,7 +16,7 @@ module RevealCK
       def run
         ui.separator
         ui.message "Serving up slide content in '#{doc_root}/'."
-        ui.message "Open your browser to 'http://localhost:#{port}'."
+        ui.message "Open your browser to 'http://#{host}:#{port}'."
         ui.message 'Press CTRL-C to stop.'
         ui.separator
       end
