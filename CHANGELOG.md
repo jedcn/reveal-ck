@@ -21,7 +21,8 @@ bugs are fixed.
 
 ### Changed
 
-* Nothing
+* Upgraded several libraries to more recent versions.
+* Dropped support for older versions of ruby: 2.0.x and 2.1.x.
 
 ### Fixed
 
