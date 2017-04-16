@@ -27,15 +27,9 @@ module RevealCK
         'author'      => '',
         'theme'       => 'black',
         'transition'  => 'default',
-        'data' => {
-
-        },
-        'meta_properties' => {
-
-        },
-        'meta_names' => {
-
-        }
+        'data' => {},
+        'meta_properties' => {},
+        'meta_names' => {}
       }
     end
 
