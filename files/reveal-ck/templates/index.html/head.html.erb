@@ -6,6 +6,14 @@
 <meta name="author" content="<%= config.author %>">
 <meta name="generator" content="reveal-ck <%= RevealCK::VERSION %>">
 
+<% config.meta_properties.each do |property, content| %>
+<meta property="<%= property %>" content="<%= content %>" />
+<% end %>
+
+<% config.meta_names.each do |name, content| %>
+<meta name="<%= name %>" content="<%= content %>" />
+<% end %>
+
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 

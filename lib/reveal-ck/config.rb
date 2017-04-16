@@ -29,6 +29,12 @@ module RevealCK
         'transition'  => 'default',
         'data' => {
 
+        },
+        'meta_properties' => {
+
+        },
+        'meta_names' => {
+
         }
       }
     end
