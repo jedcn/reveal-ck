@@ -41,7 +41,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'nokogiri'
   s.add_development_dependency 'relish'
   s.add_development_dependency 'rspec'
-  s.add_development_dependency 'rubocop'
+  s.add_development_dependency 'rubocop', '0.46.0'
   s.add_development_dependency 'simplecov'
 
   files = {
