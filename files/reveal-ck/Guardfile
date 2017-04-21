@@ -1,5 +1,5 @@
 notification :off
 
 guard 'livereload' do
-  watch(/^slides\/index.html$/)
+  watch(%r{^slides/index.html$})
 end

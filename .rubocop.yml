@@ -14,9 +14,13 @@ Encoding:
 
 FileName:
   Exclude:
+    - Gemfile
+    - reveal-ck.gemspec
     - lib/reveal-ck.rb
+    - files/reveal-ck/Guardfile
 
 Metrics/BlockLength:
   Exclude:
     - bin/reveal-ck
+    - reveal-ck.gemspec
     - spec/**/*.rb

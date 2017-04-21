@@ -55,7 +55,7 @@ module RevealCK
 
           it 'defines a task on the application' do
             args_expected_to_be_passed_to_rake = {
-              'creation_task_testing_class' => %w(foo bar)
+              'creation_task_testing_class' => %w[foo bar]
             }
             application = double
             expect(application)

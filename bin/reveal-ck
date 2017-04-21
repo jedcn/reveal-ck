@@ -14,10 +14,10 @@ class RevealCKExecutable
   command :generate do |c|
     default_file = FileList['slides.*'].first
     c.desc 'The file containing your slide content'
-    c.flag [:f, :file], default_value: default_file
+    c.flag %i[f file], default_value: default_file
 
     c.desc 'The directory for generated slides. Default based on slide file.'
-    c.flag [:d, :dir]
+    c.flag %i[d dir]
 
     c.action do |_, options, _|
       slides_file = options[:file]
@@ -51,16 +51,16 @@ class RevealCKExecutable
   command :serve, :server do |c|
     default_file = FileList['slides.*'].first
     c.desc 'The file containing your slide content'
-    c.flag [:f, :file], default_value: default_file
+    c.flag %i[f file], default_value: default_file
 
     c.desc 'The directory to serve up. Default is based on slide file.'
-    c.flag [:d, :dir]
+    c.flag %i[d dir]
 
     c.desc 'The port to serve on'
-    c.flag [:p, :port], default_value: 10_000
+    c.flag %i[p port], default_value: 10_000
 
     c.desc 'The host to serve on'
-    c.flag [:h, :host], default_value: 'localhost'
+    c.flag %i[h host], default_value: 'localhost'
 
     c.desc 'Exit after starting + n seconds (for testing only)'
     c.flag ['test-quit-after-starting'], type: Integer

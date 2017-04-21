@@ -64,7 +64,7 @@ module RevealCK
             end
 
             config = Config.new
-            config.requires = %w(json time)
+            config.requires = %w[json time]
             application = Rake::Application.new
             slides_html =
               CreateSlidesHtml.new(slides_file: slides_file_initial,

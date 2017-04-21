@@ -1,4 +1,5 @@
 require_relative '../lib/reveal-ck'
+require 'active_support/core_ext/string/strip'
 
 intro_slide =
   RevealCK::Slide.new(
@@ -9,11 +10,11 @@ intro_slide =
     link:     'http://hakim.se',
     twitter:  'hakimel'
   )
-quote_content = <<eos
-For years there has been a theory that millions of monkeys typing at
-random on millions of typewriters would reproduce the entire works of
-Shakespeare. The Internet has proven this theory to be untrue.
-eos
+quote_content = <<-EOS.strip_heredoc
+              For years there has been a theory that millions of monkeys typing at
+              random on millions of typewriters would reproduce the entire works of
+              Shakespeare. The Internet has proven this theory to be untrue.
+              EOS
 
 quote_slide =
   RevealCK::Slide.new(
@@ -33,19 +34,19 @@ image_slide =
     height:   '299'
   )
 
-sample_code = <<eos
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-    var nodes = document.querySelectorAll( selector );
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-eos
+sample_code = <<-EOS.strip_heredoc
+            function linkify( selector ) {
+              if( supports3DTransforms ) {
+                  var nodes = document.querySelectorAll( selector );
+                  for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
+                    var node = nodes[i];
+                    if( !node.className ) {
+                      node.className += ' roll';
+                    }
+                  }
+                }
+              }
+            EOS
 
 code_slide =
   RevealCK::Slide.new(
