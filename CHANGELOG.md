@@ -17,7 +17,15 @@ bugs are fixed.
 
 ### Added
 
-* Nothing
+* By default, the <head prefix="XYZ"/> value now supports
+  http://ogp.me/. This is configurable.
+
+  Additionally, it is now possible to supply <meta>s with properties
+  and names by putting entries into the config.yml.
+
+  Big thanks to @sue445 without which this wouldn't have happened.
+
+  See https://github.com/jedcn/reveal-ck/pull/82 for details.
 
 ### Changed
 
