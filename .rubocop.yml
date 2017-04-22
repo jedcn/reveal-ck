@@ -24,3 +24,8 @@ Metrics/BlockLength:
     - bin/reveal-ck
     - reveal-ck.gemspec
     - spec/**/*.rb
+
+Metrics/MethodLength:
+  Exclude:
+    - lib/reveal-ck/config.rb
+    - lib/reveal-ck/builders/create_index_html.rb

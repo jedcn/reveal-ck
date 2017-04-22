@@ -57,6 +57,11 @@ module RevealCK
           .to eq 'https://assets-cdn.github.com/images/icons/'
       end
 
+      it 'supplies a default head_prefix' do
+        expect(config.head_prefix)
+          .to eq 'og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#'
+      end
+
       it 'supplies a default list of filters' do
         expect(config.filters).to eq ['HTML::Pipeline::RevealCKEmojiFilter',
                                       'HTML::Pipeline::MentionFilter',

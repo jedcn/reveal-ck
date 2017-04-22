@@ -20,16 +20,22 @@ module RevealCK
        filter_defaults].reduce({}) { |acc, elem| acc.merge(elem) }
     end
 
+    OPEN_GRAPH_PREFIX =
+      'og: http://ogp.me/ns# ' \
+      'fb: http://ogp.me/ns/fb# ' \
+      'article: http://ogp.me/ns/article#'.freeze
+
     def core_defaults
       {
-        'title'       => 'Slides',
-        'description' => '',
-        'author'      => '',
-        'theme'       => 'black',
-        'transition'  => 'default',
-        'data' => {},
+        'title'           => 'Slides',
+        'description'     => '',
+        'author'          => '',
+        'theme'           => 'black',
+        'transition'      => 'default',
+        'data'            => {},
         'meta_properties' => {},
-        'meta_names' => {}
+        'meta_names'      => {},
+        'head_prefix'     => OPEN_GRAPH_PREFIX
       }
     end
 
