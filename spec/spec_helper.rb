@@ -1,5 +1,7 @@
 require 'simplecov'
 require 'codeclimate-test-reporter'
+require 'active_support/core_ext/string/strip'
+
 SimpleCov.start
 
 # silence tilt autoload warnings

@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
-$:.push File.expand_path('../lib', __FILE__)
-require File.join([File.dirname(__FILE__),'lib','reveal-ck','version.rb'])
+
+$LOAD_PATH.push File.expand_path('../lib', __FILE__)
+require File.join([File.dirname(__FILE__), 'lib', 'reveal-ck', 'version.rb'])
 
 Gem::Specification.new do |s|
   s.date = '2017-01-14'
@@ -13,7 +14,7 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://github.com/jedcn/reveal-ck'
   s.summary     = 'Create reveal.js presentations with Markdown.'
   s.description =
-    'A command line interface for generating reveal.js presentations from markdown.'
+    'A cli for generating reveal.js presentations from markdown.'
   #
   # Runtime Dependencies
   s.add_dependency 'docile', '1.1.5'
@@ -35,6 +36,7 @@ Gem::Specification.new do |s|
 
   #
   # Development Dependencies
+  s.add_development_dependency 'activesupport'
   s.add_development_dependency 'aruba'
   s.add_development_dependency 'codeclimate-test-reporter'
   s.add_development_dependency 'cucumber'
@@ -45,13 +47,14 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'simplecov'
 
   files = {
-    core: ['LICENSE', 'Rakefile', 'Gemfile'],
+    core: %w[LICENSE Rakefile Gemfile],
     supporting: Dir.glob('files/**/*'),
     lib: `git ls-files lib`.split("\n"),
     rakelib: `git ls-files rakelib`.split("\n")
   }
 
-  s.files         = files[:core] + files[:lib] + files[:rakelib] + files[:supporting]
+  s.files         = files[:core] + files[:lib] + files[:rakelib] +
+                    files[:supporting]
   s.test_files    = `git ls-files -- {spec,features}/**/*`.split("\n")
   s.executables   = ['reveal-ck']
   s.require_paths = ['lib']

@@ -19,19 +19,19 @@ module RevealCK
 
       context 'handling notes' do
         let :transformed_notes do
-          <<-eos
-<div>DIVIDER</div>
+          <<-EOS.strip_heredoc
+          <div>DIVIDER</div>
 
 
-<div>NOTES_OPEN</div>
+          <div>NOTES_OPEN</div>
 
-This is a note
+          This is a note
 
-<div>NOTES_CLOSE</div>
+          <div>NOTES_CLOSE</div>
 
 
-<div>DIVIDER</div>
-eos
+          <div>DIVIDER</div>
+          EOS
         end
 
         it 'translates <div>NOTES_OPEN</div> into <aside class="notes">' do
@@ -47,41 +47,41 @@ eos
 
       context 'without vertical slides' do
         let :three_slide_input do
-          <<-eos
-<div>DIVIDER</div>
+          <<-EOS.strip_heredoc
+          <div>DIVIDER</div>
 
-<p>First</p>
+          <p>First</p>
 
-<div>DIVIDER</div>
+          <div>DIVIDER</div>
 
-<p>Second</p>
+          <p>Second</p>
 
-<div>DIVIDER</div>
+          <div>DIVIDER</div>
 
-<p>Third</p>
+          <p>Third</p>
 
-<div>DIVIDER</div>
-eos
+          <div>DIVIDER</div>
+          EOS
         end
 
         let :three_slides_output do
-          <<-eos
-<section>
+          <<-EOS.strip_heredoc
+          <section>
 
-<p>First</p>
+          <p>First</p>
 
-</section>
-<section>
+          </section>
+          <section>
 
-<p>Second</p>
+          <p>Second</p>
 
-</section>
-<section>
+          </section>
+          <section>
 
-<p>Third</p>
+          <p>Third</p>
 
-</section>
-eos
+          </section>
+          EOS
         end
 
         it 'starts the output with a <section> and a newline' do
@@ -103,43 +103,43 @@ eos
       context 'with vertical slides' do
         context 'single vertical slide' do
           let :single_vertical_input do
-            <<-eos
-<div>VERTICAL_START</div>
+            <<-EOS.strip_heredoc
+            <div>VERTICAL_START</div>
 
-First
+            First
 
-<div>DIVIDER</div>
+            <div>DIVIDER</div>
 
-Second
+            Second
 
-<div>DIVIDER</div>
+            <div>DIVIDER</div>
 
-Third
+            Third
 
-<div>VERTICAL_END</div>
-eos
+            <div>VERTICAL_END</div>
+            EOS
           end
 
           let :single_vertical_output do
-            <<-eos
-<section>
-<section>
+            <<-EOS.strip_heredoc
+            <section>
+            <section>
 
-First
+            First
 
-</section>
-<section>
+            </section>
+            <section>
 
-Second
+            Second
 
-</section>
-<section>
+            </section>
+            <section>
 
-Third
+            Third
 
-</section>
-</section>
-eos
+            </section>
+            </section>
+            EOS
           end
 
           it 'starts the output with two <section>s' do
@@ -160,76 +160,76 @@ eos
 
         context 'back-to-back vertical slides' do
           let :double_vertical_input do
-            <<-eos
-<div>VERTICAL_START</div>
+            <<-EOS.strip_heredoc
+            <div>VERTICAL_START</div>
 
-Vertical A1
+            Vertical A1
 
-<div>DIVIDER</div>
+            <div>DIVIDER</div>
 
-Vertical A2
+            Vertical A2
 
-<div>DIVIDER</div>
+            <div>DIVIDER</div>
 
-Vertical A3
+            Vertical A3
 
-<div>VERTICAL_END</div>
+            <div>VERTICAL_END</div>
 
 
-<div>VERTICAL_START</div>
+            <div>VERTICAL_START</div>
 
-Vertical B1
+            Vertical B1
 
-<div>DIVIDER</div>
+            <div>DIVIDER</div>
 
-Vertical B2
+            Vertical B2
 
-<div>DIVIDER</div>
+            <div>DIVIDER</div>
 
-Vertical B3
+            Vertical B3
 
-<div>VERTICAL_END</div>
-eos
+            <div>VERTICAL_END</div>
+            EOS
           end
 
           let :double_vertical_output do
-            <<-eos
-<section>
-<section>
+            <<-EOS.strip_heredoc
+            <section>
+            <section>
 
-Vertical A1
+            Vertical A1
 
-</section>
-<section>
+            </section>
+            <section>
 
-Vertical A2
+            Vertical A2
 
-</section>
-<section>
+            </section>
+            <section>
 
-Vertical A3
+            Vertical A3
 
-</section>
-</section>
+            </section>
+            </section>
 
-<section>
-<section>
+            <section>
+            <section>
 
-Vertical B1
+            Vertical B1
 
-</section>
-<section>
+            </section>
+            <section>
 
-Vertical B2
+            Vertical B2
 
-</section>
-<section>
+            </section>
+            <section>
 
-Vertical B3
+            Vertical B3
 
-</section>
-</section>
-eos
+            </section>
+            </section>
+            EOS
           end
 
           it 'creates two columns of sections' do
@@ -240,99 +240,99 @@ eos
 
         context 'horizontal and vertical combinations' do
           let :verticals_surrounded_by_horizontals_input do
-            <<-eos
-<div>DIVIDER</div>
+            <<-EOS.strip_heredoc
+            <div>DIVIDER</div>
 
-First
+            First
 
-<div>VERTICAL_START</div>
+            <div>VERTICAL_START</div>
 
-Vertical A1
+            Vertical A1
 
-<div>DIVIDER</div>
+            <div>DIVIDER</div>
 
-Vertical A2
+            Vertical A2
 
-<div>DIVIDER</div>
+            <div>DIVIDER</div>
 
-Vertical A3
+            Vertical A3
 
-<div>VERTICAL_END</div>
+            <div>VERTICAL_END</div>
 
-Middle
+            Middle
 
-<div>VERTICAL_START</div>
+            <div>VERTICAL_START</div>
 
-Vertical B1
+            Vertical B1
 
-<div>DIVIDER</div>
+            <div>DIVIDER</div>
 
-Vertical B2
+            Vertical B2
 
-<div>DIVIDER</div>
+            <div>DIVIDER</div>
 
-Vertical B3
+            Vertical B3
 
-<div>VERTICAL_END</div>
+            <div>VERTICAL_END</div>
 
-Last
+            Last
 
-<div>DIVIDER</div>
-eos
+            <div>DIVIDER</div>
+            EOS
           end
 
           let :verticals_surrounded_by_horizontals_output do
-            <<-eos
-<section>
+            <<-EOS.strip_heredoc
+            <section>
 
-First
+            First
 
-</section>
-<section>
-<section>
+            </section>
+            <section>
+            <section>
 
-Vertical A1
+            Vertical A1
 
-</section>
-<section>
+            </section>
+            <section>
 
-Vertical A2
+            Vertical A2
 
-</section>
-<section>
+            </section>
+            <section>
 
-Vertical A3
+            Vertical A3
 
-</section>
-</section>
-<section>
+            </section>
+            </section>
+            <section>
 
-Middle
+            Middle
 
-</section>
-<section>
-<section>
+            </section>
+            <section>
+            <section>
 
-Vertical B1
+            Vertical B1
 
-</section>
-<section>
+            </section>
+            <section>
 
-Vertical B2
+            Vertical B2
 
-</section>
-<section>
+            </section>
+            <section>
 
-Vertical B3
+            Vertical B3
 
-</section>
-</section>
-<section>
+            </section>
+            </section>
+            <section>
 
-Last
+            Last
 
-</section>
-eos
+            </section>
+            EOS
           end
 
           it 'creates a slide, a column, a slide, a column, and a slide' do

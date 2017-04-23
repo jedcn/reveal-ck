@@ -13,4 +13,4 @@ end
 
 task default: :ci
 
-task test: [:spec, :cucumber]
+task test: %i[spec cucumber]

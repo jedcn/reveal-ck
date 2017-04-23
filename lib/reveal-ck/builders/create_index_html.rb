@@ -21,6 +21,7 @@ module RevealCK
         index_html_file = "#{output_dir}/index.html"
         task(index_html_file => slides_html) do
           content = IndexHtml.new(slides_html: slides_html,
+                                  head_prefix: config.head_prefix,
                                   template: template,
                                   config: config).render
           File.open(index_html_file, 'w') do |index_html|

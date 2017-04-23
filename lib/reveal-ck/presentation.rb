@@ -8,7 +8,7 @@ module RevealCK
   class Presentation
     include Retrieve
     extend Forwardable
-    [:author, :title, :transition, :theme].each do |name|
+    %i[author title transition theme].each do |name|
       def_delegators :@config, name, "#{name}=".to_sym
     end
 

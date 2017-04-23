@@ -170,3 +170,69 @@ Feature: The capabilities of config.yml
     | slides/index.html  |
     And the file "slides/index.html" should have html matching the css:
     | img[src*="reveal-js/reveal-parallax-1.jpg"]  | the referenced image |
+
+  Scenario: Generating slides and specifying head_prefix
+    Given a file named "config.yml" with:
+    """
+    head_prefix: 'og: http://ogp.me/ns#'
+    """
+    Given a file named "slides.md" with:
+    """
+    # Hello World
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the following files should exist:
+      | slides/index.html  |
+    And the file "slides/index.html" should contain:
+    """
+    <head prefix="og: http://ogp.me/ns#">
+    """
+
+  Scenario: Generating slides with a template and og configs
+    Given a file named "config.yml" with:
+    """
+    meta_properties:
+      og:title: "reveal-ck"
+    """
+    Given a file named "slides.haml" with:
+    """
+    %section
+      %p
+        Config
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the output should contain exactly "Generating slides for 'slides.haml'..\n"
+    And the following files should exist:
+      | slides/index.html  |
+    And the file "slides/index.html" should contain:
+    """
+    <meta property="og:title" content="reveal-ck" />
+    """
+    And the file "slides/index.html" should contain:
+    """
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+    """
+
+  Scenario: Generating slides with a template and twitter configs
+    Given a file named "config.yml" with:
+    """
+    meta_names:
+      twitter:title: "reveal-ck"
+    """
+    Given a file named "slides.haml" with:
+    """
+    %section
+      %p
+        Config
+    """
+    When I run `reveal-ck generate`
+    Then the exit status should be 0
+    And the output should contain exactly "Generating slides for 'slides.haml'..\n"
+    And the following files should exist:
+      | slides/index.html  |
+    And the file "slides/index.html" should contain:
+    """
+    <meta name="twitter:title" content="reveal-ck" />
+    """

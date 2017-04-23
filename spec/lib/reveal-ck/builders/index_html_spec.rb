@@ -13,6 +13,10 @@ module RevealCK
         spec_data('builders', 'index_html', 'slides.html')
       end
 
+      let :head_prefix do
+        'head_prefix'
+      end
+
       let :config do
         config = Config.new
         config.title = 'Sample Title'
@@ -26,6 +30,7 @@ module RevealCK
       let :index_html do
         IndexHtml.new(template: index_html_erb,
                       slides_html: slides_html,
+                      head_prefix: head_prefix,
                       config: config)
       end
 
@@ -41,6 +46,11 @@ module RevealCK
       it 'can render html' do
         expect(rendered_content)
           .to include('<html lang="en">')
+      end
+
+      it 'can render a <head with a prefix' do
+        expect(rendered_content)
+          .to include('<head prefix="head_prefix">')
       end
 
       it 'prints the program name and version in the generator tag' do
