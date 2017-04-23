@@ -1,4 +1,12 @@
 #!/usr/bin/env ruby
+
+# use Gemfile to load all of user's requirements
+begin
+  require 'bundler'
+  Bundler.require
+rescue LoadException # rubocop:disable Lint/HandleExceptions
+end
+
 require 'gli'
 require 'reveal-ck'
 
