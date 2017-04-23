@@ -28,6 +28,7 @@ module RevealCK
       private
 
       def setup
+        load_init
         read_config
         things_to_create.merge(dependencies)
       end
@@ -37,6 +38,12 @@ module RevealCK
         return unless File.exist?(config_file)
         config_as_hash = YAML.load_file config_file
         @config.merge!(config_as_hash)
+      end
+
+      def load_init
+        init_file = File.join(user_dir, 'init.rb')
+        return unless File.exist?(init_file)
+        require init_file
       end
 
       def dependencies
