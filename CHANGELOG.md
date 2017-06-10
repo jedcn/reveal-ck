@@ -21,7 +21,8 @@ bugs are fixed.
 
 ### Changed
 
-* Nothing
+* The embedded version of reveal.js has been updated to version 3.5.0. See
+  https://github.com/hakimel/reveal.js/releases/tag/3.5.0 for details.
 
 ### Fixed
 
