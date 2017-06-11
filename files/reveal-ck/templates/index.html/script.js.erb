@@ -16,6 +16,10 @@
       { src: 'plugin/notes/notes.js', async: true }
     ]
   };
+  <% config.js_dependencies.each do |js_dep| %>
+    baseOptions.dependencies.push(<%= js_dep.to_json %>);
+  <% end %>
+
   var configOptions = <%= config.revealjs_config.to_json %>
   var initializeOptions = {};
   extend(initializeOptions, baseOptions);
