@@ -8,6 +8,10 @@
 <script src="lib/js/head.min.js"></script>
 <script src="js/reveal.js"></script>
 
+<% js_files.each do |file| %>
+<script src="<%= file %>"></script>
+<% end %>
+
 <script>
   <%= script %>
 </script>

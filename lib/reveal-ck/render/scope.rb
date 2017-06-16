@@ -5,6 +5,8 @@ module RevealCK
       include Retrieve
       include ContentsOf
       include CssFiles
+      include JsFiles
+      include PluginFiles
       include IndexHtmlMaker
 
       attr_reader :config

@@ -35,7 +35,6 @@ module RevealCK
         'data'            => {},
         'meta_properties' => {},
         'meta_names'      => {},
-        'js_dependencies' => [],
         'head_prefix'     => OPEN_GRAPH_PREFIX
       }
     end

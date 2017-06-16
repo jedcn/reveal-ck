@@ -16,8 +16,9 @@
       { src: 'plugin/notes/notes.js', async: true }
     ]
   };
-  <% config.js_dependencies.each do |js_dep| %>
-    baseOptions.dependencies.push(<%= js_dep.to_json %>);
+
+  <% plugin_files.each do |plugin| %>
+    baseOptions.dependencies.push({ src: '<%= plugin %>', async: true });
   <% end %>
 
   var configOptions = <%= config.revealjs_config.to_json %>
