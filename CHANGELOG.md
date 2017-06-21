@@ -17,7 +17,10 @@ bugs are fixed.
 
 ### Added
 
-* Nothing
+* Any file ending in *.js in the js/ directory will now be added as a <script>
+  tag.
+* Any file ending in *.js in the plugin/ directory will now be configured to be a reveal.js plugin.
+* Putting these two items together: reveal-ck now supports reveal.js plugins.
 
 ### Changed
 
