@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'html-pipeline', '2.4.2'
   s.add_dependency 'kramdown', '1.13.1'
   s.add_dependency 'listen', '3.1.5'
-  s.add_dependency 'rack', '2.0.1'
+  s.add_dependency 'rack', '2.0.6'
   s.add_dependency 'rack-livereload', '0.3.16'
   s.add_dependency 'rake', '12.0.0'
   s.add_dependency 'rinku', '2.0.2'
