@@ -11,10 +11,10 @@ intro_slide =
     twitter: 'hakimel'
   )
 quote_content = <<-QUOTE.strip_heredoc
-              For years there has been a theory that millions of monkeys typing at
-              random on millions of typewriters would reproduce the entire works of
-              Shakespeare. The Internet has proven this theory to be untrue.
-              QUOTE
+  For years there has been a theory that millions of monkeys typing at
+  random on millions of typewriters would reproduce the entire works of
+  Shakespeare. The Internet has proven this theory to be untrue.
+QUOTE
 
 quote_slide =
   RevealCK::Slide.new(
@@ -35,18 +35,18 @@ image_slide =
   )
 
 sample_code = <<-CODE.strip_heredoc
-            function linkify( selector ) {
-              if( supports3DTransforms ) {
-                  var nodes = document.querySelectorAll( selector );
-                  for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-                    var node = nodes[i];
-                    if( !node.className ) {
-                      node.className += ' roll';
-                    }
-                  }
-                }
-              }
-            CODE
+  function linkify( selector ) {
+    if( supports3DTransforms ) {
+      var nodes = document.querySelectorAll( selector );
+      for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
+        var node = nodes[i];
+        if( !node.className ) {
+          node.className += ' roll';
+        }
+      }
+    }
+  }
+CODE
 
 code_slide =
   RevealCK::Slide.new(

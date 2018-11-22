@@ -20,6 +20,10 @@ FileName:
     - lib/reveal-ck.rb
     - files/reveal-ck/Guardfile
 
+RescueStandardError:
+  Exclude:
+    - lib/reveal-ck/commands/serve.rb
+
 Metrics/BlockLength:
   Exclude:
     - bin/reveal-ck
