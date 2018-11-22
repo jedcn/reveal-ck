@@ -3,8 +3,12 @@ CyclomaticComplexity:
 
 AllCops:
   Include:
-    - '**/Rakefile'
+    - '**/*.rb'
     - rakelib/*.rake
+    - 'Gemfile'
+    - 'Rakefile'
+    - 'reveal-ck.gemspec'
+    - 'files/reveal-ck/Guardfile'
   Exclude:
     - tmp/**/*
     - files/reveal.js/**/*
