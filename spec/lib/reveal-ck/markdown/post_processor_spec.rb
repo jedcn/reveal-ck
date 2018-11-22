@@ -19,7 +19,7 @@ module RevealCK
 
       context 'handling notes' do
         let :transformed_notes do
-          <<-EOS.strip_heredoc
+          <<-HTML.strip_heredoc
           <div>DIVIDER</div>
 
 
@@ -31,7 +31,7 @@ module RevealCK
 
 
           <div>DIVIDER</div>
-          EOS
+          HTML
         end
 
         it 'translates <div>NOTES_OPEN</div> into <aside class="notes">' do
@@ -47,7 +47,7 @@ module RevealCK
 
       context 'without vertical slides' do
         let :three_slide_input do
-          <<-EOS.strip_heredoc
+          <<-HTML.strip_heredoc
           <div>DIVIDER</div>
 
           <p>First</p>
@@ -61,11 +61,11 @@ module RevealCK
           <p>Third</p>
 
           <div>DIVIDER</div>
-          EOS
+          HTML
         end
 
         let :three_slides_output do
-          <<-EOS.strip_heredoc
+          <<-HTML.strip_heredoc
           <section>
 
           <p>First</p>
@@ -81,7 +81,7 @@ module RevealCK
           <p>Third</p>
 
           </section>
-          EOS
+          HTML
         end
 
         it 'starts the output with a <section> and a newline' do
@@ -103,7 +103,7 @@ module RevealCK
       context 'with vertical slides' do
         context 'single vertical slide' do
           let :single_vertical_input do
-            <<-EOS.strip_heredoc
+            <<-HTML.strip_heredoc
             <div>VERTICAL_START</div>
 
             First
@@ -117,11 +117,11 @@ module RevealCK
             Third
 
             <div>VERTICAL_END</div>
-            EOS
+            HTML
           end
 
           let :single_vertical_output do
-            <<-EOS.strip_heredoc
+            <<-HTML.strip_heredoc
             <section>
             <section>
 
@@ -139,7 +139,7 @@ module RevealCK
 
             </section>
             </section>
-            EOS
+            HTML
           end
 
           it 'starts the output with two <section>s' do
@@ -160,7 +160,7 @@ module RevealCK
 
         context 'back-to-back vertical slides' do
           let :double_vertical_input do
-            <<-EOS.strip_heredoc
+            <<-HTML.strip_heredoc
             <div>VERTICAL_START</div>
 
             Vertical A1
@@ -189,11 +189,11 @@ module RevealCK
             Vertical B3
 
             <div>VERTICAL_END</div>
-            EOS
+            HTML
           end
 
           let :double_vertical_output do
-            <<-EOS.strip_heredoc
+            <<-HTML.strip_heredoc
             <section>
             <section>
 
@@ -229,7 +229,7 @@ module RevealCK
 
             </section>
             </section>
-            EOS
+            HTML
           end
 
           it 'creates two columns of sections' do
@@ -240,7 +240,7 @@ module RevealCK
 
         context 'horizontal and vertical combinations' do
           let :verticals_surrounded_by_horizontals_input do
-            <<-EOS.strip_heredoc
+            <<-HTML.strip_heredoc
             <div>DIVIDER</div>
 
             First
@@ -278,11 +278,11 @@ module RevealCK
             Last
 
             <div>DIVIDER</div>
-            EOS
+            HTML
           end
 
           let :verticals_surrounded_by_horizontals_output do
-            <<-EOS.strip_heredoc
+            <<-HTML.strip_heredoc
             <section>
 
             First
@@ -332,7 +332,7 @@ module RevealCK
             Last
 
             </section>
-            EOS
+            HTML
           end
 
           it 'creates a slide, a column, a slide, a column, and a slide' do

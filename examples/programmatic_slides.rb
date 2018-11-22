@@ -10,11 +10,11 @@ intro_slide =
     link:     'http://hakim.se',
     twitter:  'hakimel'
   )
-quote_content = <<-EOS.strip_heredoc
+quote_content = <<-QUOTE.strip_heredoc
               For years there has been a theory that millions of monkeys typing at
               random on millions of typewriters would reproduce the entire works of
               Shakespeare. The Internet has proven this theory to be untrue.
-              EOS
+              QUOTE
 
 quote_slide =
   RevealCK::Slide.new(
@@ -34,7 +34,7 @@ image_slide =
     height:   '299'
   )
 
-sample_code = <<-EOS.strip_heredoc
+sample_code = <<-CODE.strip_heredoc
             function linkify( selector ) {
               if( supports3DTransforms ) {
                   var nodes = document.querySelectorAll( selector );
@@ -46,7 +46,7 @@ sample_code = <<-EOS.strip_heredoc
                   }
                 }
               }
-            EOS
+            CODE
 
 code_slide =
   RevealCK::Slide.new(
