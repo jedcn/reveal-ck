@@ -30,3 +30,6 @@ Metrics/MethodLength:
   Exclude:
     - lib/reveal-ck/config.rb
     - lib/reveal-ck/builders/create_index_html.rb
+
+Naming/UncommunicativeMethodParamName:
+  MinNameLength: 1
