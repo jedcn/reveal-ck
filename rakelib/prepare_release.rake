@@ -39,8 +39,8 @@ def update_changelog(old_version, new_version, todays_date)
   add_unreleased_preamble(new_version)
 end
 
-def echo(s)
-  puts "\n#{s}\n"
+def echo(str)
+  puts "\n#{str}\n"
 end
 
 def print_next_steps(new_version)

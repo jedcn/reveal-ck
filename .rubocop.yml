@@ -9,9 +9,6 @@ AllCops:
     - tmp/**/*
     - files/reveal.js/**/*
 
-Encoding:
-  EnforcedStyle: when_needed
-
 FileName:
   Exclude:
     - Gemfile
