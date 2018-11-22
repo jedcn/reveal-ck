@@ -27,15 +27,15 @@ module RevealCK
 
     def core_defaults
       {
-        'title'           => 'Slides',
-        'description'     => '',
-        'author'          => '',
-        'theme'           => 'black',
-        'transition'      => 'default',
-        'data'            => {},
+        'title' => 'Slides',
+        'description' => '',
+        'author' => '',
+        'theme' => 'black',
+        'transition' => 'default',
+        'data' => {},
         'meta_properties' => {},
-        'meta_names'      => {},
-        'head_prefix'     => OPEN_GRAPH_PREFIX
+        'meta_names' => {},
+        'head_prefix' => OPEN_GRAPH_PREFIX
       }
     end
 

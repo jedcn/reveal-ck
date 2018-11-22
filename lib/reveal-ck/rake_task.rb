@@ -45,11 +45,11 @@ module RevealCK
       puts "Generating slides for '#{file}'.." if verbose
 
       slides_builder = RevealCK::Builders::SlidesBuilder.new(
-        user_dir:      user_dir,
-        gem_dir:       gem_dir,
-        output_dir:    dir,
-        slides_file:   file,
-        config:        config
+        user_dir: user_dir,
+        gem_dir: gem_dir,
+        output_dir: dir,
+        slides_file: file,
+        config: config
       )
       slides_builder.prepare
       slides_builder.build
