@@ -43,12 +43,14 @@ module RevealCK
       def replace_if_start_with(old, new)
         old = "#{old}\n"
         return unless doc.start_with?(old)
+
         @doc = doc[old.size, doc.size - 1]
         @doc = "#{new}\n#{doc}"
       end
 
       def replace_if_end_with(old, new)
         return unless doc.end_with? old
+
         @doc = doc[0, doc.size - 1 - old.size]
         @doc = "#{doc}\n#{new}\n"
       end

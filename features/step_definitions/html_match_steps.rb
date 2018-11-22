@@ -11,6 +11,7 @@ end
 def check_doc_matches(doc, selector, description, type)
   search_result = doc.send(type, selector)
   return unless search_result.empty?
+
   message = "Could not find #{description}. "
   message += "No match for #{type} '#{selector}'"
   raise message

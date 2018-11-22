@@ -1,4 +1,3 @@
-
 module RevealCK
   #
   # Public: A PresentationDSL defines the DSL behind a
