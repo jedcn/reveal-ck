@@ -20,17 +20,20 @@ module RevealCK
       def add_first_slide_divider_if_needed
         return if doc.start_with?(slide_divider)
         return if doc.start_with?(slide_vertical)
+
         prepend(slide_divider)
       end
 
       def add_last_slide_divider_if_needed
         return if doc.end_with?(slide_divider)
         return if doc.end_with?(slide_vertical)
+
         append(slide_divider)
       end
 
       def add_last_slide_vertical_if_needed
         return unless doc.scan(slide_vertical_regex).size.odd?
+
         append(slide_vertical)
       end
 

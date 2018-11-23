@@ -21,7 +21,8 @@ bugs are fixed.
 
 ### Changed
 
-* Nothing
+* Updated the version of rack
+* Minor (shouldn't have a functional impact) tweaks to source
 
 ### Fixed
 

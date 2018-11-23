@@ -7,7 +7,7 @@ module RevealCK
         default: '[ reveal-ck ]',
         problem: '[  problem  ]',
         rebuild: '[  rebuild  ]',
-        reload:  '[   reload  ]'
+        reload: '[   reload  ]'
       }.freeze
 
       def problem(general_problem, specific_error)

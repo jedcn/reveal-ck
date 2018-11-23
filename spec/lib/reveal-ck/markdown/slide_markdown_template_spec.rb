@@ -14,71 +14,71 @@ module RevealCK
       end
 
       it 'does not turn _s within a single emoji into <em>s' do
-        output = render_markdown <<-EOS.strip_heredoc
+        output = render_markdown <<-SLIDES.strip_heredoc
         :money_with_wings:
-        EOS
+        SLIDES
         expect(output).to include ':money_with_wings:'
       end
 
       it 'does not turn _s between two emojis into <em>s' do
-        output = render_markdown <<-EOS.strip_heredoc
+        output = render_markdown <<-SLIDES.strip_heredoc
         :blue_heart: :blue_heart:
-        EOS
+        SLIDES
         expect(output).to include ':blue_heart: :blue_heart:'
       end
 
       it 'uses "---" to create "<section>"s' do
-        output = render_markdown <<-EOS.strip_heredoc
+        output = render_markdown <<-SLIDES.strip_heredoc
         # h1 Slide
         ---
         ## h2 Slide
-        EOS
+        SLIDES
         expect(output).to include '<h1>h1 Slide</h1>'
         expect(output).to include "</section>\n<section>"
         expect(output).to include '<h2>h2 Slide</h2>'
       end
 
       it 'wraps ``` code in a <pre> and <code>' do
-        output = render_markdown <<-EOS.strip_heredoc
+        output = render_markdown <<-SLIDES.strip_heredoc
         ```
         def adder(a, b); a + b; end
         ```
-        EOS
+        SLIDES
         expect(output).to include '<pre><code>'
         expect(output).to include '</code></pre>'
         expect(output).to include 'a + b'
       end
 
       it 'converts special characters in ``` block to entity references' do
-        output = render_markdown <<-EOS.strip_heredoc
+        output = render_markdown <<-SLIDES.strip_heredoc
         ```
         <p>"&"</p>
         ```
-        EOS
+        SLIDES
         expect(output).to include '<pre><code>'
         expect(output).to include '</code></pre>'
         expect(output).to include '&lt;p&gt;"&amp;"&lt;/p&gt;'
       end
 
       it 'wraps ```ruby code in a <pre> and <code class="language-ruby">' do
-        output = render_markdown <<-EOS.strip_heredoc
+        output = render_markdown <<-SLIDES.strip_heredoc
         ```ruby
         def adder(a, b); a + b; end
         ```
-        EOS
+        SLIDES
         expect(output).to include '<pre><code class="language-ruby">'
         expect(output).to include '</code></pre>'
         expect(output).to include 'a + b'
       end
 
       it 'works when there is no space surrounding the ---' do
-        output = render_markdown <<-EOS.strip_heredoc
+        output = render_markdown <<-SLIDES.strip_heredoc
         # Your headline
         * Bullet 1
         * Bullet 2
         ---
         # Next Slide
-        EOS
+        SLIDES
         expect(output).to include "</section>\n<section>"
       end
     end

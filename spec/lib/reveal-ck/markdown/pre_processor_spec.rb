@@ -5,23 +5,23 @@ module RevealCK
     describe PreProcessor do
       describe 'handling ```notes' do
         let :notes_input do
-          <<-EOS.strip_heredoc
+          <<-SLIDES.strip_heredoc
           ```notes
           This is a note
           ```
-          EOS
+          SLIDES
         end
 
         let :note_input do
-          <<-EOS.strip_heredoc
+          <<-SLIDES.strip_heredoc
           ```note
           This is a note
           ```
-          EOS
+          SLIDES
         end
 
         let :transformed_notes do
-          <<-EOS.strip_heredoc
+          <<-HTML.strip_heredoc
           <div>DIVIDER</div>
 
 
@@ -33,7 +33,7 @@ module RevealCK
 
 
           <div>DIVIDER</div>
-          EOS
+          HTML
         end
 
         it 'transforms ```notes into <div>NOTES_OPEN</div>' do
@@ -72,13 +72,13 @@ module RevealCK
       end
 
       let :standard_result do
-        <<-EOS.strip_heredoc
+        <<-HTML.strip_heredoc
         <div>DIVIDER</div>
 
         First
 
         <div>DIVIDER</div>
-        EOS
+        HTML
       end
 
       context 'without vertical slides' do
@@ -89,45 +89,45 @@ module RevealCK
         end
 
         it 'is consistent when starting+ending separators are used' do
-          input = <<-EOS.strip_heredoc
+          input = <<-SLIDES.strip_heredoc
           ---
           First
           ---
-          EOS
+          SLIDES
           output = PreProcessor.new(input).process
           expect(output).to eq standard_result
         end
 
         it 'is consistent when only starting separators are used' do
-          input = <<-EOS.strip_heredoc
+          input = <<-SLIDES.strip_heredoc
           ---
           First
-          EOS
+          SLIDES
           output = PreProcessor.new(input).process
           expect(output).to eq standard_result
         end
 
         it 'is consistent when only ending separators are used' do
-          input = <<-EOS.strip_heredoc
+          input = <<-SLIDES.strip_heredoc
           First
           ---
-          EOS
+          SLIDES
           output = PreProcessor.new(input).process
           expect(output).to eq standard_result
         end
 
         let :three_slides_input do
-          <<-EOS.strip_heredoc
+          <<-SLIDES.strip_heredoc
           First
           ---
           Second
           ---
           Third
-          EOS
+          SLIDES
         end
 
         let :three_slides_output do
-          <<-EOS.strip_heredoc
+          <<-HTML.strip_heredoc
           <div>DIVIDER</div>
 
           First
@@ -141,7 +141,7 @@ module RevealCK
           Third
 
           <div>DIVIDER</div>
-          EOS
+          HTML
         end
 
         it 'can handle three slides' do
@@ -153,7 +153,7 @@ module RevealCK
 
       context 'with vertical slides' do
         let :single_vertical_output do
-          <<-EOS.strip_heredoc
+          <<-HTML.strip_heredoc
           <div>VERTICAL_START</div>
 
           First
@@ -167,25 +167,25 @@ module RevealCK
           Third
 
           <div>VERTICAL_END</div>
-          EOS
+          HTML
         end
 
         context 'single vertical slide' do
           it 'handles situation with no "closing" vertical' do
-            unbalanced_vertical_markdown = <<-EOS.strip_heredoc
+            unbalanced_vertical_markdown = <<-SLIDES.strip_heredoc
             ***
             First
             ---
             Second
             ---
             Third
-            EOS
+            SLIDES
             output = PreProcessor.new(unbalanced_vertical_markdown).process
             expect(output).to eq single_vertical_output
           end
 
           it 'handles situation with a "closing" vertical' do
-            balanced_vertical_markdown = <<-EOS.strip_heredoc
+            balanced_vertical_markdown = <<-SLIDES.strip_heredoc
             ***
             First
             ---
@@ -193,7 +193,7 @@ module RevealCK
             ---
             Third
             ***
-            EOS
+            SLIDES
 
             output = PreProcessor.new(balanced_vertical_markdown).process
             expect(output).to eq single_vertical_output
@@ -202,7 +202,7 @@ module RevealCK
 
         context 'horizontal and vertical combinations' do
           it 'handles vertical slides surrounded by horizontals' do
-            vertical_surrounded_by_horizontal = <<-EOS.strip_heredoc
+            vertical_surrounded_by_horizontal = <<-SLIDES.strip_heredoc
             First
             ***
             Vertical 1
@@ -212,9 +212,9 @@ module RevealCK
             Vertical 3
             ***
             Last
-            EOS
+            SLIDES
             output = PreProcessor.new(vertical_surrounded_by_horizontal).process
-            expect(output).to eq <<-EOS.strip_heredoc
+            expect(output).to eq <<-HTML.strip_heredoc
             <div>DIVIDER</div>
 
             First
@@ -236,11 +236,11 @@ module RevealCK
             Last
 
             <div>DIVIDER</div>
-            EOS
+            HTML
           end
 
           it 'handles back-to-back vertical slides surrounded by horizontals' do
-            vertical_surrounded_by_horizontal = <<-EOS.strip_heredoc
+            vertical_surrounded_by_horizontal = <<-SLIDES.strip_heredoc
             First
             ***
             Vertical A1
@@ -257,9 +257,9 @@ module RevealCK
             Vertical B3
             ***
             Last
-            EOS
+            SLIDES
             output = PreProcessor.new(vertical_surrounded_by_horizontal).process
-            expect(output).to eq <<-EOS.strip_heredoc
+            expect(output).to eq <<-HTML.strip_heredoc
             <div>DIVIDER</div>
 
             First
@@ -296,11 +296,11 @@ module RevealCK
             Last
 
             <div>DIVIDER</div>
-            EOS
+            HTML
           end
 
           it 'handles multiple vertical slides surrounded by horizontals' do
-            vertical_surrounded_by_horizontal = <<-EOS.strip_heredoc
+            vertical_surrounded_by_horizontal = <<-SLIDES.strip_heredoc
             First
             ***
             Vertical A1
@@ -318,9 +318,9 @@ module RevealCK
             Vertical B3
             ***
             Last
-            EOS
+            SLIDES
             output = PreProcessor.new(vertical_surrounded_by_horizontal).process
-            expect(output).to eq <<-EOS.strip_heredoc
+            expect(output).to eq <<-HTML.strip_heredoc
             <div>DIVIDER</div>
 
             First
@@ -358,7 +358,7 @@ module RevealCK
             Last
 
             <div>DIVIDER</div>
-            EOS
+            HTML
           end
         end
       end

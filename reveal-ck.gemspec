@@ -1,6 +1,4 @@
-# -*- encoding: utf-8 -*-
-
-$LOAD_PATH.push File.expand_path('../lib', __FILE__)
+$LOAD_PATH.push File.expand_path('lib', __dir__)
 require File.join([File.dirname(__FILE__), 'lib', 'reveal-ck', 'version.rb'])
 
 Gem::Specification.new do |s|
@@ -26,13 +24,13 @@ Gem::Specification.new do |s|
   s.add_dependency 'html-pipeline', '2.4.2'
   s.add_dependency 'kramdown', '1.13.1'
   s.add_dependency 'listen', '3.1.5'
-  s.add_dependency 'rack', '2.0.1'
+  s.add_dependency 'rack', '2.0.6'
   s.add_dependency 'rack-livereload', '0.3.16'
   s.add_dependency 'rake', '12.0.0'
   s.add_dependency 'rinku', '2.0.2'
   s.add_dependency 'slim', '3.0.7'
-  s.add_dependency 'tilt', '2.0.5'
   s.add_dependency 'thor', '0.19.1'
+  s.add_dependency 'tilt', '2.0.5'
 
   #
   # Development Dependencies
@@ -43,7 +41,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'nokogiri'
   s.add_development_dependency 'relish'
   s.add_development_dependency 'rspec'
-  s.add_development_dependency 'rubocop'
+  s.add_development_dependency 'rubocop', '~> 0.60'
   s.add_development_dependency 'simplecov'
 
   files = {
@@ -63,5 +61,4 @@ Gem::Specification.new do |s|
     'README.md'
   ]
   s.licenses = ['MIT']
-  s.require_paths = ['lib']
 end

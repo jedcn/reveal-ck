@@ -21,6 +21,7 @@ module RevealCK
 
       def message_about_files(files, message)
         return if files.empty?
+
         file_names = files.join(', ')
         ui.message("#{message}: #{file_names}", :rebuild)
       end

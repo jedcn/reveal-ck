@@ -3,14 +3,15 @@ CyclomaticComplexity:
 
 AllCops:
   Include:
-    - '**/Rakefile'
+    - '**/*.rb'
     - rakelib/*.rake
+    - 'Gemfile'
+    - 'Rakefile'
+    - 'reveal-ck.gemspec'
+    - 'files/reveal-ck/Guardfile'
   Exclude:
     - tmp/**/*
     - files/reveal.js/**/*
-
-Encoding:
-  EnforcedStyle: when_needed
 
 FileName:
   Exclude:
@@ -18,6 +19,10 @@ FileName:
     - reveal-ck.gemspec
     - lib/reveal-ck.rb
     - files/reveal-ck/Guardfile
+
+RescueStandardError:
+  Exclude:
+    - lib/reveal-ck/commands/serve.rb
 
 Metrics/BlockLength:
   Exclude:
@@ -29,3 +34,6 @@ Metrics/MethodLength:
   Exclude:
     - lib/reveal-ck/config.rb
     - lib/reveal-ck/builders/create_index_html.rb
+
+Naming/UncommunicativeMethodParamName:
+  MinNameLength: 1

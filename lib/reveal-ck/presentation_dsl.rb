@@ -1,4 +1,3 @@
-
 module RevealCK
   #
   # Public: A PresentationDSL defines the DSL behind a
@@ -6,7 +5,6 @@ module RevealCK
   #
   class PresentationDSL
     include Retrieve
-    attr_reader :author, :title, :theme, :transition
     attr_reader :config
 
     def initialize(args)
