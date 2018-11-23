@@ -2,6 +2,23 @@
 require 'gli'
 require 'reveal-ck'
 
+def warn_and_exit_if_missing_slides_file(slides_file)
+  return unless slides_file.nil?
+
+  puts
+  puts 'Problem:'
+  puts
+  puts '  reveal-ck could not find a slides file, and it cannnot build'
+  puts '  your presentation without one.'
+  puts
+  puts '  It thinks anything that matches "slides.*" is a slides file.'
+  puts
+  puts '  Some examples are: slides.md, slides.html, slides.haml'
+  puts
+  msg = 'Create a file matching slides.* to proceed, such as slides.md.'
+  exit_now!(msg)
+end
+
 class RevealCKExecutable
   extend GLI::App
   extend RevealCK::Misc::RemoveExtension
@@ -21,20 +38,7 @@ class RevealCKExecutable
 
     c.action do |_, options, _|
       slides_file = options[:file]
-      if slides_file.nil?
-        puts
-        puts 'Problem:'
-        puts
-        puts '  reveal-ck could not find a slides file, and it cannnot build'
-        puts '  your presentation without one.'
-        puts
-        puts '  It thinks anything that matches "slides.*" is a slides file.'
-        puts
-        puts '  Some examples are: slides.md, slides.html, slides.haml'
-        puts
-        msg = 'Create a file matching slides.* to proceed, such as slides.md.'
-        exit_now!(msg)
-      end
+      warn_and_exit_if_missing_slides_file(slides_file)
       slides_dir = options[:dir] || remove_extension(options[:file])
 
       generate_args = {
@@ -66,6 +70,8 @@ class RevealCKExecutable
     c.flag ['test-quit-after-starting'], type: Integer
 
     c.action do |_, options, _|
+      slides_file = options[:file]
+      warn_and_exit_if_missing_slides_file(slides_file)
       slides_dir = options[:dir] || remove_extension(options[:file])
       serve_args = {
         doc_root: slides_dir,
@@ -73,7 +79,7 @@ class RevealCKExecutable
         output_dir: slides_dir,
         port: options[:port],
         host: options[:host],
-        slides_file: options[:file],
+        slides_file: slides_file,
         user_dir: Dir.pwd
       }
       if options['test-quit-after-starting']

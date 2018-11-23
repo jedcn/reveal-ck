@@ -32,6 +32,7 @@ Metrics/BlockLength:
 
 Metrics/MethodLength:
   Exclude:
+    - bin/reveal-ck
     - lib/reveal-ck/config.rb
     - lib/reveal-ck/builders/create_index_html.rb
 
