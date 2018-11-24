@@ -26,7 +26,8 @@ bugs are fixed.
 
 ### Fixed
 
-* Nothing.
+* reveal-ck serve no longer shows `error: undefined method `sub' for
+  nil:NilClass` when no slides file is present. This fixes #80.
 
 ## 3.8.0 / 2017-06-20
 
