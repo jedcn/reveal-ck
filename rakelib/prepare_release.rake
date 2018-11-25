@@ -59,6 +59,8 @@ end
 desc 'Prepare to Release'
 task :prep_release do
   new_version = ENV['NEW_VERSION']
+  raise 'Need to set env NEW_VERSION' unless new_version
+
   todays_date = Time.now.strftime('%Y-%m-%d')
   update_version_rb(new_version)
   update_gemspec(todays_date)
