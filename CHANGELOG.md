@@ -13,7 +13,23 @@ bugs are fixed.
 
 ## [Unreleased][unreleased]
 
-[unreleased]: https://github.com/jedcn/reveal-ck/compare/v3.8.0...master
+[unreleased]: https://github.com/jedcn/reveal-ck/compare/v3.8.1...master
+
+### Added
+
+* Nothing
+
+### Changed
+
+* Nothing
+
+### Fixed
+
+* Nothing.
+
+## 3.8.1 / 2018-11-25
+
+[Detailed Changes](https://github.com/jedcn/reveal-ck/compare/v3.8.0...v3.8.1)
 
 ### Added
 

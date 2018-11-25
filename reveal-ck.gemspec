@@ -2,7 +2,7 @@ $LOAD_PATH.push File.expand_path('lib', __dir__)
 require File.join([File.dirname(__FILE__), 'lib', 'reveal-ck', 'version.rb'])
 
 Gem::Specification.new do |s|
-  s.date = '2017-06-20'
+  s.date = '2018-11-25'
   s.required_ruby_version = '>= 2.2.2'
   s.name        = 'reveal-ck'
   s.version     = RevealCK::VERSION
