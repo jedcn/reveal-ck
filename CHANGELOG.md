@@ -21,7 +21,7 @@ bugs are fixed.
 
 ### Changed
 
-* Nothing
+* Upgraded reveal.js from v3.5.0 -> v3.7.0. Thanks @justin-vanwinkle!
 
 ### Fixed
 
