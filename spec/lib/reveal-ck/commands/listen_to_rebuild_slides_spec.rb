@@ -9,22 +9,22 @@ module RevealCK
           '.'
         end
 
-        let :generated_slides do
-          %r{^slides/.+$}
+        let :slides_file_regex do
+          /^slides.md$/
         end
 
         it 'sets up ::Listen to run when things change' do
           listener = double
           expect(::Listen)
             .to(receive(:to))
-            .with(current_directory, ignore: generated_slides)
+            .with(current_directory, only: slides_file_regex)
             .once
             .and_return(listener)
           expect(listener)
             .to(receive(:start))
 
-          output_dir = 'slides'
-          ListenToRebuildSlides.new(double('ui'), output_dir).run
+          slides_file = 'slides.md'
+          ListenToRebuildSlides.new(double('ui'), slides_file).run
         end
       end
     end

@@ -46,7 +46,7 @@ module RevealCK
 
       def listen_to_rebuild
         ui.message('Getting Ready to Rebuild Slides.')
-        ListenToRebuildSlides.new(ui, output_dir) do
+        ListenToRebuildSlides.new(ui, slides_file) do
           rebuild_slides
         end.run
       end
