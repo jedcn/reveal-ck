@@ -23,7 +23,8 @@ module RevealCK
           expect(listener)
             .to(receive(:start))
 
-          ListenToRebuildSlides.new(double('ui')).run
+          output_dir = 'slides'
+          ListenToRebuildSlides.new(double('ui'), output_dir).run
         end
       end
     end

@@ -6,8 +6,9 @@ module RevealCK
     # rebuilding slides.
     class ListenToRebuildSlides
       attr_reader :ui, :rebuild_method
-      def initialize(ui, &block)
+      def initialize(ui, output_dir, &block)
         @ui = ui
+        @output_dir = output_dir
         @rebuild_method = block
       end
 
@@ -27,7 +28,7 @@ module RevealCK
       end
 
       def ignored_files_regex
-        %r{^slides/.+$}
+        %r{^#{@output_dir}/.+$}
       end
 
       def message_and_rebuild(mod, add, del)

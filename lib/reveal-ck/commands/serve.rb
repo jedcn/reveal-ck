@@ -41,12 +41,12 @@ module RevealCK
 
       def listen_to_reload
         ui.message('Getting Ready to Reload Browsers.')
-        ListenToReloadBrowser.new(ui).run
+        ListenToReloadBrowser.new(ui, output_dir).run
       end
 
       def listen_to_rebuild
         ui.message('Getting Ready to Rebuild Slides.')
-        ListenToRebuildSlides.new(ui) do
+        ListenToRebuildSlides.new(ui, output_dir) do
           rebuild_slides
         end.run
       end

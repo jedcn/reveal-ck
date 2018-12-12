@@ -16,7 +16,9 @@ module RevealCK
             .to(receive(:start))
             .once
 
-          listen_to_reload_browser = ListenToReloadBrowser.new(serve_ui)
+          output_dir = 'slides'
+          listen_to_reload_browser =
+            ListenToReloadBrowser.new(serve_ui, output_dir)
           thread = listen_to_reload_browser.run
           thread.join
 
