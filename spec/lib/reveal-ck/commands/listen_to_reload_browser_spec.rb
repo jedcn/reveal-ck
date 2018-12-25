@@ -12,11 +12,21 @@ module RevealCK
             .to(receive(:prefix_for))
             .and_return('[prefix]')
 
+          output_dir = 'output_dir'
+
+          guardfile_watches_index_html_in_output_dir =
+            %r{watch\(\%r\{\^#{output_dir}\/index.html\$\}\)}
+
+          start_args = {
+            guardfile_contents: guardfile_watches_index_html_in_output_dir,
+            no_interactions: true
+          }
           expect(::Guard)
-            .to(receive(:start))
+            .to(receive(:start).with(start_args))
             .once
 
-          listen_to_reload_browser = ListenToReloadBrowser.new(serve_ui)
+          listen_to_reload_browser =
+            ListenToReloadBrowser.new(serve_ui, output_dir)
           thread = listen_to_reload_browser.run
           thread.join
 

@@ -21,11 +21,15 @@ bugs are fixed.
 
 ### Changed
 
-* Nothing
+* Modified reveal-ck to rebuild *only* when the slides file changes. Previously
+  it would build if anything underneath the current directory changed that
+  wasn't in `slides/`. Fixes #98. Thanks to @agate-pris for pointing this out.
 
 ### Fixed
 
-* Nothing.
+* Make it so that reveal-ck takes the specified or implied output directory
+  into account when running `reveal-ck serve`. Fixes #99. Thanks to @agate-pris
+  or testing!
 
 ## 3.9.0 / 2018-11-30
 
