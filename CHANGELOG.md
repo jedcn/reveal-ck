@@ -13,7 +13,23 @@ bugs are fixed.
 
 ## [Unreleased][unreleased]
 
-[unreleased]: https://github.com/jedcn/reveal-ck/compare/v3.9.1...master
+[unreleased]: https://github.com/jedcn/reveal-ck/compare/v3.9.2...master
+
+### Added
+
+* Nothing
+
+### Changed
+
+* Nothing
+
+### Fixed
+
+* Nothing.
+
+## 3.9.2 / 2019-02-19
+
+[Detailed Changes](https://github.com/jedcn/reveal-ck/compare/v3.9.1...v3.9.2)
 
 ### Added
 
