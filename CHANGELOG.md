@@ -25,7 +25,9 @@ bugs are fixed.
 
 ### Fixed
 
-* Nothing.
+* Update asset_root to sync with new Github URLs for emoji. Thanks
+  @justin-vanwinkle! See See https://github.com/jedcn/reveal-ck/pull/102 for
+  details.
 
 ## 3.9.1 / 2018-12-25
 
