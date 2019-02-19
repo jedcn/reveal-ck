@@ -55,7 +55,7 @@ module RevealCK
         'filters' => ['HTML::Pipeline::RevealCKEmojiFilter',
                       'HTML::Pipeline::MentionFilter',
                       'HTML::Pipeline::AutolinkFilter'],
-        'asset_root' => 'https://assets-cdn.github.com/images/icons/',
+        'asset_root' => 'https://github.githubassets.com/images/icons/',
         'base_url' => 'https://github.com',
         'requires' => []
       }

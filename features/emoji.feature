@@ -31,11 +31,11 @@ Feature: Using Emoji in your Slides
     And the file "slides/slides.html" should have html matching the xpath:
     | //section/p/img[@class="emoji"]                                                           | an img with class emoji       |
     | //section/p/img[@alt=":heart:"]                                                           | an img with alt=":heart"      |
-    | //section/p/img[@src="https://assets-cdn.github.com/images/icons/emoji/unicode/2764.png"] | an img with src on github cdn |
+    | //section/p/img[@src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png"] | an img with src on github cdn |
     And the file "slides/index.html" should have html matching the xpath:
     | //section/p/img[@class="emoji"]                                                           | an img with class emoji       |
     | //section/p/img[@alt=":heart:"]                                                           | an img with alt=":heart"      |
-    | //section/p/img[@src="https://assets-cdn.github.com/images/icons/emoji/unicode/2764.png"] | an img with src on github cdn |
+    | //section/p/img[@src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png"] | an img with src on github cdn |
 
   Scenario: Including Emoji in a markdown slides file
     Given a file named "slides.md" with:
@@ -49,11 +49,11 @@ Feature: Using Emoji in your Slides
     And the file "slides/slides.html" should have html matching the xpath:
     | //section/p/img[@class="emoji"]                                                           | an img with class emoji       |
     | //section/p/img[@alt=":heart:"]                                                           | an img with alt=":heart"      |
-    | //section/p/img[@src="https://assets-cdn.github.com/images/icons/emoji/unicode/2764.png"] | an img with src on github cdn |
+    | //section/p/img[@src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png"] | an img with src on github cdn |
     And the file "slides/index.html" should have html matching the xpath:
     | //section/p/img[@class="emoji"]                                                           | an img with class emoji       |
     | //section/p/img[@alt=":heart:"]                                                           | an img with alt=":heart"      |
-    | //section/p/img[@src="https://assets-cdn.github.com/images/icons/emoji/unicode/2764.png"] | an img with src on github cdn |
+    | //section/p/img[@src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png"] | an img with src on github cdn |
     | //link[@rel="stylesheet"][@href="css/reveal-ck.css"]                                      | the default reveal-ck.css     |
     And a file named "slides/css/reveal-ck.css" should exist
 

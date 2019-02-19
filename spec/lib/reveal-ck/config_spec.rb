@@ -54,7 +54,7 @@ module RevealCK
 
       it 'supplies a default asset_root' do
         expect(config.asset_root)
-          .to eq 'https://assets-cdn.github.com/images/icons/'
+          .to eq 'https://github.githubassets.com/images/icons/'
       end
 
       it 'supplies a default head_prefix' do
