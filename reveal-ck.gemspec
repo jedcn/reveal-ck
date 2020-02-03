@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'gli', '2.14.0'
   s.add_dependency 'guard', '2.14.0'
   s.add_dependency 'guard-livereload', '2.5.2'
-  s.add_dependency 'haml', '4.0.7'
+  s.add_dependency 'haml', '~> 5.1.2'
   s.add_dependency 'html-pipeline', '2.4.2'
   s.add_dependency 'kramdown', '1.13.1'
   s.add_dependency 'listen', '3.1.5'
