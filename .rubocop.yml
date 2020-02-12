@@ -13,6 +13,10 @@ AllCops:
     - tmp/**/*
     - files/reveal.js/**/*
 
+Gemspec/RequiredRubyVersion:
+  Exclude:
+    - 'reveal-ck.gemspec'
+
 Naming/FileName:
   Exclude:
     - Gemfile
@@ -23,6 +27,10 @@ Naming/FileName:
 Style/RescueStandardError:
   Exclude:
     - lib/reveal-ck/commands/serve.rb
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - '**/*'
 
 Metrics/BlockLength:
   Exclude:
