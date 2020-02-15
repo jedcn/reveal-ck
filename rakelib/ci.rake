@@ -1,2 +1,2 @@
 desc 'Run Continuous Integration'
-task ci: %i[spec cucumber]
+task ci: %i[spec rubocop cucumber]
