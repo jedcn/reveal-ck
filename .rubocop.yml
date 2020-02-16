@@ -1,4 +1,4 @@
-CyclomaticComplexity:
+Metrics/CyclomaticComplexity:
   Max: 5
 
 AllCops:
@@ -13,16 +13,24 @@ AllCops:
     - tmp/**/*
     - files/reveal.js/**/*
 
-FileName:
+Gemspec/RequiredRubyVersion:
+  Exclude:
+    - 'reveal-ck.gemspec'
+
+Naming/FileName:
   Exclude:
     - Gemfile
     - reveal-ck.gemspec
     - lib/reveal-ck.rb
     - files/reveal-ck/Guardfile
 
-RescueStandardError:
+Style/RescueStandardError:
   Exclude:
     - lib/reveal-ck/commands/serve.rb
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - '**/*'
 
 Metrics/BlockLength:
   Exclude:
@@ -36,5 +44,5 @@ Metrics/MethodLength:
     - lib/reveal-ck/config.rb
     - lib/reveal-ck/builders/create_index_html.rb
 
-Naming/UncommunicativeMethodParamName:
+Naming/MethodParameterName:
   MinNameLength: 1

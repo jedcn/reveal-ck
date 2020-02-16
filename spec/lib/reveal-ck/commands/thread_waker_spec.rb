@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 module RevealCK
   module Commands
     describe ThreadWaker do

@@ -10,7 +10,7 @@ module RevealCK
 
     def merge!(hash)
       hash.each_pair do |name, value|
-        modifiable[new_ostruct_member(name)] = value
+        self[name] = value
       end
     end
 

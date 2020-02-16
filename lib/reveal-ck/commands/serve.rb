@@ -29,8 +29,8 @@ module RevealCK
 
       def rebuild_slides
         RevealCK::Commands::Generate.new(rebuild_options).run
-      rescue => error
-        ui.problem('Failed to Generate Slides:', error)
+      rescue => e
+        ui.problem('Failed to Generate Slides:', e)
       end
 
       private

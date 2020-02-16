@@ -31,9 +31,12 @@ module RevealCK
 
       def setup_and_run_guard
         require 'guard/cli'
-        Guard::UI.options[:template] = "#{prefix} :message"
+        Guard::UI.options = Guard::UI.options.merge(
+          template: "#{prefix} :message"
+        )
         contents = guardfile_contents
         Thread.new do
+          Thread.current.report_on_exception = false
           Guard.start(guardfile_contents: contents, no_interactions: true)
         end
       end

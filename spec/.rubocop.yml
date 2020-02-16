@@ -1,11 +1,11 @@
 inherit_from: ../.rubocop.yml
 
-Documentation:
+Style/Documentation:
   Enabled: false
 
 Metrics/ModuleLength:
   Enabled: false
 
-FileName:
+Naming/FileName:
   Exclude:
     - lib/reveal-ck_spec.rb
