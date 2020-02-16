@@ -27,7 +27,7 @@ module RevealCK
       def build_rack_app(doc_root)
         Rack::Builder.new do
           use Rack::LiveReload
-          use Rack::Static, :urls => {"/" => 'index.html'}, :root => "#{doc_root}"
+          use Rack::Static, urls: { '/' => 'index.html' }, root: doc_root
           run Rack::Directory.new(doc_root)
         end
       end
