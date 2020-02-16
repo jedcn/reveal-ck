@@ -21,7 +21,18 @@ bugs are fixed.
 
 ### Changed
 
-* Nothing
+* The embedded reveal.js has been updated to version 3.7.0 to 3.9.2.
+  There's some great stuff [here](https://github.com/hakimel/reveal.js/releases)
+  and I think my favorite could be the step-by-step highlighting.
+* All dependencies have been refreshed to recently released versions.
+* Restrictions on dependencies have been loosened
+* The reporting of code coverage to CodeClimate has been updated
+* reveal-ck is now supported on ruby 2.5, 2.6, and 2.7.
+* Heads Up! If you write slides in HAML, we're now using HAML 5.0
+* Heads Up! If you write slides in Markdown, we're now using Kramdown 2
+* Heads Up! If you write slides in Slim, we're now using Slim 4
+* Thanks to @blimmer for pointing out the need to upgrade Haml and Rack,
+  and for submitting his own and reading PR!
 
 ### Fixed
 
