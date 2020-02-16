@@ -36,6 +36,7 @@ module RevealCK
         )
         contents = guardfile_contents
         Thread.new do
+          Thread.current.report_on_exception = false
           Guard.start(guardfile_contents: contents, no_interactions: true)
         end
       end
