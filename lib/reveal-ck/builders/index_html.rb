@@ -9,12 +9,11 @@ module RevealCK
     class IndexHtml
       include Retrieve
 
-      attr_reader :template, :slides_html, :head_prefix, :config
+      attr_reader :template, :slides_html, :config
 
       def initialize(args)
         @template = retrieve(:template, args)
         @slides_html = retrieve(:slides_html, args)
-        @head_prefix = retrieve(:head_prefix, args)
         @config = retrieve(:config, args)
       end
 
@@ -22,8 +21,7 @@ module RevealCK
         scope = RevealCK::Render::Scope.new(dir: Dir.pwd, config: config)
         tilt_template = Tilt.new(template)
         locals = {
-          slides_html: slides_html,
-          head_prefix: head_prefix
+          slides_html: slides_html
         }
         tilt_template.render(scope, locals)
       end
