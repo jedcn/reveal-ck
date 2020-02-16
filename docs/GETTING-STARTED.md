@@ -12,5 +12,5 @@
   more info, please [ask a question or log a bug][new-issue]!
 
 [faq-videos]: https://github.com/jedcn/reveal-ck/blob/master/docs/FAQ.md#videos
-[relishapp-revealck]: https://relishapp.com/jedcn/reveal-ck/docs
+[relishapp-reveal-ck]: https://relishapp.com/jedcn/reveal-ck/docs
 [new-issue]: https://github.com/jedcn/reveal-ck/issues/new
