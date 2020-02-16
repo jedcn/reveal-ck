@@ -11,7 +11,7 @@ module RevealCK
         Thread.new do
           loop do
             sleep @wait_period
-            @thread_to_wake.wakeup
+            @thread_to_wake.wakeup if @thread_to_wake.alive?
           end
         end
       end
