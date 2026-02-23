@@ -1,6 +1,6 @@
 {
-  "name": "Ruby 4 Dev Container",
-  "image": "ruby:4.0",
+  "name": "reveal-ck Dev Container",
+  "image": "ruby:2.7",
   
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
@@ -16,11 +16,10 @@
   "mounts": [
     "source=${localWorkspaceFolder},target=/workspace,type=bind",
     "source=ruby-gems-cache,target=/usr/local/bundle,type=volume",
-    "source=ruby-shell-history,target=/commandhistory,type=volume",
-    "source=ruby-git-config,target=/root/.gitconfig,type=volume"
+    "source=ruby-shell-history,target=/commandhistory,type=volume"
   ],
   
-  "postCreateCommand": "npm install -g @anthropic-ai/claude-code && bundle install",
+  "postCreateCommand": "gem install bundler:2.3.26 && npm install -g @anthropic-ai/claude-code && git config --global --add safe.directory /workspace && bundle _2.3.26_ install",
   
   "remoteEnv": {
     "ANTHROPIC_API_KEY": "${localEnv:ANTHROPIC_API_KEY}",
