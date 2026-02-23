@@ -1,0 +1,38 @@
+{
+  "name": "Ruby 4 Dev Container",
+  "image": "ruby:4.0",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/git:1": {
+      "ppa": false
+    }
+  },
+  
+  "workspaceFolder": "/workspace",
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind",
+    "source=ruby-gems-cache,target=/usr/local/bundle,type=volume",
+    "source=ruby-shell-history,target=/commandhistory,type=volume",
+    "source=ruby-git-config,target=/root/.gitconfig,type=volume"
+  ],
+  
+  "postCreateCommand": "npm install -g @anthropic-ai/claude-code && bundle install",
+  
+  "remoteEnv": {
+    "ANTHROPIC_API_KEY": "${localEnv:ANTHROPIC_API_KEY}",
+    "HISTFILE": "/commandhistory/.bash_history"
+  },
+  
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rebornix.ruby",
+        "castwide.solargraph"
+      ]
+    }
+  }
+}
