@@ -1,0 +1,32 @@
+{
+  "name": "reveal-ck",
+  "image": "mcr.microsoft.com/devcontainers/ruby:3.3",
+
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {}
+  },
+
+  "workspaceFolder": "/workspace",
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind",
+    "source=ruby-gems-cache,target=/usr/local/bundle,type=volume",
+    "source=ruby-shell-history,target=/commandhistory,type=volume"
+  ],
+
+  "postCreateCommand": "npm install -g @anthropic-ai/claude-code",
+
+  "remoteEnv": {
+    "HISTFILE": "/commandhistory/.bash_history"
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rebornix.ruby",
+        "castwide.solargraph"
+      ]
+    }
+  },
+
+  "remoteUser": "vscode"
+}
