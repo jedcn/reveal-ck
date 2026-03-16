@@ -3,7 +3,7 @@ require File.join([File.dirname(__FILE__), 'lib', 'reveal-ck', 'version.rb'])
 
 Gem::Specification.new do |s|
   s.date = '2020-02-16'
-  s.required_ruby_version = '>= 2.5'
+  s.required_ruby_version = '>= 3.3'
   s.name        = 'reveal-ck'
   s.version     = RevealCK::VERSION
   s.platform    = Gem::Platform::RUBY
@@ -15,23 +15,23 @@ Gem::Specification.new do |s|
     'A cli for generating reveal.js presentations from markdown.'
   #
   # Runtime Dependencies
-  s.add_dependency 'docile', '~> 1.3'
-  s.add_dependency 'gemoji', '~> 3.0'
+  s.add_dependency 'docile', '~> 1.4'
+  s.add_dependency 'gemoji', '~> 4.1'
   s.add_dependency 'gli', '~> 2.19'
-  s.add_dependency 'guard', '~> 2.16'
+  s.add_dependency 'guard', '~> 2.19'
   s.add_dependency 'guard-livereload', '~> 2.5'
   s.add_dependency 'haml', '~> 5.1'
   s.add_dependency 'html-pipeline', '~> 2.12'
-  s.add_dependency 'kramdown', '~> 2.1'
+  s.add_dependency 'kramdown', '~> 2.5'
   s.add_dependency 'kramdown-parser-gfm', '~> 1.1'
-  s.add_dependency 'listen', '3.2.1'
+  s.add_dependency 'listen', '~> 3.9'
   s.add_dependency 'rack', '~> 2.2'
   s.add_dependency 'rack-livereload', '0.3.17'
   s.add_dependency 'rake', '~> 13.0'
   s.add_dependency 'rinku', '~> 2.0'
-  s.add_dependency 'slim', '~> 4.0'
+  s.add_dependency 'slim', '~> 5.0'
   s.add_dependency 'thor', '~> 1.0'
-  s.add_dependency 'tilt', '2.0.9'
+  s.add_dependency 'tilt', '~> 2.4'
 
   #
   # Development Dependencies
