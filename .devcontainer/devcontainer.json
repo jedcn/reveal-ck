@@ -3,7 +3,8 @@
   "image": "mcr.microsoft.com/devcontainers/ruby:3.3",
 
   "features": {
-    "ghcr.io/devcontainers/features/node:1": {}
+    "ghcr.io/devcontainers/features/node:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
   },
 
   "workspaceFolder": "/workspace",
@@ -18,6 +19,7 @@
   "remoteEnv": {
     "ANTHROPIC_API_KEY": "${localEnv:ANTHROPIC_API_KEY}",
     "GITHUB_TOKEN": "${localEnv:GITHUB_TOKEN}",
+    "GH_TOKEN": "${localEnv:GITHUB_TOKEN}",
     "HISTFILE": "/commandhistory/.bash_history"
   },
 
