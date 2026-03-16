@@ -7,6 +7,7 @@ module RevealCK
     # The idea of starting up a webserver to display slides locally.
     class StartWebServer
       attr_reader :doc_root, :port, :host
+
       def initialize(doc_root, port, host)
         @doc_root = doc_root
         @port = port

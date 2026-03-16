@@ -5,6 +5,7 @@ module RevealCK
     # reloading, and webserving)
     class PrintBanner
       attr_reader :doc_root, :port, :host, :slides_file, :ui
+
       def initialize(doc_root, port, host, slides_file, ui)
         @doc_root = doc_root
         @port = port

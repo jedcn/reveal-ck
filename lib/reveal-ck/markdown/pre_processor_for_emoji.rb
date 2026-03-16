@@ -4,6 +4,7 @@ module RevealCK
     # emoji are not considered as indicators of markdown emphasis.
     class PreProcessorForEmoji
       attr_reader :doc
+
       def initialize(doc)
         @doc = doc
       end
@@ -21,7 +22,7 @@ module RevealCK
       end
 
       def emoji_regex
-        /:[a-z\d_\-\+]*:/
+        /:[a-z\d_\-+]*:/
       end
 
       def emoji_underscore_symbol

@@ -6,6 +6,7 @@ module RevealCK
     # rebuilding slides.
     class ListenToRebuildSlides
       attr_reader :ui, :rebuild_method
+
       def initialize(ui, slides_file, &block)
         @ui = ui
         @slides_file = slides_file

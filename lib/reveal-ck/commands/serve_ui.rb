@@ -29,7 +29,7 @@ module RevealCK
 
       def blank(type = nil)
         prefix = PREFIXES[type] || ''
-        puts prefix.to_s
+        puts prefix
       end
 
       def separator

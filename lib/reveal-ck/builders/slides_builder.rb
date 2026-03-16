@@ -7,9 +7,8 @@ module RevealCK
     # file to work with, and a place to put it all.. this class
     # creates a presentation.
     class SlidesBuilder < CreationTask
-      attr_reader :user_dir, :gem_dir, :reveal_js_dir
-      attr_reader :slides_file, :output_dir
-      attr_reader :application
+      attr_reader :user_dir, :gem_dir, :reveal_js_dir, :slides_file, :output_dir, :application
+
       def initialize(args)
         @user_dir = retrieve(:user_dir, args)
         @gem_dir = retrieve(:gem_dir, args)

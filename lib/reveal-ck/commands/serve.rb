@@ -7,8 +7,8 @@ module RevealCK
     class Serve
       include Retrieve
       attr_reader :doc_root, :port, :host
-      attr_reader :slides_file, :user_dir, :gem_dir, :output_dir
-      attr_reader :ui
+      attr_reader :slides_file, :user_dir, :gem_dir, :output_dir, :ui
+
       def initialize(args)
         @doc_root    = retrieve(:doc_root, args)
         @port        = retrieve(:port, args)

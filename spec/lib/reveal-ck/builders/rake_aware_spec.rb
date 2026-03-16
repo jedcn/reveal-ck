@@ -6,6 +6,7 @@ module RevealCK
     class RakeAwareTestingClass
       include RakeAware
       attr_reader :application
+
       def initialize
         @application = Rake::Application.new
       end

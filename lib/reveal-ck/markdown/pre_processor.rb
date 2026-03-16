@@ -5,6 +5,7 @@ module RevealCK
     # can later "become" reveal.js slides.
     class PreProcessor
       attr_reader :doc
+
       def initialize(doc)
         @doc = doc
       end

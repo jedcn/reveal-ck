@@ -12,6 +12,7 @@ module RevealCK
     #
     class PreProcessorTransforms
       attr_reader :doc
+
       def initialize(doc)
         @doc = doc
       end

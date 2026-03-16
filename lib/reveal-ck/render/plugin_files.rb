@@ -5,10 +5,9 @@ module RevealCK
       def plugin_files
         things_in_plugin_dir = FileList["#{@dir}/plugin/**/*"]
         only_js_files = things_in_plugin_dir.grep(/\.js$/)
-        relative_plugin_files = only_js_files.map do |file|
+        only_js_files.map do |file|
           file.sub("#{@dir}/", '')
         end
-        relative_plugin_files
       end
     end
   end

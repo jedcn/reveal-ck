@@ -5,6 +5,7 @@ module RevealCK
     # suitable for reveal.js slides.
     class PostProcessor
       attr_reader :doc
+
       def initialize(doc)
         @doc = doc
       end
@@ -117,7 +118,7 @@ module RevealCK
       end
 
       def protected_emoji_regex
-        /:[a-z\d_\-\+EU]*:/
+        /:[a-z\d_\-+EU]*:/
       end
 
       def back_to_back_vertical_symbols_regex
