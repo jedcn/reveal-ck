@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'guard', '~> 2.19'
   s.add_dependency 'guard-livereload', '~> 2.5'
   s.add_dependency 'haml', '~> 5.1'
-  s.add_dependency 'html-pipeline', '~> 2.12'
+  s.add_dependency 'html-pipeline', '~> 3.0'
   s.add_dependency 'kramdown', '~> 2.5'
   s.add_dependency 'kramdown-parser-gfm', '~> 1.1'
   s.add_dependency 'listen', '~> 3.9'

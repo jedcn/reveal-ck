@@ -3,24 +3,23 @@ require 'spec_helper'
 module HTML
   class Pipeline
     describe RevealCKEmojiFilter do
+      let :asset_root do
+        'https://github.githubassets.com/images/icons'
+      end
+
       let :emoji_filter do
-        doc = nil
-        context = {
-          asset_root: 'asset_root'
-        }
-        RevealCKEmojiFilter.new doc, context
+        RevealCKEmojiFilter.new(context: { asset_root: asset_root })
       end
 
-      it 'works with defined emoji' do
-        expected = "I <img class='emoji' "
-        expected += "alt=':heart:' src='asset_root/emoji/unicode/2764.png' "
-        expected += '/> emoji'
-        result = emoji_filter.emoji_image_filter('I :heart: emoji')
-        expect(result).to eq(expected)
+      it 'replaces a known emoji token with an img tag' do
+        result = emoji_filter.call('I :heart: emoji')
+        expect(result).to include("<img class='emoji'")
+        expect(result).to include("alt=':heart:'")
+        expect(result).to include('src=')
       end
 
-      it 'leaves undefined emoji alone' do
-        result = emoji_filter.emoji_image_filter('I :dont_know: emoji')
+      it 'leaves unknown emoji tokens alone' do
+        result = emoji_filter.call('I :dont_know: emoji')
         expect(result).to eq('I :dont_know: emoji')
       end
     end

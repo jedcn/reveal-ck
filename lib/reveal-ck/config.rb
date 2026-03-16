@@ -77,9 +77,7 @@ module RevealCK
 
     def filter_defaults
       {
-        filters: ['HTML::Pipeline::RevealCKEmojiFilter',
-                  'HTML::Pipeline::MentionFilter',
-                  'HTML::Pipeline::AutolinkFilter'],
+        filters: ['HTML::Pipeline::RevealCKEmojiFilter'],
         asset_root: 'https://github.githubassets.com/images/icons/',
         base_url: 'https://github.com',
         requires: []
