@@ -35,7 +35,7 @@ module RevealCK
         config_file = File.join(user_dir, 'config.yml')
         return unless File.exist?(config_file)
 
-        config_as_hash = YAML.load_file config_file
+        config_as_hash = YAML.safe_load_file(config_file, permitted_classes: [Symbol])
         @config.merge!(config_as_hash)
       end
 

@@ -5,7 +5,7 @@
 - height   = height   || nil
 - alt      = alt      || nil
 ruby:
-  def image_helper(src, alt, width, height)
+  image_helper = lambda do |src, alt, width, height|
     tag = { :tag => 'img' }
     tag[:width]  = width  if width
     tag[:height] = height if height
@@ -18,8 +18,8 @@ section
     h2= headline
   - if link
     a.image href="#{link}" target="_blank"
-      *image_helper(src, alt, width, height)
+      *image_helper.call(src, alt, width, height)
   - else
-    *image_helper(src, alt, width, height)
+    *image_helper.call(src, alt, width, height)
   - if notes
     aside.notes= notes

@@ -31,6 +31,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rinku', '~> 2.0'
   s.add_dependency 'slim', '~> 5.0'
   s.add_dependency 'thor', '~> 1.0'
+  s.add_dependency 'webrick', '~> 1.8'
   s.add_dependency 'tilt', '~> 2.4'
 
   #
