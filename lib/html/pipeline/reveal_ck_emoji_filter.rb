@@ -1,5 +1,5 @@
-require "html_pipeline"
-require "gemoji"
+require 'html_pipeline'
+require 'gemoji'
 
 module HTML
   class Pipeline
@@ -13,18 +13,19 @@ module HTML
         super
       end
 
-      def call(text, context: {}, result: {})
+      def call(text, context: {}, result: {}) # rubocop:disable Lint/UnusedMethodArgument
         text.gsub(EMOJI_PATTERN) do |match|
-          name = match[1..-2]
-          emoji = Emoji.find_by_alias(name)
-          if emoji
-            asset_root = (context[:asset_root] || "").chomp("/")
-            src = "#{asset_root}/emoji/#{emoji.image_filename}"
-            "<img class='emoji' alt='#{match}' src='#{src}' />"
-          else
-            match
-          end
+          emoji = Emoji.find_by_alias(match[1..-2])
+          emoji ? emoji_img_tag(match, emoji, context[:asset_root]) : match
         end
+      end
+
+      private
+
+      def emoji_img_tag(token, emoji, asset_root)
+        root = (asset_root || '').chomp('/')
+        src = "#{root}/emoji/#{emoji.image_filename}"
+        "<img class='emoji' alt='#{token}' src='#{src}' />"
       end
     end
   end

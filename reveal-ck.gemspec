@@ -2,7 +2,7 @@ $LOAD_PATH.push File.expand_path('lib', __dir__)
 require File.join([File.dirname(__FILE__), 'lib', 'reveal-ck', 'version.rb'])
 
 Gem::Specification.new do |s|
-  s.date = '2020-02-16'
+  s.date = '2026-03-16'
   s.required_ruby_version = '>= 3.3'
   s.name        = 'reveal-ck'
   s.version     = RevealCK::VERSION
@@ -32,16 +32,15 @@ Gem::Specification.new do |s|
   s.add_dependency 'rinku', '~> 2.0'
   s.add_dependency 'slim', '~> 5.0'
   s.add_dependency 'thor', '~> 1.0'
-  s.add_dependency 'webrick', '~> 1.8'
   s.add_dependency 'tilt', '~> 2.4'
+  s.add_dependency 'webrick', '~> 1.8'
 
   #
   # Development Dependencies
-  s.add_development_dependency 'activesupport'
-  s.add_development_dependency 'aruba'
-  s.add_development_dependency 'cucumber'
+  s.add_development_dependency 'activesupport', '~> 7.1'
+  s.add_development_dependency 'aruba', '~> 2.2'
+  s.add_development_dependency 'cucumber', '~> 10.0'
   s.add_development_dependency 'nokogiri'
-  s.add_development_dependency 'relish'
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'rubocop', '~> 1.60'
   s.add_development_dependency 'simplecov'
