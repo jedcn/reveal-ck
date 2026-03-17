@@ -1,4 +1,4 @@
-When(/^I temporarily start reveal\-ck serve with host "(.*?)"$/) do |host|
+When(/^I temporarily start reveal-ck serve with host "(.*?)"$/) do |host|
   port = rand(10_000..11_000)
   cmd = "reveal-ck serve --port #{port} --host #{host}"
   run_command("#{cmd} --test-quit-after-starting 2")

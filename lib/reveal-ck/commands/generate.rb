@@ -5,6 +5,7 @@ module RevealCK
     class Generate
       include Retrieve
       attr_reader :slides_builder, :slides_file, :stdout_prefix
+
       def initialize(args)
         user_dir = retrieve(:user_dir, args)
         gem_dir = retrieve(:gem_dir, args)

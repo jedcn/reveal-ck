@@ -1,4 +1,5 @@
 require 'rack'
+require 'rackup'
 require 'webrick'
 require 'rack/livereload'
 
@@ -7,6 +8,7 @@ module RevealCK
     # The idea of starting up a webserver to display slides locally.
     class StartWebServer
       attr_reader :doc_root, :port, :host
+
       def initialize(doc_root, port, host)
         @doc_root = doc_root
         @port = port
@@ -14,12 +16,12 @@ module RevealCK
       end
 
       def run
-        Rack::Server.new(app: build_rack_app(doc_root),
-                         Host: host,
-                         Port: port,
-                         Logger: server_log,
-                         DoNotReverseLookup: true,
-                         AccessLog: access_log).start
+        Rackup::Server.new(app: build_rack_app(doc_root),
+                           Host: host,
+                           Port: port,
+                           Logger: server_log,
+                           DoNotReverseLookup: true,
+                           AccessLog: access_log).start
       end
 
       private

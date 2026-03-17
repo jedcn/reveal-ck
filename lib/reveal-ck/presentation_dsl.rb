@@ -39,7 +39,7 @@ module RevealCK
     end
 
     def contents_of(path)
-      File.open(path).read
+      File.read(path)
     end
 
     def build
@@ -62,7 +62,7 @@ module RevealCK
       file = retrieve(:file, args)
       config = retrieve(:config, args)
       builder = PresentationDSL.new config: config
-      contents = File.open(file).read
+      contents = File.read(file)
       builder.instance_eval(contents)
     end
   end

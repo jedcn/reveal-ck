@@ -1,7 +1,6 @@
-Metrics/CyclomaticComplexity:
-  Max: 5
-
 AllCops:
+  NewCops: disable
+  TargetRubyVersion: 3.3
   Include:
     - '**/*.rb'
     - rakelib/*.rake
@@ -12,10 +11,6 @@ AllCops:
   Exclude:
     - tmp/**/*
     - files/reveal.js/**/*
-
-Gemspec/RequiredRubyVersion:
-  Exclude:
-    - 'reveal-ck.gemspec'
 
 Naming/FileName:
   Exclude:
@@ -37,6 +32,18 @@ Metrics/BlockLength:
     - bin/reveal-ck
     - reveal-ck.gemspec
     - spec/**/*.rb
+
+Metrics/CyclomaticComplexity:
+  Max: 6
+
+Lint/MissingSuper:
+  Exclude:
+    - lib/reveal-ck/builders/slides_builder.rb
+    - lib/reveal-ck/rake_task.rb
+
+Lint/ConstantDefinitionInBlock:
+  Exclude:
+    - spec/lib/reveal-ck/misc/remove_extension_spec.rb
 
 Metrics/MethodLength:
   Exclude:

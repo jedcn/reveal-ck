@@ -4,6 +4,7 @@ module RevealCK
   module Builders
     class CreationTaskTestingClass < CreationTask
       attr_reader :setup_called
+
       def initialize(args)
         @setup_called = false
         super

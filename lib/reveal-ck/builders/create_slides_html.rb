@@ -1,4 +1,4 @@
-require 'html/pipeline'
+require 'html_pipeline'
 require 'html/pipeline/reveal_ck_emoji_filter'
 
 module RevealCK
@@ -37,10 +37,10 @@ module RevealCK
 
       def apply_filters_to(html)
         load_dependencies(config.requires)
-        filters = get_classes_from_array(config.filters)
-        pipeline = HTML::Pipeline.new(filters)
+        filter_classes = get_classes_from_array(config.filters)
+        filters = filter_classes.map { |k| k.new(context: config.to_h) }
+        pipeline = HTMLPipeline.new(text_filters: filters, sanitization_config: nil)
         filtered_html_string = FilteredHtmlString.new(html: html,
-                                                      config: config.to_h,
                                                       pipeline: pipeline)
         filtered_html_string.render
       end

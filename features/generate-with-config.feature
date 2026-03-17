@@ -104,12 +104,13 @@ Feature: The capabilities of config.yml
     """
     And a file named "its_filter.rb" with:
     """
+    require 'html_pipeline'
     module HTML
       class Pipeline
-        class ItsFilter < TextFilter
-          def call
-            # Certain people prefer to say "It is" rather than "It’s"
-            @text.gsub(/It’s/, 'It is')
+        class ItsFilter < HTMLPipeline::TextFilter
+          def call(text, context: {}, result: {})
+            # Certain people prefer to say "It is" rather than "It's"
+            text.gsub(/It[\u2019']s/, 'It is')
           end
         end
       end

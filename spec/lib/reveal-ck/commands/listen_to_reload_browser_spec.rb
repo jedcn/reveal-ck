@@ -15,7 +15,7 @@ module RevealCK
           output_dir = 'output_dir'
 
           guardfile_watches_index_html_in_output_dir =
-            %r{watch\(\%r\{\^#{output_dir}\/index.html\$\}\)}
+            %r{watch\(%r\{\^#{output_dir}/index.html\$\}\)}
 
           start_args = {
             guardfile_contents: guardfile_watches_index_html_in_output_dir,

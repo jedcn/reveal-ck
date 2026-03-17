@@ -1,17 +1,42 @@
-require 'ostruct'
-
 module RevealCK
   # A Config represents core configuration options within
   # reveal-ck. It has defaults. It is mutable.
-  class Config < OpenStruct
+  class Config
     def initialize
-      super defaults
+      @data = defaults
+    end
+
+    def [](key)
+      @data[key.to_sym]
+    end
+
+    def []=(key, value)
+      @data[key.to_sym] = value
     end
 
     def merge!(hash)
-      hash.each_pair do |name, value|
-        self[name] = value
+      hash.each do |name, value|
+        @data[name.to_sym] = value
       end
+    end
+
+    def to_h
+      @data.dup
+    end
+
+    def method_missing(name, *args)
+      key = name.to_s
+      if key.end_with?('=')
+        @data[key.chomp('=').to_sym] = args.first
+      elsif @data.key?(name)
+        @data[name]
+      else
+        super
+      end
+    end
+
+    def respond_to_missing?(name, include_private = false)
+      @data.key?(name) || super
     end
 
     def defaults
@@ -27,21 +52,21 @@ module RevealCK
 
     def core_defaults
       {
-        'title' => 'Slides',
-        'description' => '',
-        'author' => '',
-        'theme' => 'black',
-        'transition' => 'default',
-        'data' => {},
-        'meta_properties' => {},
-        'meta_names' => {},
-        'head_prefix' => OPEN_GRAPH_PREFIX
+        title: 'Slides',
+        description: '',
+        author: '',
+        theme: 'black',
+        transition: 'default',
+        data: {},
+        meta_properties: {},
+        meta_names: {},
+        head_prefix: OPEN_GRAPH_PREFIX
       }
     end
 
     def revealjs_config_defaults
       {
-        'revealjs_config' => {
+        revealjs_config: {
           'controls' => true,
           'progress' => true,
           'history' => true,
@@ -52,12 +77,10 @@ module RevealCK
 
     def filter_defaults
       {
-        'filters' => ['HTML::Pipeline::RevealCKEmojiFilter',
-                      'HTML::Pipeline::MentionFilter',
-                      'HTML::Pipeline::AutolinkFilter'],
-        'asset_root' => 'https://github.githubassets.com/images/icons/',
-        'base_url' => 'https://github.com',
-        'requires' => []
+        filters: ['HTML::Pipeline::RevealCKEmojiFilter'],
+        asset_root: 'https://github.githubassets.com/images/icons/',
+        base_url: 'https://github.com',
+        requires: []
       }
     end
   end

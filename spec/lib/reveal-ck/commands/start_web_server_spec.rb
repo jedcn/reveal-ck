@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'rackup'
 require 'tmpdir'
 
 module RevealCK
@@ -9,7 +10,7 @@ module RevealCK
           start_web_server =
             StartWebServer.new('doc_root', 'port', 'host')
           rack_server = double
-          expect(::Rack::Server)
+          expect(::Rackup::Server)
             .to(receive(:new))
             .and_return(rack_server)
           expect(rack_server)

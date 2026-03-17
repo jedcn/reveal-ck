@@ -25,9 +25,7 @@ module RevealCK
     #   'slides'
     attr_accessor :dir
 
-    attr_accessor :user_dir
-    attr_accessor :gem_dir
-    attr_accessor :config
+    attr_accessor :user_dir, :gem_dir, :config
 
     def initialize(*args, &task_block)
       @name     = args.shift || :reveal

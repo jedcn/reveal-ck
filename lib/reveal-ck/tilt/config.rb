@@ -7,4 +7,4 @@ Tilt.register RevealCK::Markdown::SlideMarkdownTemplate, 'md'
 # require 'tilt/erb' suggested.
 #
 # The same goes for tilt/haml
-# require 'tilt/haml'
+require 'tilt/haml'
